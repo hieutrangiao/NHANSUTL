@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7F874583-C8DD-4EE0-8644-8236309FD706}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VinaLib</RootNamespace>
+    <AssemblyName>VinaLib</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v18.2, Version=18.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v18.2.Core, Version=18.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v18.2, Version=18.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v18.2, Version=18.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v18.2, Version=18.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Practices.EnterpriseLibrary.Common.dll.3.1.0\lib\2.0\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Practices.EnterpriseLibrary.Data.dll.3.1.0\lib\2.0\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder, Version=1.0.51206.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Practices.ObjectBuilder.dll.3.1.0\lib\2.0\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseProvider\BaseModule.cs" />
+    <Compile Include="BaseProvider\BaseToolbar.cs" />
+    <Compile Include="BusinessController\AA\AAColumnAliasController.cs" />
+    <Compile Include="BusinessController\AD\ADConfigValuesController.cs" />
+    <Compile Include="BusinessController\AD\ADUserGroupsController.cs" />
+    <Compile Include="BusinessController\AD\ADUserGroupSectionsController.cs" />
+    <Compile Include="BusinessController\AD\ADUsersController.cs" />
+    <Compile Include="BusinessController\AD\STModuleToUserGroupSectionsController.cs" />
+    <Compile Include="BusinessController\BaseClassFactory.cs" />
+    <Compile Include="BusinessController\BusinessControllerFactory.cs" />
+    <Compile Include="BusinessController\GE\GELookupColumnsController.cs" />
+    <Compile Include="BusinessController\GE\GELookupTablesController.cs" />
+    <Compile Include="BusinessController\GE\GENumberingsController.cs" />
+    <Compile Include="BusinessController\ST\STColumnsController.cs" />
+    <Compile Include="BusinessController\ST\STModulesController.cs" />
+    <Compile Include="BusinessController\ST\STScreensController.cs" />
+    <Compile Include="BusinessController\ST\STToolbarFunctionsController.cs" />
+    <Compile Include="BusinessController\ST\STToolbarsController.cs" />
+    <Compile Include="BusinessInfo\AD\ADConfigValuesInfo.cs" />
+    <Compile Include="BusinessController\BaseBusinessController.cs" />
+    <Compile Include="BusinessInfo\AD\ADUserGroupSectionsInfo.cs" />
+    <Compile Include="BusinessInfo\AD\ADUserGroupsInfo.cs" />
+    <Compile Include="BusinessInfo\AD\ADUsersInfo.cs" />
+    <Compile Include="BusinessInfo\AD\STModuleToUserGroupSectionsInfo.cs" />
+    <Compile Include="BusinessInfo\BusinessObjectFactory.cs" />
+    <Compile Include="BusinessInfo\GE\GELookupColumnsInfo.cs" />
+    <Compile Include="BusinessInfo\GE\GELookupTablesInfo.cs" />
+    <Compile Include="BusinessInfo\GE\GENumberingsInfo.cs" />
+    <Compile Include="BusinessInfo\AA\AAColumnAliasInfo.cs" />
+    <Compile Include="BusinessInfo\BusinessObject.cs" />
+    <Compile Include="BusinessInfo\ST\STColumnsInfo.cs" />
+    <Compile Include="BusinessInfo\ST\STModulesInfo.cs" />
+    <Compile Include="BusinessInfo\ST\STScreensInfo.cs" />
+    <Compile Include="BusinessInfo\ST\STToolbarFunctionsInfo.cs" />
+    <Compile Include="BusinessInfo\ST\STToolbarsInfo.cs" />
+    <Compile Include="Common\VinaDbUtil.cs" />
+    <Compile Include="BaseProvider\Components\VinaScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseProvider\Components\VinaScreen.Designer.cs">
+      <DependentUpon>VinaScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\VinaUtil.cs" />
+    <Compile Include="DataAccess\DALBaseProvider.cs" />
+    <Compile Include="DataAccess\SqlDatabaseHelper.cs" />
+    <Compile Include="Interfaces\IBaseModuleERP.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BusinessController\AR\" />
+    <Folder Include="BusinessController\IC\" />
+    <Folder Include="BusinessInfo\AR\" />
+    <Folder Include="BusinessInfo\IC\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

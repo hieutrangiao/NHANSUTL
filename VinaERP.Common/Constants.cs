@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace VinaERP.Common
+{
+    public class TableName
+    {
+        #region GE
+        public const string GEPaymentTermsTableName = "GEPaymentTerms";
+        public const string GEPaymentTermItemsTableName = "GEPaymentTermItems";
+        #endregion
+
+        #region IC
+        public const string ICProductsTableName = "ICProducts";
+        public const string ICProductMeasureUnitsTableName = "ICProductMeasureUnits";
+        #endregion
+    }
+}

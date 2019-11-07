@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{95D2141E-F0A4-4BA8-B2E2-3FF0F53C4BDB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VinaERP.Entities</RootNamespace>
+    <AssemblyName>VinaERP.Entities</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessEntities\Controller\AR\ARCustomersController.cs" />
+    <Compile Include="BusinessEntities\Controller\AR\ARInvoiceItemsController.cs" />
+    <Compile Include="BusinessEntities\Controller\AR\ARInvoicesController.cs" />
+    <Compile Include="BusinessEntities\Controller\AR\ARProposalItemsController.cs" />
+    <Compile Include="BusinessEntities\Controller\AR\ARProposalsController.cs" />
+    <Compile Include="BusinessEntities\Controller\AR\ARSaleOrderItemsController.cs" />
+    <Compile Include="BusinessEntities\Controller\AR\ARSaleOrderPaymentTimesController.cs" />
+    <Compile Include="BusinessEntities\Controller\AR\ARSaleOrdersController.cs" />
+    <Compile Include="BusinessEntities\Controller\GE\GECurrenciesController.cs" />
+    <Compile Include="BusinessEntities\Controller\GE\GEPaymentTermItemsController.cs" />
+    <Compile Include="BusinessEntities\Controller\GE\GEPaymentTermsController.cs" />
+    <Compile Include="BusinessEntities\Controller\HR\HREmployeesController.cs" />
+    <Compile Include="BusinessEntities\Controller\IC\ICDepartmentsController.cs" />
+    <Compile Include="BusinessEntities\Controller\IC\ICMeasureUnitsController.cs" />
+    <Compile Include="BusinessEntities\Controller\IC\ICPriceCalculationMethodsController.cs" />
+    <Compile Include="BusinessEntities\Controller\IC\ICProductAttributesController.cs" />
+    <Compile Include="BusinessEntities\Controller\IC\ICProductGroupsController.cs" />
+    <Compile Include="BusinessEntities\Controller\IC\ICProductMeasureUnitsController.cs" />
+    <Compile Include="BusinessEntities\Controller\IC\ICProductsController.cs" />
+    <Compile Include="BusinessEntities\Controller\IC\ICReceiptItemsController.cs" />
+    <Compile Include="BusinessEntities\Controller\IC\ICReceiptsController.cs" />
+    <Compile Include="BusinessEntities\Controller\IC\ICShipmentItemsController.cs" />
+    <Compile Include="BusinessEntities\Controller\IC\ICShipmentsController.cs" />
+    <Compile Include="BusinessEntities\Controller\IC\ICStockLotsController.cs" />
+    <Compile Include="BusinessEntities\Controller\IC\ICStocksController.cs" />
+    <Compile Include="BusinessEntities\Controller\IC\ICTransactionsController.cs" />
+    <Compile Include="BusinessEntities\Controller\IC\ICVitualTransactionsController.cs" />
+    <Compile Include="BusinessEntities\Controller\ST\STModulePostingsController.cs" />
+    <Compile Include="BusinessEntities\Info\AR\ARCustomersInfo.cs" />
+    <Compile Include="BusinessEntities\Info\AR\ARInvoiceItemsInfo.cs" />
+    <Compile Include="BusinessEntities\Info\AR\ARInvoicesInfo.cs" />
+    <Compile Include="BusinessEntities\Info\AR\ARProposalItemsInfo.cs" />
+    <Compile Include="BusinessEntities\Info\AR\ARProposalsInfo.cs" />
+    <Compile Include="BusinessEntities\Info\AR\ARSaleOrderItemsInfo.cs" />
+    <Compile Include="BusinessEntities\Info\AR\ARSaleOrderPaymentTimesInfo.cs" />
+    <Compile Include="BusinessEntities\Info\AR\ARSaleOrdersInfo.cs" />
+    <Compile Include="BusinessEntities\Info\GE\GECurrenciesInfo.cs" />
+    <Compile Include="BusinessEntities\Info\GE\GEPaymentTermItemsInfo.cs" />
+    <Compile Include="BusinessEntities\Info\GE\GEPaymentTermsInfo.cs" />
+    <Compile Include="BusinessEntities\Info\HR\HREmployeesInfo.cs" />
+    <Compile Include="BusinessEntities\Info\IC\ICDepartmentsInfo.cs" />
+    <Compile Include="BusinessEntities\Info\IC\ICMeasureUnitsInfo.cs" />
+    <Compile Include="BusinessEntities\Info\IC\ICPriceCalculationMethodsInfo.cs" />
+    <Compile Include="BusinessEntities\Info\IC\ICProductAttributesInfo.cs" />
+    <Compile Include="BusinessEntities\Info\IC\ICProductGroupsInfo.cs" />
+    <Compile Include="BusinessEntities\Info\IC\ICProductMeasureUnitsInfo.cs" />
+    <Compile Include="BusinessEntities\Info\IC\ICProductsInfo.cs" />
+    <Compile Include="BusinessEntities\Info\IC\ICReceiptItemsInfo.cs" />
+    <Compile Include="BusinessEntities\Info\IC\ICReceiptsInfo.cs" />
+    <Compile Include="BusinessEntities\Info\IC\ICShipmentItemsInfo.cs" />
+    <Compile Include="BusinessEntities\Info\IC\ICShipmentsInfo.cs" />
+    <Compile Include="BusinessEntities\Info\IC\ICStockLotsInfo.cs" />
+    <Compile Include="BusinessEntities\Info\IC\ICStocksInfo.cs" />
+    <Compile Include="BusinessEntities\Info\IC\ICTransactionsInfo.cs" />
+    <Compile Include="BusinessEntities\Info\IC\ICVitualTransactionsInfo.cs" />
+    <Compile Include="BusinessEntities\Info\ST\STModulePostingsInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BusinessEntities\Controller\AA\" />
+    <Folder Include="BusinessEntities\Controller\AD\" />
+    <Folder Include="BusinessEntities\Info\AA\" />
+    <Folder Include="BusinessEntities\Info\AD\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VinaERP.Common\VinaERP.Common.csproj">
+      <Project>{0da0abbb-f089-476e-9228-6b575e75d7b0}</Project>
+      <Name>VinaERP.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VinaLib.BaseProvider\VinaLib.BaseProvider.csproj">
+      <Project>{1d6bb150-4f97-41ec-8aa6-a8c02ceae2ab}</Project>
+      <Name>VinaLib.BaseProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VinaLib\VinaLib.csproj">
+      <Project>{7F874583-C8DD-4EE0-8644-8236309FD706}</Project>
+      <Name>VinaLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,7 @@
+ALTER TABLE ICStockLots
+ADD FK_ICStockID int
+GO
+
+ALTER TABLE [dbo].[ICStockLots]  WITH CHECK ADD  CONSTRAINT [FK_ICStockLots_ICStocks] FOREIGN KEY(FK_ICStockID)
+REFERENCES [dbo].[ICStocks] (ICStockID)
+GO

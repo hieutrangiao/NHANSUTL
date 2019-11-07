@@ -1,0 +1,458 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B571CA96-0761-4EE5-9A4F-F52DCCAE6179}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VinaERP</RootNamespace>
+    <AssemblyName>VinaERP</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v19.1" />
+    <Reference Include="DevExpress.Data.v19.1" />
+    <Reference Include="DevExpress.Utils.v19.1" />
+    <Reference Include="DevExpress.Sparkline.v19.1.Core" />
+    <Reference Include="DevExpress.XtraBars.v19.1, Version=19.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v19.1" />
+    <Reference Include="DevExpress.Printing.v19.1.Core" />
+    <Reference Include="DevExpress.XtraGrid.v19.1, Version=19.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v19.1, Version=19.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v19.1, Version=19.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Charts.v19.1.Core, Version=19.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v19.1, Version=19.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.CodeParser.v19.1, Version=19.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v19.1, Version=19.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v19.1, Version=19.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.6.9.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.6.9\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseProvider\guiReportPreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseProvider\guiReportPreview.Designer.cs">
+      <DependentUpon>guiReportPreview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\AD\UserManagement\UI\GridControl\ADUsersGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\AD\UserManagement\UI\guiAddModules.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\AD\UserManagement\UI\guiAddModules.Designer.cs">
+      <DependentUpon>guiAddModules.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\AD\UserManagement\UI\guiAddSections.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\AD\UserManagement\UI\guiAddSections.Designer.cs">
+      <DependentUpon>guiAddSections.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\AD\UserManagement\UI\guiAddUserGroups.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\AD\UserManagement\UI\guiAddUserGroups.Designer.cs">
+      <DependentUpon>guiAddUserGroups.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\AD\UserManagement\UI\guiListUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\AD\UserManagement\UI\guiListUsers.Designer.cs">
+      <DependentUpon>guiListUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\AD\UserManagement\UI\guiManageUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\AD\UserManagement\UI\guiManageUser.Designer.cs">
+      <DependentUpon>guiManageUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\AD\UserManagement\UI\guiUserManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\AD\UserManagement\UI\guiUserManagement.Designer.cs">
+      <DependentUpon>guiUserManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\AD\UserManagement\UserManagementEntities.cs" />
+    <Compile Include="Modules\AD\UserManagement\UserManagementModule.cs" />
+    <Compile Include="Modules\AR\Customer\CustomerEntities.cs" />
+    <Compile Include="Modules\AR\Customer\CustomerModule.cs" />
+    <Compile Include="Modules\AR\Customer\UI\DMCU100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\AR\Customer\UI\DMCU100.Designer.cs">
+      <DependentUpon>DMCU100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\AR\Customer\UI\SMCU100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\AR\Customer\UI\SMCU100.Designer.cs">
+      <DependentUpon>SMCU100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\AR\Invoice\InvoiceEntities.cs" />
+    <Compile Include="Modules\AR\Invoice\InvoiceModule.cs" />
+    <Compile Include="Modules\AR\Invoice\UI\DMIV100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\AR\Invoice\UI\DMIV100.Designer.cs">
+      <DependentUpon>DMIV100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\AR\Invoice\UI\GridControl\ARInvoiceItemsGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\AR\Invoice\UI\GridControl\ARInvoicePaymentTimesGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\AR\Invoice\UI\GridControl\ICShipmentItemsGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\AR\Invoice\UI\guiChooseShipmentItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\AR\Invoice\UI\guiChooseShipmentItem.Designer.cs">
+      <DependentUpon>guiChooseShipmentItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\AR\Invoice\UI\SMIV100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\AR\Invoice\UI\SMIV100.Designer.cs">
+      <DependentUpon>SMIV100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\AR\Proposal\ProposalEntities.cs" />
+    <Compile Include="Modules\AR\Proposal\ProposalModule.cs" />
+    <Compile Include="Modules\AR\Proposal\UI\DMPS100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\AR\Proposal\UI\DMPS100.Designer.cs">
+      <DependentUpon>DMPS100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\AR\Proposal\UI\GridControl\ARProposalItemsGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\AR\Proposal\UI\SMPS100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\AR\Proposal\UI\SMPS100.Designer.cs">
+      <DependentUpon>SMPS100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\AR\SaleOrder\SaleOrderEntities.cs" />
+    <Compile Include="Modules\AR\SaleOrder\SaleOrderModule.cs" />
+    <Compile Include="Modules\AR\SaleOrder\UI\DMSO100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\AR\SaleOrder\UI\DMSO100.Designer.cs">
+      <DependentUpon>DMSO100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\AR\SaleOrder\UI\GridControl\ARProposalsGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\AR\SaleOrder\UI\GridControl\ARSaleOrderItemsGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\AR\SaleOrder\UI\GridControl\ARSaleOrderPaymentTimesGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\AR\SaleOrder\UI\guichooseProposal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\AR\SaleOrder\UI\guichooseProposal.Designer.cs">
+      <DependentUpon>guichooseProposal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\AR\SaleOrder\UI\SMSO100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\AR\SaleOrder\UI\SMSO100.Designer.cs">
+      <DependentUpon>SMSO100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\GE\PaymentTerm\PaymentTermEntities.cs" />
+    <Compile Include="Modules\GE\PaymentTerm\PaymentTermModule.cs" />
+    <Compile Include="Modules\GE\PaymentTerm\UI\DMPT100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\GE\PaymentTerm\UI\DMPT100.Designer.cs">
+      <DependentUpon>DMPT100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\GE\PaymentTerm\UI\GridControl\GEPaymentTermItemGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\GE\PaymentTerm\UI\SMPT100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\GE\PaymentTerm\UI\SMPT100.Designer.cs">
+      <DependentUpon>SMPT100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\IC\InventoryStatistics\InventoryStatisticsEntities.cs" />
+    <Compile Include="Modules\IC\InventoryStatistics\InventoryStatisticsModule.cs" />
+    <Compile Include="Modules\IC\InventoryStatistics\UI\DMISS100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\IC\InventoryStatistics\UI\DMISS100.Designer.cs">
+      <DependentUpon>DMISS100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\IC\InventoryStatistics\UI\GridControl\ICTransactionsGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\IC\Product\ProductEntities.cs" />
+    <Compile Include="Modules\IC\Product\ProductModule.cs" />
+    <Compile Include="Modules\IC\Product\UI\DMPD101.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\IC\Product\UI\DMPD101.Designer.cs">
+      <DependentUpon>DMPD101.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\IC\Product\UI\DMPD100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\IC\Product\UI\DMPD100.Designer.cs">
+      <DependentUpon>DMPD100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\IC\Product\UI\GridControl\ICProductMeasureUnitsGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\IC\Product\UI\SMPD100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\IC\Product\UI\SMPD100.Designer.cs">
+      <DependentUpon>SMPD100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\IC\Receipt\ReceiptEntities.cs" />
+    <Compile Include="Modules\IC\Receipt\ReceiptModule.cs" />
+    <Compile Include="Modules\IC\Receipt\UI\DMRC100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\IC\Receipt\UI\DMRC100.Designer.cs">
+      <DependentUpon>DMRC100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\IC\Receipt\UI\GridControl\ICReceiptItemsGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\IC\Receipt\UI\SMRC100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\IC\Receipt\UI\SMRC100.Designer.cs">
+      <DependentUpon>SMRC100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\IC\SaleOrderShipment\SaleOrderShipmentEntities.cs" />
+    <Compile Include="Modules\IC\SaleOrderShipment\SaleOrderShipmentModule.cs" />
+    <Compile Include="Modules\IC\SaleOrderShipment\UI\DMSSO100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\IC\SaleOrderShipment\UI\DMSSO100.Designer.cs">
+      <DependentUpon>DMSSO100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\IC\SaleOrderShipment\UI\GridControl\ARSaleOrderItemsGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\IC\SaleOrderShipment\UI\GridControl\ICShipmentItemsGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\IC\SaleOrderShipment\UI\guiChooseSaleOrderItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\IC\SaleOrderShipment\UI\guiChooseSaleOrderItem.Designer.cs">
+      <DependentUpon>guiChooseSaleOrderItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\IC\SaleOrderShipment\UI\SMSSO100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\IC\SaleOrderShipment\UI\SMSSO100.Designer.cs">
+      <DependentUpon>SMSSO100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\GenaralLeadger\GLHelper.cs" />
+    <Compile Include="Utilities\GenaralLeadger\GLReceiptEntities.cs" />
+    <Compile Include="Utilities\GenaralLeadger\GLReceiptModule.cs" />
+    <Compile Include="Utilities\GenaralLeadger\GLShipmentEntities.cs" />
+    <Compile Include="Utilities\GenaralLeadger\GLShipmentModule.cs" />
+    <Compile Include="Utilities\Helper\ProductExtensions.cs" />
+    <Compile Include="Utilities\Helper\SaleOrderItemExtensions.cs" />
+    <Compile Include="Utilities\ItemGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <EmbeddedResource Include="BaseProvider\guiReportPreview.resx">
+      <DependentUpon>guiReportPreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\AD\UserManagement\UI\guiAddModules.resx">
+      <DependentUpon>guiAddModules.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\AD\UserManagement\UI\guiAddSections.resx">
+      <DependentUpon>guiAddSections.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\AD\UserManagement\UI\guiAddUserGroups.resx">
+      <DependentUpon>guiAddUserGroups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\AD\UserManagement\UI\guiListUsers.resx">
+      <DependentUpon>guiListUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\AD\UserManagement\UI\guiManageUser.resx">
+      <DependentUpon>guiManageUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\AD\UserManagement\UI\guiUserManagement.resx">
+      <DependentUpon>guiUserManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\AR\Customer\UI\DMCU100.resx">
+      <DependentUpon>DMCU100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\AR\Customer\UI\SMCU100.resx">
+      <DependentUpon>SMCU100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\AR\Invoice\UI\DMIV100.resx">
+      <DependentUpon>DMIV100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\AR\Invoice\UI\guiChooseShipmentItem.resx">
+      <DependentUpon>guiChooseShipmentItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\AR\Invoice\UI\SMIV100.resx">
+      <DependentUpon>SMIV100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\AR\Proposal\UI\DMPS100.resx">
+      <DependentUpon>DMPS100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\AR\Proposal\UI\SMPS100.resx">
+      <DependentUpon>SMPS100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\AR\SaleOrder\UI\DMSO100.resx">
+      <DependentUpon>DMSO100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\AR\SaleOrder\UI\guichooseProposal.resx">
+      <DependentUpon>guichooseProposal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\AR\SaleOrder\UI\SMSO100.resx">
+      <DependentUpon>SMSO100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\GE\PaymentTerm\UI\DMPT100.resx">
+      <DependentUpon>DMPT100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\GE\PaymentTerm\UI\SMPT100.resx">
+      <DependentUpon>SMPT100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\IC\InventoryStatistics\UI\DMISS100.resx">
+      <DependentUpon>DMISS100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\IC\Product\UI\DMPD101.resx">
+      <DependentUpon>DMPD101.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\IC\Product\UI\DMPD100.resx">
+      <DependentUpon>DMPD100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\IC\Product\UI\SMPD100.resx">
+      <DependentUpon>SMPD100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\IC\Receipt\UI\DMRC100.resx">
+      <DependentUpon>DMRC100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\IC\Receipt\UI\SMRC100.resx">
+      <DependentUpon>SMRC100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\IC\SaleOrderShipment\UI\DMSSO100.resx">
+      <DependentUpon>DMSSO100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\IC\SaleOrderShipment\UI\guiChooseSaleOrderItem.resx">
+      <DependentUpon>guiChooseSaleOrderItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\IC\SaleOrderShipment\UI\SMSSO100.resx">
+      <DependentUpon>SMSSO100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VinaERP.Base\VinaERP.Base.csproj">
+      <Project>{b886d56d-41ab-467b-98d7-18aa0c28652d}</Project>
+      <Name>VinaERP.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VinaERP.Common\VinaERP.Common.csproj">
+      <Project>{0da0abbb-f089-476e-9228-6b575e75d7b0}</Project>
+      <Name>VinaERP.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VinaERP.Entities\VinaERP.Entities.csproj">
+      <Project>{95d2141e-f0a4-4ba8-b2e2-3ff0f53c4bdb}</Project>
+      <Name>VinaERP.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VinaERP.Report\VinaERP.Report.csproj">
+      <Project>{ab2b5cb2-dabd-4ae7-b216-f7eb8e7174eb}</Project>
+      <Name>VinaERP.Report</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VinaLib.BaseProvider\VinaLib.BaseProvider.csproj">
+      <Project>{1d6bb150-4f97-41ec-8aa6-a8c02ceae2ab}</Project>
+      <Name>VinaLib.BaseProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VinaLib\VinaLib.csproj">
+      <Project>{7f874583-c8dd-4ee0-8644-8236309fd706}</Project>
+      <Name>VinaLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Modules\AD\UserManagement\Localization\" />
+    <Folder Include="Modules\AR\Customer\UI\GridControl\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
