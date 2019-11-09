@@ -177,9 +177,9 @@ namespace VinaERP
                 return false;
             }
 
-            if (!objUsersInfo.ADUserName.Equals(username) || !objUsersInfo.ADPassword.Equals(VinaUtil.EncryptMD5Hash(password)))
+            if (!objUsersInfo.ADPassword.Equals(VinaUtil.EncryptMD5Hash(password)))
             {
-                strMessage = "Tài khoản hoặc mật khẩu đúng. Vui lòng thử lại!";
+                strMessage = "Tài khoản hoặc mật khẩu không chính xác. Vui lòng thử lại!";
                 return false;
             }
             VinaApp.CurrentUserName = objUsersInfo.ADUserName;

@@ -85,6 +85,7 @@
             this.linkLabel1.TabIndex = 3;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Quên mật khẩu?";
+            this.linkLabel1.Visible = false;
             // 
             // fld_btnLogin
             // 
@@ -193,7 +194,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(68)))), ((int)(((byte)(95)))));
+            this.panel3.BackColor = System.Drawing.Color.Blue;
             this.panel3.Controls.Add(this.panel5);
             this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
@@ -213,6 +214,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(12, 123);
             this.pictureBox1.Name = "pictureBox1";

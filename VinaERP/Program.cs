@@ -17,6 +17,7 @@ namespace VinaERP
         [STAThread]
         static void Main()
         {
+            //visual styles are color,fonts,and other visual elements that form an operation systems theme.To have an effects, use enablevisualstyles() before creating any controls
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
