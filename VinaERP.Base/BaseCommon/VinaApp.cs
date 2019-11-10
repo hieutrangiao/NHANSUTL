@@ -267,11 +267,11 @@ namespace VinaERP
 
         public static void InitMenuOfMainForm()
         {
-            for (int i = 2; i < VinaApp.MainScreen.MainMenu.ItemLinks.Count - 2; i++)
-            {
-                VinaApp.MainScreen.MainMenu.ItemLinks.RemoveAt(i);
-                i--;
-            }
+            //for (int i = 2; i < VinaApp.MainScreen.MainMenu.ItemLinks.Count - 2; i++)
+            //{
+            //    VinaApp.MainScreen.MainMenu.ItemLinks.RemoveAt(i);
+            //    i--;
+            //}
 
             STModulesController moduleController = new STModulesController();
             List<STModulesInfo> modules = moduleController.GetAllModulesByUserName(VinaApp.CurrentUserName);

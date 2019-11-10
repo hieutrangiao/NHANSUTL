@@ -29,9 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUIMain));
             this.fld_barMenuApplicationManager = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
@@ -60,7 +59,6 @@
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockingMenuItem1 = new DevExpress.XtraBars.BarDockingMenuItem();
             this.barWorkspaceMenuItem1 = new DevExpress.XtraBars.BarWorkspaceMenuItem();
-            this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager(this.components);
             this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemBreadCrumbEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemBreadCrumbEdit();
             this.skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
@@ -137,9 +135,6 @@
             this.fld_mnMainMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem3),
-            new DevExpress.XtraBars.LinkPersistInfo(this.fld_barmnMasterData),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Caption, this.fld_skinDevExpressChangeSkins, "Look And Feel"),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4)});
             this.fld_mnMainMenu.OptionsBar.AllowQuickCustomization = false;
@@ -152,12 +147,16 @@
             this.barButtonItem1.Caption = "File";
             this.barButtonItem1.Id = 0;
             this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.barButtonItem1.VisibleInSearchMenu = false;
             // 
             // barButtonItem2
             // 
             this.barButtonItem2.Caption = "View";
             this.barButtonItem2.Id = 1;
             this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.barButtonItem2.VisibleInSearchMenu = false;
             // 
             // barSubItem3
             // 
@@ -325,12 +324,6 @@
             this.barWorkspaceMenuItem1.Caption = "barWorkspaceMenuItem1";
             this.barWorkspaceMenuItem1.Id = 13;
             this.barWorkspaceMenuItem1.Name = "barWorkspaceMenuItem1";
-            this.barWorkspaceMenuItem1.WorkspaceManager = this.workspaceManager1;
-            // 
-            // workspaceManager1
-            // 
-            this.workspaceManager1.TargetControl = this;
-            this.workspaceManager1.TransitionType = pushTransition1;
             // 
             // barEditItem1
             // 
@@ -350,9 +343,9 @@
             // 
             this.skinDropDownButtonItem1.Id = 16;
             this.skinDropDownButtonItem1.Name = "skinDropDownButtonItem1";
-            toolTipTitleItem1.Text = "Look And Feel";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            this.skinDropDownButtonItem1.SuperTip = superToolTip1;
+            toolTipTitleItem2.Text = "Look And Feel";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            this.skinDropDownButtonItem1.SuperTip = superToolTip2;
             // 
             // barSubItem2
             // 
@@ -462,7 +455,6 @@
         private DevExpress.XtraBars.SkinBarSubItem skinBarSubItem2;
         private DevExpress.XtraBars.SkinDropDownButtonItem fld_skinDevExpressChangeSkins;
         private DevExpress.XtraBars.SkinBarSubItem skinBarSubItem4;
-        private DevExpress.Utils.WorkspaceManager workspaceManager1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
         private DevExpress.XtraBars.BarSubItem barSubItem3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem10;
