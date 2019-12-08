@@ -33,7 +33,7 @@
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUIMain));
             this.fld_barMenuApplicationManager = new DevExpress.XtraBars.BarManager(this.components);
-            this.bar1 = new DevExpress.XtraBars.Bar();
+            this.fld_brToolbars = new DevExpress.XtraBars.Bar();
             this.fld_mnMainMenu = new DevExpress.XtraBars.Bar();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
@@ -75,7 +75,7 @@
             // fld_barMenuApplicationManager
             // 
             this.fld_barMenuApplicationManager.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar1,
+            this.fld_brToolbars,
             this.fld_mnMainMenu,
             this.fld_barsttStatusApplication});
             this.fld_barMenuApplicationManager.DockControls.Add(this.barDockControlTop);
@@ -115,16 +115,16 @@
             this.repositoryItemBreadCrumbEdit1});
             this.fld_barMenuApplicationManager.StatusBar = this.fld_barsttStatusApplication;
             // 
-            // bar1
+            // fld_brToolbars
             // 
-            this.bar1.BarName = "Tools";
-            this.bar1.DockCol = 0;
-            this.bar1.DockRow = 1;
-            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar1.OptionsBar.AllowQuickCustomization = false;
-            this.bar1.OptionsBar.AutoPopupMode = DevExpress.XtraBars.BarAutoPopupMode.None;
-            this.bar1.Text = "Tools";
-            this.bar1.Visible = false;
+            this.fld_brToolbars.BarName = "Tools";
+            this.fld_brToolbars.DockCol = 0;
+            this.fld_brToolbars.DockRow = 1;
+            this.fld_brToolbars.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.fld_brToolbars.OptionsBar.AllowQuickCustomization = false;
+            this.fld_brToolbars.OptionsBar.AutoPopupMode = DevExpress.XtraBars.BarAutoPopupMode.None;
+            this.fld_brToolbars.Text = "Tools";
+            this.fld_brToolbars.Visible = false;
             // 
             // fld_mnMainMenu
             // 
@@ -423,7 +423,7 @@
         #endregion
 
         private DevExpress.XtraBars.BarManager fld_barMenuApplicationManager;
-        private DevExpress.XtraBars.Bar bar1;
+        private DevExpress.XtraBars.Bar fld_brToolbars;
         private DevExpress.XtraBars.Bar fld_mnMainMenu;
         private DevExpress.XtraBars.Bar fld_barsttStatusApplication;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;

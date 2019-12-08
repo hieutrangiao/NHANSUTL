@@ -11,5 +11,7 @@ namespace VinaERP.Common
         public const string ProductModule = "Product";
 
         public const string UserManagementModule = "UserManagement";
+
+        public const string CompanyConstantModule = "CompanyConstant";
     }
 }

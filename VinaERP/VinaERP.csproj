@@ -67,10 +67,7 @@
     <Reference Include="DevExpress.XtraReports.v19.1, Version=19.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraTreeList.v19.1, Version=19.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="RestSharp, Version=106.6.9.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
-      <HintPath>..\packages\RestSharp.106.6.9\lib\net452\RestSharp.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -93,6 +90,17 @@
     </Compile>
     <Compile Include="BaseProvider\guiReportPreview.Designer.cs">
       <DependentUpon>guiReportPreview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\AD\CompanyConstant\CompanyConstantEntities.cs" />
+    <Compile Include="Modules\AD\CompanyConstant\CompanyConstantModule.cs" />
+    <Compile Include="Modules\AD\CompanyConstant\UI\DMCC100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\AD\CompanyConstant\UI\DMCC100.Designer.cs">
+      <DependentUpon>DMCC100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\AD\CompanyConstant\UI\GridControl\RewardTypesGridControl.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Modules\AD\UserManagement\UI\GridControl\ADUsersGridControl.cs">
       <SubType>Component</SubType>
@@ -332,6 +340,9 @@
     </Compile>
     <EmbeddedResource Include="BaseProvider\guiReportPreview.resx">
       <DependentUpon>guiReportPreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\AD\CompanyConstant\UI\DMCC100.resx">
+      <DependentUpon>DMCC100.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modules\AD\UserManagement\UI\guiAddModules.resx">
       <DependentUpon>guiAddModules.cs</DependentUpon>

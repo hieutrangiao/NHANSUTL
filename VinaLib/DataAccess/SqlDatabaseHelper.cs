@@ -46,7 +46,7 @@ namespace VinaLib
             }
             catch (Exception ex)
             {
-                int num = (int)MessageBox.Show(ex.Message);
+                //int num = (int)MessageBox.Show(ex.Message);
             }
         }
 

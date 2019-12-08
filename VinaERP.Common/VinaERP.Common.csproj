@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="Constant\AD\ModulePostingType.cs" />
     <Compile Include="Constant\AR\ProposalStatus.cs" />
     <Compile Include="Constant\IC\PriceCalculationMethod.cs" />
     <Compile Include="Constant\IC\ProductGrantedFrom.cs" />
