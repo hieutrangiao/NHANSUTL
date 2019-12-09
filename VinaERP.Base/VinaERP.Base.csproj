@@ -186,7 +186,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>BaseLocationResource.Designer.cs</LastGenOutput>
     </Resource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VinaERP.Common\VinaERP.Common.csproj">

@@ -46,7 +46,7 @@ namespace VinaLib
             }
             catch (Exception ex)
             {
-                //int num = (int)MessageBox.Show(ex.Message);
+                int num = (int)MessageBox.Show(ex.Message);
             }
         }
 
@@ -161,7 +161,7 @@ namespace VinaLib
         public static SortedList GetAllTablePrimaryColumns()
         {
             SortedList sortedList = new SortedList();
-            DataSet dataSet = SqlDatabaseHelper.RunQuery(SqlDatabaseHelper.GetQuery("SELECT kcu.* FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE kcu,INFORMATION_SCHEMA.TABLE_CONSTRAINTS tc WHERE" + "(kcu.TABLE_NAME IN (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES\tWHERE(TABLE_TYPE='BASE TABLE')AND(TABLE_NAME<>'sysdiagrams')))" + " AND(kcu.CONSTRAINT_NAME=tc.CONSTRAINT_NAME)AND(tc.CONSTRAINT_TYPE='PRIMARY KEY')"));
+            DataSet dataSet = SqlDatabaseHelper.RunQuery(SqlDatabaseHelper.GetQuery("SELECT kcu.* FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE kcu,INFORMATION_SCHEMA.TABLE_CONSTRAINTS tc WHERE" + "(kcu.TABLE_NAME IN (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES\tWHERE(TABLE_TYPE='BASE TABLE')AND(TABLE_NAME<>'sysdiagrams')))" + " AND(kcu.CONSTRAINT_NAME=tc.CONSTRAINT_NAME)AND(tc.CONSTRAINT_TYPE='PRIMARY KEY') AND kcu.TABLE_SCHEMA <> ('HangFire')"));
             if (dataSet.Tables.Count > 0)
             {
                 foreach (DataRow row in (InternalDataCollectionBase)dataSet.Tables[0].Rows)

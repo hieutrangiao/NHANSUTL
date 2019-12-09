@@ -108,7 +108,6 @@
     <EmbeddedResource Include="Components\VinaPictureEdit.resx">
       <DependentUpon>VinaPictureEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

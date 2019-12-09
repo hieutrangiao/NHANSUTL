@@ -425,7 +425,6 @@
     <EmbeddedResource Include="Modules\IC\SaleOrderShipment\UI\SMSSO100.resx">
       <DependentUpon>SMSSO100.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

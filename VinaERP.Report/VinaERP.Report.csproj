@@ -113,7 +113,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Report\AR\ARSaleOrder.resx">
       <DependentUpon>ARSaleOrder.cs</DependentUpon>
     </EmbeddedResource>
