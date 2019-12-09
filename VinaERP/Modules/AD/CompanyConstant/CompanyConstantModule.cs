@@ -44,15 +44,35 @@ namespace VinaERP.Modules.CompanyConstant
             entity.InvalidateData();
         }
 
+        #region Remove Items
         public void RemoveSelectedItemFromRewardTypesList()
         {
             CompanyConstantEntities entity = (CompanyConstantEntities)CurrentModuleEntity;
             entity.RewardTypesList.RemoveSelectedRowObjectFromList();
         }
 
+        public void RemoveSelectedItemFromDisciplineTypesList()
+        {
+            CompanyConstantEntities entity = (CompanyConstantEntities)CurrentModuleEntity;
+            entity.DisciplineTypesList.RemoveSelectedRowObjectFromList();
+        }
+
+        public void RemoveSelectedItemFromWorkingShiftGroupList()
+        {
+            CompanyConstantEntities entity = (CompanyConstantEntities)CurrentModuleEntity;
+            entity.WorkingShiftGroupsList.RemoveSelectedRowObjectFromList();
+        }
+        #endregion
+
+        #region Save List
         public void SaveRewardTypesList()
         {
             SaveConfigValues(ConfigValueGroup.RewardType.ToString());
+        }
+
+        public void SaveDisciplineTypesList()
+        {
+            SaveConfigValues(ConfigValueGroup.DisciplineType.ToString());
         }
 
         public bool SaveConfigValues(String strGroup)
@@ -63,7 +83,10 @@ namespace VinaERP.Modules.CompanyConstant
             {
                 configValues = entity.RewardTypesList;
             }
-            
+            else if (strGroup == ConfigValueGroup.DisciplineType.ToString())
+            {
+                configValues = entity.DisciplineTypesList;
+            }
             if (configValues != null)
             {
                 foreach (ADConfigValuesInfo objConfigValuesInfo in configValues)
@@ -85,5 +108,6 @@ namespace VinaERP.Modules.CompanyConstant
             VinaUtil.ADConfigValueUtility.Add(strGroup, configValues);
             return true;
         }
+        #endregion
     }
 }

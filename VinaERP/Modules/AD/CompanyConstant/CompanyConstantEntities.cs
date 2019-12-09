@@ -12,27 +12,32 @@ namespace VinaERP.Modules.CompanyConstant
 {
     public class CompanyConstantEntities : ERPModuleEntities
     {
-        public VinaList<ADUsersInfo> ADUserList { get; set; }
         public VinaList<ADConfigValuesInfo> RewardTypesList { get; set; }
+        public VinaList<ADConfigValuesInfo> DisciplineTypesList { get; set; }
+
+        public VinaList<ADWorkingShiftGroupsInfo> WorkingShiftGroupsList { get; set; }
         public CompanyConstantEntities()
             : base()
         {
-            ADUserList = new VinaList<ADUsersInfo>();
             RewardTypesList = new VinaList<ADConfigValuesInfo>();
+            DisciplineTypesList = new VinaList<ADConfigValuesInfo>();
+            WorkingShiftGroupsList = new VinaList<ADWorkingShiftGroupsInfo>();
         }
 
         public override void InitModuleObjectList()
         {
-            ADUserList.InitVinaList(this, string.Empty, "ADUsers", VinaList<ADUsersInfo>.cstRelationNone);
             RewardTypesList.InitVinaList(this, string.Empty, "ADConfigValues", VinaList<ADConfigValuesInfo>.cstRelationNone);
+            DisciplineTypesList.InitVinaList(this, string.Empty, "ADConfigValues", VinaList<ADConfigValuesInfo>.cstRelationNone);
+            WorkingShiftGroupsList.InitVinaList(this, string.Empty, "ADWorkingShiftGroupsInfo", VinaList<ADWorkingShiftGroupsInfo>.cstRelationNone);
         }
 
         public override void SetDefaultModuleObjectsList()
         {
             try
             {
-                ADUserList.SetDefaultListAndRefreshGridControl();
                 RewardTypesList.SetDefaultListAndRefreshGridControl();
+                DisciplineTypesList.SetDefaultListAndRefreshGridControl();
+                WorkingShiftGroupsList.SetDefaultListAndRefreshGridControl();
             }
             catch (Exception) { }
         }
@@ -42,6 +47,13 @@ namespace VinaERP.Modules.CompanyConstant
             ADConfigValuesController objConfigValuesController = new ADConfigValuesController();
             DataSet ds = objConfigValuesController.GetADConfigValuesByGroup(ConfigValueGroup.RewardType.ToString());
             RewardTypesList.Invalidate(ds);
+
+            ds = objConfigValuesController.GetADConfigValuesByGroup(ConfigValueGroup.DisciplineType.ToString());
+            DisciplineTypesList.Invalidate(ds);
+
+            ADWorkingShiftGroupsController objWorkingShiftGroupsController = new ADWorkingShiftGroupsController();
+            List<ADWorkingShiftGroupsInfo> list = objWorkingShiftGroupsController.GetAllWorkingShiftGroup();
+            WorkingShiftGroupsList.Invalidate(list);
         }
     }
 }

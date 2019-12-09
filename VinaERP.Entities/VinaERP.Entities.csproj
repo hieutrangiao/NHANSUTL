@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessEntities\Controller\AD\ADWorkingShiftGroupsController.cs" />
     <Compile Include="BusinessEntities\Controller\AR\ARCustomersController.cs" />
     <Compile Include="BusinessEntities\Controller\AR\ARInvoiceItemsController.cs" />
     <Compile Include="BusinessEntities\Controller\AR\ARInvoicesController.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="BusinessEntities\Controller\IC\ICTransactionsController.cs" />
     <Compile Include="BusinessEntities\Controller\IC\ICVitualTransactionsController.cs" />
     <Compile Include="BusinessEntities\Controller\ST\STModulePostingsController.cs" />
+    <Compile Include="BusinessEntities\Info\AD\ADWorkingShiftGroupsInfo.cs" />
     <Compile Include="BusinessEntities\Info\AR\ARCustomersInfo.cs" />
     <Compile Include="BusinessEntities\Info\AR\ARInvoiceItemsInfo.cs" />
     <Compile Include="BusinessEntities\Info\AR\ARInvoicesInfo.cs" />
@@ -101,9 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BusinessEntities\Controller\AA\" />
-    <Folder Include="BusinessEntities\Controller\AD\" />
     <Folder Include="BusinessEntities\Info\AA\" />
-    <Folder Include="BusinessEntities\Info\AD\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VinaERP.Common\VinaERP.Common.csproj">
