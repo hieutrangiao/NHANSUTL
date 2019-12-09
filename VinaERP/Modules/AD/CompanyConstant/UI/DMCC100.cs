@@ -31,6 +31,13 @@ namespace VinaERP.Modules.CompanyConstant.UI
             fld_dgcRewardTypes.InitializeControl();
             CompanyConstantEntities entity = (CompanyConstantEntities)((BaseModuleERP)Module).CurrentModuleEntity;
             entity.RewardTypesList.InitVinaListGridControl(fld_dgcRewardTypes);
+            entity.DisciplineTypesList.InitVinaListGridControl(fld_dgcDisciplineTypes);
+            entity.WorkingShiftGroupsList.InitVinaListGridControl(fld_dgcADWorkingShiftGroups);
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            ((CompanyConstantModule)Module).SaveDisciplineTypesList();
         }
     }
 }

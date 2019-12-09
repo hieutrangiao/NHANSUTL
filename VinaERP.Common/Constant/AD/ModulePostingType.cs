@@ -9,5 +9,6 @@ namespace VinaERP.Common.Constant.AD
     public class ConfigValueGroup
     {
         public const string RewardType = "RewardType";
+        public const string DisciplineType = "DisciplineType";
     }
 }
