@@ -37,9 +37,9 @@ namespace VinaERP.Modules.CompanyConstant.UI
             this.fld_dgcRewardTypes = new VinaERP.Modules.CompanyConstant.RewardTypesGridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.fld_tpgDiscipline = new DevExpress.XtraTab.XtraTabPage();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.fld_dgcDisciplineTypes = new VinaERP.Modules.CompanyConstant.DisciplineTypesGridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
@@ -142,32 +142,22 @@ namespace VinaERP.Modules.CompanyConstant.UI
             // 
             // fld_tpgDiscipline
             // 
-            this.fld_tpgDiscipline.Controls.Add(this.simpleButton1);
             this.fld_tpgDiscipline.Controls.Add(this.fld_dgcDisciplineTypes);
+            this.fld_tpgDiscipline.Controls.Add(this.simpleButton1);
             this.fld_tpgDiscipline.Name = "fld_tpgDiscipline";
             this.fld_tpgDiscipline.Size = new System.Drawing.Size(993, 530);
             this.fld_tpgDiscipline.Text = "Cấu hình loại kỷ luật";
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.Location = new System.Drawing.Point(911, 495);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(75, 25);
-            this.simpleButton1.TabIndex = 19;
-            this.simpleButton1.Text = "Lưu";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // fld_dgcDisciplineTypes
             // 
             this.fld_dgcDisciplineTypes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.fld_dgcDisciplineTypes.Location = new System.Drawing.Point(0, 3);
+            this.fld_dgcDisciplineTypes.Location = new System.Drawing.Point(3, 3);
             this.fld_dgcDisciplineTypes.MainView = this.gridView2;
             this.fld_dgcDisciplineTypes.Name = "fld_dgcDisciplineTypes";
             this.fld_dgcDisciplineTypes.Screen = null;
-            this.fld_dgcDisciplineTypes.Size = new System.Drawing.Size(993, 486);
-            this.fld_dgcDisciplineTypes.TabIndex = 18;
+            this.fld_dgcDisciplineTypes.Size = new System.Drawing.Size(987, 486);
+            this.fld_dgcDisciplineTypes.TabIndex = 20;
             this.fld_dgcDisciplineTypes.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
             this.fld_dgcDisciplineTypes.VinaDataMember = null;
@@ -178,6 +168,16 @@ namespace VinaERP.Modules.CompanyConstant.UI
             // 
             this.gridView2.GridControl = this.fld_dgcDisciplineTypes;
             this.gridView2.Name = "gridView2";
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton1.Location = new System.Drawing.Point(911, 495);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(75, 25);
+            this.simpleButton1.TabIndex = 19;
+            this.simpleButton1.Text = "Lưu";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // xtraTabPage2
             // 
@@ -323,8 +323,6 @@ namespace VinaERP.Modules.CompanyConstant.UI
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraEditors.SimpleButton fld_btnSaveRewardType;
         private DevExpress.XtraTab.XtraTabPage fld_tpgDiscipline;
-        private DisciplineTypesGridControl fld_dgcDisciplineTypes;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl2;
@@ -341,5 +339,7 @@ namespace VinaERP.Modules.CompanyConstant.UI
         private DevExpress.XtraTab.XtraTabPage xtraTabPage11;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage12;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage13;
+        private DisciplineTypesGridControl fld_dgcDisciplineTypes;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
     }
 }

@@ -29,6 +29,10 @@ namespace VinaERP.Modules.CompanyConstant.UI
         {
             fld_dgcRewardTypes.Screen = this;
             fld_dgcRewardTypes.InitializeControl();
+            fld_dgcDisciplineTypes.Screen = this;
+            fld_dgcDisciplineTypes.InitializeControl();
+            fld_dgcADWorkingShiftGroups.Screen = this;
+            fld_dgcADWorkingShiftGroups.InitializeControl();
             CompanyConstantEntities entity = (CompanyConstantEntities)((BaseModuleERP)Module).CurrentModuleEntity;
             entity.RewardTypesList.InitVinaListGridControl(fld_dgcRewardTypes);
             entity.DisciplineTypesList.InitVinaListGridControl(fld_dgcDisciplineTypes);
