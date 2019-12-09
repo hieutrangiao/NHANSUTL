@@ -99,6 +99,15 @@
     <Compile Include="Modules\AD\CompanyConstant\UI\DMCC100.Designer.cs">
       <DependentUpon>DMCC100.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modules\AD\CompanyConstant\UI\GridControl\HRTimesheetEmployeeLateConfigsGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\AD\CompanyConstant\UI\GridControl\ADOTFactorsGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\AD\CompanyConstant\UI\GridControl\HRFormAllowancesGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Modules\AD\CompanyConstant\UI\GridControl\HRWorkingShiftGroupsGridControl.cs">
       <SubType>Component</SubType>
     </Compile>

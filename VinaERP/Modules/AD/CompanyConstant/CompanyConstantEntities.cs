@@ -14,21 +14,29 @@ namespace VinaERP.Modules.CompanyConstant
     {
         public VinaList<ADConfigValuesInfo> RewardTypesList { get; set; }
         public VinaList<ADConfigValuesInfo> DisciplineTypesList { get; set; }
-
         public VinaList<ADWorkingShiftGroupsInfo> WorkingShiftGroupsList { get; set; }
+        public VinaList<HRFormAllowancesInfo> FormAllowancesList { get; set; }
+        public VinaList<ADOTFactorsInfo> OTFactorsList { get; set; }
+        public VinaList<HRTimesheetEmployeeLateConfigsInfo> TimesheetEmployeeLateConfigsList { get; set; }
         public CompanyConstantEntities()
             : base()
         {
             RewardTypesList = new VinaList<ADConfigValuesInfo>();
             DisciplineTypesList = new VinaList<ADConfigValuesInfo>();
             WorkingShiftGroupsList = new VinaList<ADWorkingShiftGroupsInfo>();
+            FormAllowancesList = new VinaList<HRFormAllowancesInfo>();
+            OTFactorsList = new VinaList<ADOTFactorsInfo>();
+            TimesheetEmployeeLateConfigsList = new VinaList<HRTimesheetEmployeeLateConfigsInfo>();
         }
 
         public override void InitModuleObjectList()
         {
             RewardTypesList.InitVinaList(this, string.Empty, "ADConfigValues", VinaList<ADConfigValuesInfo>.cstRelationNone);
             DisciplineTypesList.InitVinaList(this, string.Empty, "ADConfigValues", VinaList<ADConfigValuesInfo>.cstRelationNone);
-            WorkingShiftGroupsList.InitVinaList(this, string.Empty, "ADWorkingShiftGroupsInfo", VinaList<ADWorkingShiftGroupsInfo>.cstRelationNone);
+            WorkingShiftGroupsList.InitVinaList(this, string.Empty, "ADWorkingShiftGroups", VinaList<ADWorkingShiftGroupsInfo>.cstRelationNone);
+            FormAllowancesList.InitVinaList(this, string.Empty, "HRFormAllowances", VinaList<HRFormAllowancesInfo>.cstRelationNone);
+            OTFactorsList.InitVinaList(this, string.Empty, "ADOTFactors", VinaList<ADOTFactorsInfo>.cstRelationNone);
+            TimesheetEmployeeLateConfigsList.InitVinaList(this, string.Empty, "HRTimesheetEmployeeLateConfigs", VinaList<HRTimesheetEmployeeLateConfigsInfo>.cstRelationNone);
         }
 
         public override void SetDefaultModuleObjectsList()
@@ -38,6 +46,9 @@ namespace VinaERP.Modules.CompanyConstant
                 RewardTypesList.SetDefaultListAndRefreshGridControl();
                 DisciplineTypesList.SetDefaultListAndRefreshGridControl();
                 WorkingShiftGroupsList.SetDefaultListAndRefreshGridControl();
+                FormAllowancesList.SetDefaultListAndRefreshGridControl();
+                OTFactorsList.SetDefaultListAndRefreshGridControl();
+                TimesheetEmployeeLateConfigsList.SetDefaultListAndRefreshGridControl();
             }
             catch (Exception) { }
         }
@@ -52,8 +63,21 @@ namespace VinaERP.Modules.CompanyConstant
             DisciplineTypesList.Invalidate(ds);
 
             ADWorkingShiftGroupsController objWorkingShiftGroupsController = new ADWorkingShiftGroupsController();
-            List<ADWorkingShiftGroupsInfo> list = objWorkingShiftGroupsController.GetAllWorkingShiftGroup();
-            WorkingShiftGroupsList.Invalidate(list);
+            List<ADWorkingShiftGroupsInfo> wsgList = objWorkingShiftGroupsController.GetAllWorkingShiftGroup();
+            WorkingShiftGroupsList.Invalidate(wsgList);
+
+            HRFormAllowancesController objFormAllowancesController = new HRFormAllowancesController();
+            List<HRFormAllowancesInfo> faList = objFormAllowancesController.GetAllFormAllowances();
+            FormAllowancesList.Invalidate(faList);
+
+            ADOTFactorsController objOTFactorsController = new ADOTFactorsController();
+            List<ADOTFactorsInfo> otfList = objOTFactorsController.GetAllOTFactors();
+            OTFactorsList.Invalidate(otfList);
+
+            HRTimesheetEmployeeLateConfigsController objTimesheetEmployeeLateConfigsController = new HRTimesheetEmployeeLateConfigsController();
+            List<HRTimesheetEmployeeLateConfigsInfo> telcList = objTimesheetEmployeeLateConfigsController.GetAllTimesheetEmployeeLateConfigs();
+            TimesheetEmployeeLateConfigsList.Invalidate(telcList);
+
         }
     }
 }

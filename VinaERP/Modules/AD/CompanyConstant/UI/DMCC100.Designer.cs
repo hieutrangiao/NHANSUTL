@@ -45,12 +45,21 @@ namespace VinaERP.Modules.CompanyConstant.UI
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.fld_dgcADWorkingShiftGroups = new VinaERP.Modules.CompanyConstant.HRWorkingShiftGroupsGridControl();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.fld_dgcFormAllowances = new VinaERP.Modules.CompanyConstant.HRFormAllowancesGridControl();
+            this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
+            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
+            this.fld_dgcOTFactors = new VinaERP.Modules.CompanyConstant.ADOTFactorsGridControl();
+            this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtraTabPage9 = new DevExpress.XtraTab.XtraTabPage();
+            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
+            this.fld_dgcTimesheetEmployeeLateConfigs = new VinaERP.Modules.CompanyConstant.HRTimesheetEmployeeLateConfigsGridControl();
+            this.gridView6 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage11 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage12 = new DevExpress.XtraTab.XtraTabPage();
@@ -69,6 +78,15 @@ namespace VinaERP.Modules.CompanyConstant.UI
             this.xtraTabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fld_dgcADWorkingShiftGroups)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
+            this.xtraTabPage7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fld_dgcFormAllowances)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
+            this.xtraTabPage8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fld_dgcOTFactors)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
+            this.xtraTabPage9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fld_dgcTimesheetEmployeeLateConfigs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView6)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraTabControl1
@@ -86,7 +104,6 @@ namespace VinaERP.Modules.CompanyConstant.UI
             this.fld_tpgDiscipline,
             this.xtraTabPage2,
             this.xtraTabPage5,
-            this.xtraTabPage6,
             this.xtraTabPage7,
             this.xtraTabPage8,
             this.xtraTabPage9,
@@ -212,10 +229,21 @@ namespace VinaERP.Modules.CompanyConstant.UI
             // 
             // xtraTabPage5
             // 
+            this.xtraTabPage5.Controls.Add(this.simpleButton2);
             this.xtraTabPage5.Controls.Add(this.fld_dgcADWorkingShiftGroups);
             this.xtraTabPage5.Name = "xtraTabPage5";
             this.xtraTabPage5.Size = new System.Drawing.Size(993, 530);
             this.xtraTabPage5.Text = "Cấu hình nhóm ca";
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton2.Location = new System.Drawing.Point(911, 482);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(75, 25);
+            this.simpleButton2.TabIndex = 20;
+            this.simpleButton2.Text = "Lưu";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // fld_dgcADWorkingShiftGroups
             // 
@@ -238,29 +266,122 @@ namespace VinaERP.Modules.CompanyConstant.UI
             this.gridView3.GridControl = this.fld_dgcADWorkingShiftGroups;
             this.gridView3.Name = "gridView3";
             // 
-            // xtraTabPage6
-            // 
-            this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(993, 530);
-            this.xtraTabPage6.Text = "Danh mục công thức tính lương";
-            // 
             // xtraTabPage7
             // 
+            this.xtraTabPage7.Controls.Add(this.simpleButton3);
+            this.xtraTabPage7.Controls.Add(this.fld_dgcFormAllowances);
             this.xtraTabPage7.Name = "xtraTabPage7";
             this.xtraTabPage7.Size = new System.Drawing.Size(993, 530);
             this.xtraTabPage7.Text = "Cấu hình phụ cấp";
             // 
+            // simpleButton3
+            // 
+            this.simpleButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton3.Location = new System.Drawing.Point(911, 482);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Size = new System.Drawing.Size(75, 25);
+            this.simpleButton3.TabIndex = 21;
+            this.simpleButton3.Text = "Lưu";
+            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
+            // 
+            // fld_dgcFormAllowances
+            // 
+            this.fld_dgcFormAllowances.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.fld_dgcFormAllowances.Location = new System.Drawing.Point(3, 3);
+            this.fld_dgcFormAllowances.MainView = this.gridView4;
+            this.fld_dgcFormAllowances.Name = "fld_dgcFormAllowances";
+            this.fld_dgcFormAllowances.Screen = null;
+            this.fld_dgcFormAllowances.Size = new System.Drawing.Size(993, 473);
+            this.fld_dgcFormAllowances.TabIndex = 19;
+            this.fld_dgcFormAllowances.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView4});
+            this.fld_dgcFormAllowances.VinaDataMember = null;
+            this.fld_dgcFormAllowances.VinaDataSource = "HRFormAllowances";
+            this.fld_dgcFormAllowances.VinaPropertyName = null;
+            // 
+            // gridView4
+            // 
+            this.gridView4.GridControl = this.fld_dgcFormAllowances;
+            this.gridView4.Name = "gridView4";
+            // 
             // xtraTabPage8
             // 
+            this.xtraTabPage8.Controls.Add(this.simpleButton4);
+            this.xtraTabPage8.Controls.Add(this.fld_dgcOTFactors);
             this.xtraTabPage8.Name = "xtraTabPage8";
             this.xtraTabPage8.Size = new System.Drawing.Size(993, 530);
             this.xtraTabPage8.Text = "Cấu hình tăng ca";
             // 
+            // simpleButton4
+            // 
+            this.simpleButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton4.Location = new System.Drawing.Point(911, 482);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.Size = new System.Drawing.Size(75, 25);
+            this.simpleButton4.TabIndex = 22;
+            this.simpleButton4.Text = "Lưu";
+            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
+            // 
+            // fld_dgcOTFactors
+            // 
+            this.fld_dgcOTFactors.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.fld_dgcOTFactors.Location = new System.Drawing.Point(3, 3);
+            this.fld_dgcOTFactors.MainView = this.gridView5;
+            this.fld_dgcOTFactors.Name = "fld_dgcOTFactors";
+            this.fld_dgcOTFactors.Screen = null;
+            this.fld_dgcOTFactors.Size = new System.Drawing.Size(987, 473);
+            this.fld_dgcOTFactors.TabIndex = 20;
+            this.fld_dgcOTFactors.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView5});
+            this.fld_dgcOTFactors.VinaDataMember = null;
+            this.fld_dgcOTFactors.VinaDataSource = "ADOTFactors";
+            this.fld_dgcOTFactors.VinaPropertyName = null;
+            // 
+            // gridView5
+            // 
+            this.gridView5.GridControl = this.fld_dgcOTFactors;
+            this.gridView5.Name = "gridView5";
+            // 
             // xtraTabPage9
             // 
+            this.xtraTabPage9.Controls.Add(this.simpleButton5);
+            this.xtraTabPage9.Controls.Add(this.fld_dgcTimesheetEmployeeLateConfigs);
             this.xtraTabPage9.Name = "xtraTabPage9";
             this.xtraTabPage9.Size = new System.Drawing.Size(993, 530);
             this.xtraTabPage9.Text = "Cấu hình đi trễ/về sớm";
+            // 
+            // simpleButton5
+            // 
+            this.simpleButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton5.Location = new System.Drawing.Point(915, 482);
+            this.simpleButton5.Name = "simpleButton5";
+            this.simpleButton5.Size = new System.Drawing.Size(75, 25);
+            this.simpleButton5.TabIndex = 23;
+            this.simpleButton5.Text = "Lưu";
+            this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
+            // 
+            // fld_dgcTimesheetEmployeeLateConfigs
+            // 
+            this.fld_dgcTimesheetEmployeeLateConfigs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.fld_dgcTimesheetEmployeeLateConfigs.Location = new System.Drawing.Point(3, 3);
+            this.fld_dgcTimesheetEmployeeLateConfigs.MainView = this.gridView6;
+            this.fld_dgcTimesheetEmployeeLateConfigs.Name = "fld_dgcTimesheetEmployeeLateConfigs";
+            this.fld_dgcTimesheetEmployeeLateConfigs.Screen = null;
+            this.fld_dgcTimesheetEmployeeLateConfigs.Size = new System.Drawing.Size(987, 473);
+            this.fld_dgcTimesheetEmployeeLateConfigs.TabIndex = 21;
+            this.fld_dgcTimesheetEmployeeLateConfigs.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView6});
+            this.fld_dgcTimesheetEmployeeLateConfigs.VinaDataMember = null;
+            this.fld_dgcTimesheetEmployeeLateConfigs.VinaDataSource = "HRTimesheetEmployeeLateConfigs";
+            this.fld_dgcTimesheetEmployeeLateConfigs.VinaPropertyName = null;
+            // 
+            // gridView6
+            // 
+            this.gridView6.GridControl = this.fld_dgcTimesheetEmployeeLateConfigs;
+            this.gridView6.Name = "gridView6";
             // 
             // xtraTabPage10
             // 
@@ -310,6 +431,15 @@ namespace VinaERP.Modules.CompanyConstant.UI
             this.xtraTabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.fld_dgcADWorkingShiftGroups)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
+            this.xtraTabPage7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.fld_dgcFormAllowances)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
+            this.xtraTabPage8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.fld_dgcOTFactors)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
+            this.xtraTabPage9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.fld_dgcTimesheetEmployeeLateConfigs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView6)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -331,7 +461,6 @@ namespace VinaERP.Modules.CompanyConstant.UI
         private DevExpress.XtraTab.XtraTabPage xtraTabPage5;
         private HRWorkingShiftGroupsGridControl fld_dgcADWorkingShiftGroups;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage6;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage7;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage8;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage9;
@@ -341,5 +470,15 @@ namespace VinaERP.Modules.CompanyConstant.UI
         private DevExpress.XtraTab.XtraTabPage xtraTabPage13;
         private DisciplineTypesGridControl fld_dgcDisciplineTypes;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private HRFormAllowancesGridControl fld_dgcFormAllowances;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
+        private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private ADOTFactorsGridControl fld_dgcOTFactors;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView5;
+        private DevExpress.XtraEditors.SimpleButton simpleButton4;
+        private HRTimesheetEmployeeLateConfigsGridControl fld_dgcTimesheetEmployeeLateConfigs;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView6;
+        private DevExpress.XtraEditors.SimpleButton simpleButton5;
     }
 }

@@ -33,15 +33,44 @@ namespace VinaERP.Modules.CompanyConstant.UI
             fld_dgcDisciplineTypes.InitializeControl();
             fld_dgcADWorkingShiftGroups.Screen = this;
             fld_dgcADWorkingShiftGroups.InitializeControl();
+            fld_dgcFormAllowances.Screen = this;
+            fld_dgcFormAllowances.InitializeControl();
+            fld_dgcOTFactors.Screen = this;
+            fld_dgcOTFactors.InitializeControl();
+            fld_dgcTimesheetEmployeeLateConfigs.Screen = this;
+            fld_dgcTimesheetEmployeeLateConfigs.InitializeControl();
             CompanyConstantEntities entity = (CompanyConstantEntities)((BaseModuleERP)Module).CurrentModuleEntity;
             entity.RewardTypesList.InitVinaListGridControl(fld_dgcRewardTypes);
             entity.DisciplineTypesList.InitVinaListGridControl(fld_dgcDisciplineTypes);
             entity.WorkingShiftGroupsList.InitVinaListGridControl(fld_dgcADWorkingShiftGroups);
+            entity.FormAllowancesList.InitVinaListGridControl(fld_dgcFormAllowances);
+            entity.OTFactorsList.InitVinaListGridControl(fld_dgcOTFactors);
+            entity.TimesheetEmployeeLateConfigsList.InitVinaListGridControl(fld_dgcTimesheetEmployeeLateConfigs);
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             ((CompanyConstantModule)Module).SaveDisciplineTypesList();
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            ((CompanyConstantModule)Module).SaveWorkingShiftGroupsList();
+        }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            ((CompanyConstantModule)Module).SaveFormAllowancesList();
+        }
+
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            ((CompanyConstantModule)Module).SaveOTFactorsList();
+        }
+
+        private void simpleButton5_Click(object sender, EventArgs e)
+        {
+            ((CompanyConstantModule)Module).SaveTimesheetEmployeeLateConfigsList();
         }
     }
 }

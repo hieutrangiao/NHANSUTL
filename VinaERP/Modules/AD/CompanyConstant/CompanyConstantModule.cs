@@ -62,6 +62,24 @@ namespace VinaERP.Modules.CompanyConstant
             CompanyConstantEntities entity = (CompanyConstantEntities)CurrentModuleEntity;
             entity.WorkingShiftGroupsList.RemoveSelectedRowObjectFromList();
         }
+
+        public void RemoveSelectedItemFromFormAllowancesList()
+        {
+            CompanyConstantEntities entity = (CompanyConstantEntities)CurrentModuleEntity;
+            entity.FormAllowancesList.RemoveSelectedRowObjectFromList();
+        }
+
+        public void RemoveSelectedItemFromOTFactorsList()
+        {
+            CompanyConstantEntities entity = (CompanyConstantEntities)CurrentModuleEntity;
+            entity.OTFactorsList.RemoveSelectedRowObjectFromList();
+        }
+
+        public void RemoveSelectedItemFromTimesheetEmployeeLateConfigsList()
+        {
+            CompanyConstantEntities entity = (CompanyConstantEntities)CurrentModuleEntity;
+            entity.TimesheetEmployeeLateConfigsList.RemoveSelectedRowObjectFromList();
+        }
         #endregion
 
         #region Save List
@@ -107,6 +125,30 @@ namespace VinaERP.Modules.CompanyConstant
 
             VinaUtil.ADConfigValueUtility.Add(strGroup, configValues);
             return true;
+        }
+
+        public void SaveWorkingShiftGroupsList()
+        {
+            CompanyConstantEntities entity = (CompanyConstantEntities)CurrentModuleEntity;
+            entity.WorkingShiftGroupsList.SaveItemObjects();
+        }
+
+        public void SaveFormAllowancesList()
+        {
+            CompanyConstantEntities entity = (CompanyConstantEntities)CurrentModuleEntity;
+            entity.FormAllowancesList.SaveItemObjects();
+        }
+
+        public void SaveOTFactorsList()
+        {
+            CompanyConstantEntities entity = (CompanyConstantEntities)CurrentModuleEntity;
+            entity.OTFactorsList.SaveItemObjects();
+        }
+
+        public void SaveTimesheetEmployeeLateConfigsList()
+        {
+            CompanyConstantEntities entity = (CompanyConstantEntities)CurrentModuleEntity;
+            entity.TimesheetEmployeeLateConfigsList.SaveItemObjects();
         }
         #endregion
     }
