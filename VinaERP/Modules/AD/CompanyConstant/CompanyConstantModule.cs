@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraTreeList;
+﻿using DevExpress.XtraEditors;
+using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
 using System;
 using System.Collections.Generic;
@@ -80,6 +81,17 @@ namespace VinaERP.Modules.CompanyConstant
             CompanyConstantEntities entity = (CompanyConstantEntities)CurrentModuleEntity;
             entity.TimesheetEmployeeLateConfigsList.RemoveSelectedRowObjectFromList();
         }
+
+        public void RemoveSelectedItemFromTimesheetConfigsList()
+        {
+            CompanyConstantEntities entity = (CompanyConstantEntities)CurrentModuleEntity;
+            entity.TimesheetConfigsList.RemoveSelectedRowObjectFromList();
+        }
+        public void RemoveSelectedItemFromWorkingShiftList()
+        {
+            CompanyConstantEntities entity = (CompanyConstantEntities)CurrentModuleEntity;
+            entity.WorkingShiftsList.RemoveSelectedRowObjectFromList();
+        }
         #endregion
 
         #region Save List
@@ -124,6 +136,7 @@ namespace VinaERP.Modules.CompanyConstant
                 VinaUtil.ADConfigValueUtility.Remove(strGroup);
 
             VinaUtil.ADConfigValueUtility.Add(strGroup, configValues);
+            XtraMessageBox.Show("Luu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             return true;
         }
 
@@ -131,25 +144,68 @@ namespace VinaERP.Modules.CompanyConstant
         {
             CompanyConstantEntities entity = (CompanyConstantEntities)CurrentModuleEntity;
             entity.WorkingShiftGroupsList.SaveItemObjects();
+            XtraMessageBox.Show("Luu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public void SaveFormAllowancesList()
         {
             CompanyConstantEntities entity = (CompanyConstantEntities)CurrentModuleEntity;
             entity.FormAllowancesList.SaveItemObjects();
+            XtraMessageBox.Show("Luu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public void SaveOTFactorsList()
         {
             CompanyConstantEntities entity = (CompanyConstantEntities)CurrentModuleEntity;
             entity.OTFactorsList.SaveItemObjects();
+            XtraMessageBox.Show("Luu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public void SaveTimesheetEmployeeLateConfigsList()
         {
             CompanyConstantEntities entity = (CompanyConstantEntities)CurrentModuleEntity;
             entity.TimesheetEmployeeLateConfigsList.SaveItemObjects();
+            XtraMessageBox.Show("Luu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        public void SaveTimesheetConfigsList()
+        {
+            CompanyConstantEntities entity = (CompanyConstantEntities)CurrentModuleEntity;
+            entity.TimesheetConfigsList.SaveItemObjects();
+            XtraMessageBox.Show("Luu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        public void SaveWorkingShiftsList()
+        {
+            CompanyConstantEntities entity = (CompanyConstantEntities)CurrentModuleEntity;
+            entity.WorkingShiftsList.SaveItemObjects();
+            XtraMessageBox.Show("Luu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         #endregion
+
+        public void UpdateIns(decimal result)
+        {
+            if (MessageBox.Show("Bạn có muốn cập nhật phí công đoàn cho tất cả nhân viên có tham gia BHXH không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                HREmployeesController objEmployeesController = new HREmployeesController();
+                objEmployeesController.UpdateInsAllEmployee(result);
+            }
+        }
+
+        public bool SaveInsurrances(ADInsurrancesInfo objInsurrancesInfo)
+        {
+            ADInsurrancesController objInsurrancesController = new ADInsurrancesController();
+            if (objInsurrancesInfo != null)
+            {
+                if (objInsurrancesInfo.ADInsurranceID > 0)
+                {
+                    objInsurrancesController.UpdateObject(objInsurrancesInfo);
+                }
+                else
+                {
+                    objInsurrancesController.CreateObject(objInsurrancesInfo);
+                }
+            }
+            return true;
+        }
     }
 }

@@ -99,6 +99,15 @@
     <Compile Include="Modules\AD\CompanyConstant\UI\DMCC100.Designer.cs">
       <DependentUpon>DMCC100.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modules\AD\CompanyConstant\UI\GridControl\ADTimesheetConfigsGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\AD\CompanyConstant\UI\GridControl\HRTimeSheetParam2GridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\AD\CompanyConstant\UI\GridControl\HRTimeSheetParamGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Modules\AD\CompanyConstant\UI\GridControl\HRTimesheetEmployeeLateConfigsGridControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -108,7 +117,10 @@
     <Compile Include="Modules\AD\CompanyConstant\UI\GridControl\HRFormAllowancesGridControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Modules\AD\CompanyConstant\UI\GridControl\HRWorkingShiftGroupsGridControl.cs">
+    <Compile Include="Modules\AD\CompanyConstant\UI\GridControl\ADWorkingShiftGroupsGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\AD\CompanyConstant\UI\GridControl\ADWorkingShiftsGridControl.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Modules\AD\CompanyConstant\UI\GridControl\DisciplineTypesGridControl.cs">

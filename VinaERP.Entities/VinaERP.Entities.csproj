@@ -41,8 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessEntities\Controller\AD\ADInsurrancesController.cs" />
     <Compile Include="BusinessEntities\Controller\AD\ADOTFactorsController.cs" />
+    <Compile Include="BusinessEntities\Controller\AD\ADTimesheetConfigsController.cs" />
     <Compile Include="BusinessEntities\Controller\AD\ADWorkingShiftGroupsController.cs" />
+    <Compile Include="BusinessEntities\Controller\AD\ADWorkingShiftsController.cs" />
     <Compile Include="BusinessEntities\Controller\AR\ARCustomersController.cs" />
     <Compile Include="BusinessEntities\Controller\AR\ARInvoiceItemsController.cs" />
     <Compile Include="BusinessEntities\Controller\AR\ARInvoicesController.cs" />
@@ -57,6 +60,7 @@
     <Compile Include="BusinessEntities\Controller\HR\HREmployeesController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRFormAllowancesController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRTimesheetEmployeeLateConfigsController.cs" />
+    <Compile Include="BusinessEntities\Controller\HR\HRTimeSheetParamsController.cs" />
     <Compile Include="BusinessEntities\Controller\IC\ICDepartmentsController.cs" />
     <Compile Include="BusinessEntities\Controller\IC\ICMeasureUnitsController.cs" />
     <Compile Include="BusinessEntities\Controller\IC\ICPriceCalculationMethodsController.cs" />
@@ -73,8 +77,11 @@
     <Compile Include="BusinessEntities\Controller\IC\ICTransactionsController.cs" />
     <Compile Include="BusinessEntities\Controller\IC\ICVitualTransactionsController.cs" />
     <Compile Include="BusinessEntities\Controller\ST\STModulePostingsController.cs" />
+    <Compile Include="BusinessEntities\Info\AD\ADInsurrancesInfo.cs" />
     <Compile Include="BusinessEntities\Info\AD\ADOTFactorsInfo.cs" />
+    <Compile Include="BusinessEntities\Info\AD\ADTimesheetConfigsInfo.cs" />
     <Compile Include="BusinessEntities\Info\AD\ADWorkingShiftGroupsInfo.cs" />
+    <Compile Include="BusinessEntities\Info\AD\ADWorkingShiftsInfo.cs" />
     <Compile Include="BusinessEntities\Info\AR\ARCustomersInfo.cs" />
     <Compile Include="BusinessEntities\Info\AR\ARInvoiceItemsInfo.cs" />
     <Compile Include="BusinessEntities\Info\AR\ARInvoicesInfo.cs" />
@@ -89,6 +96,7 @@
     <Compile Include="BusinessEntities\Info\HR\HREmployeesInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRFormAllowancesInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRTimesheetEmployeeLateConfigsInfo.cs" />
+    <Compile Include="BusinessEntities\Info\HR\HRTimeSheetParamsInfo.cs" />
     <Compile Include="BusinessEntities\Info\IC\ICDepartmentsInfo.cs" />
     <Compile Include="BusinessEntities\Info\IC\ICMeasureUnitsInfo.cs" />
     <Compile Include="BusinessEntities\Info\IC\ICPriceCalculationMethodsInfo.cs" />

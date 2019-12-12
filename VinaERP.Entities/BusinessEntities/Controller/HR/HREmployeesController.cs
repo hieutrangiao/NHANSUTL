@@ -20,6 +20,11 @@ namespace VinaERP
         {
             dal = new DALBaseProvider("HREmployees", typeof(HREmployeesInfo));
         }
+
+        public void UpdateInsAllEmployee(decimal result)
+        {
+            dal.ExecuteStoredProcedure("HREmployees_UpdateInsAllEmployee", result);
+        }
     }
     #endregion
 }

@@ -54,11 +54,11 @@
     <Compile Include="Constant\PostedTransactionStatus.cs" />
     <Compile Include="Constant\ST\ModulePostingType.cs" />
     <Compile Include="Constant\ToolbarButtons.cs" />
+    <Compile Include="Enum\HR\Enums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Constant\AP\" />
-    <Folder Include="Enum\" />
     <Folder Include="Helper\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -8,14 +8,14 @@ using System.Windows.Forms;
 
 namespace VinaERP.Modules.CompanyConstant
 {
-    public partial class HRWorkingShiftGroupsGridControl : VinaGridControl
+    public partial class ADTimesheetConfigsGridControl : VinaGridControl
     {
 
         public override void InitGridControlDataSource()
         {
             CompanyConstantEntities entity = (CompanyConstantEntities)((BaseModuleERP)Screen.Module).CurrentModuleEntity;
             BindingSource bds = new BindingSource();
-            bds.DataSource = entity.WorkingShiftGroupsList;
+            bds.DataSource = entity.TimesheetConfigsList;
             this.DataSource = bds;
         }
 
@@ -25,7 +25,7 @@ namespace VinaERP.Modules.CompanyConstant
 
             if (e.KeyCode == Keys.Delete)
             {
-                ((CompanyConstantModule)Screen.Module).RemoveSelectedItemFromWorkingShiftGroupList();
+                ((CompanyConstantModule)Screen.Module).RemoveSelectedItemFromTimesheetConfigsList();
             }
         }
         protected override DevExpress.XtraGrid.Views.Grid.GridView InitializeGridView()
