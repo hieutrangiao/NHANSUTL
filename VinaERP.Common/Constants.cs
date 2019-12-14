@@ -13,6 +13,11 @@ namespace VinaERP.Common
         public const string GEPaymentTermItemsTableName = "GEPaymentTermItems";
         #endregion
 
+        #region HR
+        public const string HRDepartmentsTableName = "HRDepartments";
+        public const string HRDepartmentRoomsTableName = "HRDepartmentRooms";
+        #endregion
+
         #region IC
         public const string ICProductsTableName = "ICProducts";
         public const string ICProductMeasureUnitsTableName = "ICProductMeasureUnits";

@@ -276,6 +276,23 @@
     <Compile Include="Modules\GE\PaymentTerm\UI\SMPT100.Designer.cs">
       <DependentUpon>SMPT100.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modules\HR\Department\DepartmentEntities.cs" />
+    <Compile Include="Modules\HR\Department\DepartmentModule.cs" />
+    <Compile Include="Modules\HR\Department\UI\DMDP100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\Department\UI\DMDP100.Designer.cs">
+      <DependentUpon>DMDP100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HR\Department\UI\GridControl\HRDepartmentRoomsGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\Department\UI\SMDP100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\Department\UI\SMDP100.Designer.cs">
+      <DependentUpon>SMDP100.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modules\HR\Employee\CustomerEntities.cs" />
     <Compile Include="Modules\HR\Employee\CustomerModule.cs" />
     <Compile Include="Modules\HR\Employee\UI\DMHR101.cs">
@@ -444,6 +461,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modules\GE\PaymentTerm\UI\SMPT100.resx">
       <DependentUpon>SMPT100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HR\Department\UI\DMDP100.resx">
+      <DependentUpon>DMDP100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HR\Department\UI\SMDP100.resx">
+      <DependentUpon>SMDP100.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modules\HR\Employee\UI\DMHR101.resx">
       <DependentUpon>DMHR101.cs</DependentUpon>
