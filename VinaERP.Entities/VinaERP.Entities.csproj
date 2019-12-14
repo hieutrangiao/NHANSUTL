@@ -62,6 +62,7 @@
     <Compile Include="BusinessEntities\Controller\GE\GEReligionsController.cs" />
     <Compile Include="BusinessEntities\Controller\GE\GEStateProvincesController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRDepartmentRoomGroupItemsController.cs" />
+    <Compile Include="BusinessEntities\Controller\HR\HRDepartmentRoomGroupsController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRDepartmentRoomsController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRDepartmentsController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HREmployeePayrollFormulasController.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="BusinessEntities\Info\GE\GEReligionsInfo.cs" />
     <Compile Include="BusinessEntities\Info\GE\GEStateProvincesInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRDepartmentRoomGroupItemsInfo.cs" />
+    <Compile Include="BusinessEntities\Info\HR\HRDepartmentRoomGroupsInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRDepartmentRoomsInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRDepartmentsInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HREmployeePayrollFormulasInfo.cs" />

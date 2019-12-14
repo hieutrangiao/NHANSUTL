@@ -16,6 +16,8 @@ namespace VinaERP.Common
         #region HR
         public const string HRDepartmentsTableName = "HRDepartments";
         public const string HRDepartmentRoomsTableName = "HRDepartmentRooms";
+        public const string HRDepartmentRoomGroupsTableName = "HRDepartmentRoomGroups";
+        public const string HRDepartmentRoomGroupItemsTableName = "HRDepartmentRoomGroupItems";
         #endregion
 
         #region IC
