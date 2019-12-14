@@ -39,5 +39,31 @@ namespace VinaLib.BaseProvider
             //this.KeyUp += new KeyEventHandler(((IBaseModuleERP)this.Screen.Module).Control_KeyUp);
             //this.Spin += new SpinEventHandler(this.VinaTextBox_Spin);
         }
+
+        public void SetDefaultDisplayFormat()
+        {
+            BusinessObject objObjectsInfo = BusinessObjectFactory.GetBusinessObject(this.VinaDataSource + "Info");
+            if (objObjectsInfo != null)
+            {
+                try
+                {
+                    string propertyType = objObjectsInfo.GetType().GetProperty(this.VinaDataMember).PropertyType.Name;
+                    if (propertyType == "Decimal")
+                    {
+                        this.Properties.Mask.EditMask = "n3";
+                        this.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+                        this.Properties.DisplayFormat.FormatString = "n3";
+                        this.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                        this.Properties.EditFormat.FormatString = "n3";
+                        this.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    }
+                }
+                catch (Exception e)
+                {
+
+                }
+            }
+        }
+
     }
 }

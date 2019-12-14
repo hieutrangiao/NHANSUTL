@@ -19,5 +19,18 @@ namespace VinaLib
         {
             return dal.GetDataSet("ADConfigValues_SelectByADConfigKeyGroup", strADConfigKeyGroup);
         }
+
+        public ADConfigValuesInfo GetObjectByConfigKey(String configKey)
+        {
+            String sql = String.Format("SELECT * FROM ADConfigValues WHERE AAStatus = 'Alive' AND ADConfigKey = N'{0}'", configKey);
+            DataSet ds = dal.GetDataSet(sql);
+            if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                ADConfigValuesInfo objConfigValuesInfo = (ADConfigValuesInfo)dal.GetObjectFromDataRow(ds.Tables[0].Rows[0]);
+                ds.Dispose();
+                return objConfigValuesInfo;
+            }
+            return null;
+        }
     }
 }

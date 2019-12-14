@@ -276,6 +276,26 @@
     <Compile Include="Modules\GE\PaymentTerm\UI\SMPT100.Designer.cs">
       <DependentUpon>SMPT100.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modules\HR\Employee\CustomerEntities.cs" />
+    <Compile Include="Modules\HR\Employee\CustomerModule.cs" />
+    <Compile Include="Modules\HR\Employee\UI\DMHR101.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\Employee\UI\DMHR101.Designer.cs">
+      <DependentUpon>DMHR101.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HR\Employee\UI\DMHR100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\Employee\UI\DMHR100.Designer.cs">
+      <DependentUpon>DMHR100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HR\Employee\UI\SMHR100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\Employee\UI\SMHR100.Designer.cs">
+      <DependentUpon>SMHR100.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modules\IC\InventoryStatistics\InventoryStatisticsEntities.cs" />
     <Compile Include="Modules\IC\InventoryStatistics\InventoryStatisticsModule.cs" />
     <Compile Include="Modules\IC\InventoryStatistics\UI\DMISS100.cs">
@@ -425,6 +445,15 @@
     <EmbeddedResource Include="Modules\GE\PaymentTerm\UI\SMPT100.resx">
       <DependentUpon>SMPT100.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HR\Employee\UI\DMHR101.resx">
+      <DependentUpon>DMHR101.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HR\Employee\UI\DMHR100.resx">
+      <DependentUpon>DMHR100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HR\Employee\UI\SMHR100.resx">
+      <DependentUpon>SMHR100.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modules\IC\InventoryStatistics\UI\DMISS100.resx">
       <DependentUpon>DMISS100.cs</DependentUpon>
     </EmbeddedResource>
@@ -502,6 +531,7 @@
   <ItemGroup>
     <Folder Include="Modules\AD\UserManagement\Localization\" />
     <Folder Include="Modules\AR\Customer\UI\GridControl\" />
+    <Folder Include="Modules\HR\Employee\UI\GridControl\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo_tylien_Z8M_icon.ico" />
