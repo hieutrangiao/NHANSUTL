@@ -146,12 +146,6 @@ namespace VinaERP
             {
                 Control ctrl = this.Controls[i];
 
-                if(ctrl.GetType() is VinaTextBox)
-                {
-                    VinaTextBox objTextBox = (VinaTextBox)ctrl;
-                    objTextBox.SetDefaultDisplayFormat();
-                }
-
                 bool flag = false;
                 if (ctrl.Tag != null)
                 {
