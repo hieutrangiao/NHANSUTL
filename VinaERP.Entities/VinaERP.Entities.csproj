@@ -70,6 +70,7 @@
     <Compile Include="BusinessEntities\Controller\HR\HREmployeePayrollFormulasController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HREmployeeRewardsController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HREmployeesController.cs" />
+    <Compile Include="BusinessEntities\Controller\HR\HREmployeeWorkScheduleItemsController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HREmployeeWorkSchedulesController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRFormAllowancesController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRLevelsController.cs" />
@@ -121,6 +122,7 @@
     <Compile Include="BusinessEntities\Info\HR\HREmployeePayrollFormulasInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HREmployeeRewardsInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HREmployeesInfo.cs" />
+    <Compile Include="BusinessEntities\Info\HR\HREmployeeWorkScheduleItemsInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HREmployeeWorkSchedulesInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRFormAllowancesInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRLevelsInfo.cs" />

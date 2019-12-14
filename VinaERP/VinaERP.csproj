@@ -293,6 +293,23 @@
     <Compile Include="Modules\HR\Discipline\UI\SMDC100.Designer.cs">
       <DependentUpon>SMDC100.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modules\HR\EmployeeWorkSchedule\EmployeeWorkScheduleEntities.cs" />
+    <Compile Include="Modules\HR\EmployeeWorkSchedule\EmployeeWorkScheduleModule.cs" />
+    <Compile Include="Modules\HR\EmployeeWorkSchedule\UI\DMWS100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\EmployeeWorkSchedule\UI\DMWS100.Designer.cs">
+      <DependentUpon>DMWS100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HR\EmployeeWorkSchedule\UI\GridControl\HREmployeeWorkScheduleItemsGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\EmployeeWorkSchedule\UI\SMWS100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\EmployeeWorkSchedule\UI\SMWS100.Designer.cs">
+      <DependentUpon>SMWS100.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modules\HR\Reward\RewardEntities.cs" />
     <Compile Include="Modules\HR\Reward\RewardModule.cs" />
     <Compile Include="Modules\HR\Reward\UI\DMRW100.cs">
@@ -527,6 +544,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modules\HR\Discipline\UI\SMDC100.resx">
       <DependentUpon>SMDC100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HR\EmployeeWorkSchedule\UI\DMWS100.resx">
+      <DependentUpon>DMWS100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HR\EmployeeWorkSchedule\UI\SMWS100.resx">
+      <DependentUpon>SMWS100.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modules\HR\Reward\UI\DMRW100.resx">
       <DependentUpon>DMRW100.cs</DependentUpon>

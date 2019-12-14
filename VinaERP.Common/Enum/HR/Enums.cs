@@ -53,4 +53,9 @@ namespace VinaCommon
         Khientrach,
         Sathai
     }
+    public enum EmployeeWorkScheduleStatus
+    {
+        New,
+        Approved
+    }
 }
