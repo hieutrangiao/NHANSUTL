@@ -2184,6 +2184,10 @@ namespace VinaERP
         #endregion
         #region Extra Properties
         public decimal HREmployeeWorkingSlrAmtDateTotal { get; set; }
+        public DateTime HREmployeeOTDate { get; set; }
+        public DateTime HREmployeeOTDateEnd { get; set; }
+        public DateTime HREmployeeOTFromDate { get; set; }
+        public DateTime HREmployeeOTToDate { get; set; }
         #endregion
     }
     #endregion

@@ -276,6 +276,40 @@
     <Compile Include="Modules\GE\PaymentTerm\UI\SMPT100.Designer.cs">
       <DependentUpon>SMPT100.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modules\HR\Discipline\DisciplineEntities.cs" />
+    <Compile Include="Modules\HR\Discipline\DisciplineModule.cs" />
+    <Compile Include="Modules\HR\Discipline\UI\DMDC100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\Discipline\UI\DMDC100.Designer.cs">
+      <DependentUpon>DMDC100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HR\Discipline\UI\GridControl\HREmployeeDisciplinesGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\Discipline\UI\SMDC100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\Discipline\UI\SMDC100.Designer.cs">
+      <DependentUpon>SMDC100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HR\Reward\RewardEntities.cs" />
+    <Compile Include="Modules\HR\Reward\RewardModule.cs" />
+    <Compile Include="Modules\HR\Reward\UI\DMRW100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\Reward\UI\DMRW100.Designer.cs">
+      <DependentUpon>DMRW100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HR\Reward\UI\GridControl\HREmployeeRewardsGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\Reward\UI\SMRW100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\Reward\UI\SMRW100.Designer.cs">
+      <DependentUpon>SMRW100.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modules\HR\DepartmentRoomGroup\DepartmentRoomGroupEntities.cs" />
     <Compile Include="Modules\HR\DepartmentRoomGroup\DepartmentRoomGroupModule.cs" />
     <Compile Include="Modules\HR\DepartmentRoomGroup\UI\DMDGP100.cs">
@@ -409,6 +443,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\GridControl\HREmployeesGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\guiSearchEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\guiSearchEmployee.Designer.cs">
+      <DependentUpon>guiSearchEmployee.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\GenaralLeadger\GLHelper.cs" />
     <Compile Include="Utilities\GenaralLeadger\GLReceiptEntities.cs" />
     <Compile Include="Utilities\GenaralLeadger\GLReceiptModule.cs" />
@@ -479,6 +522,18 @@
     <EmbeddedResource Include="Modules\GE\PaymentTerm\UI\SMPT100.resx">
       <DependentUpon>SMPT100.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HR\Discipline\UI\DMDC100.resx">
+      <DependentUpon>DMDC100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HR\Discipline\UI\SMDC100.resx">
+      <DependentUpon>SMDC100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HR\Reward\UI\DMRW100.resx">
+      <DependentUpon>DMRW100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HR\Reward\UI\SMRW100.resx">
+      <DependentUpon>SMRW100.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modules\HR\DepartmentRoomGroup\UI\DMDGP100.resx">
       <DependentUpon>DMDGP100.cs</DependentUpon>
     </EmbeddedResource>
@@ -527,6 +582,7 @@
     <EmbeddedResource Include="Modules\IC\SaleOrderShipment\UI\SMSSO100.resx">
       <DependentUpon>SMSSO100.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -536,6 +592,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\guiSearchEmployee.resx">
+      <DependentUpon>guiSearchEmployee.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

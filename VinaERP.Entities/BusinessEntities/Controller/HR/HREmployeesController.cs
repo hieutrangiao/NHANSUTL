@@ -3,7 +3,7 @@ using System.Data;
 using System.Text;
 using System.Collections.Generic;
 using VinaLib;
-
+using System.Collections;
 
 namespace VinaERP
 {
@@ -24,6 +24,26 @@ namespace VinaERP
         public void UpdateInsAllEmployee(decimal result)
         {
             dal.ExecuteStoredProcedure("HREmployees_UpdateInsAllEmployee", result);
+        }
+
+        public override IList GetListFromDataSet(DataSet ds)
+        {
+            List<HREmployeesInfo> list = new List<HREmployeesInfo>();
+            if (ds.Tables.Count > 0)
+            {
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    HREmployeesInfo obj = (HREmployeesInfo)GetObjectFromDataRow(row);
+                    list.Add(obj);
+                }
+            }
+            return list;
+        }
+
+        public List<HREmployeesInfo> GetAllEmployees()
+        {
+            DataSet ds = dal.GetAllObject();
+            return (List<HREmployeesInfo>)GetListFromDataSet(ds);
         }
     }
     #endregion

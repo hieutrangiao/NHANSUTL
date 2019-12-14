@@ -13,4 +13,44 @@ namespace VinaCommon
         Common,
         LE
     }
+    public enum RewardStatus
+    {
+        New,
+        Approved
+    }
+    public enum RewardType
+    {
+        Percent,
+        Amount,
+        Other,
+        WorkingQytFull,
+        WorkDay,
+        ChuyenCan,
+        TichLuy,
+        CaDem,
+        RefundTheChan
+    }
+    public enum DisciplineStatus
+    {
+        New,
+        Approved
+    }
+
+    public enum DisciplineType
+    {
+        Percent,
+        Amount,
+        WorkDay,
+        Other,
+        Absence,
+        BHTN,
+        PhiTheTu,
+        PhiTheATM,
+        PhiAo,
+        Canhcao,
+        Dinhchivothoihan,
+        TheChan,
+        Khientrach,
+        Sathai
+    }
 }
