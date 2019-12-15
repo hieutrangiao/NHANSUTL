@@ -276,6 +276,23 @@
     <Compile Include="Modules\GE\PaymentTerm\UI\SMPT100.Designer.cs">
       <DependentUpon>SMPT100.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modules\HR\OverTime\OverTimeEntities.cs" />
+    <Compile Include="Modules\HR\OverTime\OverTimeModule.cs" />
+    <Compile Include="Modules\HR\OverTime\UI\DMOT100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\OverTime\UI\DMOT100.Designer.cs">
+      <DependentUpon>DMOT100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HR\OverTime\UI\GridControl\HREmployeeOTsGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\OverTime\UI\SMOT100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\OverTime\UI\SMOT100.Designer.cs">
+      <DependentUpon>SMOT100.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modules\HR\Discipline\DisciplineEntities.cs" />
     <Compile Include="Modules\HR\Discipline\DisciplineModule.cs" />
     <Compile Include="Modules\HR\Discipline\UI\DMDC100.cs">
@@ -309,6 +326,23 @@
     </Compile>
     <Compile Include="Modules\HR\EmployeeWorkSchedule\UI\SMWS100.Designer.cs">
       <DependentUpon>SMWS100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HR\Allowance\AllowanceEntities.cs" />
+    <Compile Include="Modules\HR\Allowance\AllowanceModule.cs" />
+    <Compile Include="Modules\HR\Allowance\UI\DMAW100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\Allowance\UI\DMAW100.Designer.cs">
+      <DependentUpon>DMAW100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HR\Allowance\UI\GridControl\HREmployeeAllowancesGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\Allowance\UI\SMAW100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\Allowance\UI\SMAW100.Designer.cs">
+      <DependentUpon>SMAW100.cs</DependentUpon>
     </Compile>
     <Compile Include="Modules\HR\Reward\RewardEntities.cs" />
     <Compile Include="Modules\HR\Reward\RewardModule.cs" />
@@ -539,6 +573,12 @@
     <EmbeddedResource Include="Modules\GE\PaymentTerm\UI\SMPT100.resx">
       <DependentUpon>SMPT100.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HR\OverTime\UI\DMOT100.resx">
+      <DependentUpon>DMOT100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HR\OverTime\UI\SMOT100.resx">
+      <DependentUpon>SMOT100.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modules\HR\Discipline\UI\DMDC100.resx">
       <DependentUpon>DMDC100.cs</DependentUpon>
     </EmbeddedResource>
@@ -550,6 +590,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modules\HR\EmployeeWorkSchedule\UI\SMWS100.resx">
       <DependentUpon>SMWS100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HR\Allowance\UI\DMAW100.resx">
+      <DependentUpon>DMAW100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HR\Allowance\UI\SMAW100.resx">
+      <DependentUpon>SMAW100.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modules\HR\Reward\UI\DMRW100.resx">
       <DependentUpon>DMRW100.cs</DependentUpon>

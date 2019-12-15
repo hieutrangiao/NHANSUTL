@@ -40,6 +40,11 @@ namespace VinaERP
             DataSet ds = dal.GetAllObject();
             return (List<HRFormAllowancesInfo>)GetListFromDataSet(ds);
         }
+
+        public List<HRFormAllowancesInfo> GetHRFormAllowancesByFormAllowancesType(string formAllowancesType)
+        {
+            return (List<HRFormAllowancesInfo>)GetListFromDataSet(dal.GetDataSet("HRFormAllowances_GetHRFormAllowancesByFormAllowancesType", formAllowancesType));
+        }
     }
     #endregion
 }

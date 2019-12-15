@@ -58,4 +58,45 @@ namespace VinaCommon
         New,
         Approved
     }
+    public enum AllowanceType
+    {
+        Percent,
+        Amount,
+        Other,
+        WorkingQty,
+        OTHours,
+        WorkingQtyNight,
+        WorkingQtyTotal,
+        OTQty,
+        C,
+        CD,
+        Bus,
+        DH,
+        CNight,
+        Effective,
+        Diligence,
+        HeavyToxic,
+        Perennial
+    }
+    public enum AllowanceConfigName
+    {
+        Productivity,
+        Quality,
+        Manage,
+        Diligence,
+        HeavyToxic,
+        Perennial,
+        Other
+    }
+    public enum HRFormAllowanceType
+    {
+        CaNhan,
+        CoDinh,
+        MucChung
+    }
+    public enum OverTimeStatus
+    {
+        New,
+        Approved
+    }
 }
