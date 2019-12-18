@@ -78,6 +78,7 @@
     <Compile Include="BusinessEntities\Controller\HR\HREmployeeWorkScheduleItemsController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HREmployeeWorkSchedulesController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRFormAllowancesController.cs" />
+    <Compile Include="BusinessEntities\Controller\HR\HRLeaveDaysController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRLevelsController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HROverTimesController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRRewardsController.cs" />
@@ -138,6 +139,7 @@
     <Compile Include="BusinessEntities\Info\HR\HREmployeeWorkScheduleItemsInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HREmployeeWorkSchedulesInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRFormAllowancesInfo.cs" />
+    <Compile Include="BusinessEntities\Info\HR\HRLeaveDaysInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRLevelsInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HROverTimesInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRRewardsInfo.cs" />

@@ -28,6 +28,8 @@ namespace VinaERP.Common
         public const string HREmployeeAllowancesTableName = "HREmployeeAllowances";
         public const string HROverTimesTableName = "HROverTimes";
         public const string HREmployeeOTsTableName = "HREmployeeOTs";
+        public const string HRLeaveDaysTableName = "HRLeaveDays";
+        
         #endregion
 
         #region IC

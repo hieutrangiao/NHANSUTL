@@ -40,6 +40,12 @@ namespace VinaERP
             DataSet ds = dal.GetDataSet("HRTimeSheetParams_GetOTTimeSheetParamList");
             return (List<HRTimeSheetParamsInfo>)GetListFromDataSet(ds);
         }
+
+        public List<HRTimeSheetParamsInfo> GetTimeSheetParamsByTimeSheetType(string timeSheetParamType)
+        {
+            DataSet ds = dal.GetDataSet("HRTimeSheetParams_GetTimeSheetParamList", timeSheetParamType);
+            return (List<HRTimeSheetParamsInfo>)GetListFromDataSet(ds);
+        }
     }
     #endregion
 }

@@ -45,6 +45,21 @@ namespace VinaERP
             DataSet ds = dal.GetAllObject();
             return (List<HREmployeesInfo>)GetListFromDataSet(ds);
         }
+
+        public List<HREmployeesInfo> GetEmployeeList(int? branchID, int? departmentID, int? departmentRoomID, int? departmentRoomGroupItemID, string status)
+        {
+            DataSet ds = dal.GetDataSet("HREmployees_GetEmployeeList", branchID, departmentID, departmentRoomID, departmentRoomGroupItemID, status);
+            List<HREmployeesInfo> employees = new List<HREmployeesInfo>();
+            if (ds.Tables.Count > 0)
+            {
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    HREmployeesInfo objEmployeesInfo = (HREmployeesInfo)GetObjectFromDataRow(row);
+                    employees.Add(objEmployeesInfo);
+                }
+            }
+            return employees;
+        }
     }
     #endregion
 }

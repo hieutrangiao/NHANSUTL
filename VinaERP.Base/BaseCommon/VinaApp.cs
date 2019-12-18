@@ -210,7 +210,7 @@ namespace VinaERP
 
             InitMenuOfMainForm();
 
-            InitCurrencyList();
+            //InitCurrencyList();
         }
 
         public static void InitCurrencyList()

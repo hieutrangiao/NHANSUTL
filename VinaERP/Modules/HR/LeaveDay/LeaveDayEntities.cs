@@ -7,9 +7,9 @@ using VinaERP.Base.BaseCommon;
 using VinaERP.Common;
 using VinaLib;
 
-namespace VinaERP.Modules.Department
+namespace VinaERP.Modules.LeaveDay
 {
-    public class DepartmentEntities : ERPModuleEntities
+    public class LeaveDayEntities : ERPModuleEntities
     {
         #region Declare Constant
 
@@ -19,15 +19,15 @@ namespace VinaERP.Modules.Department
         #endregion
 
         #region Public Properties
-        public VinaList<HRDepartmentRoomsInfo> DepartmentRoomsList { get; set; }
+        public VinaList<HRLeaveDaysInfo> LeaveDaysList { get; set; }
 
         #endregion
 
         #region Constructor
-        public DepartmentEntities()
+        public LeaveDayEntities()
             : base()
         {
-            DepartmentRoomsList = new VinaList<HRDepartmentRoomsInfo>();
+            LeaveDaysList = new VinaList<HRLeaveDaysInfo>();
         }
 
         #endregion
@@ -35,29 +35,26 @@ namespace VinaERP.Modules.Department
         #region Init Main Object,Module Objects functions
         public override void InitMainObject()
         {
-            MainObject = new HRDepartmentsInfo();
-            SearchObject = new HRDepartmentsInfo();
         }
 
         public override void InitModuleObjectList()
         {
-            DepartmentRoomsList.InitVinaList(this,
-                                             TableName.HRDepartmentsTableName,
-                                             TableName.HRDepartmentRoomsTableName,
-                                             VinaList<HRDepartmentRoomsInfo>.cstRelationForeign);
-            DepartmentRoomsList.ItemTableForeignKey = "FK_HRDepartmentID";
+            LeaveDaysList.InitVinaList(this,
+                                             string.Empty,
+                                             TableName.HRLeaveDaysTableName,
+                                             VinaList<HRLeaveDaysInfo>.cstRelationNone);
         }
 
         public override void InitGridControlInVinaList()
         {
-            DepartmentRoomsList.InitVinaListGridControl();
+            LeaveDaysList.InitVinaListGridControl();
         }
 
         public override void SetDefaultModuleObjectsList()
         {
             try
             {
-                DepartmentRoomsList.SetDefaultListAndRefreshGridControl();
+                LeaveDaysList.SetDefaultListAndRefreshGridControl();
             }
             catch (Exception)
             {
@@ -65,21 +62,6 @@ namespace VinaERP.Modules.Department
             }
         }
 
-        #endregion
-
-        #region Invalidate Module Objects functions
-        public override void InvalidateModuleObjects(int iObjectID)
-        {
-            DepartmentRoomsList.Invalidate(iObjectID);
-        }
-
-        #endregion
-
-        #region Save Module Objects functions        
-        public override void SaveModuleObjects()
-        {
-            DepartmentRoomsList.SaveItemObjects();
-        }
         #endregion
     }
 }

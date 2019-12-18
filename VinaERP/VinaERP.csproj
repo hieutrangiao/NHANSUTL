@@ -276,6 +276,17 @@
     <Compile Include="Modules\GE\PaymentTerm\UI\SMPT100.Designer.cs">
       <DependentUpon>SMPT100.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modules\HR\LeaveDay\LeaveDayEntities.cs" />
+    <Compile Include="Modules\HR\LeaveDay\LeaveDayModule.cs" />
+    <Compile Include="Modules\HR\LeaveDay\UI\DMLD100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\LeaveDay\UI\DMLD100.Designer.cs">
+      <DependentUpon>DMLD100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HR\LeaveDay\UI\GridControl\HRLeaveDaysGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Modules\HR\OverTime\OverTimeEntities.cs" />
     <Compile Include="Modules\HR\OverTime\OverTimeModule.cs" />
     <Compile Include="Modules\HR\OverTime\UI\DMOT100.cs">
@@ -572,6 +583,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modules\GE\PaymentTerm\UI\SMPT100.resx">
       <DependentUpon>SMPT100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HR\LeaveDay\UI\DMLD100.resx">
+      <DependentUpon>DMLD100.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modules\HR\OverTime\UI\DMOT100.resx">
       <DependentUpon>DMOT100.cs</DependentUpon>
