@@ -20,6 +20,14 @@ namespace VinaERP
         {
             dal = new DALBaseProvider("HREmployeeAllowances", typeof(HREmployeeAllowancesInfo));
         }
+
+        public HREmployeeAllowancesInfo GetEmployeeAllowancesInfoByEmployeeIDAndAllowanceID(int employeeID, int allowanceID)
+        {
+            DataSet ds = dal.GetDataSet("HREmployeeAllowances_GetEmployeeRewardsInfoByEmployeeIDAndAllowanceID", employeeID, allowanceID);
+            if (ds.Tables.Count > 0)
+                return (HREmployeeAllowancesInfo)dal.GetSingleObject(ds.Tables[0]);
+            return null;
+        }
     }
     #endregion
 }

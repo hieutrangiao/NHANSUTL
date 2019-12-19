@@ -99,4 +99,93 @@ namespace VinaCommon
         New,
         Approved
     }
+
+    public enum TimeSheetType
+    {
+        Day,
+        Hour
+    }
+
+    public enum TimeSheetStatus
+    {
+        New,
+        SalaryCalculated,
+        Approved
+    }
+
+    public enum OTFactorType
+    {
+        Holiday,
+        EndOfWeek,
+        WorkingDay
+    }
+
+    public enum CalendarType
+    {
+        Holiday
+    }
+
+    public enum TimesheetEmployeeLateConfigType
+    {
+        BackSoon,
+        ComeLate
+    }
+
+    public enum WorkingShiftDayOffWeek
+    {
+        T2 = 1,
+        T3 = 2,
+        T4 = 3,
+        T5 = 4,
+        T6 = 5,
+        T7 = 6,
+        CN = 0,
+        All = -1
+    }
+    public enum EmployeePayRollCalculatedWorkType
+    {
+        Default,
+        TableWork
+    }
+
+    public enum PayRollStatus
+    {
+        New,
+        Posted,
+        Complete
+    }
+
+    public enum EmployeeWorkingForm
+    {
+        Probationary,
+        Apprentice,
+        Official
+    }
+
+    public enum DisciplineDocumentType
+    {
+        Phone,
+        Other
+    }
+
+    public enum HRFormAllowanceNameType
+    {
+        Phucapdienthoai,
+        Phucapchuyencan,
+        Phucapxang,
+        Phucapnhao,
+        ThuongKPI,
+        Phucaptrachnhiem,
+        Phucapthuviec,
+        Phucapthamnien,
+        Phucapcongtac,
+        Phucapcom,
+        Phucapcadem,
+        PCBaoduongxe,
+        PhuCapDiTinh,
+        Phucaplanhnghe,
+        Phucaptrachnhiemhanghoa,
+        Khac,
+        Tienantangca
+    }
 }

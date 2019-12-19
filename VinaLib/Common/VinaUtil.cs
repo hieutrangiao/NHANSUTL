@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -102,6 +103,75 @@ namespace VinaLib
             }
 
             return strOutput.ToString();
+        }
+        public static DateTime GetMonthEndDate(DateTime date)
+        {
+            int day = DateTime.DaysInMonth(date.Year, date.Month);
+            return new DateTime(date.Year, date.Month, day);
+        }
+
+        public static double RoundToThousand(double number)
+        {
+            double result = Math.Round(number, 0);
+            double temp = result % 1000;
+            if (temp >= 500)
+            {
+                result = Math.Floor(result / 1000) * 1000 + 1000;
+            }
+            else
+            {
+                result = Math.Floor(result / 1000) * 1000;
+            }
+            return result;
+        }
+
+        public static void CopyObject(BusinessObject objFromObjectsInfo, BusinessObject objToObjectsInfo)
+        {
+            VinaDbUtil dbUtil = new VinaDbUtil();
+            String strToObjectTableName = VinaUtil.GetTableNameFromBusinessObject(objToObjectsInfo);
+            String strFromObjectTableName = VinaUtil.GetTableNameFromBusinessObject(objFromObjectsInfo);
+            if (objFromObjectsInfo.GetType().Name.Contains("ForView"))
+            {
+                strFromObjectTableName = objFromObjectsInfo.GetType().Name.Replace("ForView", "");
+            }
+            PropertyInfo[] properties = objToObjectsInfo.GetType().GetProperties();
+            string toObjectTablePrimaryKey = dbUtil.GetTablePrimaryColumn(strToObjectTableName);
+            foreach (PropertyInfo prop in properties)
+            {
+                if (prop.Name != toObjectTablePrimaryKey && prop.Name != "IsTransferred" && !prop.Name.Contains("TransferredDate"))
+                {
+                    String strFromObjectPropertyName = string.Empty;
+                    if (prop.Name.StartsWith(strToObjectTableName.Substring(0, strToObjectTableName.Length - 1)))
+                    {
+                        strFromObjectPropertyName = strFromObjectTableName.Substring(0, strFromObjectTableName.Length - 1) + prop.Name.Substring(strToObjectTableName.Length - 1);
+                    }
+                    PropertyInfo propFromObjectProperty = objFromObjectsInfo.GetType().GetProperty(strFromObjectPropertyName);
+                    if (propFromObjectProperty != null)
+                    {
+                        object objValue = propFromObjectProperty.GetValue(objFromObjectsInfo, null);
+                        prop.SetValue(objToObjectsInfo, objValue, null);
+                    }
+                    else
+                    {
+                        strFromObjectPropertyName = strFromObjectTableName.Substring(0, 2) + prop.Name.Substring(2);
+                        propFromObjectProperty = objFromObjectsInfo.GetType().GetProperty(strFromObjectPropertyName);
+                        if (propFromObjectProperty != null)
+                        {
+                            object objValue = propFromObjectProperty.GetValue(objFromObjectsInfo, null);
+                            prop.SetValue(objToObjectsInfo, objValue, null);
+                        }
+                        else
+                        {
+                            propFromObjectProperty = objFromObjectsInfo.GetType().GetProperty(prop.Name);
+                            if (propFromObjectProperty != null)
+                            {
+                                object objValue = propFromObjectProperty.GetValue(objFromObjectsInfo, null);
+                                prop.SetValue(objToObjectsInfo, objValue, null);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

@@ -25,6 +25,14 @@ namespace VinaERP
         {
             return dal.GetDataSet("HREmployeeRewards_GetRewardListByRewardID", rewardID);
         }
+
+        public HREmployeeRewardsInfo GetEmployeeRewardsInfoByEmployeeIDAndRewardID(int employeeID, int rewardID)
+        {
+            DataSet ds = dal.GetDataSet("HREmployeeRewards_GetEmployeeRewardsInfoByEmployeeIDAndRewardID", employeeID, rewardID);
+            if (ds.Tables.Count > 0)
+                return (HREmployeeRewardsInfo)dal.GetSingleObject(ds.Tables[0]);
+            return null;
+        }
     }
     #endregion
 }

@@ -3,7 +3,7 @@ using System.Data;
 using System.Text;
 using System.Collections.Generic;
 using VinaLib;
-
+using System.Collections;
 
 namespace VinaERP
 {
@@ -19,6 +19,26 @@ namespace VinaERP
         public HREmployeeWorkSchedulesController()
         {
             dal = new DALBaseProvider("HREmployeeWorkSchedules", typeof(HREmployeeWorkSchedulesInfo));
+        }
+
+        public List<HREmployeeWorkSchedulesInfo> GetByEmployeeID(DateTime dateFrom, DateTime dateTo, int? employeeID)
+        {
+            DataSet ds = dal.GetDataSet("HREmployeeWorkSchedules_GetByEmployeeID", dateFrom, dateTo, employeeID);
+            return (List<HREmployeeWorkSchedulesInfo>)GetListFromDataSet(ds);
+        }
+
+        public override IList GetListFromDataSet(DataSet ds)
+        {
+            List<HREmployeeWorkSchedulesInfo> list = new List<HREmployeeWorkSchedulesInfo>();
+            if (ds.Tables.Count > 0)
+            {
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    HREmployeeWorkSchedulesInfo obj = (HREmployeeWorkSchedulesInfo)GetObjectFromDataRow(row);
+                    list.Add(obj);
+                }
+            }
+            return list;
         }
     }
     #endregion

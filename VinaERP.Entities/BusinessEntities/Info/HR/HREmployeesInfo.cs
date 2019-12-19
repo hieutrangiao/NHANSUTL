@@ -2188,6 +2188,11 @@ namespace VinaERP
         public DateTime HREmployeeOTDateEnd { get; set; }
         public DateTime HREmployeeOTFromDate { get; set; }
         public DateTime HREmployeeOTToDate { get; set; }
+
+        public string HRDepartmentName { get; set; }
+        public string HRDepartmentRoomName { get; set; }
+        public string HRDepartmentRoomGroupItemName { get; set; }
+        public string HRLevelName { get; set; }
         #endregion
     }
     #endregion

@@ -32,5 +32,27 @@ namespace VinaLib
             }
             return null;
         }
+
+        public object GetValueByConfigKey(string configKey)
+        {
+            ADConfigValuesInfo configValue = GetObjectByConfigKey(configKey);
+            if (configKey != null)
+            {
+                return configValue.ADConfigKeyValue;
+            }
+            return null;
+        }
+
+        public ADConfigValuesInfo GetObjectByGroupAndValue(string group, string value)
+        {
+            DataSet ds = dal.GetDataSet("ADConfigValues_GetObjectByGroupAndValue", group, value);
+            if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                ADConfigValuesInfo objConfigValuesInfo = (ADConfigValuesInfo)dal.GetObjectFromDataRow(ds.Tables[0].Rows[0]);
+                ds.Dispose();
+                return objConfigValuesInfo;
+            }
+            return null;
+        }
     }
 }

@@ -60,6 +60,15 @@ namespace VinaERP
             }
             return employees;
         }
+
+        public HREmployeesInfo GetEmployeeByID(int employeeID)
+        {
+            DataSet ds = dal.GetDataSet("HREmployees_GetEmployeeByID", employeeID);
+            List<HREmployeesInfo> employees = (List<HREmployeesInfo>)GetListFromDataSet(ds);
+            if (employees != null && employees.Count > 0)
+                return employees[0];
+            return null;
+        }
     }
     #endregion
 }

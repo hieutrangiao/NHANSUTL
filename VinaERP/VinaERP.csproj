@@ -355,6 +355,66 @@
     <Compile Include="Modules\HR\Allowance\UI\SMAW100.Designer.cs">
       <DependentUpon>SMAW100.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modules\HR\ArrangementShift\ArrangementShiftEntities.cs" />
+    <Compile Include="Modules\HR\ArrangementShift\ArrangementShiftModule.cs" />
+    <Compile Include="Modules\HR\ArrangementShift\UI\DMAR100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\ArrangementShift\UI\DMAR100.Designer.cs">
+      <DependentUpon>DMAR100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HR\ArrangementShift\UI\GridControl\HREmployeeArrangementShiftsGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\ArrangementShift\UI\SMAR100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\ArrangementShift\UI\SMAR100.Designer.cs">
+      <DependentUpon>SMAR100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HR\PayRoll\PayRollModule.cs" />
+    <Compile Include="Modules\HR\PayRoll\PayRollEntities.cs" />
+    <Compile Include="Modules\HR\PayRoll\UI\DMPR100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\PayRoll\UI\DMPR100.Designer.cs">
+      <DependentUpon>DMPR100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HR\PayRoll\UI\GridControl\HREmployeePayRollsGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\PayRoll\UI\GridControl\HRTimeSheetsGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\PayRoll\UI\guiChooseTimeSheets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\PayRoll\UI\guiChooseTimeSheets.Designer.cs">
+      <DependentUpon>guiChooseTimeSheets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HR\PayRoll\UI\SMPR100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\PayRoll\UI\SMPR100.Designer.cs">
+      <DependentUpon>SMPR100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HR\TimeSheet\TimeSheetEntities.cs" />
+    <Compile Include="Modules\HR\TimeSheet\TimeSheetModule.cs" />
+    <Compile Include="Modules\HR\TimeSheet\UI\DMTS100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\TimeSheet\UI\DMTS100.Designer.cs">
+      <DependentUpon>DMTS100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HR\TimeSheet\UI\GridControl\HREmployeeTimeSheetsGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\TimeSheet\UI\SMTS100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\TimeSheet\UI\SMTS100.Designer.cs">
+      <DependentUpon>SMTS100.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modules\HR\Reward\RewardEntities.cs" />
     <Compile Include="Modules\HR\Reward\RewardModule.cs" />
     <Compile Include="Modules\HR\Reward\UI\DMRW100.cs">
@@ -610,6 +670,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modules\HR\Allowance\UI\SMAW100.resx">
       <DependentUpon>SMAW100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HR\ArrangementShift\UI\DMAR100.resx">
+      <DependentUpon>DMAR100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HR\ArrangementShift\UI\SMAR100.resx">
+      <DependentUpon>SMAR100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HR\PayRoll\UI\DMPR100.resx">
+      <DependentUpon>DMPR100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HR\PayRoll\UI\guiChooseTimeSheets.resx">
+      <DependentUpon>guiChooseTimeSheets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HR\PayRoll\UI\SMPR100.resx">
+      <DependentUpon>SMPR100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HR\TimeSheet\UI\DMTS100.resx">
+      <DependentUpon>DMTS100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HR\TimeSheet\UI\SMTS100.resx">
+      <DependentUpon>SMTS100.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modules\HR\Reward\UI\DMRW100.resx">
       <DependentUpon>DMRW100.cs</DependentUpon>

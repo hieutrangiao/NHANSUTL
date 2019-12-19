@@ -3,7 +3,7 @@ using System.Data;
 using System.Text;
 using System.Collections.Generic;
 using VinaLib;
-
+using System.Collections;
 
 namespace VinaERP
 {
@@ -25,6 +25,20 @@ namespace VinaERP
         {
             DataSet ds = dal.GetDataSet("HRAllowanceConfigs_GetAllowanceConfigByFKEmployeePayrollFormula", employeePayrollFormularID);
             return (List<HRAllowanceConfigsInfo>)GetListFromDataSet(ds);
+        }
+
+        public override IList GetListFromDataSet(DataSet ds)
+        {
+            List<HRAllowanceConfigsInfo> list = new List<HRAllowanceConfigsInfo>();
+            if (ds.Tables.Count > 0)
+            {
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    HRAllowanceConfigsInfo obj = (HRAllowanceConfigsInfo)GetObjectFromDataRow(row);
+                    list.Add(obj);
+                }
+            }
+            return list;
         }
     }
     #endregion

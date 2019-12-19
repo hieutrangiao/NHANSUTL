@@ -24,6 +24,14 @@ namespace VinaERP
         {
             return dal.GetDataSet("HREmployeeDisciplines_GetEmployeeDisciplineListByDisciplineID", disciplineID);
         }
+
+        public HREmployeeDisciplinesInfo GetEmployeeDisciplinesInfoByEmployeeIDAndDisciplineID(int employeeID, int disciplineID)
+        {
+            DataSet ds = dal.GetDataSet("HREmployeeDisciplines_GetEmployeeDisciplinesInfoByEmployeeIDAndDisciplineID", employeeID, disciplineID);
+            if (ds.Tables.Count > 0)
+                return (HREmployeeDisciplinesInfo)dal.GetSingleObject(ds.Tables[0]);
+            return null;
+        }
     }
     #endregion
 }

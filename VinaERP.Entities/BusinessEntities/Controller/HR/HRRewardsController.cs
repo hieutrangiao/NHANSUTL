@@ -20,6 +20,11 @@ namespace VinaERP
         {
             dal = new DALBaseProvider("HRRewards", typeof(HRRewardsInfo));
         }
+
+        public DataSet GetRewardListByEmployeeIDAndRewardFromDate(int employeeID, DateTime dateFrom, DateTime dateTo)
+        {
+            return dal.GetDataSet("HRRewards_GetRewardListByEmployeeIDAndRewardFromDate", employeeID, dateFrom, dateTo);
+        }
     }
     #endregion
 }

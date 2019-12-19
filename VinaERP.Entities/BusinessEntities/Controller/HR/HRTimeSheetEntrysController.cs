@@ -20,6 +20,36 @@ namespace VinaERP
         {
             dal = new DALBaseProvider("HRTimeSheetEntrys", typeof(HRTimeSheetEntrysInfo));
         }
+
+        public List<HRTimeSheetEntrysInfo> GetTimeSheetEntryByTimeSheetIDAndEmployeeTimeSheetID(int timeSheetID, int employeeTimeSheetID)
+        {
+            List<HRTimeSheetEntrysInfo> timeSheetEntryList = new List<HRTimeSheetEntrysInfo>();
+            DataSet ds = dal.GetDataSet("HRTimeSheetEntrys_GetTimeSheetEntrysByTimeSheetIDAndEmployeeTimeSheetID", timeSheetID, employeeTimeSheetID);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    HRTimeSheetEntrysInfo objTimeSheetEntrysInfo = (HRTimeSheetEntrysInfo)GetObjectFromDataRow(row);
+                    timeSheetEntryList.Add(objTimeSheetEntrysInfo);
+                }
+            }
+            return timeSheetEntryList;
+        }
+
+        public List<HRTimeSheetEntrysInfo> GetTotalTimeSheetEntryByTimeSheetIDAndEmployeeTimeSheetID(int timeSheetID, int employeeTimeSheetID)
+        {
+            List<HRTimeSheetEntrysInfo> timeSheetEntryList = new List<HRTimeSheetEntrysInfo>();
+            DataSet ds = dal.GetDataSet("HRTimeSheetEntrys_GetTotalTimeSheetEntryByTimeSheetIDAndEmployeeTimeSheetID", timeSheetID, employeeTimeSheetID);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    HRTimeSheetEntrysInfo objTimeSheetEntrysInfo = (HRTimeSheetEntrysInfo)GetObjectFromDataRow(row);
+                    timeSheetEntryList.Add(objTimeSheetEntrysInfo);
+                }
+            }
+            return timeSheetEntryList;
+        }
     }
     #endregion
 }

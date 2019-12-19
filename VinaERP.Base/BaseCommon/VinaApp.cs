@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VinaCommon;
 using VinaERP.Common.Constant.IC;
 using VinaERP.Utilities;
 using VinaLib;
@@ -434,6 +435,28 @@ namespace VinaERP
             Regex regex = new Regex(@"\p{IsCombiningDiacriticalMarks}+");
             string strFormD = text.Normalize(System.Text.NormalizationForm.FormD);
             return regex.Replace(strFormD, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
+        }
+
+        public static bool IsEndOfWeek(DayOfWeek dayOfWeek)
+        {
+            if (dayOfWeek.Equals(DayOfWeek.Sunday))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public static bool IsHoliday(DateTime date)
+        {
+            HRCalendarEntrysInfo objCalendarEntrysInfo = new HRCalendarEntrysInfo();
+            HRCalendarEntrysController objCalendarEntrysController = new HRCalendarEntrysController();
+            List<HRCalendarEntrysInfo> entries = objCalendarEntrysController.GetCalendarEntryByDateAndCalenderType(date, CalendarType.Holiday.ToString());
+            foreach (HRCalendarEntrysInfo entry in entries)
+            {
+                if (date.Day == entry.HRCalendarEntryDate.Day)
+                    return true;
+            }
+            return false;
         }
     }
 }

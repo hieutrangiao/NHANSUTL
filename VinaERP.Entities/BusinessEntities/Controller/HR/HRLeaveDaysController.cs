@@ -60,6 +60,32 @@ namespace VinaERP
             }
             return list;
         }
+
+        public List<HRLeaveDaysInfo> GetLeaveDayList(DateTime? dateFrom, DateTime? dateTo)
+        {
+            return GetLeaveDayList(null, null, null, null, null, dateFrom, dateTo);
+        }
+
+        public List<HRLeaveDaysInfo> GetLeaveDayList(int? branchID, int? departmentID, int? departmentRoomID, int? departmentRoomGroupItemID, int? employeeID, DateTime? dateFrom, DateTime? dateTo)
+        {
+            DataSet ds = dal.GetDataSet("HRLeaveDays_GetLeaveDayList", branchID, departmentID, departmentRoomID, departmentRoomGroupItemID, employeeID, dateFrom, dateTo);
+            return (List<HRLeaveDaysInfo>)GetListFromDataSet(ds);
+        }
+
+        public List<HRLeaveDaysInfo> GetLeaveDayListByHRTimeSheet(DateTime? dateFrom, DateTime? dateTo)
+        {
+            DataSet ds = dal.GetDataSet("HRLeaveDays_GetLeaveDayListByHRTimeSheet", dateFrom, dateTo);
+            List<HRLeaveDaysInfo> leaveDays = new List<HRLeaveDaysInfo>();
+            if (ds.Tables.Count > 0)
+            {
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    HRLeaveDaysInfo leaveDay = (HRLeaveDaysInfo)GetObjectFromDataRow(row);
+                    leaveDays.Add(leaveDay);
+                }
+            }
+            return leaveDays;
+        }
     }
     #endregion
 }

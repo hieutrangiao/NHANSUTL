@@ -255,7 +255,7 @@ namespace VinaERP
         public String a20 { get; set; }
         public String a215 { get; set; }
         public List<HRTimeSheetEntrysInfo> HRTimeSheetEntrysList { get; set; }
-        //public List<HREmployeeTimeSheetOTDetailsInfo> HREmployeeTimeSheetOTDetailsList { get; set; }
+        public List<HREmployeeTimeSheetOTDetailsInfo> HREmployeeTimeSheetOTDetailsList { get; set; }
 
         public DateTime HREmployeeStartWorkingTime { get; set; }
 

@@ -35,6 +35,12 @@ namespace VinaERP
             return timeSheetParamList;
         }
 
+        public List<HRTimeSheetParamsInfo> GetTimeSheetParamsList()
+        {
+            DataSet ds = dal.GetAllObject();
+            return (List<HRTimeSheetParamsInfo>)GetListFromDataSet(ds);
+        }
+
         public List<HRTimeSheetParamsInfo> GetOTTimeSheetParamsList()
         {
             DataSet ds = dal.GetDataSet("HRTimeSheetParams_GetOTTimeSheetParamList");
@@ -44,6 +50,18 @@ namespace VinaERP
         public List<HRTimeSheetParamsInfo> GetTimeSheetParamsByTimeSheetType(string timeSheetParamType)
         {
             DataSet ds = dal.GetDataSet("HRTimeSheetParams_GetTimeSheetParamList", timeSheetParamType);
+            return (List<HRTimeSheetParamsInfo>)GetListFromDataSet(ds);
+        }
+
+        public List<HRTimeSheetParamsInfo> GetTimeSheetParamsList(string paramType)
+        {
+            DataSet ds = dal.GetDataSet("HRTimeSheetParams_GetTimeSheetParamList", paramType);
+            return (List<HRTimeSheetParamsInfo>)GetListFromDataSet(ds);
+        }
+
+        public List<HRTimeSheetParamsInfo> GetDistinctOTTimeSheetParamsList()
+        {
+            DataSet ds = dal.GetDataSet("HRTimeSheetParams_GetDistinctOTTimeSheetParamsList");
             return (List<HRTimeSheetParamsInfo>)GetListFromDataSet(ds);
         }
     }

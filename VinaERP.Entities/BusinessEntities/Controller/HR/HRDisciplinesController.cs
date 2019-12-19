@@ -20,6 +20,11 @@ namespace VinaERP
         {
             dal = new DALBaseProvider("HRDisciplines", typeof(HRDisciplinesInfo));
         }
+
+        public DataSet GetDisciplineListByEmployeeIDAndDisciplineFromDate(int employeeID, DateTime dateFrom, DateTime dateTo)
+        {
+            return dal.GetDataSet("HRDisciplines_GetDisciplineListByEmployeeIDAndDisciplineFromDate", employeeID, dateFrom, dateTo);
+        }
     }
     #endregion
 }

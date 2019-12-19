@@ -3,7 +3,7 @@ using System.Data;
 using System.Text;
 using System.Collections.Generic;
 using VinaLib;
-
+using System.Collections;
 
 namespace VinaERP
 {
@@ -33,6 +33,26 @@ namespace VinaERP
                 }
             }
             return null;
+        }
+
+        public List<HREmployeeTimeSheetsInfo> GetEmployeeTimeSheetByTimeSheetIDAndUserGroup(int timeSheetID, int userGroupID)
+        {
+            DataSet ds = dal.GetDataSet("HREmployeeTimeSheets_GetEmployeeTimeSheetByTimeSheetIDAndUserGroup", timeSheetID, userGroupID);
+            return (List<HREmployeeTimeSheetsInfo>)GetListFromDataSet(ds);
+        }
+
+        public override IList GetListFromDataSet(DataSet ds)
+        {
+            List<HREmployeeTimeSheetsInfo> list = new List<HREmployeeTimeSheetsInfo>();
+            if (ds.Tables.Count > 0)
+            {
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    HREmployeeTimeSheetsInfo obj = (HREmployeeTimeSheetsInfo)GetObjectFromDataRow(row);
+                    list.Add(obj);
+                }
+            }
+            return list;
         }
     }
     #endregion
