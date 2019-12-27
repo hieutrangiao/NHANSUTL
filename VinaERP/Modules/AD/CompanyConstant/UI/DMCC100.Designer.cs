@@ -38,7 +38,11 @@ namespace VinaERP.Modules.CompanyConstant.UI
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
+            this.fld_dgcTimeSheetParams = new VinaERP.Modules.CompanyConstant.HRTimeSheetParamGridControl();
+            this.gridView9 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
+            this.fld_dgcTimeSheetParams2 = new VinaERP.Modules.CompanyConstant.HRTimeSheetParam2GridControl();
+            this.gridView10 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.fld_tpgReward = new DevExpress.XtraTab.XtraTabPage();
             this.fld_btnSaveRewardType = new DevExpress.XtraEditors.SimpleButton();
             this.fld_dgcRewardTypes = new VinaERP.Modules.CompanyConstant.RewardTypesGridControl();
@@ -70,7 +74,6 @@ namespace VinaERP.Modules.CompanyConstant.UI
             this.xtraTabPage12 = new DevExpress.XtraTab.XtraTabPage();
             this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.fld_txtADInsurranceSyndicatePaymentPercent = new VinaLib.BaseProvider.VinaTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -90,10 +93,6 @@ namespace VinaERP.Modules.CompanyConstant.UI
             this.fld_txtHRInsurranceHealthInsPercent = new VinaLib.BaseProvider.VinaTextBox();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.fld_txtHRInsurranceSocialInsPercent = new VinaLib.BaseProvider.VinaTextBox();
-            this.fld_dgcTimeSheetParams = new VinaERP.Modules.CompanyConstant.HRTimeSheetParamGridControl();
-            this.gridView9 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.fld_dgcTimeSheetParams2 = new VinaERP.Modules.CompanyConstant.HRTimeSheetParam2GridControl();
-            this.gridView10 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -103,7 +102,11 @@ namespace VinaERP.Modules.CompanyConstant.UI
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).BeginInit();
             this.xtraTabControl2.SuspendLayout();
             this.xtraTabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fld_dgcTimeSheetParams)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView9)).BeginInit();
             this.xtraTabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fld_dgcTimeSheetParams2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView10)).BeginInit();
             this.fld_tpgReward.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fld_dgcRewardTypes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -137,10 +140,6 @@ namespace VinaERP.Modules.CompanyConstant.UI
             ((System.ComponentModel.ISupportInitialize)(this.fld_txtHRInsurranceOutOfWorkInsPercent.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fld_txtHRInsurranceHealthInsPercent.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fld_txtHRInsurranceSocialInsPercent.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fld_dgcTimeSheetParams)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fld_dgcTimeSheetParams2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView10)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraTabControl1
@@ -229,12 +228,54 @@ namespace VinaERP.Modules.CompanyConstant.UI
             this.xtraTabPage3.Size = new System.Drawing.Size(987, 502);
             this.xtraTabPage3.Text = "Cấu hình hệ số công";
             // 
+            // fld_dgcTimeSheetParams
+            // 
+            this.fld_dgcTimeSheetParams.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.fld_dgcTimeSheetParams.Location = new System.Drawing.Point(-3, 5);
+            this.fld_dgcTimeSheetParams.MainView = this.gridView9;
+            this.fld_dgcTimeSheetParams.Name = "fld_dgcTimeSheetParams";
+            this.fld_dgcTimeSheetParams.Screen = null;
+            this.fld_dgcTimeSheetParams.Size = new System.Drawing.Size(993, 492);
+            this.fld_dgcTimeSheetParams.TabIndex = 19;
+            this.fld_dgcTimeSheetParams.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView9});
+            this.fld_dgcTimeSheetParams.VinaDataMember = null;
+            this.fld_dgcTimeSheetParams.VinaDataSource = "HRTimeSheetParams";
+            this.fld_dgcTimeSheetParams.VinaPropertyName = null;
+            // 
+            // gridView9
+            // 
+            this.gridView9.GridControl = this.fld_dgcTimeSheetParams;
+            this.gridView9.Name = "gridView9";
+            // 
             // xtraTabPage4
             // 
             this.xtraTabPage4.Controls.Add(this.fld_dgcTimeSheetParams2);
             this.xtraTabPage4.Name = "xtraTabPage4";
             this.xtraTabPage4.Size = new System.Drawing.Size(987, 502);
             this.xtraTabPage4.Text = "Cấu hình hệ số tăng ca";
+            // 
+            // fld_dgcTimeSheetParams2
+            // 
+            this.fld_dgcTimeSheetParams2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.fld_dgcTimeSheetParams2.Location = new System.Drawing.Point(-3, 5);
+            this.fld_dgcTimeSheetParams2.MainView = this.gridView10;
+            this.fld_dgcTimeSheetParams2.Name = "fld_dgcTimeSheetParams2";
+            this.fld_dgcTimeSheetParams2.Screen = null;
+            this.fld_dgcTimeSheetParams2.Size = new System.Drawing.Size(993, 492);
+            this.fld_dgcTimeSheetParams2.TabIndex = 19;
+            this.fld_dgcTimeSheetParams2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView10});
+            this.fld_dgcTimeSheetParams2.VinaDataMember = null;
+            this.fld_dgcTimeSheetParams2.VinaDataSource = "HRTimeSheetParams";
+            this.fld_dgcTimeSheetParams2.VinaPropertyName = null;
+            // 
+            // gridView10
+            // 
+            this.gridView10.GridControl = this.fld_dgcTimeSheetParams2;
+            this.gridView10.Name = "gridView10";
             // 
             // fld_tpgReward
             // 
@@ -529,7 +570,6 @@ namespace VinaERP.Modules.CompanyConstant.UI
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.simpleButton7);
             this.groupBox2.Controls.Add(this.labelControl8);
             this.groupBox2.Controls.Add(this.fld_txtADInsurranceSyndicatePaymentPercent);
             this.groupBox2.Location = new System.Drawing.Point(3, 142);
@@ -538,16 +578,6 @@ namespace VinaERP.Modules.CompanyConstant.UI
             this.groupBox2.TabIndex = 78;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Phí công đoàn";
-            // 
-            // simpleButton7
-            // 
-            this.simpleButton7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton7.Location = new System.Drawing.Point(398, 14);
-            this.simpleButton7.Name = "simpleButton7";
-            this.simpleButton7.Size = new System.Drawing.Size(249, 25);
-            this.simpleButton7.TabIndex = 80;
-            this.simpleButton7.Text = "Áp dụng cho tất cả nhân viên có tham gia BHXH";
-            this.simpleButton7.Click += new System.EventHandler(this.simpleButton7_Click);
             // 
             // labelControl8
             // 
@@ -790,48 +820,6 @@ namespace VinaERP.Modules.CompanyConstant.UI
             this.fld_txtHRInsurranceSocialInsPercent.VinaDataSource = "ADInsurrances";
             this.fld_txtHRInsurranceSocialInsPercent.VinaPropertyName = "EditValue";
             // 
-            // fld_dgcTimeSheetParams
-            // 
-            this.fld_dgcTimeSheetParams.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fld_dgcTimeSheetParams.Location = new System.Drawing.Point(-3, 5);
-            this.fld_dgcTimeSheetParams.MainView = this.gridView9;
-            this.fld_dgcTimeSheetParams.Name = "fld_dgcTimeSheetParams";
-            this.fld_dgcTimeSheetParams.Screen = null;
-            this.fld_dgcTimeSheetParams.Size = new System.Drawing.Size(993, 492);
-            this.fld_dgcTimeSheetParams.TabIndex = 19;
-            this.fld_dgcTimeSheetParams.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView9});
-            this.fld_dgcTimeSheetParams.VinaDataMember = null;
-            this.fld_dgcTimeSheetParams.VinaDataSource = "HRTimeSheetParams";
-            this.fld_dgcTimeSheetParams.VinaPropertyName = null;
-            // 
-            // gridView9
-            // 
-            this.gridView9.GridControl = this.fld_dgcTimeSheetParams;
-            this.gridView9.Name = "gridView9";
-            // 
-            // fld_dgcTimeSheetParams2
-            // 
-            this.fld_dgcTimeSheetParams2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fld_dgcTimeSheetParams2.Location = new System.Drawing.Point(-3, 5);
-            this.fld_dgcTimeSheetParams2.MainView = this.gridView10;
-            this.fld_dgcTimeSheetParams2.Name = "fld_dgcTimeSheetParams2";
-            this.fld_dgcTimeSheetParams2.Screen = null;
-            this.fld_dgcTimeSheetParams2.Size = new System.Drawing.Size(993, 492);
-            this.fld_dgcTimeSheetParams2.TabIndex = 19;
-            this.fld_dgcTimeSheetParams2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView10});
-            this.fld_dgcTimeSheetParams2.VinaDataMember = null;
-            this.fld_dgcTimeSheetParams2.VinaDataSource = "HRTimeSheetParams";
-            this.fld_dgcTimeSheetParams2.VinaPropertyName = null;
-            // 
-            // gridView10
-            // 
-            this.gridView10.GridControl = this.fld_dgcTimeSheetParams2;
-            this.gridView10.Name = "gridView10";
-            // 
             // DMCC100
             // 
             this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -851,7 +839,11 @@ namespace VinaERP.Modules.CompanyConstant.UI
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).EndInit();
             this.xtraTabControl2.ResumeLayout(false);
             this.xtraTabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.fld_dgcTimeSheetParams)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView9)).EndInit();
             this.xtraTabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.fld_dgcTimeSheetParams2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView10)).EndInit();
             this.fld_tpgReward.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.fld_dgcRewardTypes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
@@ -887,10 +879,6 @@ namespace VinaERP.Modules.CompanyConstant.UI
             ((System.ComponentModel.ISupportInitialize)(this.fld_txtHRInsurranceOutOfWorkInsPercent.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fld_txtHRInsurranceHealthInsPercent.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fld_txtHRInsurranceSocialInsPercent.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fld_dgcTimeSheetParams)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fld_dgcTimeSheetParams2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView10)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -953,7 +941,6 @@ namespace VinaERP.Modules.CompanyConstant.UI
         private VinaTextBox fld_txtADInsurranceSyndicatePaymentPercent;
         private DevExpress.XtraEditors.SimpleButton simpleButton6;
         private DevExpress.XtraEditors.SimpleButton simpleButton8;
-        private DevExpress.XtraEditors.SimpleButton simpleButton7;
         private ADWorkingShiftsGridControl fld_dgcWorkingShifts;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView8;
         private DevExpress.XtraEditors.SimpleButton simpleButton9;

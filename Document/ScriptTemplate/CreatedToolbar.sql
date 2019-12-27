@@ -1,5 +1,4 @@
-﻿
-INSERT INTO dbo.STToolbars
+﻿INSERT INTO dbo.STToolbars
 (
     STToolbarID,
     AAStatus,

@@ -170,112 +170,6 @@
     </Compile>
     <Compile Include="Modules\AD\UserManagement\UserManagementEntities.cs" />
     <Compile Include="Modules\AD\UserManagement\UserManagementModule.cs" />
-    <Compile Include="Modules\AR\Customer\CustomerEntities.cs" />
-    <Compile Include="Modules\AR\Customer\CustomerModule.cs" />
-    <Compile Include="Modules\AR\Customer\UI\DMCU100.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modules\AR\Customer\UI\DMCU100.Designer.cs">
-      <DependentUpon>DMCU100.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\AR\Customer\UI\SMCU100.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modules\AR\Customer\UI\SMCU100.Designer.cs">
-      <DependentUpon>SMCU100.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\AR\Invoice\InvoiceEntities.cs" />
-    <Compile Include="Modules\AR\Invoice\InvoiceModule.cs" />
-    <Compile Include="Modules\AR\Invoice\UI\DMIV100.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modules\AR\Invoice\UI\DMIV100.Designer.cs">
-      <DependentUpon>DMIV100.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\AR\Invoice\UI\GridControl\ARInvoiceItemsGridControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Modules\AR\Invoice\UI\GridControl\ARInvoicePaymentTimesGridControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Modules\AR\Invoice\UI\GridControl\ICShipmentItemsGridControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Modules\AR\Invoice\UI\guiChooseShipmentItem.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modules\AR\Invoice\UI\guiChooseShipmentItem.Designer.cs">
-      <DependentUpon>guiChooseShipmentItem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\AR\Invoice\UI\SMIV100.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modules\AR\Invoice\UI\SMIV100.Designer.cs">
-      <DependentUpon>SMIV100.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\AR\Proposal\ProposalEntities.cs" />
-    <Compile Include="Modules\AR\Proposal\ProposalModule.cs" />
-    <Compile Include="Modules\AR\Proposal\UI\DMPS100.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modules\AR\Proposal\UI\DMPS100.Designer.cs">
-      <DependentUpon>DMPS100.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\AR\Proposal\UI\GridControl\ARProposalItemsGridControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Modules\AR\Proposal\UI\SMPS100.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modules\AR\Proposal\UI\SMPS100.Designer.cs">
-      <DependentUpon>SMPS100.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\AR\SaleOrder\SaleOrderEntities.cs" />
-    <Compile Include="Modules\AR\SaleOrder\SaleOrderModule.cs" />
-    <Compile Include="Modules\AR\SaleOrder\UI\DMSO100.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modules\AR\SaleOrder\UI\DMSO100.Designer.cs">
-      <DependentUpon>DMSO100.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\AR\SaleOrder\UI\GridControl\ARProposalsGridControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Modules\AR\SaleOrder\UI\GridControl\ARSaleOrderItemsGridControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Modules\AR\SaleOrder\UI\GridControl\ARSaleOrderPaymentTimesGridControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Modules\AR\SaleOrder\UI\guichooseProposal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modules\AR\SaleOrder\UI\guichooseProposal.Designer.cs">
-      <DependentUpon>guichooseProposal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\AR\SaleOrder\UI\SMSO100.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modules\AR\SaleOrder\UI\SMSO100.Designer.cs">
-      <DependentUpon>SMSO100.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\GE\PaymentTerm\PaymentTermEntities.cs" />
-    <Compile Include="Modules\GE\PaymentTerm\PaymentTermModule.cs" />
-    <Compile Include="Modules\GE\PaymentTerm\UI\DMPT100.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modules\GE\PaymentTerm\UI\DMPT100.Designer.cs">
-      <DependentUpon>DMPT100.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\GE\PaymentTerm\UI\GridControl\GEPaymentTermItemGridControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Modules\GE\PaymentTerm\UI\SMPT100.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modules\GE\PaymentTerm\UI\SMPT100.Designer.cs">
-      <DependentUpon>SMPT100.cs</DependentUpon>
-    </Compile>
     <Compile Include="Modules\HR\LeaveDay\LeaveDayEntities.cs" />
     <Compile Include="Modules\HR\LeaveDay\LeaveDayModule.cs" />
     <Compile Include="Modules\HR\LeaveDay\UI\DMLD100.cs">
@@ -486,83 +380,6 @@
     <Compile Include="Modules\HR\Employee\UI\SMHR100.Designer.cs">
       <DependentUpon>SMHR100.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modules\IC\InventoryStatistics\InventoryStatisticsEntities.cs" />
-    <Compile Include="Modules\IC\InventoryStatistics\InventoryStatisticsModule.cs" />
-    <Compile Include="Modules\IC\InventoryStatistics\UI\DMISS100.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modules\IC\InventoryStatistics\UI\DMISS100.Designer.cs">
-      <DependentUpon>DMISS100.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\IC\InventoryStatistics\UI\GridControl\ICTransactionsGridControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Modules\IC\Product\ProductEntities.cs" />
-    <Compile Include="Modules\IC\Product\ProductModule.cs" />
-    <Compile Include="Modules\IC\Product\UI\DMPD101.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modules\IC\Product\UI\DMPD101.Designer.cs">
-      <DependentUpon>DMPD101.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\IC\Product\UI\DMPD100.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modules\IC\Product\UI\DMPD100.Designer.cs">
-      <DependentUpon>DMPD100.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\IC\Product\UI\GridControl\ICProductMeasureUnitsGridControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Modules\IC\Product\UI\SMPD100.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modules\IC\Product\UI\SMPD100.Designer.cs">
-      <DependentUpon>SMPD100.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\IC\Receipt\ReceiptEntities.cs" />
-    <Compile Include="Modules\IC\Receipt\ReceiptModule.cs" />
-    <Compile Include="Modules\IC\Receipt\UI\DMRC100.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modules\IC\Receipt\UI\DMRC100.Designer.cs">
-      <DependentUpon>DMRC100.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\IC\Receipt\UI\GridControl\ICReceiptItemsGridControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Modules\IC\Receipt\UI\SMRC100.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modules\IC\Receipt\UI\SMRC100.Designer.cs">
-      <DependentUpon>SMRC100.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\IC\SaleOrderShipment\SaleOrderShipmentEntities.cs" />
-    <Compile Include="Modules\IC\SaleOrderShipment\SaleOrderShipmentModule.cs" />
-    <Compile Include="Modules\IC\SaleOrderShipment\UI\DMSSO100.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modules\IC\SaleOrderShipment\UI\DMSSO100.Designer.cs">
-      <DependentUpon>DMSSO100.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\IC\SaleOrderShipment\UI\GridControl\ARSaleOrderItemsGridControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Modules\IC\SaleOrderShipment\UI\GridControl\ICShipmentItemsGridControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Modules\IC\SaleOrderShipment\UI\guiChooseSaleOrderItem.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modules\IC\SaleOrderShipment\UI\guiChooseSaleOrderItem.Designer.cs">
-      <DependentUpon>guiChooseSaleOrderItem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\IC\SaleOrderShipment\UI\SMSSO100.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modules\IC\SaleOrderShipment\UI\SMSSO100.Designer.cs">
-      <DependentUpon>SMSSO100.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\GridControl\HREmployeesGridControl.cs">
@@ -575,12 +392,6 @@
       <DependentUpon>guiSearchEmployee.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\GenaralLeadger\GLHelper.cs" />
-    <Compile Include="Utilities\GenaralLeadger\GLReceiptEntities.cs" />
-    <Compile Include="Utilities\GenaralLeadger\GLReceiptModule.cs" />
-    <Compile Include="Utilities\GenaralLeadger\GLShipmentEntities.cs" />
-    <Compile Include="Utilities\GenaralLeadger\GLShipmentModule.cs" />
-    <Compile Include="Utilities\Helper\ProductExtensions.cs" />
-    <Compile Include="Utilities\Helper\SaleOrderItemExtensions.cs" />
     <Compile Include="Utilities\ItemGridControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -607,42 +418,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modules\AD\UserManagement\UI\guiUserManagement.resx">
       <DependentUpon>guiUserManagement.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modules\AR\Customer\UI\DMCU100.resx">
-      <DependentUpon>DMCU100.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modules\AR\Customer\UI\SMCU100.resx">
-      <DependentUpon>SMCU100.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modules\AR\Invoice\UI\DMIV100.resx">
-      <DependentUpon>DMIV100.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modules\AR\Invoice\UI\guiChooseShipmentItem.resx">
-      <DependentUpon>guiChooseShipmentItem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modules\AR\Invoice\UI\SMIV100.resx">
-      <DependentUpon>SMIV100.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modules\AR\Proposal\UI\DMPS100.resx">
-      <DependentUpon>DMPS100.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modules\AR\Proposal\UI\SMPS100.resx">
-      <DependentUpon>SMPS100.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modules\AR\SaleOrder\UI\DMSO100.resx">
-      <DependentUpon>DMSO100.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modules\AR\SaleOrder\UI\guichooseProposal.resx">
-      <DependentUpon>guichooseProposal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modules\AR\SaleOrder\UI\SMSO100.resx">
-      <DependentUpon>SMSO100.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modules\GE\PaymentTerm\UI\DMPT100.resx">
-      <DependentUpon>DMPT100.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modules\GE\PaymentTerm\UI\SMPT100.resx">
-      <DependentUpon>SMPT100.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modules\HR\LeaveDay\UI\DMLD100.resx">
       <DependentUpon>DMLD100.cs</DependentUpon>
@@ -719,33 +494,6 @@
     <EmbeddedResource Include="Modules\HR\Employee\UI\SMHR100.resx">
       <DependentUpon>SMHR100.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modules\IC\InventoryStatistics\UI\DMISS100.resx">
-      <DependentUpon>DMISS100.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modules\IC\Product\UI\DMPD101.resx">
-      <DependentUpon>DMPD101.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modules\IC\Product\UI\DMPD100.resx">
-      <DependentUpon>DMPD100.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modules\IC\Product\UI\SMPD100.resx">
-      <DependentUpon>SMPD100.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modules\IC\Receipt\UI\DMRC100.resx">
-      <DependentUpon>DMRC100.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modules\IC\Receipt\UI\SMRC100.resx">
-      <DependentUpon>SMRC100.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modules\IC\SaleOrderShipment\UI\DMSSO100.resx">
-      <DependentUpon>DMSSO100.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modules\IC\SaleOrderShipment\UI\guiChooseSaleOrderItem.resx">
-      <DependentUpon>guiChooseSaleOrderItem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modules\IC\SaleOrderShipment\UI\SMSSO100.resx">
-      <DependentUpon>SMSSO100.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -799,8 +547,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Modules\AD\UserManagement\Localization\" />
-    <Folder Include="Modules\AR\Customer\UI\GridControl\" />
     <Folder Include="Modules\HR\Employee\UI\GridControl\" />
+    <Folder Include="Utilities\Helper\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo_tylien_Z8M_icon.ico" />

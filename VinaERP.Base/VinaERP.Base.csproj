@@ -145,15 +145,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="UI\GridControl\ICInventoryStocksGridControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UI\guiShowInventoryStock.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\guiShowInventoryStock.Designer.cs">
-      <DependentUpon>guiShowInventoryStock.cs</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -180,9 +171,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\guiShowInventoryStock.resx">
-      <DependentUpon>guiShowInventoryStock.cs</DependentUpon>
-    </EmbeddedResource>
     <Resource Include="Localization\BaseLocationResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>BaseLocationResource.Designer.cs</LastGenOutput>
@@ -206,6 +194,8 @@
       <Name>VinaLib</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="UI\GridControl\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

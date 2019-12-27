@@ -47,7 +47,8 @@ namespace VinaERP.Modules.UserManagement.UI
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
                     STModulesInfo objModulesInfo = (STModulesInfo)objModulesController.GetObjectFromDataRow(row);
-                    lstModules.Add(objModulesInfo);
+                    if(objModulesInfo.AAStatus != "Delete")
+                        lstModules.Add(objModulesInfo);
                 }
                 fld_dgcModuleNoneActiveGridControl.DataSource = lstModules;
                 fld_dgcModuleNoneActiveGridControl.RefreshDataSource();

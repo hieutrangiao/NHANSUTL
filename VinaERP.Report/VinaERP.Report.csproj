@@ -65,29 +65,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Report\AR\ARSaleOrder.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Report\AR\ARSaleOrder.Designer.cs">
-      <DependentUpon>ARSaleOrder.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Report\AR\ARInvoice.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Report\AR\ARInvoice.Designer.cs">
-      <DependentUpon>ARInvoice.cs</DependentUpon>
-    </Compile>
     <Compile Include="Report\BaseReport.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Report\BaseReport.Designer.cs">
       <DependentUpon>BaseReport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Report\IC\ICSaleOrderShipment.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Report\IC\ICSaleOrderShipment.Designer.cs">
-      <DependentUpon>ICSaleOrderShipment.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -111,17 +93,6 @@
       <Project>{7f874583-c8dd-4ee0-8644-8236309fd706}</Project>
       <Name>VinaLib</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Report\AR\ARSaleOrder.resx">
-      <DependentUpon>ARSaleOrder.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report\AR\ARInvoice.resx">
-      <DependentUpon>ARInvoice.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report\IC\ICSaleOrderShipment.resx">
-      <DependentUpon>ICSaleOrderShipment.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\DataSources\VinaERP.ARSaleOrderItemsInfo.datasource" />

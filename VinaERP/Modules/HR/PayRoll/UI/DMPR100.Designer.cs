@@ -90,6 +90,7 @@ namespace VinaERP.Modules.PayRoll.UI
             this.simpleButton9.Size = new System.Drawing.Size(113, 25);
             this.simpleButton9.TabIndex = 131;
             this.simpleButton9.Text = "Thêm nhân viên";
+            this.simpleButton9.Visible = false;
             this.simpleButton9.Click += new System.EventHandler(this.simpleButton9_Click);
             // 
             // fld_dgcHREmployeePayRolls

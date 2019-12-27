@@ -336,20 +336,7 @@ namespace VinaERP
             DataSet ds = new DataSet();
             if (objBusinessController != null)
             {
-                switch (lookupTableName)
-                {
-                    case "ICStocks":
-                        {
-                            ICStocksController objStocksController = new ICStocksController();
-                            ds = objStocksController.GetStockByStockType(StockType.Sale); ;
-                            break;
-                        }
-                    default:
-                        {
-                            ds = objBusinessController.GetAllObjects();
-                            break;
-                        }
-                }
+                ds = objBusinessController.GetAllObjects();
             }
             return ds;
         }

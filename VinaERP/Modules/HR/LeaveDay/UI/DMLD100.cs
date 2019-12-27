@@ -28,7 +28,7 @@ namespace VinaERP.Modules.LeaveDay.UI
             entity.LeaveDaysList.InitVinaListGridControl(fld_dgcHRDepartmentRooms);
             fld_lkeHREmployeeID.Screen = this;
             fld_lkeHREmployeeID.InitializeControl();
-            fld_lkeHREmployeeID.Properties.DataSource = VinaApp.GetLookupTableData("HREmployees");
+
             fld_lkeFK_BRBranchID.Screen = this;
             fld_lkeFK_BRBranchID.InitializeControl();
             fld_lkeFK_HRDepartmentID.Screen = this;
@@ -42,6 +42,9 @@ namespace VinaERP.Modules.LeaveDay.UI
 
             fld_dteDateFrom.DateTime = DateTime.Now.AddDays(-15);
             fld_dteToDate.DateTime = DateTime.Now;
+
+            HREmployeesController objEmployeesController = new HREmployeesController();
+            fld_lkeHREmployeeID.Properties.DataSource = objEmployeesController.GetAllEmployees();
         }
 
         private void fld_btnSearch_Click(object sender, EventArgs e)

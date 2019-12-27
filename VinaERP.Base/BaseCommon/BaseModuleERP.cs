@@ -14,7 +14,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 using System.Windows.Forms;
-using VinaERP.Base.UI;
 using VinaERP.Common.Constant.IC;
 using VinaLib;
 
@@ -707,50 +706,6 @@ namespace VinaERP
             return dataTable;
         }
 
-
-        public void ShowInventory(int productID, string productDesc)
-        {
-            guiShowInventoryStock guiShowInventoryStock = new guiShowInventoryStock(productID, productDesc);
-            guiShowInventoryStock.Module = this;
-            guiShowInventoryStock.ShowDialog();
-        }
-
-        public void InvalidateSerieColumn(GridColumn column, BusinessObject item, string itemTableName)
-        {
-            VinaDbUtil dbUtil = new VinaDbUtil();
-
-            String mainTableName = VinaUtil.GetTableNameFromBusinessObject(CurrentModuleEntity.MainObject);
-            String columnName = mainTableName.Substring(0, mainTableName.Length - 1) + "Date";
-            DateTime date = Convert.ToDateTime(dbUtil.GetPropertyValue(CurrentModuleEntity.MainObject, columnName));
-
-            ICStockLotsController objStockLotsController = new ICStockLotsController();
-            int productID = dbUtil.GetPropertyIntValue(item, "FK_ICProductID");
-            int stockID = dbUtil.GetPropertyIntValue(item, "FK_ICStockID");
-
-            columnName = itemTableName.Substring(0, itemTableName.Length - 1) + "ProductDesc";
-            string desc = dbUtil.GetPropertyStringValue(item, columnName);
-
-            ICProductsController objProductsController = new ICProductsController();
-            ICProductsInfo objProductsInfo = (ICProductsInfo)objProductsController.GetObjectByID(productID);
-            if (objProductsInfo == null)
-                return;
-
-            RepositoryItemComboBox rep = new RepositoryItemComboBox();
-            if (objProductsInfo.ICPriceCalculationMethodType == PriceCalculationMethod.Specific)
-            {
-
-                List<ICStockLotsInfo> series = objStockLotsController.GetSeriesByProductIDAndStockID(productID, stockID, desc, date);
-                if (series.Count > 0)
-                {
-                    series.Insert(0, new ICStockLotsInfo());
-                }
-                foreach (ICStockLotsInfo serie in series)
-                {
-                    rep.Items.Add(serie.ICStockLotNo);
-                }
-            }
-            column.ColumnEdit = rep;
-        }
         #endregion
 
         public virtual bool IsEditable()

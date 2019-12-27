@@ -8,11 +8,6 @@ namespace VinaERP.Common
 {
     public class TableName
     {
-        #region GE
-        public const string GEPaymentTermsTableName = "GEPaymentTerms";
-        public const string GEPaymentTermItemsTableName = "GEPaymentTermItems";
-        #endregion
-
         #region HR
         public const string HRDepartmentsTableName = "HRDepartments";
         public const string HRDepartmentRoomsTableName = "HRDepartmentRooms";
@@ -35,11 +30,7 @@ namespace VinaERP.Common
         public const string HREmployeeTimeSheetsTableName = "HREmployeeTimeSheets";
         public const string HRPayRollsTableName = "HRPayRolls";
         public const string HREmployeePayRollsTableName = "HREmployeePayRolls";
-        #endregion
-
-        #region IC
-        public const string ICProductsTableName = "ICProducts";
-        public const string ICProductMeasureUnitsTableName = "ICProductMeasureUnits";
+        public const string HRTimeKeeperCompletesTableName = "HRTimeKeeperCompletes";
         #endregion
     }
 }

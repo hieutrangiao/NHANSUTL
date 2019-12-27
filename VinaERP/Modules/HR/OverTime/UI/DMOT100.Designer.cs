@@ -299,7 +299,7 @@ namespace VinaERP.Modules.OverTime.UI
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(22, 90);
+            this.labelControl2.Location = new System.Drawing.Point(12, 90);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(54, 13);
             this.labelControl2.TabIndex = 90;
@@ -347,6 +347,10 @@ namespace VinaERP.Modules.OverTime.UI
             // 
             this.fld_txtHROverTimeToDate.Location = new System.Drawing.Point(567, 36);
             this.fld_txtHROverTimeToDate.Name = "fld_txtHROverTimeToDate";
+            this.fld_txtHROverTimeToDate.Properties.DisplayFormat.FormatString = "HH:mm";
+            this.fld_txtHROverTimeToDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.fld_txtHROverTimeToDate.Properties.EditFormat.FormatString = "HH:mm";
+            this.fld_txtHROverTimeToDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.fld_txtHROverTimeToDate.Screen = null;
             this.fld_txtHROverTimeToDate.Size = new System.Drawing.Size(74, 20);
             this.fld_txtHROverTimeToDate.TabIndex = 95;
