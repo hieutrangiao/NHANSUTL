@@ -36,6 +36,69 @@ namespace VinaERP
             ds.Dispose();
             return list;
         }
+
+        public List<HRTimeKeeperCompletesInfo> GetDataCompleteByConditions(int? departmentID, int? departmentRoomID, int? departmentRoomGroupItemID, int? employeeID, int? machineId, DateTime? dataFrom, DateTime? dataTo)
+        {
+            DataSet ds = dal.GetDataSet("HRTimeKeeperCompletes_GetDataCompleteByConditions", departmentID, departmentRoomID, departmentRoomGroupItemID, employeeID, machineId, dataFrom, dataTo);
+            List<HRTimeKeeperCompletesInfo> list = new List<HRTimeKeeperCompletesInfo>();
+            if (ds.Tables.Count > 0)
+            {
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    HRTimeKeeperCompletesInfo obj = (HRTimeKeeperCompletesInfo)GetObjectFromDataRow(row);
+                    list.Add(obj);
+                }
+            }
+            ds.Dispose();
+            return list;
+        }
+
+        public List<HRTimeKeeperCompletesInfo> GetDataCompleteByConditionDates(int? departmentID, int? departmentRoomID, int? departmentRoomGroupItemID, int? employeeID, int? machineId, DateTime? dataFrom, DateTime? dataTo)
+        {
+            DataSet ds = dal.GetDataSet("HRTimeKeeperCompletes_GetDataCompleteByConditionDates", departmentID, departmentRoomID, departmentRoomGroupItemID, employeeID, machineId, dataFrom, dataTo);
+            List<HRTimeKeeperCompletesInfo> list = new List<HRTimeKeeperCompletesInfo>();
+            if (ds.Tables.Count > 0)
+            {
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    HRTimeKeeperCompletesInfo obj = (HRTimeKeeperCompletesInfo)GetObjectFromDataRow(row);
+                    list.Add(obj);
+                }
+            }
+            ds.Dispose();
+            return list;
+        }
+
+        public List<HRTimeKeeperCompletesInfo> GetDataCompleteByConditionLNs(int? departmentID, int? departmentRoomID, int? departmentRoomGroupItemID, int? employeeID, int? machineId, DateTime? dataFrom, DateTime? dataTo)
+        {
+            DataSet ds = dal.GetDataSet("HRTimeKeeperCompletes_GetDataCompleteByConditionLNs", departmentID, departmentRoomID, departmentRoomGroupItemID, employeeID, machineId, dataFrom, dataTo);
+            List<HRTimeKeeperCompletesInfo> list = new List<HRTimeKeeperCompletesInfo>();
+            if (ds.Tables.Count > 0)
+            {
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    HRTimeKeeperCompletesInfo obj = (HRTimeKeeperCompletesInfo)GetObjectFromDataRow(row);
+                    list.Add(obj);
+                }
+            }
+            ds.Dispose();
+            return list;
+        }
+
+        public int CheckExistData(int machineID, DateTime dateCheck, string employeeNo)
+        {
+            return Convert.ToInt32(dal.GetSingleValue("HRTimeKeeperCompletes_CheckExistData", machineID, dateCheck, employeeNo));
+        }
+
+        public int DeleteData(int machineID, DateTime dateCheck, string employeeNo)
+        {
+            return Convert.ToInt32(dal.GetSingleValue("HRTimeKeeperCompletes_DeleteData", machineID, dateCheck, employeeNo));
+        }
+
+        public int DeleteAllByDate(string employeeNo, DateTime fromDate, DateTime toDate)
+        {
+            return Convert.ToInt32(dal.GetSingleValue("HRTimeKeeperCompletes_DeleteAllByDate", employeeNo, fromDate, toDate));
+        }
     }
     #endregion
 }

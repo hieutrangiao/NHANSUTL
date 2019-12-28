@@ -104,6 +104,13 @@
     <Compile Include="DataAccess\DALBaseProvider.cs" />
     <Compile Include="DataAccess\SqlDatabaseHelper.cs" />
     <Compile Include="Interfaces\IBaseModuleERP.cs" />
+    <Compile Include="ProgressBarWorker\VinaProgressBar.cs" />
+    <Compile Include="ProgressBarWorker\guiProgressBar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgressBarWorker\guiProgressBar.Designer.cs">
+      <DependentUpon>guiProgressBar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -114,6 +121,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ProgressBarWorker\guiProgressBar.resx">
+      <DependentUpon>guiProgressBar.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

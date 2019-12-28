@@ -188,4 +188,10 @@ namespace VinaCommon
         Khac,
         Tienantangca
     }
+
+    public enum EmployeePayrollFormulaHandleTypeCombo
+    {
+        FirstLast,
+        Double
+    }
 }

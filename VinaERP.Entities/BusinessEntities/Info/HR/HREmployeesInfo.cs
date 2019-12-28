@@ -2193,6 +2193,8 @@ namespace VinaERP
         public string HRDepartmentRoomName { get; set; }
         public string HRDepartmentRoomGroupItemName { get; set; }
         public string HRLevelName { get; set; }
+
+        public DateTime HRWorkingShiftToTime { get; set; }
         #endregion
     }
     #endregion

@@ -66,6 +66,10 @@
     <Reference Include="DevExpress.CodeParser.v19.1, Version=19.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraReports.v19.1, Version=19.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraTreeList.v19.1, Version=19.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Interop.zkemkeeper">
+      <HintPath>..\packages\Interop.zkemkeeper.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -170,6 +174,47 @@
     </Compile>
     <Compile Include="Modules\AD\UserManagement\UserManagementEntities.cs" />
     <Compile Include="Modules\AD\UserManagement\UserManagementModule.cs" />
+    <Compile Include="Modules\HR\ManagerTimeKeeper\ManagerTimeKeeperEntities.cs" />
+    <Compile Include="Modules\HR\ManagerTimeKeeper\ManagerTimeKeeperModule.cs" />
+    <Compile Include="Modules\HR\ManagerTimeKeeper\UI\DMMT102.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\ManagerTimeKeeper\UI\DMMT102.Designer.cs">
+      <DependentUpon>DMMT102.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HR\ManagerTimeKeeper\UI\DMMT101.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\ManagerTimeKeeper\UI\DMMT101.Designer.cs">
+      <DependentUpon>DMMT101.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HR\ManagerTimeKeeper\UI\DMMT100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\ManagerTimeKeeper\UI\DMMT100.Designer.cs">
+      <DependentUpon>DMMT100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HR\ManagerTimeKeeper\UI\GridControl\HRTimeKeeperGridControl2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\ManagerTimeKeeper\UI\GridControl\HREmployeesGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\ManagerTimeKeeper\UI\GridControl\HRTimeKeeperCompleteViews2GridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\ManagerTimeKeeper\UI\GridControl\HRMachineTimeKeepersGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\ManagerTimeKeeper\UI\GridControl\HRTimeKeeperGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\ManagerTimeKeeper\UI\GridControl\HRTimeKeeperCompleteViewsGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\ManagerTimeKeeper\UI\GridControl\HRTimeKeeperCompletesGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Modules\HR\LeaveDay\LeaveDayEntities.cs" />
     <Compile Include="Modules\HR\LeaveDay\LeaveDayModule.cs" />
     <Compile Include="Modules\HR\LeaveDay\UI\DMLD100.cs">
@@ -180,6 +225,12 @@
     </Compile>
     <Compile Include="Modules\HR\LeaveDay\UI\GridControl\HRLeaveDaysGridControl.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\ManagerTimeKeeper\UI\guiQuickImportTimeSheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\ManagerTimeKeeper\UI\guiQuickImportTimeSheet.Designer.cs">
+      <DependentUpon>guiQuickImportTimeSheet.cs</DependentUpon>
     </Compile>
     <Compile Include="Modules\HR\OverTime\OverTimeEntities.cs" />
     <Compile Include="Modules\HR\OverTime\OverTimeModule.cs" />
@@ -391,10 +442,6 @@
     <Compile Include="UI\guiSearchEmployee.Designer.cs">
       <DependentUpon>guiSearchEmployee.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utilities\GenaralLeadger\GLHelper.cs" />
-    <Compile Include="Utilities\ItemGridControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <EmbeddedResource Include="BaseProvider\guiReportPreview.resx">
       <DependentUpon>guiReportPreview.cs</DependentUpon>
     </EmbeddedResource>
@@ -419,8 +466,20 @@
     <EmbeddedResource Include="Modules\AD\UserManagement\UI\guiUserManagement.resx">
       <DependentUpon>guiUserManagement.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HR\ManagerTimeKeeper\UI\DMMT102.resx">
+      <DependentUpon>DMMT102.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HR\ManagerTimeKeeper\UI\DMMT101.resx">
+      <DependentUpon>DMMT101.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HR\ManagerTimeKeeper\UI\DMMT100.resx">
+      <DependentUpon>DMMT100.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modules\HR\LeaveDay\UI\DMLD100.resx">
       <DependentUpon>DMLD100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HR\ManagerTimeKeeper\UI\guiQuickImportTimeSheet.resx">
+      <DependentUpon>guiQuickImportTimeSheet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modules\HR\OverTime\UI\DMOT100.resx">
       <DependentUpon>DMOT100.cs</DependentUpon>
@@ -548,6 +607,7 @@
   <ItemGroup>
     <Folder Include="Modules\AD\UserManagement\Localization\" />
     <Folder Include="Modules\HR\Employee\UI\GridControl\" />
+    <Folder Include="Utilities\GenaralLeadger\" />
     <Folder Include="Utilities\Helper\" />
   </ItemGroup>
   <ItemGroup>

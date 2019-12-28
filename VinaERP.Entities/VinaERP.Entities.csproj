@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Interop.zkemkeeper">
+      <HintPath>..\packages\Interop.zkemkeeper.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -55,6 +59,7 @@
     <Compile Include="BusinessEntities\Controller\HR\HRAllowancesController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRArrangementShiftEntrysController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRArrangementShiftsController.cs" />
+    <Compile Include="BusinessEntities\Controller\HR\HRBreakTimesController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRCalendarEntrysController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRDepartmentRoomGroupItemsController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRDepartmentRoomGroupsController.cs" />
@@ -79,12 +84,14 @@
     <Compile Include="BusinessEntities\Controller\HR\HRFormAllowancesController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRLeaveDaysController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRLevelsController.cs" />
+    <Compile Include="BusinessEntities\Controller\HR\HRMachineTimeKeepersController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HROTFactorsController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HROverTimesController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRPayRollConfigsController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRPayRollsController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRRewardsController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRTimeKeeperCompletesController.cs" />
+    <Compile Include="BusinessEntities\Controller\HR\HRTimeKeepersController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRTimesheetConfigsController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRTimesheetEmployeeLateConfigsController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRTimesheetEmployeeLatesController.cs" />
@@ -107,6 +114,7 @@
     <Compile Include="BusinessEntities\Info\HR\HRAllowancesInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRArrangementShiftEntrysInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRArrangementShiftsInfo.cs" />
+    <Compile Include="BusinessEntities\Info\HR\HRBreakTimesInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRCalendarEntrysInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRDepartmentRoomGroupItemsInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRDepartmentRoomGroupsInfo.cs" />
@@ -131,12 +139,14 @@
     <Compile Include="BusinessEntities\Info\HR\HRFormAllowancesInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRLeaveDaysInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRLevelsInfo.cs" />
+    <Compile Include="BusinessEntities\Info\HR\HRMachineTimeKeepersInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HROTFactorsInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HROverTimesInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRPayRollConfigsInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRPayRollsInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRRewardsInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRTimeKeeperCompletesInfo.cs" />
+    <Compile Include="BusinessEntities\Info\HR\HRTimeKeepersInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRTimesheetConfigsInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRTimesheetEmployeeLateConfigsInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRTimesheetEmployeeLatesInfo.cs" />

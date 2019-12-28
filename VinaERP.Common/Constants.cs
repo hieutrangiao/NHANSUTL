@@ -31,6 +31,9 @@ namespace VinaERP.Common
         public const string HRPayRollsTableName = "HRPayRolls";
         public const string HREmployeePayRollsTableName = "HREmployeePayRolls";
         public const string HRTimeKeeperCompletesTableName = "HRTimeKeeperCompletes";
+        public const string HRMachineTimeKeepersTableName = "HRMachineTimeKeepers";
+        public const string HRTimeKeepersTableName = "HRTimeKeepers";
+
         #endregion
     }
 }

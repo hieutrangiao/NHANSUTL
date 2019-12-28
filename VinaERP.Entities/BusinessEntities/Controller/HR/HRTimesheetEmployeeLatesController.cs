@@ -32,6 +32,18 @@ namespace VinaERP
             }
             return null;
         }
+
+        public HRTimesheetEmployeeLatesInfo GetHRTimesheetEmployeeMaxLate(int employeePayrollFormulaID)
+        {
+            DataSet ds = dal.GetDataSet("HRTimesheetEmployeeLates_GetHRTimesheetEmployeeMaxLate", employeePayrollFormulaID);
+            if (ds.Tables.Count > 0)
+            {
+                if (ds.Tables[0].Rows.Count < 1) return null;
+                HRTimesheetEmployeeLatesInfo objTimesheetEmployeeLatesInfo = (HRTimesheetEmployeeLatesInfo)GetObjectFromDataRow(ds.Tables[0].Rows[0]);
+                return objTimesheetEmployeeLatesInfo;
+            }
+            return null;
+        }
     }
     #endregion
 }

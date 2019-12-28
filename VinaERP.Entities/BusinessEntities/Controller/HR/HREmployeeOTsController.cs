@@ -41,6 +41,38 @@ namespace VinaERP
             }
             return list;
         }
+
+        public List<HREmployeeOTsInfo> GetAllListOTByDate(DateTime dateFrom, DateTime dateTo)
+        {
+            DataSet ds = dal.GetDataSet("HREmployeeOTs_GetAllListOTByDate", dateFrom, dateTo);
+            List<HREmployeeOTsInfo> list = new List<HREmployeeOTsInfo>();
+            HREmployeeOTsController objOverTimesController = new HREmployeeOTsController();
+            if (ds.Tables.Count > 0)
+            {
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    HREmployeeOTsInfo objEmployeeOTsInfo = (HREmployeeOTsInfo)objOverTimesController.GetObjectFromDataRow(row);
+                    list.Add(objEmployeeOTsInfo);
+                }
+            }
+            return list;
+        }
+
+        public List<HREmployeeOTsInfo> GetListOTDiffDates(int? employeeID, DateTime dateFrom, DateTime dateTo)
+        {
+            DataSet ds = dal.GetDataSet("HREmployeeOTs_GetListOTDiffDates", employeeID, dateFrom, dateTo);
+            List<HREmployeeOTsInfo> list = new List<HREmployeeOTsInfo>();
+            HREmployeeOTsController objOverTimesController = new HREmployeeOTsController();
+            if (ds.Tables.Count > 0)
+            {
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    HREmployeeOTsInfo objEmployeeOTsInfo = (HREmployeeOTsInfo)objOverTimesController.GetObjectFromDataRow(row);
+                    list.Add(objEmployeeOTsInfo);
+                }
+            }
+            return list;
+        }
     }
     #endregion
 }

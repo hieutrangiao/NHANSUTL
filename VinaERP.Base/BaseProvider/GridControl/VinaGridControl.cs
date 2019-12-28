@@ -217,76 +217,6 @@ namespace VinaERP
             e.Handled = true;
         }
 
-        private void gridView_GridMenuItemClick(object sender, GridMenuItemClickEventArgs e)
-        {
-
-        }
-        private void gridView_CustomSummaryExists(object sender, CustomSummaryExistEventArgs e)
-        {
-            //if (e.Item.GetType() == typeof(GridColumnSummaryItem))
-            //{
-            //    GridColumnSummaryItem columnSummaryItem = (GridColumnSummaryItem)e.Item;
-            //    STFieldFormatGroupsController groupsController = new STFieldFormatGroupsController();
-            //    GridColumn column = ((ColumnView)sender).Columns[columnSummaryItem.FieldName];
-            //    if (column == null || column.RealColumnEdit == null || string.IsNullOrEmpty(column.RealColumnEdit.DisplayFormat.FormatString))
-            //        return;
-            //    columnSummaryItem.DisplayFormat = "{0:" + column.RealColumnEdit.DisplayFormat.FormatString + "}";
-            //}
-            //else
-            //{
-            //    if (e.Item.GetType() != typeof(GridGroupSummaryItem))
-            //        return;
-            //    GridGroupSummaryItem groupSummaryItem = (GridGroupSummaryItem)e.Item;
-            //    STFieldFormatGroupsController groupsController = new STFieldFormatGroupsController();
-            //    GridColumn column = ((ColumnView)sender).Columns[groupSummaryItem.FieldName];
-            //    if (column == null || column.RealColumnEdit == null || string.IsNullOrEmpty(column.RealColumnEdit.DisplayFormat.FormatString))
-            //        return;
-            //    groupSummaryItem.DisplayFormat = "{0:" + column.RealColumnEdit.DisplayFormat.FormatString + "}";
-            //}
-        }
-
-        private void gridView_ShowGridMenu(object sender, GridMenuEventArgs e)
-        {
-            //GridView gr = (GridView)sender;
-            //if (e.Menu == null || e.HitInfo.HitTest != GridHitTest.ColumnPanel && e.HitInfo.HitTest != GridHitTest.ColumnEdge && (e.HitInfo.HitTest != GridHitTest.ColumnFilterButton && e.HitInfo.HitTest != GridHitTest.Column))
-            //    return;
-            //bool isCreate = false;
-            //foreach (DXMenuItem dxMenuItem in (CollectionBase)e.Menu.Items)
-            //{
-            //    if (dxMenuItem.Tag.ToString() == VinaGridControl.DXMenuItemTag.ExportExcel.ToString())
-            //        isCreate = true;
-            //}
-            //this.AddMenu(gr, e.Menu, isCreate);
-            //if (e.HitInfo.HitTest != GridHitTest.Column && e.HitInfo.HitTest != GridHitTest.ColumnFilterButton)
-            //    return;
-            //this.pt = e.Point;
-            //this.AddMenu2(gr, e.Menu, isCreate);
-        }
-
-        protected virtual void GridView_CustomDrawCell(object sender, RowCellCustomDrawEventArgs e)
-        {
-            GridView gridView = (GridView)sender;
-            if (!gridView.IsValidRowHandle(e.RowHandle))
-                return;
-            int parentRowHandle = gridView.GetParentRowHandle(e.RowHandle);
-            if (gridView.IsGroupRow(parentRowHandle))
-            {
-                for (int childIndex = 0; childIndex < gridView.GetChildRowCount(parentRowHandle); ++childIndex)
-                {
-                    if (gridView.GetChildRowHandle(parentRowHandle, childIndex) == e.RowHandle)
-                        e.Appearance.BackColor = childIndex % 2 == 0 ? Color.White : Color.WhiteSmoke;
-                }
-            }
-            else
-                e.Appearance.BackColor = e.RowHandle % 2 == 0 ? Color.White : Color.WhiteSmoke;
-            e.Appearance.ForeColor = Color.Black;
-        }
-
-        protected virtual void GridView_Click(object sender, EventArgs e)
-        {
-
-        }
-
         protected virtual void GridView_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
         {
 
@@ -310,11 +240,6 @@ namespace VinaERP
 
         }
 
-        protected virtual void GridView_InvalidRowException(object sender, InvalidRowExceptionEventArgs e)
-        {
-
-        }
-
         protected virtual void GridView_ValidatingEditor(object sender, BaseContainerValidateEditorEventArgs e)
         {
 
@@ -322,10 +247,8 @@ namespace VinaERP
 
         protected virtual void InitGridViewColumns(GridView gridView)
         {
-            //gridView.Columns.Clear();
             this.InitDefaultGridViewColumns(gridView);
             this.AddColumnsToGridView(this.VinaDataSource, gridView);
-            //this.InitColumnFormat(gridView);
             this.InitGridColumnsVisibleIndex(gridView);
         }
 
@@ -376,65 +299,8 @@ namespace VinaERP
                 e.Cancel = true;
         }
 
-        //protected virtual void AddColumnsToGridView(string strTableName, GridView gridView)
-        //{
-        //    VinaDbUtil vinaDbUtil = new VinaDbUtil();
-        //    AAColumnAliasController objColumnAliasController = new AAColumnAliasController();
-        //    List<AAColumnAliasInfo> columnAliasList = objColumnAliasController.GetColumnAliasByTableName(strTableName);
-        //    columnAliasList.ForEach(o =>
-        //    {
-        //        if (gridView.Columns.ColumnByFieldName(o.AAColumnAliasName) == null)
-        //        {
-        //            GridColumn column = this.InitGridColumn(strTableName, -1, o.AAColumnAliasName, o.AAColumnAliasCaption, 50);
-        //            //if (vinaDbUtil.IsForeignKey(strTableName, o.AAColumnAliasName))
-        //            //{
-        //            //    RepositoryItemLookUpEdit repositoryItemLookUpEdit = this.InitColumnLookupEdit(strTableName, o.AAColumnAliasName, o.AAColumnAliasCaption);
-        //            //    if (repositoryItemLookUpEdit != null)
-        //            //        column.ColumnEdit = repositoryItemLookUpEdit;
-        //            //}
-        //            //else
-        //            //{
-        //            //    string empty = string.Empty;
-        //            //    string groupName = o.AAColumnAliasName.Substring(2, o.AAColumnAliasName.Length - 2);
-        //            //    if (VinaUtil.ADConfigValueUtility.ContainsKey(groupName))
-        //            //    {
-        //            //        RepositoryItemLookUpEdit itemLookUpEdit = this.InitRepositoryForConfigValues(VinaUtil.ADConfigValueUtility[groupName]);
-        //            //        column.ColumnEdit = (RepositoryItem)itemLookUpEdit;
-        //            //    }
-        //            //    else
-        //            //    {
-        //            //        column.ColumnEdit = new RepositoryItemTextEdit();
-        //            //        //column.ColumnEdit = this.InitColumnRepositoryFromFieldFormatGroup(strTableName, o.AAColumnAliasName);
-        //            //        if (column.ColumnEdit != null)
-        //            //            column.ColumnEdit.MouseWheel += new MouseEventHandler(this.ColumnEdit_MouseWheel);
-        //            //    }
-        //            //}
-        //            column.OptionsColumn.AllowEdit = true;
-        //            RepositoryItemTextEdit repositoryItemTextEdit = new RepositoryItemTextEdit()
-        //            {
-        //                Mask =
-        //                {
-        //                    MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric,
-        //                    EditMask = "n2",
-        //                    UseMaskAsDisplayFormat = true
-        //                }
-        //            };
-        //            repositoryItemTextEdit.DisplayFormat.FormatType = FormatType.Numeric;
-        //            repositoryItemTextEdit.DisplayFormat.FormatString = "n2";
-        //            column.ColumnEdit = repositoryItemTextEdit;
-        //            gridView.Columns.Add(column);
-        //        }
-        //        else
-        //            gridView.Columns[o.AAColumnAliasName].Caption = o.AAColumnAliasCaption;
-        //    });
-        //}
-
         public DevExpress.XtraEditors.Repository.RepositoryItem InitColumnRepositoryFromFieldFormatGroup(string strTableName, string strColumnName)
         {
-            //STFieldFormatGroupsController groupsController = new STFieldFormatGroupsController();
-            //STFieldFormatGroupsInfo columnFormat = this.Screen.Module.GetColumnFormat(strTableName, strColumnName);
-            //if (columnFormat != null && !string.IsNullOrEmpty(columnFormat.STFieldFormatGroupRepository))
-            //    return BOSUtil.GetRepositoryItemFromText(columnFormat.STFieldFormatGroupRepository);
             return (DevExpress.XtraEditors.Repository.RepositoryItem)null;
         }
 
@@ -522,35 +388,6 @@ namespace VinaERP
                 return;
             GridView defaultView = (GridView)this.DefaultView;
             // this.ShowModule(defaultView.FocusedColumn, defaultView);
-        }
-
-        private void ShowModule(GridColumn col, GridView view)
-        {
-            //try
-            //{
-            //    string tableName = this.GetTableName(col.FieldName);
-            //    if (string.IsNullOrEmpty(tableName))
-            //        return;
-            //    STModuleColumnsInfo byTableName = new STModuleColumnsController().GetByTableName(tableName);
-            //    if (byTableName == null)
-            //        return;
-            //    STModulesInfo objectById = (STModulesInfo)new STModulesController().GetObjectByID(byTableName.STModuleID);
-            //    if (objectById == null)
-            //        return;
-            //    if (!col.FieldName.ToLower().StartsWith("fk_"))
-            //    {
-            //        BaseBusinessController businessController = BusinessControllerFactory.GetBusinessController(tableName + "Controller");
-            //        if (businessController == null)
-            //            return;
-            //        int objectIdByNo = businessController.GetObjectIDByNo(view.GetFocusedValue().ToString());
-            //        this.ActiveModule(objectById.STModuleName, objectIdByNo);
-            //    }
-            //    else
-            //        this.ActiveModule(objectById.STModuleName, int.Parse(view.GetFocusedValue().ToString()));
-            //}
-            //catch (Exception ex)
-            //{
-            //}
         }
 
         protected override void OnKeyDown(KeyEventArgs e)

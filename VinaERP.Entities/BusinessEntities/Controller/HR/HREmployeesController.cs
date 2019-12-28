@@ -69,6 +69,50 @@ namespace VinaERP
                 return employees[0];
             return null;
         }
+
+        public List<HREmployeesInfo> GetEmployeeWorkingShiftList()
+        {
+            DataSet ds = dal.GetDataSet("HREmployees_GetEmployeeWorkingShiftList");
+            List<HREmployeesInfo> employees = new List<HREmployeesInfo>();
+            if (ds.Tables.Count > 0)
+            {
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    HREmployeesInfo objEmployeesInfo = (HREmployeesInfo)GetObjectFromDataRow(row);
+                    employees.Add(objEmployeesInfo);
+                }
+            }
+            return employees;
+        }
+
+        public List<HREmployeesInfo> GetEmployeeCardNumberList(int? branchID, int? departmentID, int? departmentRoomID, string status)
+        {
+            DataSet ds = dal.GetDataSet("HREmployees_GetEmployeeCardNumberList", branchID, departmentID, departmentRoomID, status);
+            List<HREmployeesInfo> employees = new List<HREmployeesInfo>();
+            if (ds.Tables.Count > 0)
+            {
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    HREmployeesInfo objEmployeesInfo = (HREmployeesInfo)GetObjectFromDataRow(row);
+                    employees.Add(objEmployeesInfo);
+                }
+            }
+            return employees;
+        }
+
+        public HREmployeesInfo GetEmployeeByCardNumber(string cardNumber)
+        {
+            try
+            {
+                int id = int.Parse(cardNumber);
+                DataSet ds = dal.GetDataSet("HREmployees_GetEmployeeByCardNumber2", cardNumber);
+                List<HREmployeesInfo> employees = (List<HREmployeesInfo>)GetListFromDataSet(ds);
+                if (employees != null && employees.Count > 0)
+                    return employees[0];
+            }
+            catch (Exception) { }
+            return null;
+        }
     }
     #endregion
 }
