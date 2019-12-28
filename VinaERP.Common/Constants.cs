@@ -33,7 +33,13 @@ namespace VinaERP.Common
         public const string HRTimeKeeperCompletesTableName = "HRTimeKeeperCompletes";
         public const string HRMachineTimeKeepersTableName = "HRMachineTimeKeepers";
         public const string HRTimeKeepersTableName = "HRTimeKeepers";
-
+        public const string HREmployeePayrollFormulasTableName = "HREmployeePayrollFormulas";
+        public const string HREmployeePayrollFormulaItemsTableName = "HREmployeePayrollFormulaItems";
+        public const string HRWorkingShiftsTableName = "HRWorkingShifts";
+        public const string HROTFactorsTableName = "HROTFactors";
+        public const string HRTimesheetEmployeeLatesTableName = "HRTimesheetEmployeeLates";
+        public const string HRTimesheetConfigsTableName = "HRTimesheetConfigs";
+        public const string HRAllowanceConfigsTableName = "HRAllowanceConfigs";
         #endregion
     }
 }

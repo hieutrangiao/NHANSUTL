@@ -109,10 +109,10 @@ namespace VinaERP.Modules.ManagerTimeKeeper
             }
         }
 
-        public void CalculateData(int branchId, int departmentID, int departmentRoomID, int departmentRoomGroupItemID, int employeeID, DateTime dataFrom, DateTime dataTo)
+        public void CalculateData(int branchId, int departmentID, int departmentRoomID, int departmentRoomGroupItemID, int employeeID, DateTime dateFrom, DateTime dateTo)
         {
-            mt100DateFrom = dataFrom;
-            mt100DateTo = dataTo;
+            mt100DateFrom = dateFrom;
+            mt100DateTo = dateTo;
             mt100BranchID = branchId;
             mt100DepartmentID = departmentID;
             mt100DepartmentRoomID = departmentRoomID;
@@ -127,17 +127,16 @@ namespace VinaERP.Modules.ManagerTimeKeeper
             HREmployeesController objEmployeesController = new HREmployeesController();
             List<HRTimeKeepersInfo> keeperList;
 
-            AllEmployeeOTList = (List<HREmployeeOTsInfo>)objEmployeeOTsController.GetAllListOTByDate(dataFrom, dataTo);
+            AllEmployeeOTList = (List<HREmployeeOTsInfo>)objEmployeeOTsController.GetAllListOTByDate(dateFrom, dateTo);
             EmployeeWorkingShiftList = objEmployeesController.GetEmployeeWorkingShiftList();
             TimeKeeperCompletesClone = new List<HRTimeKeeperCompletesInfo>();
-            objTimeKeepersController.DeleteDataDuplicateByDate(dataFrom, dataTo);
-            keeperList = objTimeKeepersController.GetTimeKeeperByConditions(branchId, departmentID, departmentRoomID, departmentRoomGroupItemID, employeeID, 0, dataFrom, dataTo.AddDays(1));
+            objTimeKeepersController.DeleteDataDuplicateByDate(dateFrom, dateTo);
+            keeperList = objTimeKeepersController.GetTimeKeeperByConditions(branchId, departmentID, departmentRoomID, departmentRoomGroupItemID, employeeID, 0, dateFrom, dateTo.AddDays(1));
             if (entity.TimeKeeperCompleteBackupList != null)
             {
                 entity.TimeKeeperCompleteBackupList.Clear();
             }
-            List<HRTimeKeeperCompletesInfo> listComplate = ConvertTimeKeeperListToComplete3(keeperList, dataFrom, dataTo);
-            //TimeKeeperCompletesGridControl.DataSource = listComplate;
+            List<HRTimeKeeperCompletesInfo> listComplate = ConvertTimeKeeperListToComplete3(keeperList, dateFrom, dateTo);
             entity.TimeKeeperCompletesList.Invalidate(listComplate);
             GridView view = (GridView)entity.TimeKeeperCompletesList.GridControl.MainView;
             view.ExpandAllGroups();
@@ -265,11 +264,11 @@ namespace VinaERP.Modules.ManagerTimeKeeper
             }
         }
 
-        private List<HRTimeKeeperCompletesInfo> ConvertTimeKeeperListToComplete3(List<HRTimeKeepersInfo> timeKeeperList, DateTime dataFrom, DateTime dataTo)
+        private List<HRTimeKeeperCompletesInfo> ConvertTimeKeeperListToComplete3(List<HRTimeKeepersInfo> timeKeeperList, DateTime dateFrom, DateTime dateTo)
         {
             List<HRTimeKeeperCompletesInfo> list = new List<HRTimeKeeperCompletesInfo>();
-            DateTime from = dataFrom.Date;
-            DateTime to = dataTo.Date;
+            DateTime from = dateFrom.Date;
+            DateTime to = dateTo.Date;
             HREmployeeOTsController objEmployeeOTsController = new HREmployeeOTsController();
             List<HREmployeeOTsInfo> EmployeeOTList = (List<HREmployeeOTsInfo>)objEmployeeOTsController.GetListOTDiffDates(null, from.AddDays(-1), to);
 
@@ -310,7 +309,7 @@ namespace VinaERP.Modules.ManagerTimeKeeper
                 if (employeesInfo != null)
                 {
                     bool checkarrangementShift = true;
-                    from = dataFrom.Date;
+                    from = dateFrom.Date;
                     ADWorkingShiftsInfo objADWorkingShiftsInfo = new ADWorkingShiftsInfo();
                     objEmployeePayrollFormulasInfo = (HREmployeePayrollFormulasInfo)objEmployeePayrollFormulasController.GetObjectByID(employeesInfo.FK_HREmployeePayrollFormulaID);
                     if (objEmployeePayrollFormulasInfo != null)
@@ -1082,8 +1081,8 @@ namespace VinaERP.Modules.ManagerTimeKeeper
 
             List<HRTimeKeepersInfo> timeKeeperListreget = new List<HRTimeKeepersInfo>();
             HRTimeKeepersController objTimeKeepersController = new HRTimeKeepersController();
-            DateTime dataFrom = timeKeepersCompleteInfo.HRTimeKeeperCompleteDate.AddDays(1);
-            DateTime dataTo = timeKeepersCompleteInfo.HRTimeKeeperCompleteDate.AddDays(1);
+            DateTime dateFrom = timeKeepersCompleteInfo.HRTimeKeeperCompleteDate.AddDays(1);
+            DateTime dateTo = timeKeepersCompleteInfo.HRTimeKeeperCompleteDate.AddDays(1);
             int branchId = 0;
             int machineId = 0;
             int departmentID = 0;
@@ -1093,11 +1092,11 @@ namespace VinaERP.Modules.ManagerTimeKeeper
 
             if (machineId != 0)
             {
-                timeKeeperListreget = objTimeKeepersController.GetTimeKeeperByConditions(branchId, departmentID, departmentRoomID, departmentRoomGroupItemID, employeeID, machineId, dataFrom, dataTo);
+                timeKeeperListreget = objTimeKeepersController.GetTimeKeeperByConditions(branchId, departmentID, departmentRoomID, departmentRoomGroupItemID, employeeID, machineId, dateFrom, dateTo);
             }
             else
             {
-                timeKeeperListreget = objTimeKeepersController.GetTimeKeeperByConditions(branchId, departmentID, departmentRoomID, departmentRoomGroupItemID, employeeID, null, dataFrom, dataTo);
+                timeKeeperListreget = objTimeKeepersController.GetTimeKeeperByConditions(branchId, departmentID, departmentRoomID, departmentRoomGroupItemID, employeeID, null, dateFrom, dateTo);
             }
 
             List<HRTimeKeepersInfo> listTempNextDate = timeKeeperListreget.Where(p => p.HRTimeKeeperEmployeeCardNo == timeKeepersCompleteInfo.HRTimeKeeperCompletesEmployeeCardNo).OrderBy(p => p.HRTimeKeeperTimeOut).ToList();
@@ -1165,14 +1164,14 @@ namespace VinaERP.Modules.ManagerTimeKeeper
                 {
                     List<HRTimeKeepersInfo> timeKeeperListreget = new List<HRTimeKeepersInfo>();
                     HRTimeKeepersController objTimeKeepersController = new HRTimeKeepersController();
-                    DateTime dataFrom = mt100DateFrom;
-                    DateTime dataTo = mt100DateTo.AddDays(2);
+                    DateTime dateFrom = mt100DateFrom;
+                    DateTime dateTo = mt100DateTo.AddDays(2);
                     int branchId = mt100BranchID;
                     int departmentID = mt100DepartmentID;
                     int departmentRoomID = mt100DepartmentRoomID;
                     int departmentRoomGroupItemID = mt100DepartmentRoomGroupItemID;
                     int employeeID = employeesInfo.HREmployeeID;
-                    timeKeeperListreget = objTimeKeepersController.GetTimeKeeperByConditions(branchId, departmentID, departmentRoomID, departmentRoomGroupItemID, employeeID, null, dataFrom, dataTo);
+                    timeKeeperListreget = objTimeKeepersController.GetTimeKeeperByConditions(branchId, departmentID, departmentRoomID, departmentRoomGroupItemID, employeeID, null, dateFrom, dateTo);
 
                     listTempNextDate = timeKeeperListreget.Where(p => (p.HRTimeKeeperEmployeeCardNo == timeKeepersCompleteDate.HRTimeKeeperEmployeeCardNo &&
                         p.HRTimeKeeperDate.Date == objEmployeeOTDiffDateInsInfo.HREmployeeOTDateEnd.Date)).OrderBy(p => p.HRTimeKeeperTimeOut).ToList();
@@ -1646,8 +1645,8 @@ namespace VinaERP.Modules.ManagerTimeKeeper
                     return;
                 }
             }
-            DateTime dataFrom = mt100DateFrom;
-            DateTime dataTo = mt100DateTo;
+            DateTime dateFrom = mt100DateFrom;
+            DateTime dateTo = mt100DateTo;
             bool isCancel = false;
             List<HRTimeKeeperCompletesInfo> listDataComplete = entity.TimeKeeperCompletesList.ToList();
             if (listDataComplete != null)
@@ -1695,7 +1694,7 @@ namespace VinaERP.Modules.ManagerTimeKeeper
                                           .ToList()
                                           .ForEach(o1 =>
                                           {
-                                              objTimeKeepersController.DeleteAllByDate(o1, dataFrom, dataTo);
+                                              objTimeKeepersController.DeleteAllByDate(o1, dateFrom, dateTo);
                                           });
             if (timeKeeperCompleteList != null)
             {
@@ -2128,6 +2127,7 @@ namespace VinaERP.Modules.ManagerTimeKeeper
                             objTimeKeepersInfo.EmployeeName = objEmployeesInfo.HREmployeeName;
                             objTimeKeepersInfo.HRTimeKeeperEmployeeCardNo = objEmployeesInfo.HREmployeeCardNumber;
                         }
+                        objTimeKeepersInfo.ThName = item2.ThName;
                         objTimeKeepersInfo.HRTimeKeeperDate = new DateTime(item2.HRTimeKeeperQuickImportDate.Year, item2.HRTimeKeeperQuickImportDate.Month, item2.HRTimeKeeperQuickImportDate.Day);
                         objTimeKeepersInfo.HRTimeKeeperTimeIn = new DateTime(item2.HRTimeKeeperQuickImportDate.Year, item2.HRTimeKeeperQuickImportDate.Month, item2.HRTimeKeeperQuickImportDate.Day);
                         objTimeKeepersInfo.HRTimeKeeperTimeInOutMode = 1;
