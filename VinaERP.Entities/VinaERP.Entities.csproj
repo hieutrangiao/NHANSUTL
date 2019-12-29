@@ -100,7 +100,6 @@
     <Compile Include="BusinessEntities\Controller\HR\HRTimeSheetParamsController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRTimeSheetsController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRWorkingShiftsController.cs" />
-    <Compile Include="BusinessEntities\Controller\ST\STModulePostingsController.cs" />
     <Compile Include="BusinessEntities\Info\AD\ADInsurrancesInfo.cs" />
     <Compile Include="BusinessEntities\Info\AD\ADOTFactorsInfo.cs" />
     <Compile Include="BusinessEntities\Info\AD\ADTimesheetConfigsInfo.cs" />
@@ -156,7 +155,6 @@
     <Compile Include="BusinessEntities\Info\HR\HRTimeSheetParamsInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRTimeSheetsInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRWorkingShiftsInfo.cs" />
-    <Compile Include="BusinessEntities\Info\ST\STModulePostingsInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -95,15 +95,12 @@ namespace VinaERP.Modules.Employee.UI
             this.fld_txtHREmployeeSocialInsNo = new VinaLib.BaseProvider.VinaTextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
-            this.fld_txtHREmployeeTaxPaymentPercent = new VinaLib.BaseProvider.VinaTextBox();
-            this.label50 = new System.Windows.Forms.Label();
             this.fld_txtHREmployeeUnionMemberFee = new VinaLib.BaseProvider.VinaTextBox();
             this.label49 = new System.Windows.Forms.Label();
             this.fld_txtHREmployeeSyndicatePaymentAmount = new VinaLib.BaseProvider.VinaTextBox();
             this.label48 = new System.Windows.Forms.Label();
             this.fld_txtHREmployeeSyndicatePaymentPercent = new VinaLib.BaseProvider.VinaTextBox();
             this.label47 = new System.Windows.Forms.Label();
-            this.simpleButton9 = new DevExpress.XtraEditors.SimpleButton();
             this.fld_lkeHRInsCalculatedSalaryType = new VinaLib.BaseProvider.VinaLookupEdit();
             this.label46 = new System.Windows.Forms.Label();
             this.fld_txtHREmployeeInsPaymentTotalAmountDN = new VinaLib.BaseProvider.VinaTextBox();
@@ -176,7 +173,6 @@ namespace VinaERP.Modules.Employee.UI
             ((System.ComponentModel.ISupportInitialize)(this.fld_txtHREmployeeSocialInsNo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fld_txtHREmployeeTaxPaymentPercent.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fld_txtHREmployeeUnionMemberFee.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fld_txtHREmployeeSyndicatePaymentAmount.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fld_txtHREmployeeSyndicatePaymentPercent.Properties)).BeginInit();
@@ -319,6 +315,7 @@ namespace VinaERP.Modules.Employee.UI
             this.fld_txtHREmployeePieceWage.VinaDataMember = "HREmployeePieceWage";
             this.fld_txtHREmployeePieceWage.VinaDataSource = "HREmployees";
             this.fld_txtHREmployeePieceWage.VinaPropertyName = "EditValue";
+            this.fld_txtHREmployeePieceWage.Visible = false;
             // 
             // label8
             // 
@@ -328,6 +325,7 @@ namespace VinaERP.Modules.Employee.UI
             this.label8.Size = new System.Drawing.Size(69, 13);
             this.label8.TabIndex = 95;
             this.label8.Text = "Lương khoán";
+            this.label8.Visible = false;
             // 
             // fld_txtHREmployeeWorkingSlrAmtDateTotal
             // 
@@ -344,6 +342,7 @@ namespace VinaERP.Modules.Employee.UI
             this.fld_txtHREmployeeWorkingSlrAmtDateTotal.VinaDataMember = "HREmployeeWorkingSlrAmtDateTotal";
             this.fld_txtHREmployeeWorkingSlrAmtDateTotal.VinaDataSource = "HREmployees";
             this.fld_txtHREmployeeWorkingSlrAmtDateTotal.VinaPropertyName = "EditValue";
+            this.fld_txtHREmployeeWorkingSlrAmtDateTotal.Visible = false;
             // 
             // label6
             // 
@@ -353,6 +352,7 @@ namespace VinaERP.Modules.Employee.UI
             this.label6.Size = new System.Drawing.Size(115, 13);
             this.label6.TabIndex = 93;
             this.label6.Text = "Lương CB ngày (Tổng)";
+            this.label6.Visible = false;
             // 
             // fld_txtHREmployeeWorkingSlrAmt
             // 
@@ -1046,15 +1046,12 @@ namespace VinaERP.Modules.Employee.UI
             // 
             // groupControl4
             // 
-            this.groupControl4.Controls.Add(this.fld_txtHREmployeeTaxPaymentPercent);
-            this.groupControl4.Controls.Add(this.label50);
             this.groupControl4.Controls.Add(this.fld_txtHREmployeeUnionMemberFee);
             this.groupControl4.Controls.Add(this.label49);
             this.groupControl4.Controls.Add(this.fld_txtHREmployeeSyndicatePaymentAmount);
             this.groupControl4.Controls.Add(this.label48);
             this.groupControl4.Controls.Add(this.fld_txtHREmployeeSyndicatePaymentPercent);
             this.groupControl4.Controls.Add(this.label47);
-            this.groupControl4.Controls.Add(this.simpleButton9);
             this.groupControl4.Controls.Add(this.fld_lkeHRInsCalculatedSalaryType);
             this.groupControl4.Controls.Add(this.label46);
             this.groupControl4.Controls.Add(this.fld_txtHREmployeeInsPaymentTotalAmountDN);
@@ -1090,31 +1087,6 @@ namespace VinaERP.Modules.Employee.UI
             this.groupControl4.Size = new System.Drawing.Size(940, 252);
             this.groupControl4.TabIndex = 4;
             this.groupControl4.Text = "Các khoản khấu trừ lương";
-            // 
-            // fld_txtHREmployeeTaxPaymentPercent
-            // 
-            this.fld_txtHREmployeeTaxPaymentPercent.Location = new System.Drawing.Point(788, 101);
-            this.fld_txtHREmployeeTaxPaymentPercent.Name = "fld_txtHREmployeeTaxPaymentPercent";
-            this.fld_txtHREmployeeTaxPaymentPercent.Properties.DisplayFormat.FormatString = "n3";
-            this.fld_txtHREmployeeTaxPaymentPercent.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.fld_txtHREmployeeTaxPaymentPercent.Properties.EditFormat.FormatString = "n3";
-            this.fld_txtHREmployeeTaxPaymentPercent.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.fld_txtHREmployeeTaxPaymentPercent.Screen = null;
-            this.fld_txtHREmployeeTaxPaymentPercent.Size = new System.Drawing.Size(127, 20);
-            this.fld_txtHREmployeeTaxPaymentPercent.TabIndex = 138;
-            this.fld_txtHREmployeeTaxPaymentPercent.Tag = "DC";
-            this.fld_txtHREmployeeTaxPaymentPercent.VinaDataMember = "HREmployeeTaxPaymentPercent";
-            this.fld_txtHREmployeeTaxPaymentPercent.VinaDataSource = "HREmployees";
-            this.fld_txtHREmployeeTaxPaymentPercent.VinaPropertyName = "EditValue";
-            // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(708, 104);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(50, 13);
-            this.label50.TabIndex = 137;
-            this.label50.Text = "Thuế(%)";
             // 
             // fld_txtHREmployeeUnionMemberFee
             // 
@@ -1192,15 +1164,6 @@ namespace VinaERP.Modules.Employee.UI
             this.label47.TabIndex = 131;
             this.label47.Text = "Phí công đoàn";
             // 
-            // simpleButton9
-            // 
-            this.simpleButton9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton9.Location = new System.Drawing.Point(711, 20);
-            this.simpleButton9.Name = "simpleButton9";
-            this.simpleButton9.Size = new System.Drawing.Size(113, 25);
-            this.simpleButton9.TabIndex = 130;
-            this.simpleButton9.Text = "Cập nhập cấu hình";
-            // 
             // fld_lkeHRInsCalculatedSalaryType
             // 
             this.fld_lkeHRInsCalculatedSalaryType.Location = new System.Drawing.Point(130, 205);
@@ -1216,6 +1179,7 @@ namespace VinaERP.Modules.Employee.UI
             this.fld_lkeHRInsCalculatedSalaryType.VinaDataMember = "HRInsCalculatedSalaryType";
             this.fld_lkeHRInsCalculatedSalaryType.VinaDataSource = "HREmployees";
             this.fld_lkeHRInsCalculatedSalaryType.VinaPropertyName = "EditValue";
+            this.fld_lkeHRInsCalculatedSalaryType.Visible = false;
             // 
             // label46
             // 
@@ -1225,6 +1189,7 @@ namespace VinaERP.Modules.Employee.UI
             this.label46.Size = new System.Drawing.Size(78, 13);
             this.label46.TabIndex = 129;
             this.label46.Text = "Dựa vào lương";
+            this.label46.Visible = false;
             // 
             // fld_txtHREmployeeInsPaymentTotalAmountDN
             // 
@@ -1641,7 +1606,6 @@ namespace VinaERP.Modules.Employee.UI
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
             this.groupControl4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fld_txtHREmployeeTaxPaymentPercent.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fld_txtHREmployeeUnionMemberFee.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fld_txtHREmployeeSyndicatePaymentAmount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fld_txtHREmployeeSyndicatePaymentPercent.Properties)).EndInit();
@@ -1760,15 +1724,12 @@ namespace VinaERP.Modules.Employee.UI
         private System.Windows.Forms.Label label42;
         private VinaTextBox fld_txtHREmployeeSocialInsPaymentPercent;
         private System.Windows.Forms.Label label43;
-        private VinaTextBox fld_txtHREmployeeTaxPaymentPercent;
-        private System.Windows.Forms.Label label50;
         private VinaTextBox fld_txtHREmployeeUnionMemberFee;
         private System.Windows.Forms.Label label49;
         private VinaTextBox fld_txtHREmployeeSyndicatePaymentAmount;
         private System.Windows.Forms.Label label48;
         private VinaTextBox fld_txtHREmployeeSyndicatePaymentPercent;
         private System.Windows.Forms.Label label47;
-        private DevExpress.XtraEditors.SimpleButton simpleButton9;
         private VinaTextBox fld_txtHREmployeeHealthInsPaymentAmount;
     }
 }

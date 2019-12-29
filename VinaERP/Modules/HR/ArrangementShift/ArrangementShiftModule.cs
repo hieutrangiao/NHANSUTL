@@ -309,5 +309,50 @@ namespace VinaERP.Modules.ArrangementShift
                 }
             }
         }
+
+        public void ChangeArrangementShiftTime()
+        {
+            ArrangementShiftEntities entity = (ArrangementShiftEntities)CurrentModuleEntity;
+            HRArrangementShiftsInfo objArrangementShiftsInfo = (HRArrangementShiftsInfo)entity.MainObject;
+            int numDays = NumOfDayInMonth();
+            if (numDays > 31)
+            {
+                MessageBox.Show("Bạn không thể chọn thời gian xếp ca quá 31 ngày!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                objArrangementShiftsInfo.HRArrangementShiftToDate = objArrangementShiftsInfo.HRArrangementShiftFromDate;
+                entity.UpdateMainObjectBindingSource();
+            }
+            InvalidateArrangementShiftValues();
+            InitializeArrangementShiftEntryGridControl();
+            UpdateEmployeeArrangementShift();
+        }
+
+        private void InvalidateArrangementShiftValues()
+        {
+            ArrangementShiftEntities entity = (ArrangementShiftEntities)CurrentModuleEntity;
+            foreach (HREmployeeArrangementShiftsInfo employeeArrangementShift in entity.EmployeeArrangementShiftsList)
+            {
+                entity.SetEmployeeArrangementShiftValue(employeeArrangementShift);
+            }
+        }
+
+        public void UpdateEmployeeArrangementShift()
+        {
+            ArrangementShiftEntities entity = (ArrangementShiftEntities)CurrentModuleEntity;
+            HRArrangementShiftsInfo objArrangementShiftsInfo = (HRArrangementShiftsInfo)entity.MainObject;
+            HREmployeesController objEmployeesController = new HREmployeesController();
+            HREmployeesInfo objEmployeesInfo;
+            entity.EmployeeArrangementShiftsList.ForEach(o =>
+            {
+                objEmployeesInfo = (HREmployeesInfo)objEmployeesController.GetObjectByID(o.FK_HREmployeeID);
+                if (objEmployeesInfo != null)
+                {
+                    AddDefaulArrangementShiftEntries(o, objEmployeesInfo);
+                    List<HRArrangementShiftEntrysInfo> arrangementShiftEntrys = o.HRArrangementShiftEntrysList.Where(i => i.FK_HREmployeeID == o.FK_HREmployeeID).ToList();
+                    o.HRArrangementShiftEntrysList = arrangementShiftEntrys;
+                    entity.SetEmployeeArrangementShiftValue(o);
+                }
+            });
+            entity.EmployeeArrangementShiftsList.GridControl.RefreshDataSource();
+        }
     }
 }

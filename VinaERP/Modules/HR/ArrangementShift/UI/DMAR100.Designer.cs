@@ -216,6 +216,7 @@ namespace VinaERP.Modules.ArrangementShift.UI
             this.fld_dteHRArrangementShiftToDate.VinaDataMember = "HRArrangementShiftToDate";
             this.fld_dteHRArrangementShiftToDate.VinaDataSource = "HRArrangementShifts";
             this.fld_dteHRArrangementShiftToDate.VinaPropertyName = "EditValue";
+            this.fld_dteHRArrangementShiftToDate.EditValueChanged += new System.EventHandler(this.fld_dteHRArrangementShiftToDate_EditValueChanged);
             // 
             // labelControl2
             // 

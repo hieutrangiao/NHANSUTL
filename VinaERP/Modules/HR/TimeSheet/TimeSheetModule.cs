@@ -706,120 +706,120 @@ namespace VinaERP.Modules.TimeSheet
             ENDFOR:;
             }
 
-            if (list != null)
-            {
-                List<ADWorkingShiftsInfo> list2 = list.Where(o => o.ADWorkingShiftFromTime.TimeOfDay > o.ADWorkingShiftToTime.TimeOfDay).ToList();
-                if (list2 != null && list2.Count > 0)
-                {
-                    foreach (HREmployeeTimeSheetsInfo objEmployeeTimeSheetsInfo in entity.EmployeeTimeSheetsList)
-                    {
-                        if (employeeID > 0 && objEmployeeTimeSheetsInfo.FK_HREmployeeID != employeeID)
-                        {
-                            continue;
-                        }
-                        string employeeCardNoInFor = "";
-                        if (employeeCardNo != null)
-                        {
-                            employeeCardNoInFor = employeeCardNo;
-                            if (employeeCardNo != objEmployeeTimeSheetsInfo.HREmployeeCardNumber)
-                            {
-                                goto ENDFOR2;
-                            }
-                        }
-                        else
-                        {
-                            employeeCardNoInFor = objEmployeeTimeSheetsInfo.HREmployeeCardNumber;
-                        }
-                        List<HRTimeKeeperCompletesInfo> timeKeeperCompleteList = new List<HRTimeKeeperCompletesInfo>();
-                        timeKeeperCompleteList = objTimeKeeperCompletesController.GetTimeKeeperByDate(employeeCardNoInFor, dateFrom, dateTo.AddDays(1));
-                        if (string.IsNullOrEmpty(objEmployeeTimeSheetsInfo.HREmployeeCardNumber)) continue;
-                        if (!string.IsNullOrEmpty(employeeCardNo) && objEmployeeTimeSheetsInfo.HREmployeeCardNumber != employeeCardNo) continue;
-                        HREmployeesInfo objEmployeesInfo = (HREmployeesInfo)objEmployeesController.GetObjectByID(objEmployeeTimeSheetsInfo.FK_HREmployeeID);
-                        objEmployeeTimeSheetsInfo.HREmployeeCardNumber = objEmployeesInfo.HREmployeeCardNumber;
-                        int daysInMonth = NumOfDayInMonth();
+            //if (list != null)
+            //{
+            //    List<ADWorkingShiftsInfo> list2 = list.Where(o => o.ADWorkingShiftFromTime.TimeOfDay > o.ADWorkingShiftToTime.TimeOfDay).ToList();
+            //    if (list2 != null && list2.Count > 0)
+            //    {
+            //        foreach (HREmployeeTimeSheetsInfo objEmployeeTimeSheetsInfo in entity.EmployeeTimeSheetsList)
+            //        {
+            //            if (employeeID > 0 && objEmployeeTimeSheetsInfo.FK_HREmployeeID != employeeID)
+            //            {
+            //                continue;
+            //            }
+            //            string employeeCardNoInFor = "";
+            //            if (employeeCardNo != null)
+            //            {
+            //                employeeCardNoInFor = employeeCardNo;
+            //                if (employeeCardNo != objEmployeeTimeSheetsInfo.HREmployeeCardNumber)
+            //                {
+            //                    goto ENDFOR2;
+            //                }
+            //            }
+            //            else
+            //            {
+            //                employeeCardNoInFor = objEmployeeTimeSheetsInfo.HREmployeeCardNumber;
+            //            }
+            //            List<HRTimeKeeperCompletesInfo> timeKeeperCompleteList = new List<HRTimeKeeperCompletesInfo>();
+            //            timeKeeperCompleteList = objTimeKeeperCompletesController.GetTimeKeeperByDate(employeeCardNoInFor, dateFrom, dateTo.AddDays(1));
+            //            if (string.IsNullOrEmpty(objEmployeeTimeSheetsInfo.HREmployeeCardNumber)) continue;
+            //            if (!string.IsNullOrEmpty(employeeCardNo) && objEmployeeTimeSheetsInfo.HREmployeeCardNumber != employeeCardNo) continue;
+            //            HREmployeesInfo objEmployeesInfo = (HREmployeesInfo)objEmployeesController.GetObjectByID(objEmployeeTimeSheetsInfo.FK_HREmployeeID);
+            //            objEmployeeTimeSheetsInfo.HREmployeeCardNumber = objEmployeesInfo.HREmployeeCardNumber;
+            //            int daysInMonth = NumOfDayInMonth();
 
-                        for (int i = 1; i <= daysInMonth; i++)
-                        {
-                            DateTime dt = timeSheet.HRTimeSheetFromDate.AddDays(i - 1).Date;
-                            if (dt < dateFrom.Date || dt > dateTo.Date) continue;
+            //            for (int i = 1; i <= daysInMonth; i++)
+            //            {
+            //                DateTime dt = timeSheet.HRTimeSheetFromDate.AddDays(i - 1).Date;
+            //                if (dt < dateFrom.Date || dt > dateTo.Date) continue;
 
-                            List<HRTimeKeeperCompletesInfo> listTemp =
-                                timeKeeperCompleteList
-                                .Where(p => p.HRTimeKeeperCompletesEmployeeCardNo == objEmployeeTimeSheetsInfo.HREmployeeCardNumber
-                                    && (p.HRTimeKeeperCompleteDate.Date >= dt.Date && p.HRTimeKeeperCompleteDate <= dt.AddDays(1).Date))
-                                .OrderBy(p => p.FK_HROverTimeID)
-                                .ThenBy(p => p.HRTimeKeeperCompleteTimeCheck)
-                                .ToList();
-                            List<ADWorkingShiftsInfo> list3 = list.Where(o => o.ADWorkingShiftFromTime.TimeOfDay < o.ADWorkingShiftToTime.TimeOfDay).ToList();
-                            list3.ForEach(x =>
-                            {
-                                listTemp = listTemp.Where(o => o.FK_ADWorkingShiftID != x.ADWorkingShiftID)
-                                    .OrderBy(p => p.FK_HROverTimeID)
-                                    .ThenBy(p => p.HRTimeKeeperCompleteTimeCheck)
-                                    .ToList();
-                            });
+            //                List<HRTimeKeeperCompletesInfo> listTemp =
+            //                    timeKeeperCompleteList
+            //                    .Where(p => p.HRTimeKeeperCompletesEmployeeCardNo == objEmployeeTimeSheetsInfo.HREmployeeCardNumber
+            //                        && (p.HRTimeKeeperCompleteDate.Date >= dt.Date && p.HRTimeKeeperCompleteDate <= dt.AddDays(1).Date))
+            //                    .OrderBy(p => p.FK_HROverTimeID)
+            //                    .ThenBy(p => p.HRTimeKeeperCompleteTimeCheck)
+            //                    .ToList();
+            //                List<ADWorkingShiftsInfo> list3 = list.Where(o => o.ADWorkingShiftFromTime.TimeOfDay < o.ADWorkingShiftToTime.TimeOfDay).ToList();
+            //                list3.ForEach(x =>
+            //                {
+            //                    listTemp = listTemp.Where(o => o.FK_ADWorkingShiftID != x.ADWorkingShiftID)
+            //                        .OrderBy(p => p.FK_HROverTimeID)
+            //                        .ThenBy(p => p.HRTimeKeeperCompleteTimeCheck)
+            //                        .ToList();
+            //                });
 
-                            list2.ForEach(o =>
-                            {
-                                for (int j = 0; j < listTemp.Count - 1; j += 1)
-                                {
-                                    HRTimeSheetEntrysInfo objTimeSheetEntrysInfo = new HRTimeSheetEntrysInfo();
-                                    objTimeSheetEntrysInfo.FK_HREmployeeID = objEmployeeTimeSheetsInfo.FK_HREmployeeID;
-                                    objTimeSheetEntrysInfo.FK_HREmployeeTimeSheetID = objEmployeeTimeSheetsInfo.HREmployeeTimeSheetID;
-                                    objTimeSheetEntrysInfo.FK_HRTimeSheetID = objEmployeeTimeSheetsInfo.FK_HRTimeSheetID;
-                                    objTimeSheetEntrysInfo.HREmployeeCardNumber = objEmployeeTimeSheetsInfo.HREmployeeCardNumber;
-                                    objTimeSheetEntrysInfo.HRTimeSheetEntryDate = dt;
+            //                list2.ForEach(o =>
+            //                {
+            //                    for (int j = 0; j < listTemp.Count - 1; j += 1)
+            //                    {
+            //                        HRTimeSheetEntrysInfo objTimeSheetEntrysInfo = new HRTimeSheetEntrysInfo();
+            //                        objTimeSheetEntrysInfo.FK_HREmployeeID = objEmployeeTimeSheetsInfo.FK_HREmployeeID;
+            //                        objTimeSheetEntrysInfo.FK_HREmployeeTimeSheetID = objEmployeeTimeSheetsInfo.HREmployeeTimeSheetID;
+            //                        objTimeSheetEntrysInfo.FK_HRTimeSheetID = objEmployeeTimeSheetsInfo.FK_HRTimeSheetID;
+            //                        objTimeSheetEntrysInfo.HREmployeeCardNumber = objEmployeeTimeSheetsInfo.HREmployeeCardNumber;
+            //                        objTimeSheetEntrysInfo.HRTimeSheetEntryDate = dt;
 
-                                    if (o.ADWorkingShiftID == listTemp[j].FK_ADWorkingShiftID)
-                                    {
-                                        if (listTemp[j].FK_HROverTimeID > 0 && listTemp[j + 1].FK_HROverTimeID > 0)
-                                        {
-                                            objTimeSheetEntrysInfo.FK_ADWorkingShiftID = listTemp[j].FK_ADWorkingShiftID;
-                                            objTimeSheetEntrysInfo.FK_HROverTimeID = listTemp[j].FK_HROverTimeID;
-                                            objTimeSheetEntrysInfo.HRTimeSheetEntryFrom = listTemp[j].HRTimeKeeperCompleteTimeCheck;
-                                            objTimeSheetEntrysInfo.HRTimeSheetEntryTo = listTemp[j + 1].HRTimeKeeperCompleteTimeCheck;
-                                            timeEntries.Add(objTimeSheetEntrysInfo);
-                                        }
-                                        else
-                                        {
-                                            objTimeSheetEntrysInfo.FK_ADWorkingShiftID = listTemp[j].FK_ADWorkingShiftID;
-                                            objTimeSheetEntrysInfo.FK_HROverTimeID = listTemp[j].FK_HROverTimeID;
+            //                        if (o.ADWorkingShiftID == listTemp[j].FK_ADWorkingShiftID)
+            //                        {
+            //                            if (listTemp[j].FK_HROverTimeID > 0 && listTemp[j + 1].FK_HROverTimeID > 0)
+            //                            {
+            //                                objTimeSheetEntrysInfo.FK_ADWorkingShiftID = listTemp[j].FK_ADWorkingShiftID;
+            //                                objTimeSheetEntrysInfo.FK_HROverTimeID = listTemp[j].FK_HROverTimeID;
+            //                                objTimeSheetEntrysInfo.HRTimeSheetEntryFrom = listTemp[j].HRTimeKeeperCompleteTimeCheck;
+            //                                objTimeSheetEntrysInfo.HRTimeSheetEntryTo = listTemp[j + 1].HRTimeKeeperCompleteTimeCheck;
+            //                                timeEntries.Add(objTimeSheetEntrysInfo);
+            //                            }
+            //                            else
+            //                            {
+            //                                objTimeSheetEntrysInfo.FK_ADWorkingShiftID = listTemp[j].FK_ADWorkingShiftID;
+            //                                objTimeSheetEntrysInfo.FK_HROverTimeID = listTemp[j].FK_HROverTimeID;
 
-                                            if (listTemp[j].HRTimeKeeperCompleteTimeCheck.TimeOfDay >= o.ADWorkingShiftTimeKeepInFrom.TimeOfDay
-                                                && listTemp[j].HRTimeKeeperCompleteTimeCheck.TimeOfDay <= o.ADWorkingShiftTimeKeepInTo.TimeOfDay)
-                                            {
-                                                objTimeSheetEntrysInfo.HRTimeSheetEntryFrom = listTemp[j].HRTimeKeeperCompleteTimeCheck;
-                                            }
+            //                                if (listTemp[j].HRTimeKeeperCompleteTimeCheck.TimeOfDay >= o.ADWorkingShiftTimeKeepInFrom.TimeOfDay
+            //                                    && listTemp[j].HRTimeKeeperCompleteTimeCheck.TimeOfDay <= o.ADWorkingShiftTimeKeepInTo.TimeOfDay)
+            //                                {
+            //                                    objTimeSheetEntrysInfo.HRTimeSheetEntryFrom = listTemp[j].HRTimeKeeperCompleteTimeCheck;
+            //                                }
 
-                                            if (listTemp[j + 1].HRTimeKeeperCompleteTimeCheck.TimeOfDay >= o.ADWorkingShiftTimeKeepOutFrom.TimeOfDay
-                                                && listTemp[j + 1].HRTimeKeeperCompleteTimeCheck.TimeOfDay <= o.ADWorkingShiftTimeKeepOutTo.TimeOfDay)
-                                            {
-                                                objTimeSheetEntrysInfo.HRTimeSheetEntryTo = listTemp[j + 1].HRTimeKeeperCompleteTimeCheck;
-                                                timeEntries.Add(objTimeSheetEntrysInfo);
-                                            }
-                                            else
-                                            {
-                                                DateTime date = listTemp[j + 1].HRTimeKeeperCompleteTimeCheck.AddDays(1);
-                                                DateTime date2 = new DateTime(date.Year, date.Month, date.Day, o.ADWorkingShiftTimeKeepOutTo.Hour, o.ADWorkingShiftTimeKeepOutTo.Minute, o.ADWorkingShiftTimeKeepOutTo.Second);
-                                                if (listTemp[j + 1].HRTimeKeeperCompleteTimeCheck.TimeOfDay >= o.ADWorkingShiftTimeKeepInFrom.TimeOfDay
-                                                    && listTemp[j + 1].HRTimeKeeperCompleteTimeCheck <= date2
-                                                    && objTimeSheetEntrysInfo.HRTimeSheetEntryFrom.Date != DateTime.MaxValue.Date
-                                                    && listTemp[j + 1].HRTimeKeeperCompleteTimeCheck.Date == objTimeSheetEntrysInfo.HRTimeSheetEntryFrom.Date
-                                                    && objTimeSheetEntrysInfo.HRTimeSheetEntryDate.Date == objTimeSheetEntrysInfo.HRTimeSheetEntryFrom.Date)
-                                                {
-                                                    objTimeSheetEntrysInfo.HRTimeSheetEntryTo = listTemp[j + 1].HRTimeKeeperCompleteTimeCheck;
-                                                    timeEntries.Add(objTimeSheetEntrysInfo);
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            });
-                        }
-                    ENDFOR2:;
-                    }
-                }
-            }
+            //                                if (listTemp[j + 1].HRTimeKeeperCompleteTimeCheck.TimeOfDay >= o.ADWorkingShiftTimeKeepOutFrom.TimeOfDay
+            //                                    && listTemp[j + 1].HRTimeKeeperCompleteTimeCheck.TimeOfDay <= o.ADWorkingShiftTimeKeepOutTo.TimeOfDay)
+            //                                {
+            //                                    objTimeSheetEntrysInfo.HRTimeSheetEntryTo = listTemp[j + 1].HRTimeKeeperCompleteTimeCheck;
+            //                                    timeEntries.Add(objTimeSheetEntrysInfo);
+            //                                }
+            //                                else
+            //                                {
+            //                                    DateTime date = listTemp[j + 1].HRTimeKeeperCompleteTimeCheck.AddDays(1);
+            //                                    DateTime date2 = new DateTime(date.Year, date.Month, date.Day, o.ADWorkingShiftTimeKeepOutTo.Hour, o.ADWorkingShiftTimeKeepOutTo.Minute, o.ADWorkingShiftTimeKeepOutTo.Second);
+            //                                    if (listTemp[j + 1].HRTimeKeeperCompleteTimeCheck.TimeOfDay >= o.ADWorkingShiftTimeKeepInFrom.TimeOfDay
+            //                                        && listTemp[j + 1].HRTimeKeeperCompleteTimeCheck <= date2
+            //                                        && objTimeSheetEntrysInfo.HRTimeSheetEntryFrom.Date != DateTime.MaxValue.Date
+            //                                        && listTemp[j + 1].HRTimeKeeperCompleteTimeCheck.Date == objTimeSheetEntrysInfo.HRTimeSheetEntryFrom.Date
+            //                                        && objTimeSheetEntrysInfo.HRTimeSheetEntryDate.Date == objTimeSheetEntrysInfo.HRTimeSheetEntryFrom.Date)
+            //                                    {
+            //                                        objTimeSheetEntrysInfo.HRTimeSheetEntryTo = listTemp[j + 1].HRTimeKeeperCompleteTimeCheck;
+            //                                        timeEntries.Add(objTimeSheetEntrysInfo);
+            //                                    }
+            //                                }
+            //                            }
+            //                        }
+            //                    }
+            //                });
+            //            }
+            //        ENDFOR2:;
+            //        }
+            //    }
+            //}
             AddEmployeesFromTimeKeeper(timeEntries, dateFrom, dateTo, isReset, employeeID);
         }
 
@@ -956,11 +956,6 @@ namespace VinaERP.Modules.TimeSheet
                                         HRTimesheetEmployeeLatesInfo objTimesheetEmployeeLatesInfoBackSoon = objTimesheetEmployeeLatesController.GetTimesheetEmployee(objEmployeesInfo.FK_HREmployeePayrollFormulaID, (int)(dateMaxWorkingShift - dateMaxTimeSheet).TotalMinutes, TimesheetEmployeeLateConfigType.BackSoon.ToString());
                                         if (objTimesheetEmployeeLatesInfoBackSoon != null)
                                         {
-                                            //if (objTimesheetEmployeeLatesInfoBackSoon.HRTimesheetEmployeeLateDeduct == 0)
-                                            //{
-                                            //    dateMaxTimeSheet = dateMaxWorkingShift;
-                                            //}
-                                            //else 
                                             dateMaxTimeSheet = dateMaxWorkingShift;
                                             if (objTimesheetEmployeeLatesInfoBackSoon.HRTimesheetEmployeeLateDeduct == 0 && objTimesheetEmployeeLatesInfoBackSoon.HRTimesheetEmployeeLateDeduct != 0)
                                             {
@@ -1018,11 +1013,6 @@ namespace VinaERP.Modules.TimeSheet
                                     HRTimesheetEmployeeLatesInfo objTimesheetEmployeeLatesInfo = objTimesheetEmployeeLatesController.GetTimesheetEmployee(objEmployeesInfo.FK_HREmployeePayrollFormulaID, (int)(dateMinTimeSheet - dateMinWorkingShift).TotalMinutes, TimesheetEmployeeLateConfigType.ComeLate.ToString());
                                     if (objTimesheetEmployeeLatesInfo != null)
                                     {
-                                        //if (objTimesheetEmployeeLatesInfo.HRTimesheetEmployeeLateDeduct == 0)
-                                        //{
-                                        //    dateMinTimeSheet = dateMinWorkingShift;
-                                        //}
-                                        //else
                                         dateMinTimeSheet = dateMinWorkingShift;
                                         if (objTimesheetEmployeeLatesInfo.HRTimesheetEmployeeLateDeduct == 0 && objTimesheetEmployeeLatesInfo.HRTimesheetEmployeeLateDeduct != 0)
                                         {
@@ -1064,11 +1054,8 @@ namespace VinaERP.Modules.TimeSheet
 
                                         if (workingMinutes > 0 && workingShiftMinutes > 0)
                                         {
-                                            //factor = Math.Round(workingMinutes / workingShiftMinutes, 4);
                                             factor = Math.Ceiling((workingMinutes / workingShiftMinutes) * 10000) / 10000;
                                         }
-
-                                        //factor = factor - objTimesheetEmployeeLatesInfo.HRTimesheetEmployeeLateDeduct;
                                     }
                                     // Về sớm hoặc làm 1 buổi
                                     else
@@ -1076,10 +1063,6 @@ namespace VinaERP.Modules.TimeSheet
                                         HRTimesheetEmployeeLatesInfo objTimesheetEmployeeLatesInfoBackSoon = objTimesheetEmployeeLatesController.GetTimesheetEmployee(objEmployeesInfo.FK_HREmployeePayrollFormulaID, (int)(dateMaxWorkingShift - dateMaxTimeSheet).TotalMinutes, TimesheetEmployeeLateConfigType.BackSoon.ToString());
                                         if (objTimesheetEmployeeLatesInfoBackSoon != null)
                                         {
-                                            //if (objTimesheetEmployeeLatesInfoBackSoon.HRTimesheetEmployeeLateDeduct == 0)
-                                            //{
-                                            //    dateMaxTimeSheet = dateMaxWorkingShift;
-                                            //}
                                             dateMaxTimeSheet = dateMaxWorkingShift;
                                             if (objTimesheetEmployeeLatesInfoBackSoon.HRTimesheetEmployeeLateDeduct == 0 && objTimesheetEmployeeLatesInfoBackSoon.HRTimesheetEmployeeLateDeduct != 0)
                                             {
@@ -1244,8 +1227,6 @@ namespace VinaERP.Modules.TimeSheet
                 {
                     if (i.HRTimeSheetEntryFrom < dateMinTimeSheet) dateMinTimeSheet = i.HRTimeSheetEntryFrom;
                     if (i.HRTimeSheetEntryTo > dateMaxTimeSheet) dateMaxTimeSheet = i.HRTimeSheetEntryTo;
-                    //item.HRTimeSheetEntryWorkingHours += ((decimal)(i.HRTimeSheetEntryTo - i.HRTimeSheetEntryFrom).TotalMinutes) / 60.0;
-                    //item.HRTimeSheetEntryWorkingQty = item.HRTimeSheetEntryWorkingHours;
                 }
 
                 if (timeSheet.HRTimeSheetType == TimeSheetType.Hour.ToString())
@@ -1415,55 +1396,9 @@ namespace VinaERP.Modules.TimeSheet
                                 }
                             });
                         }
-                        //
-                        //HRTimeSheetEntrysInfo timeSheetEntry1 = timeKeeperEntries.FirstOrDefault(tke => tke.HRTimeSheetEntryDate.Date == ot.HREmployeeOTDate.Date
-                        //                                                                                && tke.FK_HRTimeSheetParamID != 0 && tke.FK_HREmployeeID == item.FK_HREmployeeID);
-                        //if (timeSheetEntry1 != null)
-                        //{
-                        //    #region Holiday
-                        //    bool isHoliday = false;
-                        //    if (BOSApp.IsEndOfWeek(timeSheetEntry1.HRTimeSheetEntryDate.DayOfWeek)
-                        //        || BOSApp.IsHoliday(timeSheetEntry1.HRTimeSheetEntryDate))
-                        //    {
-                        //        isHoliday = true;
-                        //    }
-
-                        //    #endregion
-
-                        //    if (timeSheetEntry1.HRTimeSheetEntryTo > ot.HREmployeeOTFromDate && !isHoliday)
-                        //    {
-                        //        ot.HREmployeeOTFromDate = timeSheetEntry1.HRTimeSheetEntryTo;
-                        //    }
-                        //    if (timeSheetEntry1.HRTimeSheetEntryTo > otDate && !isHoliday
-                        //        && timeSheetEntry1.HRTimeSheetEntryTo > ot.HREmployeeOTToDate && timeSheetEntry1.HRTimeSheetEntryFrom > otDate
-                        //        && timeSheetEntry1.HRTimeSheetEntryFrom >= ot.HREmployeeOTToDate)
-                        //    {
-                        //        ot.HREmployeeOTFromDate = otDate;
-                        //    }
-                        //}
-
-                        //if (ot.HREmployeeOTToDate > timeSheetEntry.HRTimeSheetEntryTo)
-                        //{
-                        //    ot.HREmployeeOTToDate = timeSheetEntry.HRTimeSheetEntryTo;
-                        //}
-                        //
-                        //#region LV OT from 18:10:00 -> 18:40:00
-                        //DateTime dOTfrom = DateTime.ParseExact(timeSheetEntry.HRTimeSheetEntryTo.ToString("dd/MM/yyyy") + " "
-                        //             + "18:10:00", "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
-                        //DateTime dOTTo = DateTime.ParseExact(timeSheetEntry.HRTimeSheetEntryTo.ToString("dd/MM/yyyy") + " "
-                        //             + "18:40:00", "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
-
-                        //if (ot.HREmployeeOTToDate >= dOTfrom && ot.HREmployeeOTToDate <= dOTTo)
-                        //{
-                        //    ot.HREmployeeOTToDate = ot.HREmployeeOTFromDate.AddMinutes(120);
-                        //}
-                        //#endregion
-
-                        //23-01-2019
                         ot.HREmployeeOTFromDate = otDateFrom;
                         ot.HREmployeeOTToDate = otDateTo;
 
-                        //24-01-2019
                         HRTimesheetEmployeeLatesInfo objTimesheetEmployeeLatesInfo = objTimesheetEmployeeLatesController.GetTimesheetEmployee(objEmployeesInfo.FK_HREmployeePayrollFormulaID, (int)(otDateFrom - otDate).TotalMinutes, TimesheetEmployeeLateConfigType.ComeLate.ToString());
                         if (objTimesheetEmployeeLatesInfo != null)
                         {
@@ -1472,7 +1407,6 @@ namespace VinaERP.Modules.TimeSheet
                                 ot.HREmployeeOTFromDate = otDate;
                             }
                         }
-                        //end
 
                         decimal minutes = Convert.ToDecimal((ot.HREmployeeOTToDate - ot.HREmployeeOTFromDate).TotalMinutes);
 
@@ -1515,22 +1449,7 @@ namespace VinaERP.Modules.TimeSheet
                             decimal totalMinutes = 0;
                             fromDate = ot.HREmployeeOTFromDate < objOTFactor.HROTFactorFromTime ? objOTFactor.HROTFactorFromTime : ot.HREmployeeOTFromDate;
                             toDate = ot.HREmployeeOTToDate < objOTFactor.HROTFactorToTime ? ot.HREmployeeOTToDate : objOTFactor.HROTFactorToTime;
-
-                            //time = (toDate - fromDate).TotalMinutes / 60.0;
                             totalMinutes = Convert.ToDecimal((toDate - fromDate).TotalMinutes);
-
-                            //foreach (HRBreakTimesInfo breakTime in breakTimes)
-                            //{
-                            //    breakTime.HRBreakTimeFromTime = fromDate.Date.AddHours(breakTime.HRBreakTimeFromTime.Hour).AddMinutes(breakTime.HRBreakTimeFromTime.Minute);
-                            //    breakTime.HRBreakTimeToTime = fromDate.Date.AddHours(breakTime.HRBreakTimeToTime.Hour).AddMinutes(breakTime.HRBreakTimeToTime.Minute);
-
-                            //    DateTime breakTimeFrom = fromDate < breakTime.HRBreakTimeFromTime ? breakTime.HRBreakTimeFromTime : fromDate;
-                            //    DateTime breakTimeTo = toDate < breakTime.HRBreakTimeToTime ? toDate : breakTime.HRBreakTimeToTime;
-
-                            //    decimal totalBreakTimeMinutes = Convert.ToDecimal((breakTimeTo - breakTimeFrom).TotalMinutes);
-                            //    if (totalBreakTimeMinutes > 0)
-                            //        totalMinutes -= totalBreakTimeMinutes;
-                            //}
 
                             time = Math.Round(totalMinutes / 60, 5);
 
@@ -1551,8 +1470,6 @@ namespace VinaERP.Modules.TimeSheet
                                 time = 0;
                             }
 
-                            //HRTimeSheetParamsInfo objTimeSheetParamsInfo = GetOTTimeSheetParam(otTimeSheetParamsList, time, objOTFactor.HROTFactorValue);
-                            //HieuNT [Ưu tiên lấy hệ số tăng ca theo HREmployeeOTFactor, Nếu hệ số tăng ca bằng 1 thì tính qua ngày còn khoảng thời gian tăng ca quá 8h thì hệ số tăng ca theo cấu hình] START
                             System.Data.DataTable dt = new System.Data.DataTable();
                             dt.Columns.Add("TimeValue", typeof(decimal));
                             dt.Columns.Add("FactorValue", typeof(decimal));
@@ -1561,13 +1478,6 @@ namespace VinaERP.Modules.TimeSheet
                             dt.Columns.Add("TimeSheetParamType", typeof(string));
                             if (ot.HREmployeeOTFactor == 1)
                             {
-                                //if (time > HoursPerDay)
-                                //{
-                                //    decimal timeDetail = (timeSheet.HRTimeSheetType == TimeSheetType.Day.ToString()) ? 1 : HoursPerDay;
-                                //    dt.Rows.Add(new Object[] { timeDetail, ot.HREmployeeOTFactor, true, false, timeSheet.HRTimeSheetType });
-                                //    dt.Rows.Add(new Object[] { time - HoursPerDay, objOTFactor.HROTFactorValue, false, true, TimeSheetType.Hour.ToString() });
-                                //}
-                                //else
                                 {
                                     decimal timeDetail = (timeSheet.HRTimeSheetType == TimeSheetType.Day.ToString()) ? time / HoursPerDay : time;
                                     //dt.Rows.Add(new Object[] { timeDetail, ot.HREmployeeOTFactor, true, false, timeSheet.HRTimeSheetType });
@@ -1588,7 +1498,6 @@ namespace VinaERP.Modules.TimeSheet
                                 if (objTimeSheetParamsInfo != null && objTimeSheetParamsInfo.HRTimeSheetParamID != 0)
                                 {
                                     otHours = objTimeSheetParamsInfo.HRTimeSheetParamValue1;
-                                    //f = objTimeSheetParamsInfo.HRTimeSheetParamValue1 * objOTFactor.HROTFactorValue;
                                     f = objTimeSheetParamsInfo.HRTimeSheetParamValue1 * (decimal)dt.Rows[i]["FactorValue"];
                                     HRTimeSheetEntrysInfo obj = new HRTimeSheetEntrysInfo();
                                     bool isOTCalculated = (bool)dt.Rows[i]["isOTCalculated"];
@@ -1631,7 +1540,6 @@ namespace VinaERP.Modules.TimeSheet
             }
             #endregion
             #region EmployeeTimeSheetsList
-            //if (timeKeeperEntries.Count > 0)
             {
                 List<HREmployeeTimeSheetsInfo> employeeTimeSheets = new List<HREmployeeTimeSheetsInfo>();
                 //TODO: Need to refactor this as we don't have a better way to get holiday param currently
@@ -1650,7 +1558,6 @@ namespace VinaERP.Modules.TimeSheet
                     List<HREmployeeTimeSheetOTDetailsInfo> timeSheetOTDetails = new List<HREmployeeTimeSheetOTDetailsInfo>();
                     // Add time sheet entries for holiday days
                     int daysInMonth = NumOfDayInMonth();
-                    //for (int i = dateFromNum; i <= dateToNum; i++)
                     ADWorkingShiftsInfo objADWorkingShiftsInfo = new ADWorkingShiftsInfo();
                     if (objEmployeesInfo != null && objEmployeesInfo.FK_HREmployeePayrollFormulaID > 0)
                     {
@@ -1672,7 +1579,6 @@ namespace VinaERP.Modules.TimeSheet
                         int i = dt.Day;
                         String propertyName = String.Format("{0}{1}", "HREmployeeTimeSheetDate", i);
                         bool isHoliday = columnFieldNameHoliday.Exists(delegate (string holiday) { return propertyName == holiday; });
-                        //DateTime date = timeSheet.HRTimeSheetFromDate.AddDays(i - 1).Date;
                         DateTime date = dt.Date;
                         if (isHoliday && holidayParam != null && holidayParamList.Count() > 0)
                         {
@@ -1713,7 +1619,7 @@ namespace VinaERP.Modules.TimeSheet
                                 workingShiftList2.ForEach(o =>
                                 {
                                     HRTimeSheetEntrysInfo entry = new HRTimeSheetEntrysInfo();
-                                    objholidayParam = (HRTimeSheetParamsInfo)holidayParamList.FirstOrDefault(x => x.FK_ADWorkingShiftID == o.ADWorkingShiftID);
+                                    objholidayParam = (HRTimeSheetParamsInfo)holidayParamList.FirstOrDefault();
                                     if (objholidayParam != null)
                                     {
                                         entry.FK_HRTimeSheetParamID = objholidayParam.HRTimeSheetParamID;
@@ -1755,15 +1661,6 @@ namespace VinaERP.Modules.TimeSheet
                     List<HRLeaveDaysInfo> employeeLeaveDays = leaveDays.Where(ld => ld.FK_HREmployeeID == objEmployeeTimeSheetsInfo.FK_HREmployeeID).ToList();
                     foreach (HRLeaveDaysInfo employeeLeaveDay in employeeLeaveDays)
                     {
-                        //HRTimeSheetEntrysInfo entry = timeSheetEntrys.Where(e => e.FK_HREmployeeID == employeeLeaveDay.FK_HREmployeeID &&
-                        //                                                    e.HRTimeSheetEntryDate.Date == employeeLeaveDay.HRLeaveDayDate.Date).FirstOrDefault();
-                        //if (entry != null)
-                        //{
-                        //    entry.FK_HRTimeSheetParamID = employeeLeaveDay.FK_HRTimeSheetParamID;
-                        //    HRTimeSheetParamsInfo objTimeSheetParamsInfo = GetTimeSheetParam(timeSheetParamsList, entry.HRTimeSheetEntryWorkingHours / HoursPerDay, false);
-                        //    entry.HRTimeSheetEntryWorkingQty = objTimeSheetParamsInfo.HRTimeSheetParamValue1;
-                        //}
-                        //else
                         {
                             HRTimeSheetEntrysInfo entry = new HRTimeSheetEntrysInfo();
                             entry.FK_HREmployeeID = employeeLeaveDay.FK_HREmployeeID;
@@ -1822,29 +1719,6 @@ namespace VinaERP.Modules.TimeSheet
                         });
                         objEmployeeTimeSheetsInfo.HRTimeSheetEntrysList.AddRange(timeSheetEntrys);
                     }
-
-                    //noi cong cho chuc nang cham cong nhanh [start]
-                    //objEmployeeTimeSheetsInfo.HRTimeSheetEntrysList = timeSheetEntrys;
-                    //objEmployeeTimeSheetsInfo.HREmployeeTimeSheetOTDetailsList = timeSheetOTDetails;
-
-                    //17-10-2019
-                    //DateTime d = dateFrom;
-                    //while (d.Date <= dateTo.Date)
-                    //{
-                    //    removedEntries = objEmployeeTimeSheetsInfo.HRTimeSheetEntrysList.Where(item => item.HRTimeSheetEntryDate.Date == d).ToList();
-                    //    if (removedEntries != null)
-                    //    {
-                    //        foreach (HRTimeSheetEntrysInfo entry in removedEntries)
-                    //        {
-                    //            objEmployeeTimeSheetsInfo.HRTimeSheetEntrysList.Remove(entry);
-                    //        }
-                    //    }
-                    //    d = d.AddDays(1);
-                    //}
-                    //objEmployeeTimeSheetsInfo.HRTimeSheetEntrysList.AddRange(timeSheetEntrys);
-                    //17-10-2019
-
-                    //noi cong cho chuc nang cham cong nhanh [end]
 
                     List<HRTimeSheetParamsInfo> OTFactorlist = objTimeSheetParamsController.GetDistinctOTTimeSheetParamsList();
                     foreach (var otfactor in OTFactorlist)
@@ -1931,8 +1805,6 @@ namespace VinaERP.Modules.TimeSheet
 
             foreach (var employeeWorkSchedule in employeeWorkScheduleList)
             {
-                //if (!timeEntries.Exists(p => p.FK_HREmployeeID == employeeWorkSchedule.FK_HREmployeeID))
-                //{
                 HREmployeesInfo objEmployeesInfo = (HREmployeesInfo)objEmployeesController.GetObjectByID(employeeWorkSchedule.FK_HREmployeeID);
                 if (objEmployeesInfo != null)
                 {

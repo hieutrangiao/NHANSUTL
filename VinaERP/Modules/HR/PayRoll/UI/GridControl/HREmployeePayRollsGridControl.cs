@@ -127,16 +127,6 @@ namespace BOSERP.Modules.PayRoll
             gridBand7.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.None;
             gridBand7.Name = "gridBand7";
 
-            //GridBand8
-            //gridBand8.Caption = "Khối lượng bốc xếp";
-            //gridBand8.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.None;
-            //gridBand8.Name = "gridBand8";
-
-            //GridBand3
-            //gridBand3.Caption = PayRollLocalizedResources.PayRollByTimeSheet;
-            //gridBand3.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.None;
-            //gridBand3.Name = "gridBand3";
-
             //GridBand4
             gridBand4.Caption = "Các khoản cộng thêm";
             gridBand4.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.None;
@@ -190,85 +180,6 @@ namespace BOSERP.Modules.PayRoll
                 CreateNewColumn(column, gridBand1, false);
             }
 
-            //column = gridView.Columns["HREmployeeStatusCombo"];
-            //if (column != null)
-            //{
-            //    CreateNewColumn(column, gridBand1, false);
-            //}
-
-            //column = gridView.Columns["HREmployeeWorkingForm"];
-            //if (column != null)
-            //{
-            //    CreateNewColumn(column, gridBand1, false);
-            //}
-
-            //column = gridView.Columns["HREmployeePayRollWorkingSalary"];
-            //if (column != null)
-            //{
-            //    CreateNumericColumn(column, gridBand1, false);
-            //}
-
-            //column = gridView.Columns["HREmployeeCardNumber"];
-            //if (column != null)
-            //{
-            //    CreateNewColumn(column, gridBand1, false);
-            //}
-
-            // Ngày công qui định
-            //column = gridView.Columns["HREmployeeDaysPerMonth"];
-            //if (column != null)
-            //{
-            //    CreateNumericColumn(column, gridBand2, false);
-            //}
-
-            // Ngày công thử việc
-            //column = gridView.Columns["HREmployeePayRollProbationaryRealDaysPerMonth"];
-            //if (column != null)
-            //{
-            //    CreateN3Column(column, gridBand2, false);
-            //}
-
-            //// Ngày công học việc
-            //column = gridView.Columns["HREmployeePayRollApprenticeRealDaysPerMonth"];
-            //if (column != null)
-            //{
-            //    CreateN3Column(column, gridBand2, false);
-            //}
-
-            // Ngày nghỉ hưởng lương
-            //column = gridView.Columns["HREmployeePayRollNgayNghiHuongLuong"];
-            //if (column != null)
-            //{
-            //    CreateN3Column(column, gridBand2, false);
-            //}
-
-            //// Ngày nghỉ không lương
-            //column = gridView.Columns["HREmployeePayRollNgayNghiKhongLuong"];
-            //if (column != null)
-            //{
-            //    CreateN3Column(column, gridBand2, false);
-            //}
-
-            //column = gridView.Columns["HREmployeePayrollNghiPhepNam"];
-            //if (column != null)
-            //{
-            //    CreateN3Column(column, gridBand2, false);
-            //}
-
-            // Tăng ca
-            //column = gridView.Columns["HREmployeePayRollDayOT"];
-            //if (column != null)
-            //{
-            //    CreateN3Column(column, gridBand2, false);
-            //}
-
-            // Trực đêm
-            //column = gridView.Columns["HREmployeeRealNightsPerMonth"];
-            //if (column != null)
-            //{
-            //    CreateN3Column(column, gridBand2, true);
-            //}
-
             // Lương tháng
             column = gridView.Columns["HREmployeePayRollLuongThang"];
             if (column != null)
@@ -276,114 +187,12 @@ namespace BOSERP.Modules.PayRoll
                 CreateNumericColumn(column, gridBand7, false);
             }
 
-            // Lương thử việc
-            //column = gridView.Columns["HREmployeePayRollProbationarySalaryAmount"];
-            //if (column != null)
-            //{
-            //    CreateNumericColumn(column, gridBand4, false);
-            //}
-
-            //// Lương học việc
-            //column = gridView.Columns["HREmployeePayRollApprenticeSalaryAmount"];
-            //if (column != null)
-            //{
-            //    CreateNumericColumn(column, gridBand4, false);
-            //}
-
             //Lương tăng ca
             column = gridView.Columns["HREmployeePayRollOTSalary"];
             if (column != null)
             {
                 CreateNumericColumn(column, gridBand7, true);
             }
-
-            // chuyên cần
-            //column = gridView.Columns["HREmployeePayRollDiligenceAllowance"];
-            //if (column != null)
-            //{
-            //    CreateNumericColumn(column, gridBand4, false);
-            //}
-
-            //// Phụ cấp cơm
-            //column = gridView.Columns["HREmployeePayRollAllowanceRise"];
-            //if (column != null)
-            //{
-            //    CreateNumericColumn(column, gridBand4, false);
-            //}
-
-            // Thưởng KPIs
-            //column = gridView.Columns["HREmployeePayRollKPIAllowance"];
-            //if (column != null)
-            //{
-            //    CreateNumericColumn(column, gridBand4, false);
-            //}
-
-            //Các khoản cộng
-            //column = gridView.Columns["HREmployeePayRollOthersAllowance"];
-            //if (column != null)
-            //{
-            //    CreateNumericColumn(column, gridBand4, false);
-            //}
-
-            //// Phụ cấp điện thoại
-            //column = gridView.Columns["HREmployeePayRollExtraSalary"];
-            //if (column != null)
-            //{
-            //    CreateNumericColumn(column, gridBand4, false);
-            //}
-
-            //// Phụ cấp xăng
-            //column = gridView.Columns["HREmployeePayRollAllowanceGasoline"];
-            //if (column != null)
-            //{
-            //    CreateNumericColumn(column, gridBand4, false);
-            //}
-
-            //// Nhà ở
-            //column = gridView.Columns["HREmployeePayRollAllowanceMotel"];
-            //if (column != null)
-            //{
-            //    CreateNumericColumn(column, gridBand4, false);
-            //}
-
-            ////Phụ cấp bảo dưỡng xe
-            //column = gridView.Columns["HREmployeePayRollAllowanceVehicleMaintenance"];
-            //if (column != null)
-            //{
-            //    CreateNumericColumn(column, gridBand4, false);
-            //}
-
-            ////Phụ cấp thử việc
-            //column = gridView.Columns["HREmployeePayRollProbationaryExtraSalary"];
-            //if (column != null)
-            //{
-            //    CreateNumericColumn(column, gridBand4, false);
-            //}
-
-            ////Phụ cấp công tác
-            //column = gridView.Columns["HREmployeePayRollAllowanceWorkSchedule"];
-            //if (column != null)
-            //{
-            //    CreateNumericColumn(column, gridBand4, false);
-            //}
-
-            //// Phụ cấp đi tỉnh
-            //column = gridView.Columns["HREmployeePayRollProvinceAllowance"];
-            //if (column != null)
-            //{
-            //    CreateNumericColumn(column, gridBand4, false);
-            //}
-
-            // Lương tăng ca
-            //foreach (var item in OTFactorlist)
-            //{
-            //    column = gridView.Columns["t" + item.HRTimeSheetParamValue2.ToString()];
-            //    if (column != null)
-            //    {
-            //        column.Caption = "Tiền TC hệ số " + item.HRTimeSheetParamValue2.ToString();
-            //        CreateNumericColumn(column, gridBand4, false);
-            //    }
-            //}
 
             // Khen thưởng
             column = gridView.Columns["HREmployeePayRollReward"];
@@ -409,12 +218,6 @@ namespace BOSERP.Modules.PayRoll
             CreateN0ColumnVisible(gridBand4, false, true, "Cộng khác", "HREmployeePayRollOtherReward");
 
             CreateN0ColumnVisible(gridBand4, false, true, "Hoàn tiền thế chân", "HREmployeePayRollBackTheChan");
-            // Bù lương
-            //column = gridView.Columns["HREmployeeOffsetSalary"];
-            //if (column != null)
-            //{
-            //    CreateNumericColumn(column, gridBand5, true);
-            //}
 
             // BHXH
 
@@ -424,51 +227,21 @@ namespace BOSERP.Modules.PayRoll
                 CreateNumericColumn(column, gridBand5, true);
             }
 
-            // Trừ lương trả nợ vay
-            column = gridView.Columns["HREmployeePayRollEmployeeLoanMonthlyAmount"];
-            if (column != null)
-            {
-                CreateNumericColumn(column, gridBand5, false);
-            }
+            //// Trừ lương trả nợ vay
+            //column = gridView.Columns["HREmployeePayRollEmployeeLoanMonthlyAmount"];
+            //if (column != null)
+            //{
+            //    CreateNumericColumn(column, gridBand5, false);
+            //}
 
-            // Tạm ứng
-            column = gridView.Columns["HREmployeePayRollAdvance"];
-            if (column != null)
-            {
-                CreateNumericColumn(column, gridBand5, true);
-            }
-
-            column = gridView.Columns["HREmployeePayRollSyndicateFee"];
-            if (column != null)
-            {
-                CreateNumericColumn(column, gridBand5, true);
-            }
-            //column = gridView.Columns["HREmployeePayrollBHTaiNan"];
+            //// Tạm ứng
+            //column = gridView.Columns["HREmployeePayRollAdvance"];
             //if (column != null)
             //{
             //    CreateNumericColumn(column, gridBand5, true);
             //}
 
-            //column = gridView.Columns["HREmployeePayrollTruThueTNCN"];
-            //if (column != null)
-            //{
-            //    CreateNumericColumn(column, gridBand5, true);
-            //}
-
-            //column = gridView.Columns["HREmployeePayRollSubtractPhoneAmount"];
-            //if (column != null)
-            //{
-            //    CreateNumericColumn(column, gridBand5, true);
-            //}
-
-            //column = gridView.Columns["HREmployeePayRollSubtractLateAmount"];
-            //if (column != null)
-            //{
-            //    CreateNumericColumn(column, gridBand5, true);
-            //}
-
-
-            //column = gridView.Columns["HREmployeePayRollPurchaseOrder"];
+            //column = gridView.Columns["HREmployeePayRollSyndicateFee"];
             //if (column != null)
             //{
             //    CreateNumericColumn(column, gridBand5, true);
@@ -480,13 +253,6 @@ namespace BOSERP.Modules.PayRoll
             {
                 CreateNumericColumn(column, gridBand9, false);
             }
-
-            // Nợ lũy tiến
-            //column = gridView.Columns["HREmployeeNoLuyTien"];
-            //if (column != null)
-            //{
-            //    CreateNumericColumn(column, gridBand5, true);
-            //}
 
             //Thực nhận
             column = gridView.Columns["HREmployeePayRollTotalSalary"];
@@ -502,42 +268,6 @@ namespace BOSERP.Modules.PayRoll
                 bandedColumn.Width = 150;
             }
 
-            //Khối lượng bốc xếp
-            //column = gridView.Columns["HREmployeePayRollSoLuongBoc"];
-            //if (column != null)
-            //{
-            //    CreateN3Column(column, gridBand8, false);
-            //}
-
-            //column = gridView.Columns["HREmployeePieceworkSalary"];
-            //if (column != null)
-            //{
-            //    CreateNumericColumn(column, gridBand8, false);
-            //}
-
-            //column = gridView.Columns["HREmployeePayRollWarning"];
-            //if (column != null)
-            //{
-            //    CreateClickColumn(column, gridBand6, true);
-            //}
-
-            //CreateN0ColumnVisible(gridBand5, false, false, "BHXH doanh nghiệp", "HREmployeePayRollSocialInsDNAmount");
-
-            //CreateN0ColumnVisible(gridBand5, false, false, "BHYT doanh nghiệp", "HREmployeePayRollHealthInsDNAmount");
-
-            //CreateN0ColumnVisible(gridBand5, false, false, "BHTN doanh nghiệp", "HREmployeePayRollOutOfWorkInsDNAmount");
-
-            //CreateN0ColumnVisible(gridBand5, false, false, "BHXH cá nhân", "HREmployeePayRollSocialInsAmount");
-
-            //CreateN0ColumnVisible(gridBand5, false, false, "BHYT cá nhân", "HREmployeePayRollHealthInsAmount");
-
-            //CreateN0ColumnVisible(gridBand5, false, false,"BHTN cá nhân", "HREmployeePayRollOutOfWorkInsAmount");
-
-            //CreateN0ColumnVisible(gridBand5, false, true, "Mức thu nhập chịu thuế", "HREmployeePayRollTaxableIncomeLevel");
-
-            //CreateN0ColumnVisible(gridBand5, false, true, "Thuế TNCN", "HREmployeePayRollPersonalIncomeTax");
-
-
             //Mức lương
             CreateN0ColumnVisible(gridBand10, false, true, "Lương cơ bản", "HREmployeeBasicSalary");
             CreateN0ColumnVisible(gridBand10, false, true, "Thâm niên", "HREmployeePayRollPerennialAllowance");
@@ -545,48 +275,6 @@ namespace BOSERP.Modules.PayRoll
             CreateN0ColumnVisible(gridBand10, false, true, "Trách nhiệm hàng hoá", "HREmployeePayRollResponsibilityCommodityAllowance");
             CreateN0ColumnVisible(gridBand10, false, true, "Trách nhiệm quản lý", "HREmployeePayRollResponsibilityAllowance");
             CreateN0ColumnVisible(gridBand10, false, true, "Khác", "HREmployeePayRollOtherAllowance");
-
-            //Công làm việc trong tháng
-            //ADWorkingShiftsController objWorkingShiftsController = new ADWorkingShiftsController();
-            //List<ADWorkingShiftsInfo> list = (List<ADWorkingShiftsInfo>)objWorkingShiftsController.GetListFromDataSet(objWorkingShiftsController.GetAllObjects());
-            //HRTimeSheetParamsController objTimeSheetParamsController = new HRTimeSheetParamsController();
-            //List<int> param = new List<int>();
-
-            //foreach (var item in list)
-            //{
-            //    if (item.FK_HRTimeSheetParamFactorID > 0)
-            //    {
-            //        if (!param.Exists(o => o == item.FK_HRTimeSheetParamFactorID))
-            //        {
-            //            param.Add(item.FK_HRTimeSheetParamFactorID);
-            //            column = gridView.Columns[item.FK_HRTimeSheetParamFactorID.ToString()];
-            //            if (column != null)
-            //            {
-            //                HRTimeSheetParamsInfo objTimeSheetParamsInfo = (HRTimeSheetParamsInfo)objTimeSheetParamsController.GetObjectByID(item.FK_HRTimeSheetParamFactorID);
-            //                if (objTimeSheetParamsInfo != null)
-            //                {
-            //                    column.AppearanceCell.Options.UseTextOptions = true;
-            //                    column.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far; 
-            //                    column.Caption = objTimeSheetParamsInfo.HRTimeSheetParamNo.ToString();
-            //                    CreateNumericColumn(column, gridBand11, false);
-            //                }
-            //            }
-
-            //            column = gridView.Columns["L" + item.FK_HRTimeSheetParamFactorID.ToString()];
-            //            if (column != null)
-            //            {
-            //                HRTimeSheetParamsInfo objTimeSheetParamsInfo = (HRTimeSheetParamsInfo)objTimeSheetParamsController.GetObjectByID(item.FK_HRTimeSheetParamFactorID);
-            //                if (objTimeSheetParamsInfo != null)
-            //                {
-            //                    column.AppearanceCell.Options.UseTextOptions = true;
-            //                    column.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            //                    column.Caption = "Lương "+ objTimeSheetParamsInfo.HRTimeSheetParamNo.ToString();
-            //                    CreateNumericColumn(column, gridBand12, false);
-            //                }
-            //            }
-            //        }
-            //    }
-            //}
 
             foreach (var item in WorkingShiftGroupsList)
             {
@@ -635,23 +323,6 @@ namespace BOSERP.Modules.PayRoll
             //Lương tăng ca
             foreach (var item in OTFactorlist)
             {
-                //column = gridView.Columns[item.ADOTFactorValue.ToString()];
-                //if (column != null)
-                //{
-                //    column.AppearanceCell.Options.UseTextOptions = true;
-                //    column.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far; 
-                //    column.Caption = item.ADOTFactorName.ToString();
-                //    CreateNumericColumn(column, gridBand11, false);
-                //}
-
-                //column = gridView.Columns["L" + item.ADOTFactorValue.ToString()];
-                //if (column != null)
-                //{
-                //    column.AppearanceCell.Options.UseTextOptions = true;
-                //    column.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-                //    column.Caption = "Lương " + item.ADOTFactorName.ToString();
-                //    CreateNumericColumn(column, gridBand12, false);
-                //}
 
                 column = gridView.Columns["TC" + item.ADOTFactorID.ToString()];
                 if (column != null)
@@ -711,29 +382,14 @@ namespace BOSERP.Modules.PayRoll
                 CreateNumericColumn(column, gridBand5, false);
             }
             //Thế chân
-            column = gridView.Columns["HREmployeePayRollTheChan"];
-            if (column != null)
-            {
-                CreateNumericColumn(column, gridBand5, false);
-            }
-
-            // Ngày công thực tế
-            //column = gridView.Columns["HREmployeeRealDaysPerMonth"];
+            //column = gridView.Columns["HREmployeePayRollTheChan"];
             //if (column != null)
             //{
-            //    CreateN3Column(column, gridBand12, false);
+            //    CreateNumericColumn(column, gridBand5, false);
             //}
-
-
-            //[Trần Giao Hiếu][29/03/2019],START
-            //thêm trường nào là tiền thì chạy giùm SP này EXEC dbo.EXEC dbo.AAPayRollColumnAlias_InsertByColumnNameAndCaption @columnName = N'HREmployeePayRollSocialInsDNAmount', -- nvarchar(100)
-            //@caption = N'BHXH doanh nghiệp'
-            //nhớ bỏ trường đó vào ColumnAlias trước rồi hãy chạy SP này,Cảm ơn
-            //[Trần Giao Hiếu][29/03/2019],END
 
             bandedView.CustomDrawCell += new RowCellCustomDrawEventHandler(BandedView_CustomDrawCell);
             bandedView.CellValueChanged += new CellValueChangedEventHandler(BandedView_CellValueChanged);
-            bandedView.CustomColumnDisplayText += new CustomColumnDisplayTextEventHandler(gridView_CustomColumnDisplayText);
             bandedView.KeyUp += new KeyEventHandler(BandedView_KeyUp);
             return bandedView;
         }
@@ -765,10 +421,6 @@ namespace BOSERP.Modules.PayRoll
         protected void BandedView_CustomDrawCell(object sender, RowCellCustomDrawEventArgs e)
         {
             BandedGridView bandedView = (BandedGridView)MainView;
-            //05-09-2019
-            //ADWorkingShiftsController objWorkingShiftsController = new ADWorkingShiftsController();
-            //List<ADWorkingShiftsInfo> list = (List<ADWorkingShiftsInfo>)objWorkingShiftsController.GetListFromDataSet(objWorkingShiftsController.GetAllObjects());
-            //End
 
             //Hiển thị lương theo nhóm ca
             int focusedRowHandle = e.RowHandle;
@@ -905,16 +557,6 @@ namespace BOSERP.Modules.PayRoll
             gridView.Columns.Add(column);
 
             column = new GridColumn();
-            column.Caption = "Số lượng bốc";
-            column.FieldName = "HREmployeePayRollTotalDeductedAmt1";
-            gridView.Columns.Add(column);
-
-            column = new GridColumn();
-            column.Caption = "Lương đầu tấn";
-            column.FieldName = "HREmployeePayRollTotalDeductedAmt2";
-            gridView.Columns.Add(column);
-
-            column = new GridColumn();
             column.Caption = "Tình trạng";
             column.FieldName = "HREmployeeStatusCombo";
             gridView.Columns.Add(column);
@@ -924,12 +566,10 @@ namespace BOSERP.Modules.PayRoll
             column.FieldName = "HREmployeeWorkingForm";
             gridView.Columns.Add(column);
 
-            column = new GridColumn();
-            column.Caption = "Thế chân";
-            column.FieldName = "HREmployeePayRollTheChan";
-            gridView.Columns.Add(column);
-
-            //List<HRTimeSheetParamsInfo> OTFactorlist = objTimeSheetParamsController.GetDistinctOTTimeSheetParamsList();
+            //column = new GridColumn();
+            //column.Caption = "Thế chân";
+            //column.FieldName = "HREmployeePayRollTheChan";
+            //gridView.Columns.Add(column);
 
             OTFactorlist = (List<ADOTFactorsInfo>)objOTFactorsController.GetListFromDataSet(objOTFactorsController.GetAllObjects());
             foreach (var item in OTFactorlist)
@@ -1090,34 +730,6 @@ namespace BOSERP.Modules.PayRoll
             bandedColumn.Visible = true;
             bandedColumn.Width = gridColumn.Width;
             return bandedColumn;
-        }
-
-        private void gridView_CustomColumnDisplayText(object sender, CustomColumnDisplayTextEventArgs e)
-        {
-            //if (e.Column.FieldName == "HREmployeeWorkingForm")
-            //{
-            //    if (e.Value != null)
-            //    {
-            //        ADConfigValuesController objConfigValuesController = new ADConfigValuesController();
-            //        ADConfigValuesInfo objConfigValuesInfo = (ADConfigValuesInfo)objConfigValuesController.GetObjectByGroupAndValue("EmployeeWorkingForm", e.Value.ToString());
-            //        if (objConfigValuesInfo != null)
-            //        {
-            //            e.DisplayText = objConfigValuesInfo.ADConfigText;
-            //        }
-            //    }
-            //}
-            //if (e.Column.FieldName == "HREmployeeStatusCombo")
-            //{
-            //    if (e.Value != null)
-            //    {
-            //        ADConfigValuesController objConfigValuesController = new ADConfigValuesController();
-            //        ADConfigValuesInfo objConfigValuesInfo = (ADConfigValuesInfo)objConfigValuesController.GetObjectByGroupAndValue("EmployeeStatus", e.Value.ToString());
-            //        if (objConfigValuesInfo != null)
-            //        {
-            //            e.DisplayText = objConfigValuesInfo.ADConfigText;
-            //        }
-            //    }
-            //}
         }
     }
 }

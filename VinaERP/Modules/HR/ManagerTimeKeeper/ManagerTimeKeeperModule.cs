@@ -320,7 +320,7 @@ namespace VinaERP.Modules.ManagerTimeKeeper
                             objHRWorkingShiftsInfo = listWorkingShifts.Where(o => o.HRWorkingShiftIsDefault == true).FirstOrDefault();
                             if (objHRWorkingShiftsInfo != null)
                             {
-                                objADWorkingShiftsInfo = (ADWorkingShiftsInfo)workingShiftList.Where(o => o.ADWorkingShiftID == objHRWorkingShiftsInfo.FK_ADWorkingShiftID).FirstOrDefault();
+                                objADWorkingShiftsInfo = workingShiftList.Where(o => o.ADWorkingShiftID == objHRWorkingShiftsInfo.FK_ADWorkingShiftID).FirstOrDefault();
                             }
                         }
                     }
@@ -387,14 +387,7 @@ namespace VinaERP.Modules.ManagerTimeKeeper
                                 {
                                     if (workingShiftList2.Count > 0 || (EmployeeOTsListDefult != null && EmployeeOTsListDefult.Count > 0))
                                     {
-                                        if (objEmployeePayrollFormulasInfo.HREmployeePayrollFormulaHandleTypeCombo == EmployeePayrollFormulaHandleTypeCombo.FirstLast.ToString())
-                                        {
-                                            completeListItemReult = ConvertTimeKeeperMultiInOutToComplete3(listTemp, employeesInfo, EmployeeOTList, timeKeeperList, BreakTimeList, workingShiftList2, EmployeeOTsListDefult, objEmployeePayrollFormulasInfo.HREmployeePayrollFormulaHandleTypeCombo);
-                                        }
-                                        else
-                                        {
-                                            completeListItemReult = ConvertTimeKeeperMultiInOutToComplete3(listTemp, employeesInfo, EmployeeOTList, timeKeeperList, BreakTimeList, workingShiftList2, EmployeeOTsListDefult, objEmployeePayrollFormulasInfo.HREmployeePayrollFormulaHandleTypeCombo);
-                                        }
+                                        completeListItemReult = ConvertTimeKeeperMultiInOutToComplete3(listTemp, employeesInfo, EmployeeOTList, timeKeeperList, BreakTimeList, workingShiftList2, EmployeeOTsListDefult, objEmployeePayrollFormulasInfo.HREmployeePayrollFormulaHandleTypeCombo);
                                     }
                                     else
                                     {

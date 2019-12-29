@@ -110,10 +110,6 @@ namespace BOSERP.Modules.ArrangementShift
             if (column != null)
                 ConvertToBandedColumn(column, false).OwnerBand = gridBand1;
 
-            ADWorkingShiftsController objWorkingShiftsController = new ADWorkingShiftsController();
-            List<ADWorkingShiftsInfo> commonParams = (List<ADWorkingShiftsInfo>)objWorkingShiftsController.GetListFromDataSet(objWorkingShiftsController.GetAllObjects());
-            commonParams.Insert(0, new ADWorkingShiftsInfo());
-
             for (int i = 1; i <= 31; i++)
             {
                 column = gridView.Columns[String.Format("{0}{1}", "HREmployeeArrangementShiftDate", i.ToString())];

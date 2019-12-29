@@ -401,7 +401,7 @@ namespace VinaERP.Modules.EmployeePayRollFormula.UI
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(338, 39);
+            this.labelControl2.Location = new System.Drawing.Point(345, 39);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(47, 13);
             this.labelControl2.TabIndex = 86;

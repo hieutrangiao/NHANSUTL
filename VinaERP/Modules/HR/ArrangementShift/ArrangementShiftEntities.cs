@@ -65,7 +65,7 @@ namespace VinaERP.Modules.ArrangementShift
         {
             base.SetDefaultMainObject();
             HRArrangementShiftsInfo objArrangementShiftsInfo = (HRArrangementShiftsInfo)MainObject;
-            objArrangementShiftsInfo.HRArrangementShiftFromDate = DateTime.Now;
+            objArrangementShiftsInfo.HRArrangementShiftFromDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1) ;
             objArrangementShiftsInfo.HRArrangementShiftToDate = DateTime.Now;
         }
 

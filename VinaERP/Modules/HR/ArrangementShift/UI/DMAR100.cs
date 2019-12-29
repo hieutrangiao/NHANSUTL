@@ -31,6 +31,7 @@ namespace VinaERP.Modules.ArrangementShift.UI
 
         private void fld_dteHRRewardFromDate_Validated(object sender, EventArgs e)
         {
+            ((ArrangementShiftModule)Module).ChangeArrangementShiftTime();
         }
 
         private void fld_txtHRRewardType_Validated(object sender, EventArgs e)
@@ -39,6 +40,11 @@ namespace VinaERP.Modules.ArrangementShift.UI
 
         private void fld_lkeHRRewardOption_Validated(object sender, EventArgs e)
         {
+        }
+
+        private void fld_dteHRArrangementShiftToDate_EditValueChanged(object sender, EventArgs e)
+        {
+            ((ArrangementShiftModule)Module).ChangeArrangementShiftTime();
         }
     }
 }
