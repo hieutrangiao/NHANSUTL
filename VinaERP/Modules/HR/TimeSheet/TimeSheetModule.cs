@@ -98,19 +98,9 @@ namespace VinaERP.Modules.TimeSheet
                 List<HRLeaveDaysInfo> leaveDays = objLeaveDaysController.GetLeaveDayList(timeSheet.HRTimeSheetFromDate, timeSheet.HRTimeSheetToDate);
 
                 List<HREmployeesInfo> result = (List<HREmployeesInfo>)guiSearchEmployee.SelectedObjects;
-                string alert = "";
-                string alert2 = "";
                 foreach (HREmployeesInfo objEmployeesInfo in result)
                 {
-                    if (objEmployeesInfo.FK_HREmployeePayrollFormulaID == 0)
-                    {
-                        alert2 += objEmployeesInfo.HREmployeeName + " [" + objEmployeesInfo.HREmployeeNo + "]," + Environment.NewLine;
-                    }
-                    else if (string.IsNullOrEmpty(objEmployeesInfo.HREmployeeCardNumber))
-                    {
-                        alert += objEmployeesInfo.HREmployeeName + " [" + objEmployeesInfo.HREmployeeNo + "]," + Environment.NewLine;
-                    }
-                    else if (!entity.EmployeeTimeSheetsList.Exists("FK_HREmployeeID", objEmployeesInfo.HREmployeeID))
+                    if (!entity.EmployeeTimeSheetsList.Exists("FK_HREmployeeID", objEmployeesInfo.HREmployeeID))
                     {
                         //set default employee information
                         HREmployeeTimeSheetsInfo objEmployeeTimeSheetsInfo = SetEmployeeTimeSheetInfoFromEmployee(objEmployeesInfo);

@@ -74,6 +74,7 @@ namespace VinaERP.Modules.TimeSheet
             objTimeSheetsInfo.HRTimeSheetToDate = VinaUtil.GetMonthEndDate(DateTime.Now);
             objTimeSheetsInfo.HRTimeSheetType = TimeSheetType.Day.ToString();
             objTimeSheetsInfo.HRTimeSheetStatus = TimeSheetStatus.New.ToString();
+            objTimeSheetsInfo.FK_HREmployeeID = VinaApp.CurrentUserInfo.FK_HREmployeeID;
         }
 
         public override void SetDefaultModuleObjectsList()

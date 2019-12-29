@@ -375,6 +375,23 @@
     <Compile Include="Modules\HR\EmployeePayRollFormula\UI\SMPF100.Designer.cs">
       <DependentUpon>SMPF100.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modules\HR\Calender\CalenderEntities.cs" />
+    <Compile Include="Modules\HR\Calender\CalenderModule.cs" />
+    <Compile Include="Modules\HR\Calender\UI\DMCL100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\Calender\UI\DMCL100.Designer.cs">
+      <DependentUpon>DMCL100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HR\Calender\UI\GridControl\HRCalendarEntrysGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\Calender\UI\SMCL100.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\HR\Calender\UI\SMCL100.Designer.cs">
+      <DependentUpon>SMCL100.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modules\HR\TimeSheet\TimeSheetEntities.cs" />
     <Compile Include="Modules\HR\TimeSheet\TimeSheetModule.cs" />
     <Compile Include="Modules\HR\TimeSheet\UI\DMTS100.cs">
@@ -557,6 +574,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modules\HR\EmployeePayRollFormula\UI\SMPF100.resx">
       <DependentUpon>SMPF100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HR\Calender\UI\DMCL100.resx">
+      <DependentUpon>DMCL100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HR\Calender\UI\SMCL100.resx">
+      <DependentUpon>SMCL100.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modules\HR\TimeSheet\UI\DMTS100.resx">
       <DependentUpon>DMTS100.cs</DependentUpon>

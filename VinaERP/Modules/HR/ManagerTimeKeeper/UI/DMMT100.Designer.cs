@@ -51,16 +51,16 @@ namespace VinaERP.Modules.ManagerTimeKeeper.UI
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.vinaTextBox1 = new VinaLib.BaseProvider.VinaTextBox();
-            this.vinaTextBox2 = new VinaLib.BaseProvider.VinaTextBox();
-            this.vinaTextBox3 = new VinaLib.BaseProvider.VinaTextBox();
-            this.vinaTextBox4 = new VinaLib.BaseProvider.VinaTextBox();
-            this.vinaTextBox5 = new VinaLib.BaseProvider.VinaTextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.vinaTextBox5 = new VinaLib.BaseProvider.VinaTextBox();
+            this.vinaTextBox4 = new VinaLib.BaseProvider.VinaTextBox();
+            this.vinaTextBox3 = new VinaLib.BaseProvider.VinaTextBox();
+            this.vinaTextBox2 = new VinaLib.BaseProvider.VinaTextBox();
+            this.vinaTextBox1 = new VinaLib.BaseProvider.VinaTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.fld_lkeFK_ICProductID.SuspendLayout();
@@ -76,11 +76,11 @@ namespace VinaERP.Modules.ManagerTimeKeeper.UI
             ((System.ComponentModel.ISupportInitialize)(this.fld_dteToDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fld_dteToDate.Properties)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.vinaTextBox1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vinaTextBox2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vinaTextBox3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vinaTextBox4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vinaTextBox5.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vinaTextBox4.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vinaTextBox3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vinaTextBox2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vinaTextBox1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraTabControl1
@@ -358,97 +358,14 @@ namespace VinaERP.Modules.ManagerTimeKeeper.UI
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ghi chú";
             // 
-            // vinaTextBox1
+            // label6
             // 
-            this.vinaTextBox1.Location = new System.Drawing.Point(7, 21);
-            this.vinaTextBox1.Name = "vinaTextBox1";
-            this.vinaTextBox1.Properties.Appearance.BackColor = System.Drawing.Color.Violet;
-            this.vinaTextBox1.Properties.Appearance.Options.UseBackColor = true;
-            this.vinaTextBox1.Screen = null;
-            this.vinaTextBox1.Size = new System.Drawing.Size(66, 20);
-            this.vinaTextBox1.TabIndex = 0;
-            this.vinaTextBox1.VinaDataMember = null;
-            this.vinaTextBox1.VinaDataSource = null;
-            this.vinaTextBox1.VinaPropertyName = null;
-            // 
-            // vinaTextBox2
-            // 
-            this.vinaTextBox2.Location = new System.Drawing.Point(7, 47);
-            this.vinaTextBox2.Name = "vinaTextBox2";
-            this.vinaTextBox2.Properties.Appearance.BackColor = System.Drawing.Color.Orange;
-            this.vinaTextBox2.Properties.Appearance.Options.UseBackColor = true;
-            this.vinaTextBox2.Screen = null;
-            this.vinaTextBox2.Size = new System.Drawing.Size(66, 20);
-            this.vinaTextBox2.TabIndex = 1;
-            this.vinaTextBox2.VinaDataMember = null;
-            this.vinaTextBox2.VinaDataSource = null;
-            this.vinaTextBox2.VinaPropertyName = null;
-            // 
-            // vinaTextBox3
-            // 
-            this.vinaTextBox3.Location = new System.Drawing.Point(7, 71);
-            this.vinaTextBox3.Name = "vinaTextBox3";
-            this.vinaTextBox3.Properties.Appearance.BackColor = System.Drawing.Color.Pink;
-            this.vinaTextBox3.Properties.Appearance.Options.UseBackColor = true;
-            this.vinaTextBox3.Screen = null;
-            this.vinaTextBox3.Size = new System.Drawing.Size(66, 20);
-            this.vinaTextBox3.TabIndex = 2;
-            this.vinaTextBox3.VinaDataMember = null;
-            this.vinaTextBox3.VinaDataSource = null;
-            this.vinaTextBox3.VinaPropertyName = null;
-            // 
-            // vinaTextBox4
-            // 
-            this.vinaTextBox4.Location = new System.Drawing.Point(205, 23);
-            this.vinaTextBox4.Name = "vinaTextBox4";
-            this.vinaTextBox4.Properties.Appearance.BackColor = System.Drawing.Color.Blue;
-            this.vinaTextBox4.Properties.Appearance.Options.UseBackColor = true;
-            this.vinaTextBox4.Screen = null;
-            this.vinaTextBox4.Size = new System.Drawing.Size(66, 20);
-            this.vinaTextBox4.TabIndex = 3;
-            this.vinaTextBox4.VinaDataMember = null;
-            this.vinaTextBox4.VinaDataSource = null;
-            this.vinaTextBox4.VinaPropertyName = null;
-            // 
-            // vinaTextBox5
-            // 
-            this.vinaTextBox5.Location = new System.Drawing.Point(205, 47);
-            this.vinaTextBox5.Name = "vinaTextBox5";
-            this.vinaTextBox5.Properties.Appearance.BackColor = System.Drawing.Color.Yellow;
-            this.vinaTextBox5.Properties.Appearance.Options.UseBackColor = true;
-            this.vinaTextBox5.Screen = null;
-            this.vinaTextBox5.Size = new System.Drawing.Size(66, 20);
-            this.vinaTextBox5.TabIndex = 4;
-            this.vinaTextBox5.VinaDataMember = null;
-            this.vinaTextBox5.VinaDataSource = null;
-            this.vinaTextBox5.VinaPropertyName = null;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(79, 24);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 13);
-            this.label2.TabIndex = 129;
-            this.label2.Text = "Giờ ra trùng giờ vào";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(79, 52);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(34, 13);
-            this.label3.TabIndex = 130;
-            this.label3.Text = "Đi trễ";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(79, 74);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(127, 13);
-            this.label4.TabIndex = 131;
-            this.label4.Text = "Thiếu giờ ra hoặc giờ vào";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(277, 52);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(41, 13);
+            this.label6.TabIndex = 133;
+            this.label6.Text = "Về sớm";
             // 
             // label5
             // 
@@ -459,14 +376,102 @@ namespace VinaERP.Modules.ManagerTimeKeeper.UI
             this.label5.TabIndex = 132;
             this.label5.Text = "Chấm công không khai báo";
             // 
-            // label6
+            // label4
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(277, 52);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 13);
-            this.label6.TabIndex = 133;
-            this.label6.Text = "Về sớm";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(79, 74);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(127, 13);
+            this.label4.TabIndex = 131;
+            this.label4.Text = "Thiếu giờ ra hoặc giờ vào";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(79, 52);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(34, 13);
+            this.label3.TabIndex = 130;
+            this.label3.Text = "Đi trễ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(79, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(102, 13);
+            this.label2.TabIndex = 129;
+            this.label2.Text = "Giờ ra trùng giờ vào";
+            // 
+            // vinaTextBox5
+            // 
+            this.vinaTextBox5.Location = new System.Drawing.Point(205, 47);
+            this.vinaTextBox5.Name = "vinaTextBox5";
+            this.vinaTextBox5.Properties.Appearance.BackColor = System.Drawing.Color.Yellow;
+            this.vinaTextBox5.Properties.Appearance.Options.UseBackColor = true;
+            this.vinaTextBox5.Properties.ReadOnly = true;
+            this.vinaTextBox5.Screen = null;
+            this.vinaTextBox5.Size = new System.Drawing.Size(66, 20);
+            this.vinaTextBox5.TabIndex = 4;
+            this.vinaTextBox5.VinaDataMember = null;
+            this.vinaTextBox5.VinaDataSource = null;
+            this.vinaTextBox5.VinaPropertyName = null;
+            // 
+            // vinaTextBox4
+            // 
+            this.vinaTextBox4.Location = new System.Drawing.Point(205, 23);
+            this.vinaTextBox4.Name = "vinaTextBox4";
+            this.vinaTextBox4.Properties.Appearance.BackColor = System.Drawing.Color.Blue;
+            this.vinaTextBox4.Properties.Appearance.Options.UseBackColor = true;
+            this.vinaTextBox4.Properties.ReadOnly = true;
+            this.vinaTextBox4.Screen = null;
+            this.vinaTextBox4.Size = new System.Drawing.Size(66, 20);
+            this.vinaTextBox4.TabIndex = 3;
+            this.vinaTextBox4.VinaDataMember = null;
+            this.vinaTextBox4.VinaDataSource = null;
+            this.vinaTextBox4.VinaPropertyName = null;
+            // 
+            // vinaTextBox3
+            // 
+            this.vinaTextBox3.Location = new System.Drawing.Point(7, 71);
+            this.vinaTextBox3.Name = "vinaTextBox3";
+            this.vinaTextBox3.Properties.Appearance.BackColor = System.Drawing.Color.Pink;
+            this.vinaTextBox3.Properties.Appearance.Options.UseBackColor = true;
+            this.vinaTextBox3.Properties.ReadOnly = true;
+            this.vinaTextBox3.Screen = null;
+            this.vinaTextBox3.Size = new System.Drawing.Size(66, 20);
+            this.vinaTextBox3.TabIndex = 2;
+            this.vinaTextBox3.VinaDataMember = null;
+            this.vinaTextBox3.VinaDataSource = null;
+            this.vinaTextBox3.VinaPropertyName = null;
+            // 
+            // vinaTextBox2
+            // 
+            this.vinaTextBox2.Location = new System.Drawing.Point(7, 47);
+            this.vinaTextBox2.Name = "vinaTextBox2";
+            this.vinaTextBox2.Properties.Appearance.BackColor = System.Drawing.Color.Orange;
+            this.vinaTextBox2.Properties.Appearance.Options.UseBackColor = true;
+            this.vinaTextBox2.Properties.ReadOnly = true;
+            this.vinaTextBox2.Screen = null;
+            this.vinaTextBox2.Size = new System.Drawing.Size(66, 20);
+            this.vinaTextBox2.TabIndex = 1;
+            this.vinaTextBox2.VinaDataMember = null;
+            this.vinaTextBox2.VinaDataSource = null;
+            this.vinaTextBox2.VinaPropertyName = null;
+            // 
+            // vinaTextBox1
+            // 
+            this.vinaTextBox1.Location = new System.Drawing.Point(7, 21);
+            this.vinaTextBox1.Name = "vinaTextBox1";
+            this.vinaTextBox1.Properties.Appearance.BackColor = System.Drawing.Color.Violet;
+            this.vinaTextBox1.Properties.Appearance.Options.UseBackColor = true;
+            this.vinaTextBox1.Properties.ReadOnly = true;
+            this.vinaTextBox1.Screen = null;
+            this.vinaTextBox1.Size = new System.Drawing.Size(66, 20);
+            this.vinaTextBox1.TabIndex = 0;
+            this.vinaTextBox1.VinaDataMember = null;
+            this.vinaTextBox1.VinaDataSource = null;
+            this.vinaTextBox1.VinaPropertyName = null;
             // 
             // DMMT100
             // 
@@ -510,11 +515,11 @@ namespace VinaERP.Modules.ManagerTimeKeeper.UI
             ((System.ComponentModel.ISupportInitialize)(this.fld_dteToDate.Properties)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.vinaTextBox1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vinaTextBox2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vinaTextBox3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vinaTextBox4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vinaTextBox5.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vinaTextBox4.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vinaTextBox3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vinaTextBox2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vinaTextBox1.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

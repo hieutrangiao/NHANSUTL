@@ -136,7 +136,7 @@ namespace VinaERP.Modules.ManagerTimeKeeper
             FromDate = fld_dteDateFrom.DateTime;
             ToDate = fld_dteToDate.DateTime;
             DateTime date;
-            if (FromDate != DateTime.MaxValue)
+            if (FromDate == DateTime.MaxValue)
                 date = DateTime.Now;
             else
                 date = FromDate;
@@ -173,7 +173,7 @@ namespace VinaERP.Modules.ManagerTimeKeeper
             FromDate = fld_dteDateFrom.DateTime;
             ToDate = fld_dteToDate.DateTime;
             DateTime date;
-            if (FromDate != DateTime.MaxValue)
+            if (FromDate == DateTime.MaxValue)
                 date = DateTime.Now;
             else
                 date = FromDate;

@@ -40,6 +40,8 @@ namespace VinaERP.Common
         public const string HRTimesheetEmployeeLatesTableName = "HRTimesheetEmployeeLates";
         public const string HRTimesheetConfigsTableName = "HRTimesheetConfigs";
         public const string HRAllowanceConfigsTableName = "HRAllowanceConfigs";
+        public const string HRCalendarsTableName = "HRCalendars";
+        public const string HRCalendarEntrysTableName = "HRCalendarEntrys";
         #endregion
     }
 }

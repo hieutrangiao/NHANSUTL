@@ -61,6 +61,7 @@
     <Compile Include="BusinessEntities\Controller\HR\HRArrangementShiftsController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRBreakTimesController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRCalendarEntrysController.cs" />
+    <Compile Include="BusinessEntities\Controller\HR\HRCalendarsController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRDepartmentRoomGroupItemsController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRDepartmentRoomGroupsController.cs" />
     <Compile Include="BusinessEntities\Controller\HR\HRDepartmentRoomsController.cs" />
@@ -116,6 +117,7 @@
     <Compile Include="BusinessEntities\Info\HR\HRArrangementShiftsInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRBreakTimesInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRCalendarEntrysInfo.cs" />
+    <Compile Include="BusinessEntities\Info\HR\HRCalendarsInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRDepartmentRoomGroupItemsInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRDepartmentRoomGroupsInfo.cs" />
     <Compile Include="BusinessEntities\Info\HR\HRDepartmentRoomsInfo.cs" />

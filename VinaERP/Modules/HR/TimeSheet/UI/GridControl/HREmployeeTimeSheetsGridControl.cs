@@ -60,6 +60,9 @@ namespace BOSERP.Modules.TimeSheet
         /// <returns></returns>
         private BandedGridView InitializeBandedGridView(GridView gridView)
         {
+            TimeSheetEntities entity = (TimeSheetEntities)((BaseModuleERP)Screen.Module).CurrentModuleEntity;
+            HRTimeSheetsInfo objTimeSheetsInfo = (HRTimeSheetsInfo)entity.MainObject;
+
             //Creat a banded grid view
             BandedGridView bandedView = new BandedGridView();
             GridBand gridBand1 = new GridBand();
@@ -115,6 +118,7 @@ namespace BOSERP.Modules.TimeSheet
             if (column != null)
                 CreateNewColumn(column, gridBand1, false);
 
+            //int dateStart = objTimeSheetsInfo.HRTimeSheetFromDate.Day;
             for (int i = 1; i <= 31; i++)
             {
                 column = gridView.Columns[String.Format("{0}{1}", "HREmployeeTimeSheetDate", i.ToString())];

@@ -217,7 +217,7 @@ namespace VinaERP.Modules.Employee.UI
             this.groupControl1.Controls.Add(this.label3);
             this.groupControl1.Location = new System.Drawing.Point(8, 9);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(940, 156);
+            this.groupControl1.Size = new System.Drawing.Size(940, 109);
             this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "Chấm công, lương";
             // 
@@ -306,7 +306,7 @@ namespace VinaERP.Modules.Employee.UI
             // 
             // fld_txtHREmployeePieceWage
             // 
-            this.fld_txtHREmployeePieceWage.Location = new System.Drawing.Point(130, 127);
+            this.fld_txtHREmployeePieceWage.Location = new System.Drawing.Point(803, 71);
             this.fld_txtHREmployeePieceWage.Name = "fld_txtHREmployeePieceWage";
             this.fld_txtHREmployeePieceWage.Properties.DisplayFormat.FormatString = "n3";
             this.fld_txtHREmployeePieceWage.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -323,7 +323,7 @@ namespace VinaERP.Modules.Employee.UI
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(10, 130);
+            this.label8.Location = new System.Drawing.Point(683, 74);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(69, 13);
             this.label8.TabIndex = 95;
@@ -331,7 +331,7 @@ namespace VinaERP.Modules.Employee.UI
             // 
             // fld_txtHREmployeeWorkingSlrAmtDateTotal
             // 
-            this.fld_txtHREmployeeWorkingSlrAmtDateTotal.Location = new System.Drawing.Point(130, 101);
+            this.fld_txtHREmployeeWorkingSlrAmtDateTotal.Location = new System.Drawing.Point(803, 45);
             this.fld_txtHREmployeeWorkingSlrAmtDateTotal.Name = "fld_txtHREmployeeWorkingSlrAmtDateTotal";
             this.fld_txtHREmployeeWorkingSlrAmtDateTotal.Properties.DisplayFormat.FormatString = "n3";
             this.fld_txtHREmployeeWorkingSlrAmtDateTotal.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -348,7 +348,7 @@ namespace VinaERP.Modules.Employee.UI
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(10, 104);
+            this.label6.Location = new System.Drawing.Point(683, 48);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(115, 13);
             this.label6.TabIndex = 93;
@@ -459,7 +459,7 @@ namespace VinaERP.Modules.Employee.UI
             this.groupControl2.Controls.Add(this.label2);
             this.groupControl2.Controls.Add(this.fld_txtHREmployeeAllowanceProgress);
             this.groupControl2.Controls.Add(this.label1);
-            this.groupControl2.Location = new System.Drawing.Point(8, 171);
+            this.groupControl2.Location = new System.Drawing.Point(8, 124);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(940, 192);
             this.groupControl2.TabIndex = 2;
@@ -792,7 +792,7 @@ namespace VinaERP.Modules.Employee.UI
             this.groupControl3.Controls.Add(this.label22);
             this.groupControl3.Controls.Add(this.fld_txtHREmployeeSocialInsNo);
             this.groupControl3.Controls.Add(this.label21);
-            this.groupControl3.Location = new System.Drawing.Point(8, 369);
+            this.groupControl3.Location = new System.Drawing.Point(8, 322);
             this.groupControl3.Name = "groupControl3";
             this.groupControl3.Size = new System.Drawing.Size(940, 275);
             this.groupControl3.TabIndex = 3;
@@ -1085,7 +1085,7 @@ namespace VinaERP.Modules.Employee.UI
             this.groupControl4.Controls.Add(this.label42);
             this.groupControl4.Controls.Add(this.fld_txtHREmployeeSocialInsPaymentPercent);
             this.groupControl4.Controls.Add(this.label43);
-            this.groupControl4.Location = new System.Drawing.Point(8, 650);
+            this.groupControl4.Location = new System.Drawing.Point(8, 603);
             this.groupControl4.Name = "groupControl4";
             this.groupControl4.Size = new System.Drawing.Size(940, 252);
             this.groupControl4.TabIndex = 4;
