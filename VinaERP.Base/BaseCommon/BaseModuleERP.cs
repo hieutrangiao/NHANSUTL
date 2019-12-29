@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraBars;
+﻿using BOSLib;
+using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraGrid;
@@ -645,6 +646,7 @@ namespace VinaERP
         #region Function For Save Action
         protected virtual bool IsInvalidInput()
         {
+            CurrentModuleEntity.CreateMainObjectRule();
             this.ErrorTable = this.InitErrorTable();
             this.CheckExtraInput();
             if (this.CurrentModuleEntity.MainObject != null)
@@ -652,6 +654,15 @@ namespace VinaERP
                 VinaDbUtil bosDbUtil = new VinaDbUtil();
                 this.ErrorTable.Rows.Clear();
                 //TODO Check Error From Database
+                string dataSource = VinaUtil.GetTableNameFromBusinessObject(CurrentModuleEntity.MainObject);
+                foreach (BusinessRule r in CurrentModuleEntity.MainObject.BusinessRuleCollections)
+                {
+                    bool isRuleBroken = !r.ValidateRule(CurrentModuleEntity.MainObject);
+                    if (isRuleBroken)
+                    {
+                        AddErrorToErrorScreen(r.Description, dataSource, r.PropertyName);
+                    }
+                }
             }
             if (this.ErrorTable.Rows.Count == 0)
                 return false;
@@ -666,8 +677,19 @@ namespace VinaERP
                 this.ErrorMessageScreen = new GuiErrorMessage(this.ErrorTable);
                 this.ErrorMessageScreen.Module = (BaseModule)this;
             }
-            this.ErrorMessageScreen.Show();
+            //this.ErrorMessageScreen.Show();
+            if (ErrorTable.Rows.Count > 0)
+            {
+                ErrorMessageScreen = new GuiErrorMessage(this.ErrorTable);
+                ErrorMessageScreen.ShowDialog();
+                return true;
+            }
             return true;
+        }
+
+        private void AddErrorToErrorScreen(string errorMessage, string dataSource, string dataMember)
+        {
+            ErrorTable.Rows.Add(new object[] { dataMember, errorMessage, -1, String.Empty });
         }
 
         protected virtual void CheckExtraInput()
@@ -719,6 +741,56 @@ namespace VinaERP
                 }
             }
             return false;
+        }
+
+        public bool IsForeignKey(String strTableName, String strColumnName)
+        {
+            if (strColumnName.Contains("FK_"))
+                return true;
+
+            string primaryTable = GetTreePrimaryTableWhichForeignColumnReferenceTo(strTableName, strColumnName);
+            if (primaryTable != string.Empty)
+                return true;
+            return false;
+        }
+
+        public String GetTreePrimaryTableWhichForeignColumnReferenceTo(String strForeignTableName, String strForeignColumnName)
+        {
+            if (!SqlDatabaseHelper.ForeignTableColumns.ContainsKey(strForeignTableName))
+            {
+                DataSet ds = (DataSet)VinaApp.LookupTables["ForeignTable"];
+                DataTable table = new DataTable();
+                if (ds.Tables.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        if (row["ForeignTableName"] != null)
+                        {
+                            string foreignTableName = row["ForeignTableName"].ToString();
+                            if (foreignTableName == strForeignTableName)
+                            {
+                                DataColumn column = new DataColumn();
+                                column.ColumnName = row["ForeignColumnName"].ToString();
+                                column.ExtendedProperties.Add("PrimaryTableName", row["PrimaryTableName"].ToString());
+                                column.ExtendedProperties.Add("PrimaryColumnName", row["PrimaryColumnName"].ToString());
+                                if (table.Columns.IndexOf(column.ColumnName) < 0)
+                                {
+                                    table.Columns.Add(column);
+                                }
+                            }
+                        }
+                    }
+                }
+                SqlDatabaseHelper.ForeignTableColumns.Add(strForeignTableName, table.Columns);
+            }
+
+            string strPrimaryTableName = string.Empty;
+            if (SqlDatabaseHelper.ForeignTableColumns[strForeignTableName].Contains(strForeignColumnName))
+            {
+                DataColumn column = SqlDatabaseHelper.ForeignTableColumns[strForeignTableName][strForeignColumnName];
+                strPrimaryTableName = column.ExtendedProperties["PrimaryTableName"].ToString();
+            }
+            return strPrimaryTableName;
         }
     }
 }

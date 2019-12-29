@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BOSLib;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -32,6 +33,8 @@ namespace VinaLib
         public BusinessObject BackupObject { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public List<BusinessRule> BusinessRuleCollections;
 
         public BusinessObject()
         {

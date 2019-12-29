@@ -1,11 +1,16 @@
-﻿using System;
+﻿using VinaLib;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VinaLib;
+using VinaLib;
+using System.Reflection;
+using BOSLib;
 
 namespace VinaERP
 {
@@ -313,6 +318,142 @@ namespace VinaERP
             //Set Item Total Amount
             columnName = itemTablePrefix + "TotalAmount";
             dbUtil.SetPropertyValue(item, columnName, qty * unitPrice - discountAmount + taxAmount);
+        }
+
+        public virtual void CreateMainObjectRule()
+        {
+            VinaDbUtil dbUtil = new VinaDbUtil();
+            MainObject.BusinessRuleCollections = new List<BusinessRule>();
+            String strMainObjectTableName = VinaUtil.GetTableNameFromBusinessObject(MainObject);
+
+            DataSet dsColumns = dbUtil.GetNotAllowNullTableColumns(strMainObjectTableName);
+            if (dsColumns.Tables.Count > 0)
+            {
+                AAColumnAliasController objColumnAlliasController = new AAColumnAliasController();
+                List<AAColumnAliasInfo> LstColumnAlias = objColumnAlliasController.GetColumnAliasByTableName(strMainObjectTableName);
+                foreach (DataRow rowColumn in dsColumns.Tables[0].Rows)
+                {
+                    String strColumnName = rowColumn["COLUMN_NAME"].ToString();
+                    String strBrokenRuleDescription = String.Empty;
+                    //Add rule if column is not primary key
+                    if (!dbUtil.IsPrimaryKey(strMainObjectTableName, strColumnName))
+                    {
+                        //If column does not allow null
+                        if (!dbUtil.ColumnIsAllowNull(strMainObjectTableName, strColumnName))
+                        {
+                            AAColumnAliasInfo objColumnAliasInfo = LstColumnAlias.Where(a => a.AATableName == strMainObjectTableName
+                            && a.AAColumnAliasName == strColumnName).FirstOrDefault();
+                            if (objColumnAliasInfo != null)
+                            {
+                                strBrokenRuleDescription = String.Format(string.Format("{0} không thể để trống", objColumnAliasInfo.AAColumnAliasCaption));
+                            }
+                            else
+                            {
+                                strBrokenRuleDescription = String.Format(string.Format("{0} không thể để trống", strColumnName));
+                            }
+
+                            if (((IBaseModuleERP)Module).IsForeignKey(strMainObjectTableName, strColumnName))
+                            {
+                                BusinessRule foreignKeyRule = new BusinessRule(
+                                                                    strColumnName,
+                                                                    strBrokenRuleDescription,
+                                                                    IsValidForeignKeyProperty);
+                                MainObject.BusinessRuleCollections.Add(foreignKeyRule);
+                            }
+                            else
+                            {
+                                BusinessRule nonForeignKeyRule = new BusinessRule(strColumnName, strBrokenRuleDescription, IsValidNonForeignKeyPropety);
+                                MainObject.BusinessRuleCollections.Add(nonForeignKeyRule);
+                            }
+                        }
+                    }
+                }
+            }
+            dsColumns.Dispose();
+        }
+
+        public bool IsValidForeignKeyProperty(String strForeignKeyColumn)
+        {
+            try
+            {
+                VinaDbUtil dbUtil = new VinaDbUtil();
+                //String strMainObjectTableName = MainObject.GetType().Name.Substring(0, MainObject.GetType().Name.Length - 4);
+                String strMainObjectTableName = VinaUtil.GetTableNameFromBusinessObject(MainObject);
+                String strPrimaryTable = ((IBaseModuleERP)Module).GetTreePrimaryTableWhichForeignColumnReferenceTo(strMainObjectTableName, strForeignKeyColumn);
+                String strPrimaryColumn = ((IBaseModuleERP)Module).GetTreePrimaryTableWhichForeignColumnReferenceTo(strMainObjectTableName, strForeignKeyColumn);
+                BaseBusinessController objPrimaryTableObjectController = BusinessControllerFactory.GetBusinessController(strPrimaryTable + "Controller");
+                int iForeignKeyColumnValue = Convert.ToInt32(dbUtil.GetPropertyValue(MainObject, strForeignKeyColumn));
+                if (iForeignKeyColumnValue > 0)
+                    return objPrimaryTableObjectController.IsExist(iForeignKeyColumnValue);
+                else
+                    return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+        }
+
+        public bool IsValidNonForeignKeyPropety(String strNonForeignKeyColumn)
+        {
+            try
+            {
+                VinaDbUtil dbUtil = new VinaDbUtil();
+                PropertyInfo property = MainObject.GetType().GetProperty(strNonForeignKeyColumn);
+                if (property.PropertyType.Equals(typeof(int)))
+                {
+                    object objPropertyValue = dbUtil.GetPropertyValue(MainObject, strNonForeignKeyColumn);
+                    int iConvert = Convert.ToInt32(objPropertyValue);
+                    return true;
+                }
+                else if (property.PropertyType.Equals(typeof(double)))
+                {
+                    object objPropertyValue = dbUtil.GetPropertyValue(MainObject, strNonForeignKeyColumn);
+                    double dbConvert = Convert.ToDouble(objPropertyValue);
+                    return true;
+                }
+                else if (property.PropertyType.Equals(typeof(decimal)))
+                {
+                    object objPropertyValue = dbUtil.GetPropertyValue(MainObject, strNonForeignKeyColumn);
+                    decimal dcConvert = Convert.ToDecimal(objPropertyValue);
+                    return true;
+                }
+                else if (property.PropertyType.Equals(typeof(short)))
+                {
+                    object objPropertyValue = dbUtil.GetPropertyValue(MainObject, strNonForeignKeyColumn);
+                    short sConvert = Convert.ToInt16(objPropertyValue);
+                    return true;
+                }
+                else if (property.PropertyType.Equals(typeof(bool)))
+                {
+                    object objPropertyValue = dbUtil.GetPropertyValue(MainObject, strNonForeignKeyColumn);
+                    bool bConvert = Convert.ToBoolean(objPropertyValue);
+                    return true;
+                }
+                else if (property.PropertyType.Equals(typeof(DateTime)))
+                {
+                    object objPropertyValue = dbUtil.GetPropertyValue(MainObject, strNonForeignKeyColumn);
+                    DateTime dtConvert = Convert.ToDateTime(objPropertyValue);
+                    return true;
+                }
+                else if (property.PropertyType.Equals(typeof(string)) || property.PropertyType.Equals(typeof(String)))
+                {
+                    object objPropertyValue = dbUtil.GetPropertyValue(MainObject, strNonForeignKeyColumn);
+                    String strConvert = Convert.ToString(objPropertyValue);
+                    if (!String.IsNullOrEmpty(strConvert))
+                        return true;
+                    else
+                        return false;
+                }
+
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
         }
     }
 }

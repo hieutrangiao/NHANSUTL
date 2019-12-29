@@ -15,5 +15,9 @@ namespace VinaLib
         SortedList<string, GELookupTablesInfo> GetLookupTableObjects();
 
         DataSet GetLookupTableData(string lookupTableName);
+
+        bool IsForeignKey(String strTableName, String strColumnName);
+
+        String GetTreePrimaryTableWhichForeignColumnReferenceTo(String strForeignTableName, String strForeignColumnName);
     }
 }

@@ -83,6 +83,7 @@
     <Compile Include="BusinessInfo\AD\ADUsersInfo.cs" />
     <Compile Include="BusinessInfo\AD\STModuleToUserGroupSectionsInfo.cs" />
     <Compile Include="BusinessInfo\BusinessObjectFactory.cs" />
+    <Compile Include="BusinessInfo\BusinessRule.cs" />
     <Compile Include="BusinessInfo\GE\GELookupColumnsInfo.cs" />
     <Compile Include="BusinessInfo\GE\GELookupTablesInfo.cs" />
     <Compile Include="BusinessInfo\GE\GENumberingsInfo.cs" />
