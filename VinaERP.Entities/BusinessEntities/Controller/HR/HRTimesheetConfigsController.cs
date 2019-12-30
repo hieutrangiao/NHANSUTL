@@ -4,6 +4,7 @@ using System.Text;
 using System.Collections.Generic;
 using VinaLib;
 using System.Linq;
+using System.Collections;
 
 namespace VinaERP
 {
@@ -45,6 +46,20 @@ namespace VinaERP
             {
                 return 0;
             }
+        }
+
+        public override IList GetListFromDataSet(DataSet ds)
+        {
+            List<HRTimesheetConfigsInfo> list = new List<HRTimesheetConfigsInfo>();
+            if (ds.Tables.Count > 0)
+            {
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    HRTimesheetConfigsInfo obj = (HRTimesheetConfigsInfo)GetObjectFromDataRow(row);
+                    list.Add(obj);
+                }
+            }
+            return list;
         }
     }
     #endregion

@@ -33,7 +33,6 @@ namespace VinaERP.Modules.PayRoll.UI
         {
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.fld_lkeFK_ICProductID = new DevExpress.XtraTab.XtraTabPage();
-            this.simpleButton9 = new DevExpress.XtraEditors.SimpleButton();
             this.fld_dgcHREmployeePayRolls = new BOSERP.Modules.PayRoll.HREmployeePayRollsGridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -77,33 +76,20 @@ namespace VinaERP.Modules.PayRoll.UI
             // 
             // fld_lkeFK_ICProductID
             // 
-            this.fld_lkeFK_ICProductID.Controls.Add(this.simpleButton9);
             this.fld_lkeFK_ICProductID.Controls.Add(this.fld_dgcHREmployeePayRolls);
             this.fld_lkeFK_ICProductID.Name = "fld_lkeFK_ICProductID";
             this.fld_lkeFK_ICProductID.Size = new System.Drawing.Size(1049, 418);
             this.fld_lkeFK_ICProductID.Text = "Danh sách nhân viên";
             // 
-            // simpleButton9
-            // 
-            this.simpleButton9.Location = new System.Drawing.Point(7, 14);
-            this.simpleButton9.Name = "simpleButton9";
-            this.simpleButton9.Size = new System.Drawing.Size(113, 25);
-            this.simpleButton9.TabIndex = 131;
-            this.simpleButton9.Text = "Thêm nhân viên";
-            this.simpleButton9.Visible = false;
-            this.simpleButton9.Click += new System.EventHandler(this.simpleButton9_Click);
-            // 
             // fld_dgcHREmployeePayRolls
             // 
-            this.fld_dgcHREmployeePayRolls.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.fld_dgcHREmployeePayRolls.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fld_dgcHREmployeePayRolls.GridViewMain = null;
-            this.fld_dgcHREmployeePayRolls.Location = new System.Drawing.Point(0, 45);
+            this.fld_dgcHREmployeePayRolls.Location = new System.Drawing.Point(0, 0);
             this.fld_dgcHREmployeePayRolls.MainView = this.gridView1;
             this.fld_dgcHREmployeePayRolls.Name = "fld_dgcHREmployeePayRolls";
             this.fld_dgcHREmployeePayRolls.Screen = null;
-            this.fld_dgcHREmployeePayRolls.Size = new System.Drawing.Size(1049, 373);
+            this.fld_dgcHREmployeePayRolls.Size = new System.Drawing.Size(1049, 418);
             this.fld_dgcHREmployeePayRolls.TabIndex = 16;
             this.fld_dgcHREmployeePayRolls.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -196,7 +182,6 @@ namespace VinaERP.Modules.PayRoll.UI
             this.fld_dteHRPayRollDate.VinaDataMember = "HRPayRollDate";
             this.fld_dteHRPayRollDate.VinaDataSource = "HRPayRolls";
             this.fld_dteHRPayRollDate.VinaPropertyName = "EditValue";
-            this.fld_dteHRPayRollDate.Validated += new System.EventHandler(this.fld_dteHRRewardFromDate_Validated);
             // 
             // labelControl9
             // 
@@ -229,7 +214,6 @@ namespace VinaERP.Modules.PayRoll.UI
             this.fld_lkeHRPayRollType.VinaDataMember = "HRPayRollType";
             this.fld_lkeHRPayRollType.VinaDataSource = "HRPayRolls";
             this.fld_lkeHRPayRollType.VinaPropertyName = "EditValue";
-            this.fld_lkeHRPayRollType.Validated += new System.EventHandler(this.fld_txtHRRewardType_Validated);
             // 
             // labelControl7
             // 
@@ -311,6 +295,5 @@ namespace VinaERP.Modules.PayRoll.UI
         private VinaLookupEdit fld_lkeHRPayRollType;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private VinaLookupEdit fld_lkeHRPayRollStatus;
-        private DevExpress.XtraEditors.SimpleButton simpleButton9;
     }
 }

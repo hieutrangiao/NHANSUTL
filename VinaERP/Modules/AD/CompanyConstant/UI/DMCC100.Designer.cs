@@ -38,9 +38,11 @@ namespace VinaERP.Modules.CompanyConstant.UI
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
+            this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
             this.fld_dgcTimeSheetParams = new VinaERP.Modules.CompanyConstant.HRTimeSheetParamGridControl();
             this.gridView9 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
+            this.simpleButton10 = new DevExpress.XtraEditors.SimpleButton();
             this.fld_dgcTimeSheetParams2 = new VinaERP.Modules.CompanyConstant.HRTimeSheetParam2GridControl();
             this.gridView10 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.fld_tpgReward = new DevExpress.XtraTab.XtraTabPage();
@@ -223,10 +225,21 @@ namespace VinaERP.Modules.CompanyConstant.UI
             // 
             // xtraTabPage3
             // 
+            this.xtraTabPage3.Controls.Add(this.simpleButton7);
             this.xtraTabPage3.Controls.Add(this.fld_dgcTimeSheetParams);
             this.xtraTabPage3.Name = "xtraTabPage3";
             this.xtraTabPage3.Size = new System.Drawing.Size(987, 502);
             this.xtraTabPage3.Text = "Cấu hình hệ số công";
+            // 
+            // simpleButton7
+            // 
+            this.simpleButton7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton7.Location = new System.Drawing.Point(909, 474);
+            this.simpleButton7.Name = "simpleButton7";
+            this.simpleButton7.Size = new System.Drawing.Size(75, 25);
+            this.simpleButton7.TabIndex = 20;
+            this.simpleButton7.Text = "Lưu";
+            this.simpleButton7.Click += new System.EventHandler(this.simpleButton7_Click_1);
             // 
             // fld_dgcTimeSheetParams
             // 
@@ -236,7 +249,7 @@ namespace VinaERP.Modules.CompanyConstant.UI
             this.fld_dgcTimeSheetParams.MainView = this.gridView9;
             this.fld_dgcTimeSheetParams.Name = "fld_dgcTimeSheetParams";
             this.fld_dgcTimeSheetParams.Screen = null;
-            this.fld_dgcTimeSheetParams.Size = new System.Drawing.Size(993, 492);
+            this.fld_dgcTimeSheetParams.Size = new System.Drawing.Size(993, 463);
             this.fld_dgcTimeSheetParams.TabIndex = 19;
             this.fld_dgcTimeSheetParams.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView9});
@@ -251,10 +264,21 @@ namespace VinaERP.Modules.CompanyConstant.UI
             // 
             // xtraTabPage4
             // 
+            this.xtraTabPage4.Controls.Add(this.simpleButton10);
             this.xtraTabPage4.Controls.Add(this.fld_dgcTimeSheetParams2);
             this.xtraTabPage4.Name = "xtraTabPage4";
             this.xtraTabPage4.Size = new System.Drawing.Size(987, 502);
             this.xtraTabPage4.Text = "Cấu hình hệ số tăng ca";
+            // 
+            // simpleButton10
+            // 
+            this.simpleButton10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton10.Location = new System.Drawing.Point(909, 474);
+            this.simpleButton10.Name = "simpleButton10";
+            this.simpleButton10.Size = new System.Drawing.Size(75, 25);
+            this.simpleButton10.TabIndex = 20;
+            this.simpleButton10.Text = "Lưu";
+            this.simpleButton10.Click += new System.EventHandler(this.simpleButton10_Click);
             // 
             // fld_dgcTimeSheetParams2
             // 
@@ -264,7 +288,7 @@ namespace VinaERP.Modules.CompanyConstant.UI
             this.fld_dgcTimeSheetParams2.MainView = this.gridView10;
             this.fld_dgcTimeSheetParams2.Name = "fld_dgcTimeSheetParams2";
             this.fld_dgcTimeSheetParams2.Screen = null;
-            this.fld_dgcTimeSheetParams2.Size = new System.Drawing.Size(993, 492);
+            this.fld_dgcTimeSheetParams2.Size = new System.Drawing.Size(993, 463);
             this.fld_dgcTimeSheetParams2.TabIndex = 19;
             this.fld_dgcTimeSheetParams2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView10});
@@ -283,7 +307,7 @@ namespace VinaERP.Modules.CompanyConstant.UI
             this.fld_tpgReward.Controls.Add(this.fld_dgcRewardTypes);
             this.fld_tpgReward.Name = "fld_tpgReward";
             this.fld_tpgReward.Size = new System.Drawing.Size(993, 530);
-            this.fld_tpgReward.Text = "Cấu hình khen thưởng";
+            this.fld_tpgReward.Text = "Cấu hình biến động tăng";
             // 
             // fld_btnSaveRewardType
             // 
@@ -322,7 +346,7 @@ namespace VinaERP.Modules.CompanyConstant.UI
             this.fld_tpgDiscipline.Controls.Add(this.simpleButton1);
             this.fld_tpgDiscipline.Name = "fld_tpgDiscipline";
             this.fld_tpgDiscipline.Size = new System.Drawing.Size(993, 530);
-            this.fld_tpgDiscipline.Text = "Cấu hình loại kỷ luật";
+            this.fld_tpgDiscipline.Text = "Cấu hình biến động giảm";
             // 
             // fld_dgcDisciplineTypes
             // 
@@ -477,6 +501,7 @@ namespace VinaERP.Modules.CompanyConstant.UI
             this.xtraTabPage9.Controls.Add(this.simpleButton5);
             this.xtraTabPage9.Controls.Add(this.fld_dgcTimesheetEmployeeLateConfigs);
             this.xtraTabPage9.Name = "xtraTabPage9";
+            this.xtraTabPage9.PageVisible = false;
             this.xtraTabPage9.Size = new System.Drawing.Size(993, 530);
             this.xtraTabPage9.Text = "Cấu hình đi trễ/về sớm";
             // 
@@ -948,5 +973,7 @@ namespace VinaERP.Modules.CompanyConstant.UI
         private DevExpress.XtraGrid.Views.Grid.GridView gridView9;
         private HRTimeSheetParam2GridControl fld_dgcTimeSheetParams2;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView10;
+        private DevExpress.XtraEditors.SimpleButton simpleButton7;
+        private DevExpress.XtraEditors.SimpleButton simpleButton10;
     }
 }

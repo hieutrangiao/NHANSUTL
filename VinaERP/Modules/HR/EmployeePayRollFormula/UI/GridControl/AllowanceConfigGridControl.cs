@@ -65,12 +65,16 @@ namespace VinaERP.Modules.EmployeePayRollFormula
             if (column != null)
             {
                 column.OptionsColumn.AllowEdit = true;
+                column.DisplayFormat.FormatType = FormatType.Numeric;
+                column.DisplayFormat.FormatString = "{0:n3}";
             }
 
             column = gridView.Columns["HRAllowanceConfigAmount"];
             if (column != null)
             {
                 column.OptionsColumn.AllowEdit = true;
+                column.DisplayFormat.FormatType = FormatType.Numeric;
+                column.DisplayFormat.FormatString = "{0:n3}";
             }
 
             column = gridView.Columns["HRAllowanceConfigIsTimeKeeping"];

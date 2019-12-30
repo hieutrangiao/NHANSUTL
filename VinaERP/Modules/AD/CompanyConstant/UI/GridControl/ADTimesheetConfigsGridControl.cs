@@ -36,6 +36,13 @@ namespace VinaERP.Modules.CompanyConstant
             {
                 columnedit.OptionsColumn.AllowEdit = true;
             }
+            GridColumn column = gridView.Columns["ADTimesheetConfigYear"];
+            if (column != null)
+            {
+                column.OptionsColumn.AllowEdit = true;
+                column.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+                column.DisplayFormat.FormatString = "yyyy";
+            }
 
             return gridView;
         }

@@ -53,7 +53,7 @@ namespace VinaERP.Modules.Allowance.UI
             this.fld_lkeFK_HRFormAllowanceID = new VinaLib.BaseProvider.VinaLookupEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.fld_lkeHRAllowanceOption = new VinaLib.BaseProvider.VinaLookupEdit();
-            this.fld_ceHREmployeeIsBoD = new VinaLib.BaseProvider.VinaCheckBox();
+            this.fld_ceHRAllowanceByWorkDay = new VinaLib.BaseProvider.VinaCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.fld_lkeFK_ICProductID.SuspendLayout();
@@ -69,7 +69,7 @@ namespace VinaERP.Modules.Allowance.UI
             ((System.ComponentModel.ISupportInitialize)(this.fld_dteHRAllowanceFromDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fld_lkeFK_HRFormAllowanceID.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fld_lkeHRAllowanceOption.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fld_ceHREmployeeIsBoD.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fld_ceHRAllowanceByWorkDay.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraTabControl1
@@ -338,25 +338,25 @@ namespace VinaERP.Modules.Allowance.UI
             this.fld_lkeHRAllowanceOption.VinaPropertyName = "EditValue";
             this.fld_lkeHRAllowanceOption.Validated += new System.EventHandler(this.fld_lkeHRAllowanceOption_Validated);
             // 
-            // fld_ceHREmployeeIsBoD
+            // fld_ceHRAllowanceByWorkDay
             // 
-            this.fld_ceHREmployeeIsBoD.Location = new System.Drawing.Point(442, 114);
-            this.fld_ceHREmployeeIsBoD.Name = "fld_ceHREmployeeIsBoD";
-            this.fld_ceHREmployeeIsBoD.Properties.Caption = "Theo ngày công";
-            this.fld_ceHREmployeeIsBoD.Screen = null;
-            this.fld_ceHREmployeeIsBoD.Size = new System.Drawing.Size(124, 19);
-            this.fld_ceHREmployeeIsBoD.TabIndex = 86;
-            this.fld_ceHREmployeeIsBoD.Tag = "DC";
-            this.fld_ceHREmployeeIsBoD.VinaDataMember = "HREmployeeIsBoD";
-            this.fld_ceHREmployeeIsBoD.VinaDataSource = "HREmployees";
-            this.fld_ceHREmployeeIsBoD.VinaPropertyName = "EditValue";
+            this.fld_ceHRAllowanceByWorkDay.Location = new System.Drawing.Point(442, 114);
+            this.fld_ceHRAllowanceByWorkDay.Name = "fld_ceHRAllowanceByWorkDay";
+            this.fld_ceHRAllowanceByWorkDay.Properties.Caption = "Theo ngày công";
+            this.fld_ceHRAllowanceByWorkDay.Screen = null;
+            this.fld_ceHRAllowanceByWorkDay.Size = new System.Drawing.Size(124, 19);
+            this.fld_ceHRAllowanceByWorkDay.TabIndex = 86;
+            this.fld_ceHRAllowanceByWorkDay.Tag = "DC";
+            this.fld_ceHRAllowanceByWorkDay.VinaDataMember = "HRAllowanceByWorkDay";
+            this.fld_ceHRAllowanceByWorkDay.VinaDataSource = "HRAllowances";
+            this.fld_ceHRAllowanceByWorkDay.VinaPropertyName = "EditValue";
             // 
             // DMAW100
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1063, 563);
-            this.Controls.Add(this.fld_ceHREmployeeIsBoD);
+            this.Controls.Add(this.fld_ceHRAllowanceByWorkDay);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.fld_lkeHRAllowanceOption);
             this.Controls.Add(this.labelControl11);
@@ -394,7 +394,7 @@ namespace VinaERP.Modules.Allowance.UI
             ((System.ComponentModel.ISupportInitialize)(this.fld_dteHRAllowanceFromDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fld_lkeFK_HRFormAllowanceID.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fld_lkeHRAllowanceOption.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fld_ceHREmployeeIsBoD.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fld_ceHRAllowanceByWorkDay.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -424,6 +424,6 @@ namespace VinaERP.Modules.Allowance.UI
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private VinaLookupEdit fld_lkeHRAllowanceOption;
         private DevExpress.XtraEditors.SimpleButton simpleButton9;
-        private VinaCheckBox fld_ceHREmployeeIsBoD;
+        private VinaCheckBox fld_ceHRAllowanceByWorkDay;
     }
 }

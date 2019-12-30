@@ -26,14 +26,6 @@ namespace VinaERP.Modules.PayRoll
             CurrentModuleEntity = new PayRollEntities();
             CurrentModuleEntity.Module = this;
             InitializeModule();
-            GetEmployeesList();
-        }
-
-        public void GetEmployeesList()
-        {
-            PayRollEntities entity = (PayRollEntities)CurrentModuleEntity;
-            HREmployeesController objEmployeesController = new HREmployeesController();
-            entity.EmployeesList = objEmployeesController.GetAllEmployees();
         }
 
         public override int ActionSave()
@@ -46,7 +38,17 @@ namespace VinaERP.Modules.PayRoll
         public override void Invalidate(int iObjectID)
         {
             base.Invalidate(iObjectID);
-            SetMaskForTextBox();
+
+            PayRollEntities entity = (PayRollEntities)CurrentModuleEntity;
+            HREmployeesController objEmployeesController = new HREmployeesController();
+            List<HREmployeesInfo> employeeList = objEmployeesController.GetAllEmployees();
+            foreach (HREmployeePayRollsInfo objEmployeePayRollsInfo in entity.EmployeePayRollsList)
+            {
+                HREmployeesInfo objEmployeesInfo = employeeList.Where(e => e.HREmployeeID == objEmployeePayRollsInfo.FK_HREmployeeID).FirstOrDefault();
+                objEmployeePayRollsInfo.HREmployeePayRollTotalInsAmt = objEmployeePayRollsInfo.HREmployeePayRollSocialInsAmount
+                    + objEmployeePayRollsInfo.HREmployeePayRollHealthInsAmount
+                    + objEmployeePayRollsInfo.HREmployeePayRollOutOfWorkInsAmount;
+            }
         }
 
         public override void InvalidateToolbar()
@@ -69,427 +71,6 @@ namespace VinaERP.Modules.PayRoll
                     ParentScreen.SetEnableOfToolbarButton(BaseToolbar.ToolbarButtonComplete, false);
                 }
             }
-
-        }
-
-        public void RemoveSelectedItemFromPayRollItemList()
-        {
-            PayRollEntities entity = (PayRollEntities)CurrentModuleEntity;
-            entity.EmployeePayRollsList.RemoveSelectedRowObjectFromList();
-        }
-
-        public void AddEmployee()
-        {
-            PayRollEntities entity = (PayRollEntities)CurrentModuleEntity;
-            HRPayRollsInfo objPayRollsInfo = (HRPayRollsInfo)entity.MainObject;
-            List<HREmployeesInfo> employeesList = entity.EmployeesList.Where(o1 => entity.EmployeePayRollsList.FirstOrDefault(o2 => o2.FK_HREmployeeID == o1.HREmployeeID) == null).ToList();
-
-            guiSearchEmployee guiSearchEmployee = new guiSearchEmployee(employeesList);
-            guiSearchEmployee.Module = this;
-            if (guiSearchEmployee.ShowDialog() == DialogResult.OK)
-            {
-                List<HREmployeesInfo> result = (List<HREmployeesInfo>)guiSearchEmployee.SelectedObjects;
-                foreach (HREmployeesInfo objEmployeesInfo in result)
-                {
-                    if (!entity.EmployeePayRollsList.Exists("FK_HREmployeeID", objEmployeesInfo.HREmployeeID))
-                    {
-                        HRTimesheetConfigsController objTimesheetConfigsController = new HRTimesheetConfigsController();
-                        HRDepartmentRoomGroupItemsController objDepartmentRoomGroupItemsController = new HRDepartmentRoomGroupItemsController();
-                        HREmployeePayRollsInfo employeePayRoll = new HREmployeePayRollsInfo();
-                        //SetDefaultValuesFromEmployee(employeePayRoll, objEmployeesInfo);
-                        employeePayRoll.HRDepartmentRoomName = objEmployeesInfo.HRDepartmentRoomName;
-                        employeePayRoll.HRDepartmentName = objEmployeesInfo.HRDepartmentName;
-                        employeePayRoll.HRLevelName = objEmployeesInfo.HRLevelName;
-                        employeePayRoll.HREmployeeCardNumber = objEmployeesInfo.HREmployeeCardNumber;
-                        HREmployeesInfo objEmployeesInfo3 = new HREmployeesInfo();
-                        objEmployeesInfo3 = UpdateWorkingForm(objEmployeesInfo);
-                        employeePayRoll.HREmployeeStatusCombo = objEmployeesInfo3.HREmployeeStatusCombo;
-                        employeePayRoll.HREmployeeWorkingForm = objEmployeesInfo3.HREmployeeWorkingForm;
-
-                        DateTime lastDate = new DateTime(objPayRollsInfo.HRPayRollDate.Year, objPayRollsInfo.HRPayRollDate.Month, DateTime.DaysInMonth(objPayRollsInfo.HRPayRollDate.Year, objPayRollsInfo.HRPayRollDate.Month));
-                        DateTime firstDate = new DateTime(objPayRollsInfo.HRPayRollDate.Year, objPayRollsInfo.HRPayRollDate.Month, 1);
-
-                        objPayRollsInfo.FromDate = firstDate;
-                        objPayRollsInfo.ToDate = lastDate;
-
-
-                        HRTimeSheetsController objTimeSheetsController = new HRTimeSheetsController();
-                        HREmployeeTimeSheetsController objEmployeeTimeSheetsController = new HREmployeeTimeSheetsController();
-                        HREmployeeTranfersController objEmployeeTranfersController = new HREmployeeTranfersController();
-                        HRTimeSheetEntrysController objTimeSheetEntrysController = new HRTimeSheetEntrysController();
-
-                        List<HRTimeSheetEntrysInfo> employeeTimeSheetEntryList = new List<HRTimeSheetEntrysInfo>();
-                        List<HRTimeSheetEntrysInfo> employeeTimeSheetEntryList1 = new List<HRTimeSheetEntrysInfo>();
-                        List<HRTimeSheetEntrysInfo> employeeTimeSheetEntryList2 = new List<HRTimeSheetEntrysInfo>();
-                        HREmployeesInfo objEmployeesInfo2;
-                        HREmployeePayRollsInfo employeePayRoll2 = new HREmployeePayRollsInfo();
-                        //HREmployeeTimeSheets_GetEmployeeTimeSheetBySomeCriteria
-                        HREmployeeTimeSheetsInfo employeeTimeSheet = objEmployeeTimeSheetsController.GetEmployeeTimeSheetBySomeCriteria(objEmployeesInfo.HREmployeeID, objPayRollsInfo.HRPayRollDate);
-                        if (employeeTimeSheet == null)
-                            continue;
-                        HRTimeSheetsInfo objTimeSheetsInfo = (HRTimeSheetsInfo)objTimeSheetsController.GetObjectByID(employeeTimeSheet.FK_HRTimeSheetID);
-                        HREmployeeTranfersInfo objEmployeeTranfersInfo = objEmployeeTranfersController.GetEmployeeTranfersByEmployeeIDAndDate(objEmployeesInfo.HREmployeeID, objPayRollsInfo.FromDate, objPayRollsInfo.ToDate);
-
-                        if (objEmployeesInfo.FK_HREmployeePayrollFormulaID > 0)
-                        {
-                            objEmployeesInfo.HREmployeeDaysPerMonth = objTimesheetConfigsController.GetDaysPerMonthByEmployeeFormullaID(objEmployeesInfo.FK_HREmployeePayrollFormulaID, objPayRollsInfo.HRPayRollDate.Month, objPayRollsInfo.HRPayRollDate.Year);
-                            if (objEmployeesInfo.HREmployeeDaysPerMonth == 0)
-                            {
-                                objEmployeesInfo.HREmployeeDaysPerMonth = CalculationWorkDay(objPayRollsInfo.HRPayRollDate);
-                            }
-                            SetDefaultValuesFromEmployee(employeePayRoll, objEmployeesInfo);
-                            employeePayRoll.HRDepartmentRoomName = objEmployeesInfo.HRDepartmentRoomName;
-                            employeePayRoll.HRDepartmentName = objEmployeesInfo.HRDepartmentName;
-                            employeePayRoll.HRLevelName = objEmployeesInfo.HRLevelName;
-                            employeePayRoll.HREmployeeCardNumber = objEmployeesInfo.HREmployeeCardNumber;
-                            employeePayRoll.FK_HRDepartmentID = objEmployeesInfo.FK_HRDepartmentID;
-                            employeePayRoll.HREmployeePayRollResponsibilityAllowance = objEmployeesInfo.HREmployeeAllowanceResponsibility;
-                            //employeePayRoll.HREmployeePayRollKPIAllowance = objEmployeesInfo.HREmployeeAllowanceKPI;
-                            employeePayRoll.HREmployeePayRollProgressAllowance = objEmployeesInfo.HREmployeeAllowanceProgress;
-
-                            if (objEmployeeTranfersInfo != null)
-                            {
-                                // phase 1
-                                employeeTimeSheetEntryList = objTimeSheetEntrysController.GetTotalTimeSheetEntryByTimeSheetIDAndEmployeeTimeSheetID(objTimeSheetsInfo.HRTimeSheetID, employeeTimeSheet.HREmployeeTimeSheetID);
-                                employeeTimeSheetEntryList1 = employeeTimeSheetEntryList.Where(x => x.HRTimeSheetEntryDate < objEmployeeTranfersInfo.HREmployeeTranferDateFrom).ToList();
-                                decimal totalSalaryFactor = 0;
-                                decimal totalApprenticeSalaryFactor = 0;
-                                decimal totalProbationarySalaryFactor = 0;
-                                decimal totalSalaryOTHours = 0;
-                                decimal totalApprenticeSalaryOTHours = 0;
-                                decimal totalProbationarySalaryOTHours = 0;
-                                decimal nghihuongluong = 0;
-                                decimal nghihuongluongTV = 0;
-                                decimal nghihuongluongHV = 0;
-                                decimal nghikhongluong = 0;
-                                decimal nghiPN = 0;
-                                decimal nghiLe = 0;
-                                decimal totalLate = 0;
-                                HRTimeSheetParamsController objTimeSheetParamsController = new HRTimeSheetParamsController();
-
-                                foreach (HRTimeSheetEntrysInfo objTimeSheetEntrysInfo in employeeTimeSheetEntryList1)
-                                {
-                                    if (objTimeSheetEntrysInfo.IsOT == false)
-                                    {
-                                        {
-                                            totalSalaryFactor += objTimeSheetEntrysInfo.HRTimeSheetEntryWorkingQty;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        {
-                                            totalSalaryOTHours += objTimeSheetEntrysInfo.HRTimeSheetEntryWorkingHours;
-                                        }
-                                    }
-                                    HRTimeSheetParamsInfo objTimeSheetParamsInfo = (HRTimeSheetParamsInfo)objTimeSheetParamsController.GetObjectByID(objTimeSheetEntrysInfo.FK_HRTimeSheetParamID);
-                                    if (objTimeSheetParamsInfo != null && objTimeSheetParamsInfo.HRTimeSheetParamType.Equals("Common"))
-                                    {
-                                        if (objTimeSheetParamsInfo.HRTimeSheetParamValue1 * objTimeSheetParamsInfo.HRTimeSheetParamValue2 > 0)
-                                        {
-                                            {
-                                                nghihuongluong += objTimeSheetParamsInfo.HRTimeSheetParamValue1 * objTimeSheetParamsInfo.HRTimeSheetParamValue2 / 8;
-                                            }
-                                        }
-                                        else
-                                        {
-                                            nghikhongluong++;
-                                        }
-                                    }
-                                    if (objTimeSheetParamsInfo != null && objTimeSheetParamsInfo.HRTimeSheetParamNo.Equals("NPN"))
-                                    {
-                                        nghiPN++;
-                                    }
-                                    if (objTimeSheetParamsInfo != null && objTimeSheetParamsInfo.HRTimeSheetParamType.Equals(TimeSheetParamType.LE.ToString()))
-                                    {
-                                        nghiLe++;
-                                    }
-                                }
-                                employeePayRoll.HREmployeePayRollNgayNghiHuongLuong = nghihuongluong + nghihuongluongHV + nghihuongluongTV;
-                                employeePayRoll.HREmployeePayRollNgayNghiKhongLuong = nghikhongluong;
-                                employeePayRoll.HREmployeePayrollNghiPhepNam = nghiPN;
-                                employeePayRoll.HREmployeePayrollNghiLe = nghiLe;
-                                // Công thực tế
-                                employeePayRoll.HREmployeeRealDaysPerMonth = totalSalaryFactor - nghihuongluong;
-                                employeePayRoll.HREmployeePayRollProbationaryRealDaysPerMonth = totalProbationarySalaryFactor - nghihuongluongTV;
-                                employeePayRoll.HREmployeePayRollApprenticeRealDaysPerMonth = totalApprenticeSalaryFactor - nghihuongluongHV;
-
-                                employeePayRoll.HREmployeePayRollSubtractLateAmount = totalLate * 30000;
-                                // Giờ tăng ca
-                                employeePayRoll.HREmployeeHoursOT = totalSalaryOTHours + totalApprenticeSalaryOTHours + totalProbationarySalaryOTHours;
-                                //Ngày tăng ca
-                                employeePayRoll.HREmployeePayRollDayOT = employeePayRoll.HREmployeeHoursOT > 0 ? (decimal)employeePayRoll.HREmployeeHoursOT / 8 : 0;
-
-                                employeePayRoll.HREmployeePayRollTongNgayCong =
-                                    totalSalaryFactor + employeePayRoll.HREmployeePayRollDayOT + totalApprenticeSalaryFactor + totalProbationarySalaryFactor;
-                                //SetDefaultValuesFromEmployee(employeePayRoll, objEmployeesInfo);
-                                // Lương công việc
-                                //employeePayRoll.HREmployeePayRollWorkingSalary = objEmployeesInfo.HREmployeeWorkingSlrAmt;
-                                employeePayRoll.HREmployeePayRollWorkingSalary = objEmployeesInfo.HREmployeeContractSlrAmt;
-                                // Lương tháng
-                                employeePayRoll.HREmployeePayRollLuongThang = employeePayRoll.HREmployeePayRollWorkingSalary * totalSalaryFactor / employeePayRoll.HREmployeeDaysPerMonth;
-                                // Lương chưa trừ
-                                //employeePayRoll.HREmployeeWorkingSlrAmtFull = employeePayRoll.HREmployeePayRollWorkingSalary * totalSalaryFactor / employeePayRoll.HREmployeeDaysPerMonth;
-                                // Lương tăng ca
-                                employeePayRoll.HREmployeePayRollOTSalary = (employeePayRoll.HREmployeePayRollWorkingSalary / employeePayRoll.HREmployeeDaysPerMonth / 8) * employeePayRoll.HREmployeeHoursOT * (decimal)1.5;
-                                // Bù lương
-                                employeePayRoll.HREmployeeOffsetSalary = 0;
-                                CalculatePayRoll(employeePayRoll, objEmployeesInfo);
-                                //CalculatePayRollTotalAmounts(employeePayRoll);
-                                // end phase 1
-                                // phase 2
-                                objEmployeesInfo2 = new HREmployeesInfo();
-                                VinaUtil.CopyObject(employeePayRoll, employeePayRoll2);
-                                VinaUtil.CopyObject(objEmployeesInfo, objEmployeesInfo2);
-
-                                employeeTimeSheetEntryList = objTimeSheetEntrysController.GetTotalTimeSheetEntryByTimeSheetIDAndEmployeeTimeSheetID(objTimeSheetsInfo.HRTimeSheetID, employeeTimeSheet.HREmployeeTimeSheetID);
-                                employeeTimeSheetEntryList2 = employeeTimeSheetEntryList.Where(x => x.HRTimeSheetEntryDate >= objEmployeeTranfersInfo.HREmployeeTranferDateFrom).ToList();
-                                totalSalaryFactor = 0;
-                                totalSalaryOTHours = 0;
-                                nghihuongluong = 0;
-                                nghikhongluong = 0;
-                                nghiLe = 0;
-                                nghiPN = 0;
-                                totalApprenticeSalaryFactor = 0;
-                                totalProbationarySalaryFactor = 0;
-                                totalApprenticeSalaryOTHours = 0;
-                                totalProbationarySalaryOTHours = 0;
-                                nghihuongluongTV = 0;
-                                nghihuongluongHV = 0;
-                                totalLate = 0;
-                                foreach (HRTimeSheetEntrysInfo objTimeSheetEntrysInfo in employeeTimeSheetEntryList2)
-                                {
-                                    if (objTimeSheetEntrysInfo.IsOT == false)
-                                    {
-                                        {
-                                            totalSalaryFactor += objTimeSheetEntrysInfo.HRTimeSheetEntryWorkingQty;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        {
-                                            totalSalaryOTHours += objTimeSheetEntrysInfo.HRTimeSheetEntryWorkingHours;
-                                        }
-                                    }
-                                    HRTimeSheetParamsInfo objTimeSheetParamsInfo = (HRTimeSheetParamsInfo)objTimeSheetParamsController.GetObjectByID(objTimeSheetEntrysInfo.FK_HRTimeSheetParamID);
-                                    if (objTimeSheetParamsInfo != null && objTimeSheetParamsInfo.HRTimeSheetParamType.Equals("Common"))
-                                    {
-                                        if (objTimeSheetParamsInfo.HRTimeSheetParamValue1 * objTimeSheetParamsInfo.HRTimeSheetParamValue2 > 0)
-                                        {
-                                            {
-                                                nghihuongluong += objTimeSheetParamsInfo.HRTimeSheetParamValue1 * objTimeSheetParamsInfo.HRTimeSheetParamValue2 / 8;
-                                            }
-                                        }
-                                        else
-                                        {
-                                            nghikhongluong++;
-                                        }
-                                    }
-                                    if (objTimeSheetParamsInfo != null && objTimeSheetParamsInfo.HRTimeSheetParamNo.Equals("NPN"))
-                                    {
-                                        nghiPN++;
-                                    }
-                                    if (objTimeSheetParamsInfo != null && objTimeSheetParamsInfo.HRTimeSheetParamType.Equals(TimeSheetParamType.LE.ToString()))
-                                    {
-                                        nghiLe++;
-                                    }
-                                }
-                                employeePayRoll2.HREmployeePayRollNgayNghiHuongLuong = nghihuongluong + nghihuongluongHV + nghihuongluongTV;
-                                employeePayRoll2.HREmployeePayRollNgayNghiKhongLuong = nghikhongluong;
-                                employeePayRoll2.HREmployeePayrollNghiPhepNam = nghiPN;
-                                employeePayRoll2.HREmployeePayrollNghiLe = nghiLe;
-                                // Công thực tế
-                                employeePayRoll2.HREmployeeRealDaysPerMonth = totalSalaryFactor - nghihuongluong;
-                                employeePayRoll2.HREmployeePayRollProbationaryRealDaysPerMonth = totalProbationarySalaryFactor - nghihuongluongTV;
-                                employeePayRoll2.HREmployeePayRollApprenticeRealDaysPerMonth = totalApprenticeSalaryFactor - nghihuongluongHV;
-
-                                employeePayRoll2.HREmployeePayRollSubtractLateAmount = totalLate * 30000;
-                                // Giờ tăng ca
-                                employeePayRoll2.HREmployeeHoursOT = totalSalaryOTHours + totalApprenticeSalaryOTHours + totalProbationarySalaryOTHours;
-                                //Ngày tăng ca
-                                employeePayRoll2.HREmployeePayRollDayOT = (decimal)employeePayRoll2.HREmployeeHoursOT > 0 ? (decimal)employeePayRoll2.HREmployeeHoursOT / 8 : 0;
-
-                                employeePayRoll2.HREmployeePayRollTongNgayCong =
-                                    totalSalaryFactor + employeePayRoll2.HREmployeePayRollDayOT + totalApprenticeSalaryFactor + totalProbationarySalaryFactor;
-                                SetDefaultValuesFromEmployeeTransfer(employeePayRoll2, objEmployeeTranfersInfo);
-                                // Lương công việc
-                                employeePayRoll2.HREmployeePayRollWorkingSalary = employeePayRoll2.HREmployeeContractSlrAmt;
-                                // Lương tháng
-                                employeePayRoll2.HREmployeePayRollLuongThang = employeePayRoll2.HREmployeePayRollWorkingSalary * totalSalaryFactor / employeePayRoll2.HREmployeeDaysPerMonth;
-                                // Lương chưa trừ
-                                //employeePayRoll2.HREmployeeWorkingSlrAmtFull = employeePayRoll2.HREmployeePayRollWorkingSalary * totalSalaryFactor / employeePayRoll2.HREmployeeDaysPerMonth;
-                                // Lương tăng ca
-                                employeePayRoll2.HREmployeePayRollOTSalary = (employeePayRoll2.HREmployeePayRollWorkingSalary / employeePayRoll2.HREmployeeDaysPerMonth / 8) * employeePayRoll2.HREmployeeHoursOT * (decimal)1.5;
-                                // Bù lương
-                                employeePayRoll2.HREmployeeOffsetSalary = 0;
-                                CalculatePayRoll(employeePayRoll2, objEmployeesInfo);
-                                //CalculatePayRollTotalAmounts(employeePayRoll2);
-                                // end phase 2
-                            }
-                            else
-                            {
-                                employeeTimeSheetEntryList = objTimeSheetEntrysController.GetTotalTimeSheetEntryByTimeSheetIDAndEmployeeTimeSheetID(objTimeSheetsInfo.HRTimeSheetID, employeeTimeSheet.HREmployeeTimeSheetID);
-
-                                decimal totalSalaryFactor = 0;
-                                decimal totalApprenticeSalaryFactor = 0;
-                                decimal totalProbationarySalaryFactor = 0;
-                                decimal totalSalaryOTHours = 0;
-                                decimal totalApprenticeSalaryOTHours = 0;
-                                decimal totalProbationarySalaryOTHours = 0;
-                                decimal nghihuongluong = 0;
-                                decimal nghihuongluongTV = 0;
-                                decimal nghihuongluongHV = 0;
-                                decimal nghikhongluong = 0;
-                                decimal nghiPN = 0;
-                                decimal nghiLe = 0;
-                                decimal totalLate = 0;
-                                HRTimeSheetParamsController objTimeSheetParamsController = new HRTimeSheetParamsController();
-                                foreach (HRTimeSheetEntrysInfo objTimeSheetEntrysInfo in employeeTimeSheetEntryList)
-                                {
-                                    if (objTimeSheetEntrysInfo.IsOT == false)
-                                    {
-                                        {
-                                            totalSalaryFactor += objTimeSheetEntrysInfo.HRTimeSheetEntryWorkingQty;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        {
-                                            totalSalaryOTHours += objTimeSheetEntrysInfo.HRTimeSheetEntryWorkingHours;
-                                        }
-                                    }
-                                    HRTimeSheetParamsInfo objTimeSheetParamsInfo = (HRTimeSheetParamsInfo)objTimeSheetParamsController.GetObjectByID(objTimeSheetEntrysInfo.FK_HRTimeSheetParamID);
-                                    if (objTimeSheetParamsInfo != null && objTimeSheetParamsInfo.HRTimeSheetParamType.Equals("Common"))
-                                    {
-                                        if (objTimeSheetParamsInfo.HRTimeSheetParamValue1 * objTimeSheetParamsInfo.HRTimeSheetParamValue2 > 0)
-                                        {
-                                            {
-                                                nghihuongluong += objTimeSheetParamsInfo.HRTimeSheetParamValue1 * objTimeSheetParamsInfo.HRTimeSheetParamValue2 / 8;
-                                            }
-                                        }
-                                        else
-                                        {
-                                            nghikhongluong++;
-                                        }
-                                    }
-                                    if (objTimeSheetParamsInfo != null && objTimeSheetParamsInfo.HRTimeSheetParamNo.Equals("NPN"))
-                                    {
-                                        nghiPN++;
-                                    }
-                                    if (objTimeSheetParamsInfo != null && objTimeSheetParamsInfo.HRTimeSheetParamType.Equals(TimeSheetParamType.LE.ToString()))
-                                    {
-                                        nghiLe++;
-                                    }
-                                }
-                                // Công thực tế
-                                employeePayRoll.HREmployeeRealDaysPerMonth = totalSalaryFactor - nghihuongluong;
-                                employeePayRoll.HREmployeePayRollProbationaryRealDaysPerMonth = totalProbationarySalaryFactor - nghihuongluongTV;
-                                employeePayRoll.HREmployeePayRollApprenticeRealDaysPerMonth = totalApprenticeSalaryFactor - nghihuongluongHV;
-                                // Giờ tăng ca
-                                employeePayRoll.HREmployeeHoursOT = totalSalaryOTHours + totalApprenticeSalaryOTHours + totalProbationarySalaryOTHours;
-
-                                employeePayRoll.HREmployeePayRollDayOT = (decimal)totalSalaryOTHours > 0 ? (decimal)totalSalaryOTHours / 8 : 0;
-
-                                //SetDefaultValuesFromEmployee(employeePayRoll, objEmployeesInfo);
-                                HREmployeeTimeSheetOTDetailsController objEmployeeTimeSheetOTDetailsController = new HREmployeeTimeSheetOTDetailsController();
-                                employeeTimeSheet.HREmployeeTimeSheetOTDetailsList = objEmployeeTimeSheetOTDetailsController.GetListTimeSheetOTDetailByEmployeeTimeSheet(employeeTimeSheet.HREmployeeTimeSheetID);
-                                List<HREmployeePayrollDetailsInfo> employeePayrollDetails = new List<HREmployeePayrollDetailsInfo>();
-                                List<HRTimeSheetParamsInfo> OTFactorlist = objTimeSheetParamsController.GetDistinctOTTimeSheetParamsList();
-                                foreach (var otfactor in OTFactorlist)
-                                {
-                                    HREmployeePayrollDetailsInfo objEmployeePayrollDetailsInfo = new HREmployeePayrollDetailsInfo();
-                                    objEmployeePayrollDetailsInfo.HREmployeeTimeSheetOTDetailFactor = otfactor.HRTimeSheetParamValue2;
-                                    objEmployeePayrollDetailsInfo.HREmployeeTimeSheetOTDetailName = otfactor.HRTimeSheetParamValue2.ToString();
-                                    foreach (var item in employeeTimeSheet.HREmployeeTimeSheetOTDetailsList)
-                                    {
-                                        if (otfactor.HRTimeSheetParamValue2 == item.HREmployeeTimeSheetOTDetailFactor)
-                                        {
-                                            objEmployeePayrollDetailsInfo.HREmployeePayrollHours = item.HREmployeeTimeSheetOTDetailHours;
-                                            objEmployeePayrollDetailsInfo.HREmployeePayrollBasicSalary = objEmployeesInfo.HREmployeeWorkingSlrAmt;
-                                            objEmployeePayrollDetailsInfo.HREmployeePayrollSalaryFactor =
-                                                Convert.ToDecimal(VinaUtil.RoundToThousand(Convert.ToDouble((objEmployeePayrollDetailsInfo.HREmployeePayrollBasicSalary / employeePayRoll.HREmployeeDaysPerMonth / (decimal)8) * (objEmployeePayrollDetailsInfo.HREmployeePayrollHours * objEmployeePayrollDetailsInfo.HREmployeeTimeSheetOTDetailFactor))));
-                                        }
-                                    }
-                                    employeePayrollDetails.Add(objEmployeePayrollDetailsInfo);
-                                }
-
-                                employeePayRoll.HREmployeePayRollSubtractLateAmount = totalLate * 30000;
-                                employeePayRoll.HREmployeePayrollDetailsList = employeePayrollDetails;
-                                employeePayRoll.HREmployeePayRollNgayNghiHuongLuong = nghihuongluong + nghihuongluongHV + nghihuongluongTV;
-                                employeePayRoll.HREmployeePayRollNgayNghiKhongLuong = nghikhongluong;
-                                employeePayRoll.HREmployeePayrollNghiPhepNam = nghiPN;
-                                employeePayRoll.HREmployeePayrollNghiLe = nghiLe;
-                                employeePayRoll.HREmployeePayRollTongNgayCong =
-                                    employeePayRoll.HREmployeePayRollDayOT + employeePayRoll.HREmployeeRealDaysPerMonth
-                                    + employeePayRoll.HREmployeePayRollNgayNghiHuongLuong
-                                    + employeePayRoll.HREmployeePayRollProbationaryRealDaysPerMonth
-                                    + employeePayRoll.HREmployeePayRollApprenticeSalaryAmount;
-                                //28/01/2019
-                                //SetDefaultValuesFromEmployee(employeePayRoll, objEmployeesInfo);
-                                //END
-                                // Lương công việc
-                                employeePayRoll.HREmployeePayRollWorkingSalary = objEmployeesInfo.HREmployeeContractSlrAmt;
-                                // Lương tháng
-                                employeePayRoll.HREmployeePayRollLuongThang = employeePayRoll.HREmployeePayRollWorkingSalary * totalSalaryFactor / employeePayRoll.HREmployeeDaysPerMonth;
-                                employeePayRoll.HREmployeePayRollApprenticeSalaryAmount = objEmployeesInfo.HREmployeeApprenticeSalaryAmount * totalApprenticeSalaryFactor / employeePayRoll.HREmployeeDaysPerMonth;
-                                employeePayRoll.HREmployeePayRollProbationarySalaryAmount = objEmployeesInfo.HREmployeeProbationarySalaryAmount * totalProbationarySalaryFactor / employeePayRoll.HREmployeeDaysPerMonth;
-                                // Lương chưa trừ
-                                //employeePayRoll.HREmployeeWorkingSlrAmtFull = employeePayRoll.HREmployeePayRollWorkingSalary * employeePayRoll.HREmployeeRealDaysPerMonth / employeePayRoll.HREmployeeDaysPerMonth;
-                                // Lương tăng ca
-                                employeePayRoll.HREmployeePayRollOTSalary = (decimal)VinaUtil.RoundToThousand(Convert.ToDouble(((employeePayRoll.HREmployeePayRollWorkingSalary
-                                    / employeePayRoll.HREmployeeDaysPerMonth / 8) * employeePayRoll.HREmployeeHoursOT * (decimal)1.5)));
-                                // Bù lương
-                                employeePayRoll.HREmployeeOffsetSalary = 0;
-                                CalculatePayRoll(employeePayRoll, objEmployeesInfo);
-                                //CalculatePayRollTotalAmounts(employeePayRoll);
-                            }
-                        }
-                        else
-                        {
-                            employeePayRoll.HRDepartmentRoomName = objEmployeesInfo.HRDepartmentRoomName;
-                            employeePayRoll.HRDepartmentName = objEmployeesInfo.HRDepartmentName;
-                            employeePayRoll.HREmployeeCardNumber = objEmployeesInfo.HREmployeeCardNumber;
-                            employeePayRoll.FK_HRDepartmentID = objEmployeesInfo.FK_HRDepartmentID;
-                            employeePayRoll.FK_HREmployeeID = objEmployeesInfo.HREmployeeID;
-                            employeePayRoll.FK_HRDepartmentRoomID = objEmployeesInfo.FK_HRDepartmentRoomID;
-                            employeePayRoll.HREmployeeNo = objEmployeesInfo.HREmployeeNo;
-                            employeePayRoll.HREmployeeName = objEmployeesInfo.HREmployeeName;
-                            objEmployeesInfo3 = UpdateWorkingForm(objEmployeesInfo);
-                            employeePayRoll.HREmployeeStatusCombo = objEmployeesInfo3.HREmployeeStatusCombo;
-                            employeePayRoll.HREmployeeWorkingForm = objEmployeesInfo3.HREmployeeWorkingForm;
-
-                            // Ngày công qui định
-                            employeePayRoll.HREmployeeDaysPerMonth = 0;
-                            // Hệ số
-                            employeePayRoll.HREmployeeSalaryFactor = 0;
-                            // Lương cơ bản
-                            employeePayRoll.HREmployeeContractSlrAmt = 0;
-                            // Lương công việc
-                            employeePayRoll.HREmployeePayRollWorkingSalary = 0;
-                        }
-                        entity.EmployeePayRollsList.Add(employeePayRoll);
-                        if (objEmployeeTranfersInfo != null)
-                        {
-                            entity.EmployeePayRollsList.Add(employeePayRoll2);
-                        }
-                    }
-                }
-                entity.EmployeePayRollsList.GridControl.RefreshDataSource();
-            }
-        }
-
-        public void UpdateValue()
-        {
-
-        }
-
-        public void UpdateItemDate()
-        {
-
-        }
-
-        public void SetMaskForTextBox()
-        {
-
 
         }
 
@@ -522,9 +103,8 @@ namespace VinaERP.Modules.PayRoll
                 HREmployeesInfo employee = employeeController.GetObjectByID(objEmployeePayRollsInfo.FK_HREmployeeID) as HREmployeesInfo;
                 HREmployeePayrollFormulasController employeePayrollFormulaController = new HREmployeePayrollFormulasController();
 
-                // Phạt / Trừ = Tạm ứng (xăng dầu) + Kỷ luật
-                objEmployeePayRollsInfo.HREmployeePayRollTotalDeductedAmt = objEmployeePayRollsInfo.HREmployeePayRollAdvance +
-                    objEmployeePayRollsInfo.HREmployeePayRollDiscipline;
+                // Phạt / Trừ = Kỷ luật
+                objEmployeePayRollsInfo.HREmployeePayRollTotalDeductedAmt =objEmployeePayRollsInfo.HREmployeePayRollDiscipline;
                 // Các khoản bảo hiểm
                 objEmployeePayRollsInfo.HREmployeePayRollTotalInsAmt =
                     objEmployeePayRollsInfo.HREmployeePayRollSocialInsAmount
@@ -533,19 +113,9 @@ namespace VinaERP.Modules.PayRoll
                     + objEmployeePayRollsInfo.HREmployeePayRollOutOfWorkInsAmount;
                 //+ objEmployeePayRollsInfo.HREmployeePayRollSyndicateFee;
                 // Lương đã trừ = Lương thu nhập + Phụ cấp + Khen thưởng - Bù lương - (Phạt / Trừ) - BHXH   
-                decimal realDaysPerMonth = 0;
-                if (objEmployeePayRollsInfo.HREmployeeRealDaysPerMonthBackup > objEmployeePayRollsInfo.HREmployeeRealDaysPerMonth)
-                {
-                    realDaysPerMonth = objEmployeePayRollsInfo.HREmployeeRealDaysPerMonthBackup;
-                }
-                else
-                {
-                    realDaysPerMonth = objEmployeePayRollsInfo.HREmployeeRealDaysPerMonth;
-                }
 
                 objEmployeePayRollsInfo.HREmployeePayrollTongCacKhoanTru =
-                    objEmployeePayRollsInfo.HREmployeeOffsetSalary
-                    + objEmployeePayRollsInfo.HREmployeePayRollTotalDeductedAmt
+                     objEmployeePayRollsInfo.HREmployeePayRollTotalDeductedAmt
                     + objEmployeePayRollsInfo.HREmployeePayRollTotalInsAmt
                     + objEmployeePayRollsInfo.HREmployeePayRollSyndicateFee
                     + objEmployeePayRollsInfo.HREmployeePayrollPhiAo
@@ -559,23 +129,22 @@ namespace VinaERP.Modules.PayRoll
                     + objEmployeePayRollsInfo.HREmployeePayrollTruKhac
                     + objEmployeePayRollsInfo.HREmployeePayRollTheChan;
 
-                objEmployeePayRollsInfo.HREmployeePayRollTongPhuCap =
-                    objEmployeePayRollsInfo.HREmployeePayRollAllowaceNight +
-                    objEmployeePayRollsInfo.HREmployeePayRollOthersAllowance +
-                    objEmployeePayRollsInfo.HREmployeePayRollAllowanceGasoline +
-                    objEmployeePayRollsInfo.HREmployeePayRollAllowanceMotel +
-                    objEmployeePayRollsInfo.HREmployeePayRollAllowanceRise +
-                    objEmployeePayRollsInfo.HREmployeePayRollPerennialAllowance +
-                    objEmployeePayRollsInfo.HREmployeePayRollExtraSalary +
-                    objEmployeePayRollsInfo.HREmployeePayRollResponsibilityAllowance +
-                    objEmployeePayRollsInfo.HREmployeePayRollAllowanceVehicleMaintenance +
-                    objEmployeePayRollsInfo.HREmployeePayRollProbationaryExtraSalary +
-                    objEmployeePayRollsInfo.HREmployeePayRollAllowanceWorkSchedule +
-                    objEmployeePayRollsInfo.HREmployeePayRollProvinceAllowance;
+                //objEmployeePayRollsInfo.HREmployeePayRollTongPhuCap =
+                //    objEmployeePayRollsInfo.HREmployeePayRollAllowaceNight +
+                //    objEmployeePayRollsInfo.HREmployeePayRollOthersAllowance +
+                //    objEmployeePayRollsInfo.HREmployeePayRollAllowanceGasoline +
+                //    objEmployeePayRollsInfo.HREmployeePayRollAllowanceMotel +
+                //    objEmployeePayRollsInfo.HREmployeePayRollAllowanceRise +
+                //    objEmployeePayRollsInfo.HREmployeePayRollPerennialAllowance +
+                //    objEmployeePayRollsInfo.HREmployeePayRollExtraSalary +
+                //    objEmployeePayRollsInfo.HREmployeePayRollResponsibilityAllowance +
+                //    objEmployeePayRollsInfo.HREmployeePayRollAllowanceVehicleMaintenance +
+                //    objEmployeePayRollsInfo.HREmployeePayRollProbationaryExtraSalary +
+                //    objEmployeePayRollsInfo.HREmployeePayRollAllowanceWorkSchedule +
+                //    objEmployeePayRollsInfo.HREmployeePayRollProvinceAllowance;
 
                 objEmployeePayRollsInfo.HREmployeePayRollTongTienThuong =
                     objEmployeePayRollsInfo.HREmployeePayRollTongKhenThuong +
-                    objEmployeePayRollsInfo.HREmployeePayRollKPIAllowance +
                     objEmployeePayRollsInfo.HREmployeePayRollTongCongKhac;
 
                 objEmployeePayRollsInfo.HREmployeeLuongDaTru = 0;
@@ -590,22 +159,8 @@ namespace VinaERP.Modules.PayRoll
                 objEmployeePayRollsInfo.HREmployeeLuongDaTru = objEmployeePayRollsInfo.HREmployeePayRollLuongThang + objEmployeePayRollsInfo.HREmployeePayRollOTSalary;
 
                 objEmployeePayRollsInfo.HREmployeeLuongDaTru += objEmployeePayRollsInfo.HREmployeePayRollTongTienThuong
-                                                                + objEmployeePayRollsInfo.HREmployeePayRollOthersAllowance
                                                                 + objEmployeePayRollsInfo.HREmployeePayRollAllowaceNight;
 
-                objEmployeePayRollsInfo.HREmployeePayRollThamNien = (int)((objPayRollsInfo.HRPayRollDate - employee.HREmployeeStartWorkingDate).Days / 365);
-                objEmployeePayRollsInfo.HREmployeePayRollMucKPI = employee.HREmployeeAllowanceKPI;
-                objEmployeePayRollsInfo.HREmployeePayRollCongLamViec = objEmployeePayRollsInfo.HREmployeeRealDaysPerMonth + objEmployeePayRollsInfo.HREmployeePayRollProbationaryRealDaysPerMonth + objEmployeePayRollsInfo.HREmployeePayRollApprenticeRealDaysPerMonth;
-
-                //objEmployeePayRollsInfo.HREmployeePayRollEmployeeLoanMonthlyAmount = (decimal)list.Sum(o => o.HRAdvanceRequestItemLoanDetailTotalAmount); 
-                objEmployeePayRollsInfo.HREmployeePayRollEmployeeLoanMonthlyAmount = 0;
-                List<string> dsLoanMonthlyID = new List<string>();
-                if (dsLoanMonthlyID != null && dsLoanMonthlyID.Count() > 0)
-                {
-                    objEmployeePayRollsInfo.FK_HREmployeePayRollAdvanceRequestItemLoanDetails = string.Join(",", dsLoanMonthlyID.ToArray());
-                }
-
-                //objEmployeePayRollsInfo.HREmployeePayRollEmployeeLoanMonthlyAmount = GetEmployeeLoanMonthlyAmount(objEmployeePayRollsInfo.FK_HREmployeeID, objPayRollsInfo.HRPayRollDate, AdvanceRequestType.Loan.ToString());
                 // Tổng lương thực nhận = Lương đã trừ + Doanh số + Nợ lũy tiến
                 objEmployeePayRollsInfo.HREmployeePayRollTotalSalary =
                     objEmployeePayRollsInfo.HREmployeeLuongDaTru
@@ -673,7 +228,7 @@ namespace VinaERP.Modules.PayRoll
             objEmployeePayRollsInfo.HREmployeeStatusCombo = objEmployeesInfo2.HREmployeeStatusCombo;
             objEmployeePayRollsInfo.HREmployeeWorkingForm = objEmployeesInfo2.HREmployeeWorkingForm;
             // Ngày công qui định
-            objEmployeePayRollsInfo.HREmployeeDaysPerMonth = objEmployeesInfo.HREmployeeDaysPerMonth;
+            //objEmployeePayRollsInfo.HREmployeeDaysPerMonth = objEmployeesInfo.HREmployeeDaysPerMonth;
             // Hệ số
             objEmployeePayRollsInfo.HREmployeeSalaryFactor = objEmployeesInfo.HREmployeeSalaryFactor;
             // Lương cơ bản
@@ -708,22 +263,6 @@ namespace VinaERP.Modules.PayRoll
                 }
             }
             int daysInMonth = DateTime.DaysInMonth(payroll.HRPayRollDate.Year, payroll.HRPayRollDate.Month);
-            int endOfWeekCount = 0;
-            if (employee.HREmployeeDaysPerMonth == -1)
-            {
-                for (int i = 1; i <= daysInMonth; i++)
-                {
-                    DateTime date = new DateTime(payroll.HRPayRollDate.Year, payroll.HRPayRollDate.Month, i);
-                    if (VinaApp.IsEndOfWeek(date.DayOfWeek))
-                    {
-                        endOfWeekCount++;
-                    }
-                }
-            }
-            else
-            {
-                endOfWeekCount = Convert.ToInt32(employee.HREmployeeDaysPerMonth);
-            }
             // Lương = Công thức tính lương
             DateTime dateFrom = payroll.FromDate;
             DateTime dateTo = payroll.ToDate;
@@ -811,7 +350,6 @@ namespace VinaERP.Modules.PayRoll
                         {
                             employeePayRoll.FK_HREmployeePayRollAllowance = string.Join(",", dsRewardID.ToArray());
                         }
-                        employeePayRoll.HREmployeePayRollReward = employeePayRoll.HREmployeePayRollReward;
                     }
                 }
                 // Kỷ luật
@@ -873,7 +411,7 @@ namespace VinaERP.Modules.PayRoll
                 // Phụ cấp
                 if (obj.HREmployeePayrollFormulaSalaryType.Equals("Phucap"))
                 {
-                    decimal conglamviec = employeePayRoll.HREmployeeRealDaysPerMonth + employeePayRoll.HREmployeePayRollProbationaryRealDaysPerMonth + employeePayRoll.HREmployeePayRollApprenticeRealDaysPerMonth;
+                    decimal conglamviec = employeePayRoll.HREmployeeRealDaysPerMonth;
 
                     HRAllowancesController objAllowancesController = new HRAllowancesController();
                     HREmployeeAllowancesController objEmployeeAllowancesController = new HREmployeeAllowancesController();
@@ -906,7 +444,7 @@ namespace VinaERP.Modules.PayRoll
 
                     //Trách nhiệm hàng hoá
                     employeePayRoll.HREmployeePayRollResponsibilityCommodityAllowance = 0;
-                    //Lành nghề
+                    //Lành nghề/bồi dưỡng nghiệp vụ
                     employeePayRoll.HREmployeePayRollEffectiveAllowance = 0;
                     //khác
                     employeePayRoll.HREmployeePayRollOtherAllowance = 0;
@@ -1057,10 +595,10 @@ namespace VinaERP.Modules.PayRoll
                                 if (objAllowancesInfo.HRAllowanceOption.Equals("AddToSalary"))
                                 {
                                     decimal amount = objEmployeeAllowancesInfo.HREmployeeAllowanceValueAmount;
-                                    if (objAllowancesInfo.HRAllowanceByWorkDay)
-                                    {
-                                        amount = objEmployeeAllowancesInfo.HREmployeeAllowanceValueAmount * conglamviec;
-                                    }
+                                    //if (objAllowancesInfo.HRAllowanceByWorkDay)
+                                    //{
+                                    //    amount = objEmployeeAllowancesInfo.HREmployeeAllowanceValueAmount * conglamviec;
+                                    //}
 
                                     if (objFormAllowancesInfo.HRFormAllowanceNameType == HRFormAllowanceNameType.Phucapthamnien.ToString())
                                     {
@@ -1080,7 +618,13 @@ namespace VinaERP.Modules.PayRoll
                                     }
                                     else if (objFormAllowancesInfo.HRFormAllowanceNameType == HRFormAllowanceNameType.Khac.ToString())
                                     {
-                                        employeePayRoll.HREmployeePayRollOtherAllowance += amount;
+                                        if (objAllowancesInfo.HRAllowanceByWorkDay)
+                                        {
+                                            employeePayRoll.HREmployeePayRollOtherAllowance += amount;
+                                        }
+                                        else
+                                            employeePayRoll.HREmployeePayRollOtherReward += amount;
+                                        
                                     }
                                     else if (objFormAllowancesInfo.HRFormAllowanceNameType == HRFormAllowanceNameType.Phucapcadem.ToString())
                                     {
@@ -1149,38 +693,6 @@ namespace VinaERP.Modules.PayRoll
             CalculatePayRollTotalAmounts(employeePayRoll);
         }
 
-        public void SetDefaultValuesFromEmployeeTransfer(HREmployeePayRollsInfo objEmployeePayRollsInfo, HREmployeeTranfersInfo objEmployeeTranfersInfo)
-        {
-            PayRollEntities entity = (PayRollEntities)CurrentModuleEntity;
-            HRPayRollsInfo objPayRollsInfo = (HRPayRollsInfo)entity.MainObject;
-            HREmployeesController objEmployeesController = new HREmployeesController();
-            HREmployeesInfo objEmployeesInfo = (HREmployeesInfo)objEmployeesController.GetObjectByID(objEmployeeTranfersInfo.FK_HREmployeeID);
-            objEmployeesInfo.FK_HRDepartmentRoomID = objEmployeeTranfersInfo.FK_HRDepartmentRoomID;
-            objEmployeesInfo.FK_HRLevelID = objEmployeeTranfersInfo.FK_HRLevelID;
-            objEmployeesInfo.HREmployeeSalaryFactor = objEmployeeTranfersInfo.HREmployeeTranferSalaryFactor;
-            objEmployeesInfo.HREmployeeContractSlrAmt = objEmployeeTranfersInfo.HREmployeeTranferSalary;
-            objEmployeesInfo.HREmployeeWorkingSlrAmt = objEmployeeTranfersInfo.HREmployeeTranferExtraSalary;
-            objEmployeesInfo.HREmployeeExtraSalary1 = objEmployeeTranfersInfo.HREmployeeTranferAllowances;
-
-            objEmployeePayRollsInfo.FK_HRDepartmentRoomID = objEmployeesInfo.FK_HRDepartmentRoomID;
-            objEmployeePayRollsInfo.FK_HRLevelID = objEmployeesInfo.FK_HRLevelID;
-            objEmployeePayRollsInfo.HREmployeeNo = objEmployeesInfo.HREmployeeNo;
-            objEmployeePayRollsInfo.HREmployeeName = objEmployeesInfo.HREmployeeName;
-            HREmployeesInfo objEmployeesInfo2 = new HREmployeesInfo();
-            objEmployeesInfo2 = UpdateWorkingForm(objEmployeesInfo);
-            objEmployeePayRollsInfo.HREmployeeStatusCombo = objEmployeesInfo2.HREmployeeStatusCombo;
-            objEmployeePayRollsInfo.HREmployeeWorkingForm = objEmployeesInfo2.HREmployeeWorkingForm;
-            // Ngày công qui định
-            objEmployeePayRollsInfo.HREmployeeDaysPerMonth = objEmployeesInfo.HREmployeeDaysPerMonth;
-            // Hệ số
-            objEmployeePayRollsInfo.HREmployeeSalaryFactor = objEmployeesInfo.HREmployeeSalaryFactor;
-            // Lương cơ bản
-            objEmployeePayRollsInfo.HREmployeeContractSlrAmt = objEmployeesInfo.HREmployeeContractSlrAmt;
-            // Lương công việc
-            objEmployeePayRollsInfo.HREmployeeWorkingSlrAmt = objEmployeesInfo.HREmployeeWorkingSlrAmt;
-            entity.EmployeePayRollsList.GridControl.RefreshDataSource();
-        }
-
         public override void ActionNew()
         {
             base.ActionNew();
@@ -1211,7 +723,7 @@ namespace VinaERP.Modules.PayRoll
                 // CTChinh - PayRoll BEGIN
                 HREmployeeTimeSheetsController objEmployeeTimeSheetsController = new HREmployeeTimeSheetsController();
                 HRTimeSheetEntrysController objTimeSheetEntrysController = new HRTimeSheetEntrysController();
-                HREmployeeTranfersController objEmployeeTranfersController = new HREmployeeTranfersController();
+                //HREmployeeTranfersController objEmployeeTranfersController = new HREmployeeTranfersController();
                 HREmployeesController objEmployeesController = new HREmployeesController();
 
 
@@ -1240,7 +752,7 @@ namespace VinaERP.Modules.PayRoll
                     employeePayRoll = new HREmployeePayRollsInfo();
                     employeePayRoll.FK_HREmployeeID = employeeTimeSheet.FK_HREmployeeID;
                     objEmployeesInfo = (HREmployeesInfo)objEmployeesController.GetEmployeeByID(employeeTimeSheet.FK_HREmployeeID);
-                    List<HREmployeeTranfersInfo> listEmployeeTranfers = (List<HREmployeeTranfersInfo>)objEmployeeTranfersController.GetEmployeeTranfersByEmployeeIDAndDateTo(objEmployeesInfo.HREmployeeID, objPayRollsInfo.ToDate);
+                    //List<HREmployeeTranfersInfo> listEmployeeTranfers = (List<HREmployeeTranfersInfo>)objEmployeeTranfersController.GetEmployeeTranfersByEmployeeIDAndDateTo(objEmployeesInfo.HREmployeeID, objPayRollsInfo.ToDate);
                     if (objEmployeesInfo.FK_HREmployeePayrollFormulaID > 0)
                     {
                         objEmployeesInfo.HREmployeeDaysPerMonth = objTimesheetConfigsController.GetDaysPerMonthByEmployeeFormullaID(objEmployeesInfo.FK_HREmployeePayrollFormulaID, objPayRollsInfo.HRPayRollDate.Month, objPayRollsInfo.HRPayRollDate.Year);
@@ -1248,6 +760,7 @@ namespace VinaERP.Modules.PayRoll
                         {
                             objEmployeesInfo.HREmployeeDaysPerMonth = CalculationWorkDay(objPayRollsInfo.HRPayRollDate);
                         }
+                        employeePayRoll.HREmployeeDaysPerMonth = objEmployeesInfo.HREmployeeDaysPerMonth;
                         SetDefaultValuesFromEmployee(employeePayRoll, objEmployeesInfo);
                         employeePayRoll.HRDepartmentRoomName = objEmployeesInfo.HRDepartmentRoomName;
                         employeePayRoll.HRDepartmentName = objEmployeesInfo.HRDepartmentName;
@@ -1336,7 +849,7 @@ namespace VinaERP.Modules.PayRoll
                         //else
                         //{
                         employeeTimeSheetEntryList = objTimeSheetEntrysController.GetTotalTimeSheetEntryByTimeSheetIDAndEmployeeTimeSheetID(objTimeSheetsInfo.HRTimeSheetID, employeeTimeSheet.HREmployeeTimeSheetID);
-                        UpdateEmployeePayrollDetailsList(employeePayRoll, employeeTimeSheetEntryList, null, objEmployeesInfo, false, employeeTimeSheet, listWorkingShifts, list, listTimeSheetParams);
+                        UpdateEmployeePayrollDetailsList(employeePayRoll, employeeTimeSheetEntryList, null, objEmployeesInfo, employeeTimeSheet, listWorkingShifts, list, listTimeSheetParams);
                         employeePayRoll.HREmployeeBasicSalary = objEmployeesInfo.HREmployeeWorkingSlrAmtDate;
                         CalculatePayRoll(employeePayRoll, objEmployeesInfo);
                         //}
@@ -1403,14 +916,11 @@ namespace VinaERP.Modules.PayRoll
                                                     List<HRTimeSheetEntrysInfo> employeeTimeSheetEntryList,
                                                     List<HREmployeeTranfersInfo> listEmployeeTranfers,
                                                     HREmployeesInfo objEmployeesInfo,
-                                                    bool check,
                                                     HREmployeeTimeSheetsInfo employeeTimeSheet,
                                                     List<ADWorkingShiftsInfo> listWorkingShifts,
-                                                    List<ADWorkingShiftGroupsInfo> list,
+                                                    List<ADWorkingShiftGroupsInfo> listWorkingShiftGroups,
                                                     List<HRTimeSheetParamsInfo> listTimeSheetParams)
         {
-            //check: true => Nhân viên có lịch sử thuyển chuyển.
-            //check: false => Nhân viên không có lịch sử thuyên chuyển.
 
             ADWorkingShiftsController objWorkingShiftsController = new ADWorkingShiftsController();
             ADWorkingShiftGroupsController objWorkingShiftGroupsController = new ADWorkingShiftGroupsController();
@@ -1426,62 +936,10 @@ namespace VinaERP.Modules.PayRoll
             HREmployeePayrollFormulasInfo objEmployeePayrollFormulasInfo = new HREmployeePayrollFormulasInfo();
             HRTimeSheetParamsController objTimeSheetParamsController = new HRTimeSheetParamsController();
             HRTimeSheetParamsInfo objTimeSheetParamsInfo = new HRTimeSheetParamsInfo();
-            //decimal workingAdd = 0;
-            //if (objEmployeesInfo != null)
-            //{
-            //    listHRWorkingShifts = objHRWorkingShiftsController.GetWorkingShiftByPayrollFormulaID(objEmployeesInfo.FK_HREmployeePayrollFormulaID);
-            //    if (objEmployeesInfo.FK_HREmployeePayrollFormulaID > 0)
-            //    {
-            //        objEmployeePayrollFormulasInfo = (HREmployeePayrollFormulasInfo)objEmployeePayrollFormulasController.GetObjectByID(objEmployeesInfo.FK_HREmployeePayrollFormulaID);
-            //        if (objEmployeePayrollFormulasInfo != null)
-            //        {
-            //            workingAdd = objEmployeePayrollFormulasInfo.HREmployeePayrollFormulaWorkingDiff;
-            //        }
-            //    }
-            //}
-            //if (workingAdd > 0 && employeeTimeSheetEntryList != null)
-            //{
-            //    decimal totalTongCong = 0;
-            //    totalTongCong = employeeTimeSheetEntryList.Where(o => !o.IsOT && o.FK_ADWorkingShiftID > 0
-            //                                                     && (o.HRTimeSheetParamType == TimeSheetParamType.Day.ToString()
-            //                                                     || o.HRTimeSheetParamType == TimeSheetParamType.Hour.ToString())).Sum(o => o.HRTimeSheetParamValue1);
-            //    if (totalTongCong >= 1)
-            //    {
-            //        decimal dem = workingAdd;
-            //        decimal workingAddRedundancy = workingAdd - Math.Floor(dem);
-            //        HRTimeSheetEntrysInfo objTimeSheetEntrysInfo = (HRTimeSheetEntrysInfo)employeeTimeSheetEntryList.LastOrDefault(o => !o.IsOT && o.FK_ADWorkingShiftID > 0
-            //                                                                                                                        && (o.HRTimeSheetParamType == TimeSheetParamType.Day.ToString()
-            //                                                                                                                        || o.HRTimeSheetParamType == TimeSheetParamType.Hour.ToString()));
-            //        List<HRTimeSheetParamsInfo> listParams = (List<HRTimeSheetParamsInfo>)listTimeSheetParams.Where(o => o.FK_ADWorkingShiftID == objTimeSheetEntrysInfo.FK_ADWorkingShiftID
-            //                                                                                                        && (o.HRTimeSheetParamType == TimeSheetParamType.Day.ToString()
-            //                                                                                                        || o.HRTimeSheetParamType == TimeSheetParamType.Hour.ToString())).ToList();
-            //        if (listParams != null && listParams.Count > 0 && objTimeSheetEntrysInfo != null)
-            //        {
-            //            while (dem > 0)
-            //            {
-            //                HRTimeSheetEntrysInfo objTimeSheetEntrysInfo2 = (HRTimeSheetEntrysInfo)objTimeSheetEntrysInfo.Clone();
-            //                objTimeSheetParamsInfo = GetTimeSheetParam(listParams, dem, objTimeSheetEntrysInfo.FK_ADWorkingShiftID);
-            //                if (objTimeSheetParamsInfo != null && objTimeSheetEntrysInfo2 != null && objTimeSheetParamsInfo.HRTimeSheetParamID > 0)
-            //                {
-            //                    objTimeSheetEntrysInfo2.FK_ADWorkingShiftID = objTimeSheetParamsInfo.FK_ADWorkingShiftID;
-            //                    objTimeSheetEntrysInfo2.FK_HRTimeSheetParamID = objTimeSheetParamsInfo.HRTimeSheetParamID;
-            //                    objTimeSheetEntrysInfo2.HRTimeSheetEntryWorkingQty = objTimeSheetParamsInfo.HRTimeSheetParamValue1;
-            //                    objTimeSheetEntrysInfo2.HRTimeSheetEntryWorkingHours = objTimeSheetParamsInfo.HRTimeSheetParamValue1 * 8;
 
-            //                    employeeTimeSheetEntryList.Add(objTimeSheetEntrysInfo2);
-            //                    dem -= objTimeSheetParamsInfo.HRTimeSheetParamValue1;
-            //                }
-            //                else
-            //                {
-            //                    break;
-            //                }
-            //            }
-            //        }
-            //    }
-            //}
             decimal congChuan = 0;
             decimal congVuot = 0;
-            foreach (var item2 in list)
+            foreach (var item2 in listWorkingShiftGroups)
             {
                 congChuan = 0;
                 congVuot = 0;
@@ -1515,14 +973,7 @@ namespace VinaERP.Modules.PayRoll
                                     {
                                         objEmployeePayrollDetailsInfo.HREmployeePayrollDetailAllowanceWorkingShift = objHRWorkingShiftsInfo.HRWorkingShiftAllowance;
                                     }
-                                    if (check)
-                                    {
-                                        objEmployeePayrollDetailsInfo.HREmployeePayrollBasicSalary = CheckSalaryBasic(listEmployeeTranfers, item.HRTimeSheetEntryDate, objEmployeesInfo);
-                                    }
-                                    else
-                                    {
-                                        objEmployeePayrollDetailsInfo.HREmployeePayrollBasicSalary = objEmployeesInfo.HREmployeeWorkingSlrAmtDate;
-                                    }
+                                    objEmployeePayrollDetailsInfo.HREmployeePayrollBasicSalary = objEmployeesInfo.HREmployeeWorkingSlrAmtDate;
                                     if (congChuan > employeePayRoll.HREmployeeDaysPerMonth)
                                     {
                                         congVuot = congChuan - employeePayRoll.HREmployeeDaysPerMonth;
@@ -1567,18 +1018,10 @@ namespace VinaERP.Modules.PayRoll
             decimal hoursPerDay = Convert.ToDecimal(objConfigValuesController.GetObjectByConfigKey("HoursPerDay").ADConfigKeyValue);
 
             decimal totalSalaryFactor = 0;
-            decimal totalApprenticeSalaryFactor = 0;
-            decimal totalProbationarySalaryFactor = 0;
             decimal totalSalaryOTHours = 0;
-            decimal totalApprenticeSalaryOTHours = 0;
-            decimal totalProbationarySalaryOTHours = 0;
             decimal nghihuongluong = 0;
-            decimal nghihuongluongTV = 0;
-            decimal nghihuongluongHV = 0;
             decimal nghikhongluong = 0;
-            decimal nghiPN = 0;
             decimal nghiLe = 0;
-            decimal totalLate = 0;
             decimal nghiKP = 0;
             decimal truNghiKPTheoCa = 0;
             employeePayRoll.HREmployeePayRollDaysOffAmount = 0;
@@ -1612,14 +1055,7 @@ namespace VinaERP.Modules.PayRoll
                                 objEmployeePayrollDetailsInfo.IsOT = true;
                                 objEmployeePayrollDetailsInfo.HREmployeePayrollHours = item.HRTimeSheetParamValue1 / hoursPerDay;
                                 objEmployeePayrollDetailsInfo.HREmployeePayrollHourFactor = item.HRTimeSheetParamValue1;
-                                if (check)
-                                {
-                                    objEmployeePayrollDetailsInfo.HREmployeePayrollBasicSalary = CheckSalaryBasic(listEmployeeTranfers, item.HRTimeSheetEntryDate, objEmployeesInfo);
-                                }
-                                else
-                                {
-                                    objEmployeePayrollDetailsInfo.HREmployeePayrollBasicSalary = objEmployeesInfo.HREmployeeWorkingSlrAmtDate;
-                                }
+                                objEmployeePayrollDetailsInfo.HREmployeePayrollBasicSalary = objEmployeesInfo.HREmployeeWorkingSlrAmtDate;
                                 employeePayrollDetails.Add(objEmployeePayrollDetailsInfo);
                             }
                         }
@@ -1639,22 +1075,13 @@ namespace VinaERP.Modules.PayRoll
                     else if (item.HRTimeSheetParamValue1 * item.HRTimeSheetParamValue2 < 0)
                     {
                         nghiKP += Math.Abs(item.HRTimeSheetParamValue1 * item.HRTimeSheetParamValue2 / 8);
-                        decimal workingShiftAllowance = 0;
                         if (listHRWorkingShifts != null)
                         {
                             objHRWorkingShiftsInfo = (HRWorkingShiftsInfo)listHRWorkingShifts.LastOrDefault(o => o.FK_ADWorkingShiftID == item.FK_ADWorkingShiftForParamID);
                             if (objHRWorkingShiftsInfo != null)
                             {
                                 truNghiKPTheoCa += objHRWorkingShiftsInfo.HRWorkingShiftAllowance;
-                                workingShiftAllowance = objHRWorkingShiftsInfo.HRWorkingShiftAllowance;
                             }
-                        }
-                        if (check)
-                        {
-                            employeePayRoll.HREmployeePayRollDaysOffAmount += Math.Abs(item.HRTimeSheetParamValue1 * item.HRTimeSheetParamValue2 / 8)
-                                                                            * CheckSalaryBasic(listEmployeeTranfers, item.HRTimeSheetEntryDate, objEmployeesInfo)
-                                                                            + totalAmountAllowance
-                                                                            + workingShiftAllowance;
                         }
                     }
                     else
@@ -1662,19 +1089,9 @@ namespace VinaERP.Modules.PayRoll
                         nghikhongluong++;
                     }
                 }
-                //if (item.HRTimeSheetParamNo.Equals("NPN"))
-                //{
-                //    nghiPN++;
-                //}
                 if (item.HRTimeSheetParamType.Equals(TimeSheetParamType.LE.ToString()))
                 {
                     nghiLe += item.HRTimeSheetParamValue1 * item.HRTimeSheetParamValue2 / (hoursPerDay > 0 ? hoursPerDay : 8);
-                    if (check)
-                    {
-                        employeePayRoll.HREmployeePayrollNghiLeAmount += item.HRTimeSheetParamValue1 * item.HRTimeSheetParamValue2 / (hoursPerDay > 0 ? hoursPerDay : 8)
-                                                                        * (CheckSalaryBasic(listEmployeeTranfers, item.HRTimeSheetEntryDate, objEmployeesInfo) +
-                                                                            totalAmountAllowance);
-                    }
                 }
             }
 
@@ -1696,11 +1113,8 @@ namespace VinaERP.Modules.PayRoll
                         else
                         {
                             o.HREmployeePayrollBasicSalary += totalAmountAllowance;
-                            //o.HREmployeePayrollSalaryFactor = o.HREmployeePayrollBasicSalary * o.HREmployeePayrollHours;
                             o.HREmployeePayrollSalaryFactor = (o.HREmployeePayrollBasicSalary + o.HREmployeePayrollDetailAllowanceWorkingShift) * o.HREmployeePayrollDetailPrecentAmount / 100 * o.HREmployeePayrollHours;
                             employeePayRoll.HREmployeePayRollCommission += (o.HREmployeePayrollBasicSalary + o.HREmployeePayrollDetailAllowanceWorkingShift) * o.HREmployeePayrollDetailPrecentExceed / 100 * o.HREmployeePayrollHours;
-                            //o.HREmployeePayrollSalaryFactor = o.HREmployeePayrollBasicSalary * o.HREmployeePayrollDetailPrecentAmount / 100 * o.HREmployeePayrollHours;
-                            //employeePayRoll.HREmployeePayRollCommission += o.HREmployeePayrollBasicSalary * o.HREmployeePayrollDetailPrecentExceed / 100 * o.HREmployeePayrollHours;
                         }
                     }
                     catch (Exception)
@@ -1711,24 +1125,17 @@ namespace VinaERP.Modules.PayRoll
             }
 
             employeePayRoll.HREmployeePayrollNghiKPhep = nghiKP;
-            employeePayRoll.HREmployeePayRollNgayNghiHuongLuong = nghihuongluong + nghihuongluongHV + nghihuongluongTV;
+            employeePayRoll.HREmployeePayRollNgayNghiHuongLuong = nghihuongluong;
             employeePayRoll.HREmployeePayRollNgayNghiKhongLuong = nghikhongluong;
-            employeePayRoll.HREmployeePayrollNghiPhepNam = nghiPN;
             employeePayRoll.HREmployeePayrollNghiLe = nghiLe;
             // Công thực tế
             employeePayRoll.HREmployeeRealDaysPerMonth = totalSalaryFactor;
-            employeePayRoll.HREmployeePayRollProbationaryRealDaysPerMonth = totalProbationarySalaryFactor - nghihuongluongTV;
-            employeePayRoll.HREmployeePayRollApprenticeRealDaysPerMonth = totalApprenticeSalaryFactor - nghihuongluongHV;
-            employeePayRoll.HREmployeePayRollSubtractLateAmount = totalLate * 30000;
-            if (!check)
-            {
-                employeePayRoll.HREmployeePayRollDaysOffAmount = nghiKP * (objEmployeesInfo.HREmployeeWorkingSlrAmtDate + totalAmountAllowance) + truNghiKPTheoCa;
-                employeePayRoll.HREmployeePayrollNghiLeAmount = employeePayRoll.HREmployeePayrollNghiLe *
-                                                            (objEmployeesInfo.HREmployeeWorkingSlrAmtDate +
-                                                            totalAmountAllowance);
-            }
+            employeePayRoll.HREmployeePayRollDaysOffAmount = nghiKP * (objEmployeesInfo.HREmployeeWorkingSlrAmtDate + totalAmountAllowance) + truNghiKPTheoCa;
+            employeePayRoll.HREmployeePayrollNghiLeAmount = employeePayRoll.HREmployeePayrollNghiLe *
+                                                        (objEmployeesInfo.HREmployeeWorkingSlrAmtDate +
+                                                        totalAmountAllowance);
             // Giờ tăng ca
-            employeePayRoll.HREmployeeHoursOT = totalSalaryOTHours + totalApprenticeSalaryOTHours + totalProbationarySalaryOTHours;
+            employeePayRoll.HREmployeeHoursOT = totalSalaryOTHours;
             //Ngày tăng ca
             employeePayRoll.HREmployeePayRollDayOT = employeePayRoll.HREmployeeHoursOT > 0 ? (decimal)employeePayRoll.HREmployeeHoursOT / 8 : 0;
 
@@ -1742,26 +1149,6 @@ namespace VinaERP.Modules.PayRoll
             // Bù lương
             employeePayRoll.HREmployeeOffsetSalary = 0;
             employeePayRoll.HRTimeSheetEntrysList = employeeTimeSheetEntryList;
-        }
-
-        public decimal CheckSalaryBasic(List<HREmployeeTranfersInfo> listEmployeeTranfers, DateTime date, HREmployeesInfo objEmployeesInfo)
-        {
-            if (listEmployeeTranfers != null)
-            {
-                HREmployeeTranfersInfo objEmployeeTranfersInfo = (HREmployeeTranfersInfo)listEmployeeTranfers.Where(o => o.HREmployeeTranferDateFrom.Date <= date.Date).LastOrDefault();
-                if (objEmployeeTranfersInfo != null)
-                {
-                    return objEmployeeTranfersInfo.HREmployeeTranferExtraSalaryDate;
-                }
-                else
-                {
-                    return objEmployeesInfo.HREmployeeWorkingSlrAmtDate;
-                }
-            }
-            else
-            {
-                return 0;
-            }
         }
 
         public ADOTFactorsInfo GetOTFactors(List<ADOTFactorsInfo> list, HRTimeSheetEntrysInfo entry)
@@ -1791,14 +1178,6 @@ namespace VinaERP.Modules.PayRoll
                 return workingDayFactors.FirstOrDefault();
             }
             else return null;
-        }
-
-        private HRTimeSheetParamsInfo GetTimeSheetParam(List<HRTimeSheetParamsInfo> timeSheetParamsList, decimal val, int workingID)
-        {
-            HRTimeSheetParamsInfo obj = timeSheetParamsList.Where(p => (p.HRTimeSheetParamValue1 <= val && p.FK_ADWorkingShiftID == workingID))
-                .OrderByDescending(p => p.HRTimeSheetParamValue1).FirstOrDefault();
-            if (obj == null) obj = new HRTimeSheetParamsInfo();
-            return obj;
         }
     }
 }

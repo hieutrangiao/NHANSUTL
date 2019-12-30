@@ -156,5 +156,15 @@ namespace VinaERP.Modules.CompanyConstant.UI
         {
             ((CompanyConstantModule)Module).SaveWorkingShiftsList();
         }
+
+        private void simpleButton7_Click_1(object sender, EventArgs e)
+        {
+            ((CompanyConstantModule)Module).SaveTimeSheetParam1();
+        }
+
+        private void simpleButton10_Click(object sender, EventArgs e)
+        {
+            ((CompanyConstantModule)Module).SaveTimeSheetParam2();
+        }
     }
 }

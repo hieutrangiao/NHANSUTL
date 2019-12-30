@@ -19,30 +19,5 @@ namespace VinaERP.Modules.PayRoll.UI
         {
             InitializeComponent();
         }
-
-        private void simpleButton9_Click(object sender, EventArgs e)
-        {
-            ((PayRollModule)Module).AddEmployee();
-        }
-
-        private void fld_txtHRRewardValue_Validated(object sender, EventArgs e)
-        {
-            ((PayRollModule)Module).UpdateValue();
-        }
-
-        private void fld_dteHRRewardFromDate_Validated(object sender, EventArgs e)
-        {
-            ((PayRollModule)Module).UpdateItemDate();
-        }
-
-        private void fld_txtHRRewardType_Validated(object sender, EventArgs e)
-        {
-            ((PayRollModule)Module).SetMaskForTextBox();
-        }
-
-        private void fld_lkeHRRewardOption_Validated(object sender, EventArgs e)
-        {
-            ((PayRollModule)Module).SetMaskForTextBox();
-        }
     }
 }

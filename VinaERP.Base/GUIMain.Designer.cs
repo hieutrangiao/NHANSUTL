@@ -29,23 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUIMain));
             this.fld_barMenuApplicationManager = new DevExpress.XtraBars.BarManager(this.components);
             this.fld_brToolbars = new DevExpress.XtraBars.Bar();
             this.fld_mnMainMenu = new DevExpress.XtraBars.Bar();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
-            this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
-            this.fld_barmnMasterData = new DevExpress.XtraBars.BarSubItem();
-            this.fld_barbtnProduct = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
-            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
-            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.fld_skinDevExpressChangeSkins = new DevExpress.XtraBars.SkinDropDownButtonItem();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.fld_barsttStatusApplication = new DevExpress.XtraBars.Bar();
             this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -55,10 +48,16 @@
             this.skinBarSubItem1 = new DevExpress.XtraBars.SkinBarSubItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            this.fld_barmnMasterData = new DevExpress.XtraBars.BarSubItem();
+            this.fld_barbtnProduct = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockingMenuItem1 = new DevExpress.XtraBars.BarDockingMenuItem();
             this.barWorkspaceMenuItem1 = new DevExpress.XtraBars.BarWorkspaceMenuItem();
+            this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager(this.components);
             this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemBreadCrumbEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemBreadCrumbEdit();
             this.skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
@@ -66,6 +65,8 @@
             this.skinBarSubItem2 = new DevExpress.XtraBars.SkinBarSubItem();
             this.skinBarSubItem3 = new DevExpress.XtraBars.SkinBarSubItem();
             this.skinBarSubItem4 = new DevExpress.XtraBars.SkinBarSubItem();
+            this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.fld_mntrMenuStripApplication = new System.Windows.Forms.MenuStrip();
             this.fld_tsOpenedModules = new System.Windows.Forms.ToolStrip();
             ((System.ComponentModel.ISupportInitialize)(this.fld_barMenuApplicationManager)).BeginInit();
@@ -88,7 +89,6 @@
             this.barButtonItem2,
             this.skinBarSubItem1,
             this.barButtonItem3,
-            this.barButtonItem4,
             this.barButtonItem5,
             this.barSubItem1,
             this.barButtonItem6,
@@ -135,8 +135,7 @@
             this.fld_mnMainMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Caption, this.fld_skinDevExpressChangeSkins, "Look And Feel"),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Caption, this.fld_skinDevExpressChangeSkins, "Look And Feel")});
             this.fld_mnMainMenu.OptionsBar.AllowQuickCustomization = false;
             this.fld_mnMainMenu.OptionsBar.MultiLine = true;
             this.fld_mnMainMenu.OptionsBar.UseWholeRow = true;
@@ -158,75 +157,12 @@
             this.barButtonItem2.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonItem2.VisibleInSearchMenu = false;
             // 
-            // barSubItem3
-            // 
-            this.barSubItem3.Caption = "Hệ thống";
-            this.barSubItem3.Id = 25;
-            this.barSubItem3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10)});
-            this.barSubItem3.Name = "barSubItem3";
-            // 
-            // barButtonItem10
-            // 
-            this.barButtonItem10.Caption = "Quản lý người dùng";
-            this.barButtonItem10.Id = 26;
-            this.barButtonItem10.Name = "barButtonItem10";
-            this.barButtonItem10.Tag = "UserManagement";
-            this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.fld_barbtnToolbar_ItemClick);
-            // 
-            // fld_barmnMasterData
-            // 
-            this.fld_barmnMasterData.Caption = "Dữ liệu nguồn";
-            this.fld_barmnMasterData.Id = 9;
-            this.fld_barmnMasterData.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.fld_barbtnProduct),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9)});
-            this.fld_barmnMasterData.Name = "fld_barmnMasterData";
-            // 
-            // fld_barbtnProduct
-            // 
-            this.fld_barbtnProduct.Caption = "Sản phẩm";
-            this.fld_barbtnProduct.Id = 10;
-            this.fld_barbtnProduct.Name = "fld_barbtnProduct";
-            this.fld_barbtnProduct.Tag = "Product";
-            this.fld_barbtnProduct.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.fld_barbtnToolbar_ItemClick);
-            // 
-            // barButtonItem9
-            // 
-            this.barButtonItem9.Caption = "Điều khoản thanh toán";
-            this.barButtonItem9.Id = 23;
-            this.barButtonItem9.Name = "barButtonItem9";
-            this.barButtonItem9.Tag = "PaymentTerm";
-            this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.fld_barbtnToolbar_ItemClick);
-            // 
-            // barSubItem1
-            // 
-            this.barSubItem1.Caption = "Bán hàng";
-            this.barSubItem1.Id = 6;
-            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6)});
-            this.barSubItem1.Name = "barSubItem1";
-            // 
-            // barButtonItem6
-            // 
-            this.barButtonItem6.Caption = "Đơn bán hàng";
-            this.barButtonItem6.Id = 7;
-            this.barButtonItem6.Name = "barButtonItem6";
-            this.barButtonItem6.Tag = "SaleOrder";
-            this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.fld_barbtnToolbar_ItemClick);
-            // 
             // fld_skinDevExpressChangeSkins
             // 
             this.fld_skinDevExpressChangeSkins.Id = 21;
             this.fld_skinDevExpressChangeSkins.Name = "fld_skinDevExpressChangeSkins";
             this.fld_skinDevExpressChangeSkins.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.Caption;
             this.fld_skinDevExpressChangeSkins.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.fld_skinDevExpressChangeSkins_ItemClick);
-            // 
-            // barButtonItem4
-            // 
-            this.barButtonItem4.Caption = "Help";
-            this.barButtonItem4.Id = 4;
-            this.barButtonItem4.Name = "barButtonItem4";
             // 
             // fld_barsttStatusApplication
             // 
@@ -301,11 +237,52 @@
             this.barButtonItem5.Id = 5;
             this.barButtonItem5.Name = "barButtonItem5";
             // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "Bán hàng";
+            this.barSubItem1.Id = 6;
+            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6)});
+            this.barSubItem1.Name = "barSubItem1";
+            // 
+            // barButtonItem6
+            // 
+            this.barButtonItem6.Caption = "Đơn bán hàng";
+            this.barButtonItem6.Id = 7;
+            this.barButtonItem6.Name = "barButtonItem6";
+            this.barButtonItem6.Tag = "SaleOrder";
+            this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.fld_barbtnToolbar_ItemClick);
+            // 
             // barButtonItem7
             // 
             this.barButtonItem7.Caption = "barButtonItem7";
             this.barButtonItem7.Id = 8;
             this.barButtonItem7.Name = "barButtonItem7";
+            // 
+            // fld_barmnMasterData
+            // 
+            this.fld_barmnMasterData.Caption = "Dữ liệu nguồn";
+            this.fld_barmnMasterData.Id = 9;
+            this.fld_barmnMasterData.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.fld_barbtnProduct),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9)});
+            this.fld_barmnMasterData.Name = "fld_barmnMasterData";
+            // 
+            // fld_barbtnProduct
+            // 
+            this.fld_barbtnProduct.Caption = "Sản phẩm";
+            this.fld_barbtnProduct.Id = 10;
+            this.fld_barbtnProduct.Name = "fld_barbtnProduct";
+            this.fld_barbtnProduct.Tag = "Product";
+            this.fld_barbtnProduct.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.fld_barbtnToolbar_ItemClick);
+            // 
+            // barButtonItem9
+            // 
+            this.barButtonItem9.Caption = "Điều khoản thanh toán";
+            this.barButtonItem9.Id = 23;
+            this.barButtonItem9.Name = "barButtonItem9";
+            this.barButtonItem9.Tag = "PaymentTerm";
+            this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.fld_barbtnToolbar_ItemClick);
             // 
             // barButtonItem8
             // 
@@ -325,6 +302,12 @@
             this.barWorkspaceMenuItem1.Id = 13;
             this.barWorkspaceMenuItem1.Name = "barWorkspaceMenuItem1";
             // 
+            // workspaceManager1
+            // 
+            this.workspaceManager1.TargetControl = this;
+            this.workspaceManager1.TransitionType = pushTransition1;
+            this.barWorkspaceMenuItem1.WorkspaceManager = this.workspaceManager1;
+            // 
             // barEditItem1
             // 
             this.barEditItem1.Caption = "barEditItem1";
@@ -343,9 +326,9 @@
             // 
             this.skinDropDownButtonItem1.Id = 16;
             this.skinDropDownButtonItem1.Name = "skinDropDownButtonItem1";
-            toolTipTitleItem2.Text = "Look And Feel";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            this.skinDropDownButtonItem1.SuperTip = superToolTip2;
+            toolTipTitleItem1.Text = "Look And Feel";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            this.skinDropDownButtonItem1.SuperTip = superToolTip1;
             // 
             // barSubItem2
             // 
@@ -372,6 +355,22 @@
             this.skinBarSubItem4.Caption = "skinBarSubItem4";
             this.skinBarSubItem4.Id = 20;
             this.skinBarSubItem4.Name = "skinBarSubItem4";
+            // 
+            // barSubItem3
+            // 
+            this.barSubItem3.Caption = "Hệ thống";
+            this.barSubItem3.Id = 25;
+            this.barSubItem3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10)});
+            this.barSubItem3.Name = "barSubItem3";
+            // 
+            // barButtonItem10
+            // 
+            this.barButtonItem10.Caption = "Quản lý người dùng";
+            this.barButtonItem10.Id = 26;
+            this.barButtonItem10.Name = "barButtonItem10";
+            this.barButtonItem10.Tag = "UserManagement";
+            this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.fld_barbtnToolbar_ItemClick);
             // 
             // fld_mntrMenuStripApplication
             // 
@@ -435,7 +434,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.SkinBarSubItem skinBarSubItem1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem6;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
@@ -458,5 +456,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
         private DevExpress.XtraBars.BarSubItem barSubItem3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem10;
+        private DevExpress.Utils.WorkspaceManager workspaceManager1;
     }
 }

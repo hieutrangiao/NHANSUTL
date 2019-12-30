@@ -22,7 +22,6 @@ namespace VinaERP.Modules.PayRoll
 
         #region Public Properties
         public VinaList<HREmployeePayRollsInfo> EmployeePayRollsList { get; set; }
-        public List<HREmployeesInfo> EmployeesList { get; set; }
         #endregion
 
         #region Constructor
@@ -30,7 +29,6 @@ namespace VinaERP.Modules.PayRoll
             : base()
         {
             EmployeePayRollsList = new VinaList<HREmployeePayRollsInfo>();
-            EmployeesList = new List<HREmployeesInfo>();
         }
 
         #endregion
@@ -101,6 +99,19 @@ namespace VinaERP.Modules.PayRoll
         public override void SaveModuleObjects()
         {
             EmployeePayRollsList.SaveItemObjects();
+            HREmployeePayrollDetailsController objEmployeePayrollDetailsController = new HREmployeePayrollDetailsController();
+            foreach (HREmployeePayRollsInfo objEmployeePayRollsInfo in EmployeePayRollsList)
+            {
+                objEmployeePayrollDetailsController.DeleteByForeignColumn("FK_HREmployeePayRollID", objEmployeePayRollsInfo.HREmployeePayRollID);
+                if (objEmployeePayRollsInfo.HREmployeePayrollDetailsList != null)
+                {
+                    foreach (HREmployeePayrollDetailsInfo obj in objEmployeePayRollsInfo.HREmployeePayrollDetailsList)
+                    {
+                        obj.FK_HREmployeePayrollID = objEmployeePayRollsInfo.HREmployeePayRollID;
+                        objEmployeePayrollDetailsController.CreateObject(obj);
+                    }
+                }
+            }
         }
         #endregion
 

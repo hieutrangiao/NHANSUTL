@@ -114,7 +114,7 @@ namespace VinaERP.Modules.EmployeePayRollFormula.UI
             this.fld_lkeFK_ICProductID.Controls.Add(this.fld_dgcHREmployeePayrollFormulaItems);
             this.fld_lkeFK_ICProductID.Name = "fld_lkeFK_ICProductID";
             this.fld_lkeFK_ICProductID.Size = new System.Drawing.Size(1049, 429);
-            this.fld_lkeFK_ICProductID.Text = "Danh sách bảng lương";
+            this.fld_lkeFK_ICProductID.Text = "Danh mục lương";
             // 
             // fld_dgcHREmployeePayrollFormulaItems
             // 
@@ -194,6 +194,7 @@ namespace VinaERP.Modules.EmployeePayRollFormula.UI
             // 
             this.xtraTabPage3.Controls.Add(this.fld_dgcHRTimesheetEmployeeLates);
             this.xtraTabPage3.Name = "xtraTabPage3";
+            this.xtraTabPage3.PageVisible = false;
             this.xtraTabPage3.Size = new System.Drawing.Size(1049, 429);
             this.xtraTabPage3.Text = "Cấu hình đi trễ";
             // 

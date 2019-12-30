@@ -105,6 +105,47 @@ namespace VinaERP.Modules.CompanyConstant
             SaveConfigValues(ConfigValueGroup.DisciplineType.ToString());
         }
 
+        public void SaveTimeSheetParam1()
+        {
+            CompanyConstantEntities entity = (CompanyConstantEntities)CurrentModuleEntity;
+            foreach (HRTimeSheetParamsInfo objTimeSheetParamsInfo in entity.TimeSheetParamsList)
+            {
+                objTimeSheetParamsInfo.HRTimeSheetParamValue2 = objTimeSheetParamsInfo.HRTimeSheetParamValue2 / 100;
+                if (objTimeSheetParamsInfo.HRTimeSheetParamID == 0)
+                {
+                    objTimeSheetParamsInfo.IsDefault = false;
+                }
+                objTimeSheetParamsInfo.IsOTCalculated = false;
+
+            }
+            entity.TimeSheetParamsList.SaveItemObjects();
+            foreach (HRTimeSheetParamsInfo timeSheetParam in entity.TimeSheetParamsList)
+            {
+                timeSheetParam.HRTimeSheetParamValue2 = timeSheetParam.HRTimeSheetParamValue2 * 100;
+            }
+        }
+
+        public void SaveTimeSheetParam2()
+        {
+        CompanyConstantEntities entity = (CompanyConstantEntities)CurrentModuleEntity;
+        foreach (HRTimeSheetParamsInfo objTimeSheetParamsInfo in entity.TimeSheetParam2sList)
+        {
+            objTimeSheetParamsInfo.HRTimeSheetParamValue2 = objTimeSheetParamsInfo.HRTimeSheetParamValue2 / 100;
+            objTimeSheetParamsInfo.IsOTCalculated = true;
+            if (objTimeSheetParamsInfo.HRTimeSheetParamID == 0)
+            {
+                objTimeSheetParamsInfo.IsDefault = false;
+                //objTimeSheetParamsInfo.HRTimeSheetParamValue2 = 1;
+            }
+            objTimeSheetParamsInfo.HRTimeSheetParamType = "Hour";
+        }
+        entity.TimeSheetParam2sList.SaveItemObjects();
+        foreach (HRTimeSheetParamsInfo timeSheetParam in entity.TimeSheetParam2sList)
+        {
+            timeSheetParam.HRTimeSheetParamValue2 = timeSheetParam.HRTimeSheetParamValue2 * 100;
+        }
+    }
+
         public bool SaveConfigValues(String strGroup)
         {
             CompanyConstantEntities entity = (CompanyConstantEntities)CurrentModuleEntity;
